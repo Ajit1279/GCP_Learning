@@ -1,5 +1,5 @@
 Step-by-step guide here: https://dev.to/pavanbelagatti/deploy-any-aiml-application-on-kubernetes-a-step-by-step-guide-2i37
-1. Create a VM called **myworkstation** (I created basic Debian image) 
+1. Create a VM called **myworkstation** (I created ubantu image. Please ensure to have at least 8 CPU, 64 GB as the server may run out of space later) 
 
 2. **SSH into it from Cloud Shell**: _gcloud compute ssh --zone "asia-south1-c" "myworkstation" --project "tf-proj-21"_
 
