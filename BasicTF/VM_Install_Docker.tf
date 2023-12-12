@@ -58,7 +58,11 @@ resource "google_compute_instance" "mydockermachine" {
 
   zone = "asia-south1-c"
 
-  # Install Docker
-  metadata_startup_script = "sudo apt-get update; sudo apt install gnome-terminal; sudo apt-get update: sudo apt-get install ./docker-desktop-<version>-<arch>.deb"
+  # Please ensure Google APIs are enabled to be able to copy shellscript
+
+  # Install Docker from using shell script.
+  metadata_startup_script = "sudo apt-get update; /startup/dockinst.sh"
+
+  # 
 
 }
