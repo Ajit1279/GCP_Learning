@@ -5,10 +5,10 @@
 # This script creates a Debian Linux instance and installs docker on it.
 ##################################################################################################################
 
-resource "google_compute_instance" "my_docker_machine" {
+resource "google_compute_instance" "mydockermachine" {
   boot_disk {
     auto_delete = true
-    device_name = "my_docker_machine"
+    device_name = "mydockermachine"
 
     initialize_params {
       image = "projects/debian-cloud/global/images/debian-11-bullseye-v20231115"
@@ -28,7 +28,7 @@ resource "google_compute_instance" "my_docker_machine" {
   }
 
   machine_type = "e2-medium"
-  name         = "my_docker_machine"
+  name         = "mydockermachine"
 
   network_interface {
     access_config {
