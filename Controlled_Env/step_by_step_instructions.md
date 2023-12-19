@@ -1,4 +1,4 @@
-1. **Create a private repository for all GCP "ENV Config" with separate folders for each GCP Market projects. Within this, there would be folders for each of the env (like SIT, UAT, Prod etc.)**
+1. **Create a private repository for all GCP "ENV Config" with separate folders for each GCP projects (e.g Market). Within this, there would be folders for each of the env (like SIT, UAT, Prod etc.)**
 	a. This folder in turn contains folders for various environments like SIT Env, UAT Env, Prod env. These folder contains configs for DB Proxy and application config 
 	b. The folder also contain scripts for respective env deployments, Java installation, application installation, monitoring (e.g. AppD) installation, healthchecks, 
 	c. The scripts for Prod and SIT deployments are almost same except few comments
