@@ -18,7 +18,10 @@
 				□ Kubectl expose deployment name --type=LoadBalancer --port=80
 				□ kubectl get services
  
-	• Scheduling: Matching  
+	• *Scheduling:* Match PODs with Nodes so that kubelet can run them
+ 	• *Preemption:* Terminate pods with lower priority so that pods with higher priority can schedule on nodes
+  	• *Eviction:* Proactively terminating one or more Pods on resource-starved Nodes.
+   
 	• Ingress: Collections of rules for routing external HTTP(S) traffic to your number of services e.g. if enquiry-service go to port 8000, if contribution-service go to port 8100 etc.
 		○ Provides Load Balancing, SSL Termination
 		○ Expose each micro-service using NodePort service 
