@@ -48,14 +48,15 @@
 14. Refer more on: https://kubernetes.io/docs/reference/kubectl/quick-reference/ 
 
 15. Creating Objects: Kubernetes manifests can be defined in YAML or JSON. The file extension .yaml, .yml, and .json can be used.
+   i. Create a manifest file: mymanifest.yaml ([Docker_K8S/mymanifest.yaml](https://github.com/Ajit1279/GCP_Learning/tree/main/Docker_K8S))
+   ii. Then run the command: kubectl apply -f mymanifest.yaml . A message as shown below is displayed:
+         ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/19082852-19ec-4a2e-b4c9-f707ec7ba1f1)
+
+   iii. 
+17. sdsd
+18. sd
+19. sd
+20. sd
+21. sdsds
 
 
-
-
-
-
-    
-10.
-11.
-12.
-13.
