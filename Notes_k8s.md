@@ -1,22 +1,22 @@
 
 • Architecture:
-	○ Hardware (Cluster):
-		§ Master Node: Manage the cluster
-		§ Worker Node: Run workloads (as pods)
-  		§ Node Pool: Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
-	○ Software:
-		§ Pods: Smallest deployable unit in Kubernetes. (You can not deploy containers directly on Kubernetes)
-		§ Deployments: 
-			□ Manage pods (you can not directly create pods)
-			□ Deployment is created for each microservice and represents all it's releases. It's imp role is zero downtime deployments. 
-		§ Service: 
-			□ Exposes the deployment to the outside world. It is set of pods with a network endpoint
-			□ Three types: 
-				® LoadBalancer:  Use Case: Individual load balancer for each microservice
-				® Cluster IP: Use Case: Microservice only to be available inside cluster
-				® NodePort: Exposes service on each node's IP at a static port (NodePort)   Use Case:  Create one Ingress NOT multiple Load Balancer
-			□ Kubectl expose deployment name --type=LoadBalancer --port=80
-			□ kubectl get services
+   ○ Hardware (Cluster):
+        § Master Node: Manage the cluster
+	§ Worker Node: Run workloads (as pods)
+  	§ Node Pool: Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
+○ Software:
+	§ Pods: Smallest deployable unit in Kubernetes. (You can not deploy containers directly on Kubernetes)
+	§ Deployments: 
+		□ Manage pods (you can not directly create pods)
+		□ Deployment is created for each microservice and represents all it's releases. It's imp role is zero downtime deployments. 
+	§ Service: 
+		□ Exposes the deployment to the outside world. It is set of pods with a network endpoint
+		□ Three types: 
+			® LoadBalancer:  Use Case: Individual load balancer for each microservice
+			® Cluster IP: Use Case: Microservice only to be available inside cluster
+			® NodePort: Exposes service on each node's IP at a static port (NodePort)   Use Case:  Create one Ingress NOT multiple Load Balancer
+		□ Kubectl expose deployment name --type=LoadBalancer --port=80
+		□ kubectl get services
  
 • *Scheduling:* Match PODs with Nodes so that kubelet can run them
 • *Preemption:* Terminate pods with lower priority so that pods with higher priority can schedule on nodes
