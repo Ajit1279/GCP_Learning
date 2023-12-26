@@ -3,7 +3,7 @@
 	○ Hardware (Cluster):
 		§ Master Node: Manage the cluster
 		§ Worker Node: Run workloads (as pods)
-		§ Node Pool: Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
+  		§ Node Pool: Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
 	○ Software:
 		§ Pods: Smallest deployable unit in Kubernetes. (You can not deploy containers directly on Kubernetes)
 		§ Deployments: 
