@@ -16,8 +16,7 @@ Check that **kubectl is properly configured** by getting the cluster state: *kub
 
 **Enable auto-completion for BASH**: *kubectl completion bash* You can also install it with *apt-get install bash-completion* or *yum install bash-completion*
 
-------------------------------------------------------------------
-https://kubernetes.io/docs/tutorials/hello-minikube/ 
+==================================================================================================================================================
 
 **Pod** - Group of one or more Containers, tied together for the purposes of administration and networking. The Pod in this tutorial has only one
 Container. 
@@ -25,8 +24,11 @@ Container.
 **Kubernetes Deployment** checks on the health of your Pod and restarts the Pod's Container if it terminates. Deployments are the recommended way to manage
 the creation and scaling of Pods.
 
-**Basic Minikube commands:**
-  i. **Create a minikube cluster:** minikube start
+==================================================================================================================================================
+
+**Basic Minikube commands:** https://kubernetes.io/docs/tutorials/hello-minikube/ 
+
+   i. **Create a minikube cluster:** minikube start
   
   ii. **Run a test container image that includes a webserver:** kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
   
