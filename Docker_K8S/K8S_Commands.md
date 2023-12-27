@@ -21,6 +21,7 @@ https://kubernetes.io/docs/tutorials/hello-minikube/
 
 **Pod** - Group of one or more Containers, tied together for the purposes of administration and networking. The Pod in this tutorial has only one
 Container. 
+
 **Kubernetes Deployment** checks on the health of your Pod and restarts the Pod's Container if it terminates. Deployments are the recommended way to manage
 the creation and scaling of Pods.
 
