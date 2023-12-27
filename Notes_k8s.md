@@ -1,3 +1,4 @@
+In prod env you need to ensure there's no downtime. That's how Kubernetes come to the rescue! For example, if a container goes down, another container starts.
 
 • Architecture:
    ○ Hardware (Cluster):
