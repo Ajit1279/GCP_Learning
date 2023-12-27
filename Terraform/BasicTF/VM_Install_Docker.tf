@@ -1,0 +1,153 @@
+# [START storage_docker_google_cloud_quickstart_parent_tag]
+# [START compute_docker_quickstart_vpc]
+resource "google_compute_network" "vpc_network" {
+  name                    = "my-terraform-network"
+  auto_create_subnetworks = false
+  mtu                     = 1460
+}
+
+resource "google_compute_subnetwork" "default" {
+  name          = "my-terraform-subnet"
+  ip_cidr_range = "10.0.1.0/24"
+  region        = "us-west4"
+  network       = google_compute_network.vpc_network.id
+}
+# [END compute_docker_quickstart_vpc]
+
+# [START compute_docker_quickstart_vm]
+# Create a single Compute Engine instance
+resource "google_compute_instance" "default" {
+  name         = "docker-vm"
+  machine_type = "f1-micro"
+  zone         = "us-west4-b"
+  tags         = ["ssh"]
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.default.id
+
+    access_config {
+      # Include this section to give the VM an external IP address
+    }
+  }
+
+  # Install docker
+  # metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python3-pip rsync; pip install docker"
+  # metadata_startup_script = dockerinstall.sh
+  dockerinstall = <<EOF 
+     curl -fsSL https://get.docker.com -o get-docker.sh
+     sudo sh ./get-docker.sh --dry-run
+     EOF
+
+}
+# [END compute_docker_quickstart_vm]
+
+# [START vpc_docker_quickstart_ssh_fw]
+resource "google_compute_firewall" "ssh" {
+  name = "allow-ssh"
+  allow {
+    ports    = ["22"]
+    protocol = "tcp"
+  }
+  direction     = "INGRESS"
+  network       = google_compute_network.vpc_network.id
+  priority      = 1000
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["ssh"]
+}
+# [END vpc_docker_quickstart_ssh_fw]
+
+
+# [START vpc_docker_quickstart_5000_fw]
+resource "google_compute_firewall" "docker" {
+  name    = "docker-app-firewall"
+  network = google_compute_network.vpc_network.id
+
+  allow {
+    protocol = "tcp"
+    ports    = ["5000"]
+  }
+  source_ranges = ["0.0.0.0/0"]
+}
+# [END vpc_docker_quickstart_5000_fw]
+
+# Create new multi-region storage bucket in the US
+# with versioning enabled
+
+# [START storage_kms_encryption_tfstate]
+resource "google_kms_key_ring" "terraform_state" {
+  name     = "${random_id.bucket_prefix.hex}-bucket-tfstate"
+  location = "us"
+}
+
+resource "google_kms_crypto_key" "terraform_state_bucket" {
+  name            = "test-terraform-state-bucket"
+  key_ring        = google_kms_key_ring.terraform_state.id
+  rotation_period = "86400s"
+
+  lifecycle {
+    prevent_destroy = false
+  }
+}
+
+# Enable the Cloud Storage service account to encrypt/decrypt Cloud KMS keys
+data "google_project" "project" {
+}
+
+resource "google_project_iam_member" "default" {
+  project = data.google_project.project.project_id
+  role    = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+  #member  = "serviceAccount:service-${data.google_project.project.number}@gs-project-accounts.iam.gserviceaccount.com"
+  member  = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com" 
+  #member = "id-123456789-compute@terraform-project-402905.iam.gserviceaccount.com"
+}
+# [END storage_kms_encryption_tfstate]
+
+## inserted on 28-10-23 reference: https://github.com/hashicorp/terraform-provider-google/issues/6362
+#resource "google_project_iam_member" "project_compute_sa_role_member" {
+   #count   = "$(length(var.project_compute_sa_roles)}"
+   #project = "{google_project.project.id}"
+   #role    = "{var.project_compute_sa_roles[count.index]}"
+   #member  = "serviceAccount:${google_service_account.project_compute_sa.email}"
+#}
+
+# [START storage_bucket_tf_with_versioning]
+resource "random_id" "bucket_prefix" {
+  byte_length = 8
+}
+
+#resource "google_kms_crypto_key_iam_binding" "crypto_key" {
+#  crypto_key_id = google_kms_crypto_key.key.id
+#  role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
+#  members       = [
+#     "serviceAccount:service-${data.google_project.project.number}@compute-system.iam.gserviceaccount.com",
+#  ]
+#}
+
+resource "google_storage_bucket" "default" {
+  name          = "${random_id.bucket_prefix.hex}-bucket-tfstate"
+  force_destroy = false
+  location      = "US"
+  storage_class = "STANDARD"
+  uniform_bucket_level_access = true
+  
+  versioning {
+    enabled = true
+  }
+  encryption {
+  # gsutil kms authorize -p project -k projects/key-project/locations/us-west4/keyRings/key-ring/cryptoKeys/my-key 
+   default_kms_key_name = google_kms_crypto_key.terraform_state_bucket.id
+   }
+  depends_on = [
+    google_project_iam_member.default
+  ]
+
+}
+# [END storage_bucket_tf_with_versioning]
+# [END storage_docker_google_cloud_quickstart_parent_tag]
