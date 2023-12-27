@@ -26,12 +26,19 @@ the creation and scaling of Pods.
 
 **Basic Minikube commands:**
   i. **Create a minikube cluster:** minikube start
+  
   ii. **Run a test container image that includes a webserver:** kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
+  
   iii. **View the deployments:** kubectl get deployments
+  
   iv. **view the pods**: kubectl get pods
+  
   v. **View the services you created** : kubectl get services
+  
   vi. **clean up the resources you created in your cluster:** kubectl delete service hello-node, kubectl delete deployment hello-node
+  
   vii. **Stop the Minikube cluster:** minikube stop
+  
   viii. **Optionally, delete the Minikube VM (only if you don't want to use it again for learning K8S):** minikube delete
 
 ds
