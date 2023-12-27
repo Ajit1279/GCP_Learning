@@ -1,0 +1,81 @@
+POST https://container.googleapis.com/v1/projects/mygcpnetwork/locations/asia-south1/clusters
+{
+  "cluster": {
+    "name": "dev-cluster-1",
+    "network": "projects/mygcpnetwork/global/networks/apk-default-network",
+    "subnetwork": "projects/mygcpnetwork/regions/asia-south1/subnetworks/net1-asp-south1",
+    "networkPolicy": {},
+    "ipAllocationPolicy": {
+      "useIpAliases": true,
+      "clusterIpv4CidrBlock": "/17",
+      "stackType": "IPV4"
+    },
+    "masterAuthorizedNetworksConfig": {
+      "enabled": true,
+      "cidrBlocks": [
+        {
+          "displayName": "mylaptop",
+          "cidrBlock": "116.74.144.0/20"
+        }
+      ]
+    },
+    "binaryAuthorization": {
+      "evaluationMode": "DISABLED"
+    },
+    "autoscaling": {
+      "enableNodeAutoprovisioning": true,
+      "autoprovisioningNodePoolDefaults": {}
+    },
+    "networkConfig": {
+      "enableIntraNodeVisibility": true
+    },
+    "authenticatorGroupsConfig": {},
+    "privateClusterConfig": {
+      "enablePrivateNodes": true,
+      "masterIpv4CidrBlock": "172.16.0.0/28"
+    },
+    "databaseEncryption": {
+      "state": "DECRYPTED"
+    },
+    "verticalPodAutoscaling": {
+      "enabled": true
+    },
+    "releaseChannel": {
+      "channel": "REGULAR"
+    },
+    "notificationConfig": {
+      "pubsub": {}
+    },
+    "initialClusterVersion": "1.27.3-gke.100",
+    "location": "asia-south1",
+    "autopilot": {
+      "enabled": true
+    },
+    "loggingConfig": {
+      "componentConfig": {
+        "enableComponents": [
+          "SYSTEM_COMPONENTS",
+          "WORKLOADS"
+        ]
+      }
+    },
+    "monitoringConfig": {
+      "componentConfig": {
+        "enableComponents": [
+          "SYSTEM_COMPONENTS"
+        ]
+      }
+    },
+    "nodePoolAutoConfig": {
+      "networkTags": {
+        "tags": [
+          "mydevcluster"
+        ]
+      }
+    },
+    "securityPostureConfig": {
+      "mode": "BASIC",
+      "vulnerabilityMode": "VULNERABILITY_BASIC"
+    }
+  }
+}
