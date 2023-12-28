@@ -1,27 +1,38 @@
-In prod env you need to ensure there's no downtime. That's how Kubernetes come to the rescue! For example, if a container goes down, another container starts.
+**Containerization** helps package software, enabling applications to be released and updated without downtime.
 
-• Architecture:
-   ○ Hardware (Cluster):
-        § Master Node: Manage the cluster
-	§ Worker Node: Run workloads (as pods)
-  	§ Node Pool: Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
-○ Software:
-	§ Pods: Smallest deployable unit in Kubernetes. (You can not deploy containers directly on Kubernetes)
-	§ Deployments: 
-		□ Manage pods (you can not directly create pods)
-		□ Deployment is created for each microservice and represents all it's releases. It's imp role is zero downtime deployments. 
-	§ Service: 
-		□ Exposes the deployment to the outside world. It is set of pods with a network endpoint
-		□ Three types: 
-			® LoadBalancer:  Use Case: Individual load balancer for each microservice
-			® Cluster IP: Use Case: Microservice only to be available inside cluster
-			® NodePort: Exposes service on each node's IP at a static port (NodePort)   Use Case:  Create one Ingress NOT multiple Load Balancer
-		□ Kubectl expose deployment name --type=LoadBalancer --port=80
-		□ kubectl get services
+**Kubernetes** is a production-ready, open source platform for container orchestration
+It helps you make sure those containerized applications run where and when you want, and helps them find the resources and tools they need to work.
+In prod env you need to ensure there's no downtime. That's how **Kubernetes come to the rescue!** For example, if a container goes down, another container starts.
+
+**Kubernetes Cluster** consists of:
+	**○ Control Plane:** Responsible for managing the cluster (scheduling applications, maintaining applications' desired state, scaling applications, and rolling out new updates.)
+ 	**○ Nodes:** A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster. 
+  
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/623125d0-47fe-4316-ae2b-580ddc2d9e76)
+
+
+• **Architecture:**
+	**○ Hardware (Cluster): highly available cluster of computers that are connected to work as a single unit.**
+        	§ Master Node: Manage the cluster
+		§ Worker Node: Run workloads (as pods)
+  		§ Node Pool: Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
+	**○ Software:**
+		§ Pods: Smallest deployable unit in Kubernetes. (You can not deploy containers directly on Kubernetes)
+		§ Deployments: 
+			□ Manage pods (you can not directly create pods)
+			□ Deployment is created for each microservice and represents all it's releases. It's imp role is zero downtime deployments. 
+		§ Service: 
+			□ Exposes the deployment to the outside world. It is set of pods with a network endpoint
+			□ Three types: 
+			  ® LoadBalancer:  Use Case: Individual load balancer for each microservice
+			  ® Cluster IP: Use Case: Microservice only to be available inside cluster
+			  ® NodePort: Exposes service on each node's IP at a static port (NodePort)   Use Case:  Create one Ingress NOT multiple Load Balancer
+			□ Kubectl expose deployment name --type=LoadBalancer --port=80
+			□ kubectl get services
  
-• *Scheduling:* Match PODs with Nodes so that kubelet can run them
-• *Preemption:* Terminate pods with lower priority so that pods with higher priority can schedule on nodes
-• *Eviction:* Proactively terminating one or more Pods on resource-starved Nodes.
+• **Scheduling:** Match PODs with Nodes so that kubelet can run them
+• **Preemption:** Terminate pods with lower priority so that pods with higher priority can schedule on nodes
+• **Eviction:** Proactively terminating one or more Pods on resource-starved Nodes.
    
 • Ingress: Collections of rules for routing external HTTP(S) traffic to your number of services e.g. if enquiry-service go to port 8000, if contribution-service go to port 8100 etc.
 	○ Provides Load Balancing, SSL Termination
