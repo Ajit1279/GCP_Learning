@@ -58,17 +58,17 @@ the creation and scaling of Pods.
         **a.Using a proxy**      
           **□ Create a proxy in new terminal window that will forward communications into the cluster-wide, private network.** kubectl proxy 
           **Window2 screenshot**
-          ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/6210089f-7c94-4ebc-9980-5da796eed79f)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/6210089f-7c94-4ebc-9980-5da796eed79f)
 
           **Window1 screenshot**
-          ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/eb59457b-789e-4542-97ae-8f9e9b442038)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/eb59457b-789e-4542-97ae-8f9e9b442038)
 
           □ If we stop the proxy using CTRL+C, you will not be able to access the app
           **Window2 screenshot**
-          ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/956da003-9b7b-461f-b662-a81e08e1b79a)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/956da003-9b7b-461f-b662-a81e08e1b79a)
 
           **Window1 screenshot**
-          ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c77b1517-9777-46b2-a96c-a70e2456e05b)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c77b1517-9777-46b2-a96c-a70e2456e05b)
 
       **b.using pod name**
           □ The API server will automatically **create an endpoint for each pod**, based on the pod name, that is also accessible through the proxy.
@@ -78,17 +78,15 @@ the creation and scaling of Pods.
           I hardcodes instead of above command: export POD_NAME=hello-minikube-7f54cff968-mcm2q
 
           □ echo Name of the Pod: $POD_NAME
-            ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/18cab2a5-9535-41b0-922a-798202e51312)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/18cab2a5-9535-41b0-922a-798202e51312)
           
           □ Access the Pod through the proxied API, by running: curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME:8080/proxy/
-            ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/17b304e0-ff29-4878-9d72-65c21553dd07)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/17b304e0-ff29-4878-9d72-65c21553dd07)
 
            □ View the container logs: kubectl logs "$POD_NAME"
-             ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bcf02c69-7e76-4808-a1d5-71e8b0c306e7)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bcf02c69-7e76-4808-a1d5-71e8b0c306e7)
 
-           
-
-
+  
 
     **c.Using service**
           □ Let's expose our application now using a Service and apply some labels.
@@ -96,43 +94,43 @@ the creation and scaling of Pods.
           □ Let’s verify that our application is running: kubectl get pods
 
           □ Let’s list the current Services from our cluster: kubectl get services
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8a0f79ec-182a-45d9-a33d-83e240907507)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8a0f79ec-182a-45d9-a33d-83e240907507)
 
           □ **kubernetes** service is created by default when minikube starts the cluster. To create a new service and expose it to external traffic we'll use the expose command with NodePort as parameter
             kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
-            ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/43cdfffc-e86f-4a3f-be4d-cf2a6b1559fc)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/43cdfffc-e86f-4a3f-be4d-cf2a6b1559fc)
 
           □ To find out what port was opened externally (for the type: NodePort Service) we’ll run the describe service subcommand: kubectl describe services/kubernetes-bootcamp
-                ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/15b72a35-38c5-4e86-a538-bed248b885a0)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/15b72a35-38c5-4e86-a538-bed248b885a0)
 
           □ Create an environment variable called NODE_PORT that has the value of the Node port assigned:
               export NODE_PORT="$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')"
               echo "NODE_PORT=$NODE_PORT"
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/da56d68b-99fd-46bd-9db3-19bb343da282)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/da56d68b-99fd-46bd-9db3-19bb343da282)
 
           □  Now we can test that the app is exposed outside of the cluster using curl, the IP address of the Node and the externally exposed port:
             curl http://"$(minikube ip):$NODE_PORT"
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bd9ec268-6ed1-44ae-82c8-100ff2607bc5)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bd9ec268-6ed1-44ae-82c8-100ff2607bc5)
 
           □  Now let's use labels. The Deployment created automatically a label for our Pod. Find that using _kubectl describe deployment_.
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e53bd9f6-6ed4-4cf8-9035-cba8bea53f27)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e53bd9f6-6ed4-4cf8-9035-cba8bea53f27)
 
           □  List the existing Services: kubectl get services -l app=kubernetes-bootcamp
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0ced35f6-fa49-4579-b428-e9bb79c0c593)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0ced35f6-fa49-4579-b428-e9bb79c0c593)
 
           □  To apply a new label we use the label subcommand followed by the object type, object name and the new label: kubectl label pods "$POD_NAME" version=v1
 
           □  We see here that the label is attached now to our Pod. And we can query now the list of pods using the new label: kubectl get pods -l version=v1
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/813a9a7d-9ef5-4411-b4fc-d2f7b0d65ceb)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/813a9a7d-9ef5-4411-b4fc-d2f7b0d65ceb)
 
           □  Now let's delete a service: kubectl delete service -l app=kubernetes-bootcamp   
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8b3cae98-f492-4fd6-9792-8988955573df)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8b3cae98-f492-4fd6-9792-8988955573df)
 
           □  Confirm that the Service is gone: kubectl get services
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8f2ffe99-b0f3-4076-98a8-b2a68e4bb385)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8f2ffe99-b0f3-4076-98a8-b2a68e4bb385)
 
           □  To confirm that route is not exposed anymore you can curl the previously exposed IP and port: curl http://"$(minikube ip):$NODE_PORT" 
-              ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1048f78e-8803-4cb6-9be0-b8f0e4edf6db)
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1048f78e-8803-4cb6-9be0-b8f0e4edf6db)
 
           
 
