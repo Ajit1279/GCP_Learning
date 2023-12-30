@@ -55,7 +55,7 @@ the creation and scaling of Pods.
 
   vi. **Access the deployed app**
 
-        **a. Using a proxy**      
+        **a.Using a proxy**      
           **□ Create a proxy in new terminal window that will forward communications into the cluster-wide, private network.** kubectl proxy 
           **Window2 screenshot**
           ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/6210089f-7c94-4ebc-9980-5da796eed79f)
