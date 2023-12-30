@@ -37,12 +37,12 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
         **○ Software:**
 		
                 § **Deployments:** 
-			□ You can **create and manage a Deployment** by using the Kubernetes command line interface, **kubectl**. 
-   			□ The Deployment **instructs Kubernetes how to create and update instances of your application.**. 
-   			□ The **control plane schedules the application to run on individual Nodes** in the cluster.
-   			□ When you deploy applications on Kubernetes, you tell the control plane to **start the application containers**.
-   			□ **Manage pods** (you can not directly create pods)
-			□ Deployment is created for each microservice and represents all it's releases. It's imp role is **zero downtime deployments**. 
+		    □ You can **create and manage a Deployment** by using the Kubernetes command line interface, **kubectl**. 
+   		    □ The Deployment **instructs Kubernetes how to create and update instances of your application.**. 
+   		    □ The **control plane schedules the application to run on individual Nodes** in the cluster.
+   		    □ When you deploy applications on Kubernetes, you tell the control plane to **start the application containers**.
+   		    □ **Manage pods** (you can not directly create pods)
+		    □ Deployment is created for each microservice and represents all it's releases. It's imp role is **zero downtime deployments**. 
 	
                 § **Deployment Controllers:** 
 			□ **Continuosuly monitor application instances.** 
@@ -54,7 +54,7 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
      			□ You can not deploy containers directly on Kubernetes.  **When you created deployment, Kubernetes created a Pod to host your application instance.**
      			□ **Run on private isolated network** and have shared storage (as volume), network (unique IP address), info about how to run each container (e.g. container image version or specific ports to use)
 			□ Visible from other pods and services within the **same Kubernetes cluster**	
-			![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8874b0ab-64a4-4e40-976c-88a776ca38bd)
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8874b0ab-64a4-4e40-976c-88a776ca38bd)
 
     		
                 § **Service:** 
@@ -72,7 +72,8 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
       			   - Designate objects for development, test, and production
 	                   - Embed version tags
 		           - Classify an object using tags
-	     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7a979e89-cc42-40d3-9080-bbd42252357d)
+	     
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7a979e89-cc42-40d3-9080-bbd42252357d)
 
  
 • **Scheduling:** Match PODs with Nodes so that kubelet can run them
