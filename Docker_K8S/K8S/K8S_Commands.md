@@ -135,8 +135,11 @@ the creation and scaling of Pods.
 
 
   vii. **scaling the app**
+  
         □  Scaling out a Deployment will ensure new Pods are created and scheduled to Nodes. 
+  
         □  K8S supports auto-scaling (increase the number of Pods to the new desired state.) and scaling to zero pods.  
+        
         □  list your deployments and pods: kubectl get deployments; kubectl get pods. It shows only one pod. 
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/61e269bc-1e05-4f7c-b490-8d9487362e20)
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a869772b-df37-4b4f-9ed2-929861cf0e9a)
@@ -146,6 +149,7 @@ the creation and scaling of Pods.
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/aa9c2d6f-de97-4b26-add7-242687f64aa7)
 
         □  DESIRED and CURRENT displays how many replicas have been defined and how many are running currently. 
+        
         □  Let’s scale the Deployment to 4 replicas: kubectl scale deployments/kubernetes-bootcamp --replicas=4
            kubectl get pods -o wide displays
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7bb41b24-15c4-4409-b5ee-63a8294a99c3)
