@@ -89,6 +89,7 @@ the creation and scaling of Pods.
   
 
   **c.Using service**
+  
         □ Let's expose our application now using a Service and apply some labels.
           
         □ Let’s verify that our application is running: kubectl get pods
