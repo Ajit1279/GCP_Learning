@@ -133,8 +133,9 @@ the creation and scaling of Pods.
         □  To confirm that route is not exposed anymore you can curl the previously exposed IP and port: curl http://"$(minikube ip):$NODE_PORT" 
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1048f78e-8803-4cb6-9be0-b8f0e4edf6db)
 
+===========================================================================================
 
-  vii. **scaling the app**
+  **scaling the app**
   
         □  Scaling out a Deployment will ensure new Pods are created and scheduled to Nodes. 
   
@@ -168,6 +169,12 @@ the creation and scaling of Pods.
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/df298069-7520-4dbf-b418-726c431b8d37)
 
 
+  ===========================================================================================
+
+
+
+
+  
 
 
 
@@ -176,7 +183,9 @@ the creation and scaling of Pods.
 
 
 
-  viii. Trobleshooting with kubectl:
+
+===========================================================================================
+  Trobleshooting with kubectl:
   
    **kubectl get** - list resources
    **kubectl describe** - show detailed information about a resource
