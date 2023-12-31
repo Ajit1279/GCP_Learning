@@ -127,6 +127,7 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
 https://www.weave.works/blog/deploying-an-application-on-kubernetes-from-a-to-z
 
 How to deploy an app on GKE:
+
 Step 1: Dockerize The Application 
 
 Step 2: Creating a Deployment
