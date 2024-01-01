@@ -31,7 +31,7 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
      	- **Node Pool:** Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
 
    - **Software:**
-   	- **Deployments:**
+        - **Deployments:**
 	    - You can **create and manage a Deployment** by using the Kubernetes command line interface, **kubectl**.
             - The Deployment **instructs Kubernetes how to create and update instances of your application.**.
             - The **control plane schedules the application to run on individual Nodes** in the cluster.
@@ -71,25 +71,26 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7a979e89-cc42-40d3-9080-bbd42252357d)
 
  
-• **Scheduling:** Match PODs with Nodes so that kubelet can run them
-• **Preemption:** Terminate pods with lower priority so that pods with higher priority can schedule on nodes
-• **Eviction:** Proactively terminating one or more Pods on resource-starved Nodes.
-   
-• **Ingress:** Collections of rules for routing external HTTP(S) traffic to your number of services e.g. if enquiry-service go to port 8000, if contribution-service go to port 8100 etc.
-	○ Provides Load Balancing, SSL Termination
-	○ Expose each micro-service using NodePort service 
+ **Scheduling:** Match PODs with Nodes so that kubelet can run them
 
-• **Replicasets:** Ensures specific number of pods are running for specific microservice version (kubectl get replicasets)
+ **Preemption:** Terminate pods with lower priority so that pods with higher priority can schedule on nodes
 
-• 
-	 
-• **Container Registry:**
-	○ Fully managed service to store docker images for your micro-services.   
-	○ Alternative to Docker Hub
-	○ Secure container images
-	○ Analyze for vulnerabilities
-	○ Enforce deployment policies
-	○ Naming: HostName/ProjectID/Image:tag e.g. gcr.io/projectname/helloworld:1 
+ **Eviction:** Proactively terminating one or more Pods on resource-starved Nodes.
+
+ **Ingress:** Collections of rules for routing external HTTP(S) traffic to your number of services e.g. if enquiry-service go to port 8000, if contribution-service go to port 8100 etc.
+ - Provides Load Balancing, SSL Termination
+ - Expose each micro-service using NodePort service 
+
+ **Replicasets:** Ensures specific number of pods are running for specific microservice version (kubectl get replicasets)
+
+ 
+ **Container Registry:**
+    - Fully managed service to store docker images for your micro-services.
+    - Alternative to Docker Hub
+    - Secure container images
+    - Analyze for vulnerabilities
+    - Enforce deployment policies
+    - Naming: HostName/ProjectID/Image:tag e.g. gcr.io/projectname/helloworld:1 
 
 • Dockerfile:
 	○ Contains Instructions to create docker images 
