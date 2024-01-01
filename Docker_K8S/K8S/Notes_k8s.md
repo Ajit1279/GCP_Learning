@@ -32,8 +32,8 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
 
    - **Software:**
    	-  **Deployments:**
-       		- You can **create and manage a Deployment** by using the Kubernetes command line interface, **kubectl**.
-       		- The Deployment **instructs Kubernetes how to create and update instances of your application.**.
+	    - You can **create and manage a Deployment** by using the Kubernetes command line interface, **kubectl**.
+            - The Deployment **instructs Kubernetes how to create and update instances of your application.**.
        		- The **control plane schedules the application to run on individual Nodes** in the cluster.
      		- When you deploy applications on Kubernetes, you tell the control plane to **start the application containers**.
    		- **Manage pods** (you can not directly create pods)
