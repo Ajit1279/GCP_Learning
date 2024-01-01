@@ -31,16 +31,17 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
      	- **Node Pool:** Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
 
    - **Software:**
-   	-  **Deployments:**
+   	- **Deployments:**
 	    - You can **create and manage a Deployment** by using the Kubernetes command line interface, **kubectl**.
             - The Deployment **instructs Kubernetes how to create and update instances of your application.**.
-       		- The **control plane schedules the application to run on individual Nodes** in the cluster.
-     		- When you deploy applications on Kubernetes, you tell the control plane to **start the application containers**.
-   		- **Manage pods** (you can not directly create pods)
-		- Deployment is created for each microservice and represents all it's releases. It's imp role is **zero downtime deployments**.
-     - **Deployment Controllers:**
-       	- **Continuosuly monitor application instances.**
-       	- **Achieve Self-Healing mechanism:** by replacing the instance with an instance on another Node in the cluster.
+            - The **control plane schedules the application to run on individual Nodes** in the cluster.
+            - When you deploy applications on Kubernetes, you tell the control plane to **start the application containers**.
+            - **Manage pods** (you can not directly create pods)
+            - Deployment is created for each microservice and represents all it's releases. It's imp role is **zero downtime deployments**.
+       
+    	- **Deployment Controllers:**
+          - **Continuosuly monitor application instances.**
+          - **Achieve Self-Healing mechanism:** by replacing the instance with an instance on another Node in the cluster.
        	
      - **Pods:**
          - It's a **Smallest deployable unit** in Kubernetes. Pod represents a group of one or more application containers.
