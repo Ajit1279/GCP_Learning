@@ -171,17 +171,42 @@ the creation and scaling of Pods.
 
   ===========================================================================================
 
+  **Perform a Rolling Update**
+
+    □  **Rolling updates** allow Deployments' update to take place with **zero downtime**
+    
+    □  By default, the **maximum number of Pods that can be unavailable** during the update and the maximum number of new Pods that can be **created**, is **one**.
+    
+    □  Can be **configured** to either **numbers** or **percentages (of Pods).**
+    
+    □  **Updates are versioned** and any Deployment update can be **reverted to a previous (stable) version.**
+    
+    □  Given below are the steps:
+        i) To view the current image version of the app, run the describe pods subcommand and look for the Image field: kubectl describe pods | grep kubernetes-bootcamp | grep Image
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/af9552ad-8dc1-4a03-8c58-0a74b9c5650f)
+
+       ii) To update the image of the application to version 2, use the **set image** subcommand, followed by the deployment name and the new image version: 
+            kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/af63f074-6763-4d1a-9165-efacec097c1f)
+
+      iii) Please note the new pods: 
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f5d2aa82-19df-452b-8a27-308b07a47cce)
+
+       iv) Now let's verify the updates:  You will hit a different Pod every time. 
+          export NODE_PORT="$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')"
+          echo "NODE_PORT=$NODE_PORT"
+          curl http://"$(minikube ip):$NODE_PORT"
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/94908662-6555-4c95-a5c1-26ec46a07e90)
 
 
+       v) To view the rollout status: kubectl **rollout status** deployments/kubernetes-bootcamp 
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/dc72a87a-3750-4774-9a60-a08d0114a35b)
 
-  
+      vi) View the current image of the version: kubectl describe pods | grep bootcamp
+  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5d9c1dc7-12e4-47c3-be28-6401de174af7)
 
-
-
-
-
-
-
+     vii) To roll back the deployment to your last working version, use the **rollout undo** subcommand: kubectl rollout undo deployments/kubernetes-bootcamp 
+ ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/faec368c-c800-488e-b721-f4ae3074289f)
 
 
 ===========================================================================================
