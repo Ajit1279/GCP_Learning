@@ -22,6 +22,7 @@ Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 
 **3. Namespace operations:**
 - **1. Create a namespace:**:
+  
         i). kubectl create namespace my-first-namespace
        ii). Create a file named my-namespace.yaml (https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/my-namespace.yaml)
            Run command: kubectl create -f ./my-namespace.yaml
