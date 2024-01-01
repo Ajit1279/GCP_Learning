@@ -25,7 +25,7 @@ In prod env you need to ensure there's no downtime. That's how **Kubernetes come
 
 
 • **Architecture:**
-    - **Hardware (Cluster):** highly available cluster of computers that are connected to work as a single unit.
+   - **Hardware (Cluster):** highly available cluster of computers that are connected to work as a single unit.
    	- **Master Node:** Manage the cluster
      	- **Worker Node:** Run workloads (as pods)
      	- **Node Pool:** Group of nodes in cluster with same configuration e.g. ML mode pool using GPUs
