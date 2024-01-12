@@ -22,6 +22,7 @@ kubectl get pods --namespace=kube-system:
    
    - The kubelet on node self registers to control-plane (https://kubernetes.io/docs/concepts/architecture/nodes/#self-registration-of-nodes)
      kubectl get nodes
+     
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/224dc9ca-d92f-4ad4-b16d-3c867e6979c2)
   
    - Manual Node Administration using JSON manifest files (https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration)
