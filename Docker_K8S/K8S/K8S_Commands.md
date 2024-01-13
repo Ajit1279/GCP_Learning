@@ -16,7 +16,7 @@ Check that **kubectl is properly configured** by getting the cluster state: *kub
 
 **Enable auto-completion for BASH**: *kubectl completion bash* You can also install it with *apt-get install bash-completion* or *yum install bash-completion*
 
-=======================================================================================================================================
+==============================================================
 
 **Pod** - Group of one or more Containers, tied together for the purposes of administration and networking. The Pod in this tutorial has only one
 Container. 
@@ -24,7 +24,7 @@ Container.
 **Kubernetes Deployment** checks on the health of your Pod and restarts the Pod's Container if it terminates. Deployments are the recommended way to manage
 the creation and scaling of Pods.
 
-========================================================================================================================================
+=============================================================
 
 **Basic Minikube commands:** https://kubernetes.io/docs/tutorials/hello-minikube/ 
   **Minikube is a lightweight Kubernetes implementation** that creates a VM on your local machine and deploys a simple cluster containing only one node.
@@ -169,7 +169,7 @@ the creation and scaling of Pods.
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/df298069-7520-4dbf-b418-726c431b8d37)
 
 
-  ===========================================================================================
+  =========================================================================
 
   **Perform a Rolling Update**
 
