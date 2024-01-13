@@ -35,7 +35,7 @@ the creation and scaling of Pods.
   
   iii. **Optionally, delete the Minikube VM (only if you don't want to use it again for learning K8S):** minikube delete
 
-========================================================================================================================================
+=================================================================================
 **Deployment:** [https://kubernetes.io/docs/tutorials/hello-minikube/](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/) 
 
    i. **Create a Deployment** - by **specifying the container image for your application** and the **number of replicas** that you want to run. 
