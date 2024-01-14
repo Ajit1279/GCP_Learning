@@ -8,7 +8,6 @@
 
   - It takes approx 10 min to complete and displays the below message when completed
 
-  - d
   - sd
   - sd
   - s   
