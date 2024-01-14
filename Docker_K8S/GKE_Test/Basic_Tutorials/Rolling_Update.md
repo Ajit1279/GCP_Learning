@@ -34,7 +34,6 @@
 
  
 - **Rollback an update**
-  - before rollback upgrade to version10: kubectl set image deployments/my-gke-app kubernetes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v10
 
   - Run command: kubectl get pods Notice that some of the Pods have a status of ImagePullBackOff.
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ceacbcda-b205-4771-a90e-b40110503a16)
