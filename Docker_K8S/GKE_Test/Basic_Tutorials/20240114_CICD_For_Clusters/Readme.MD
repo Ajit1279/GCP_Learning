@@ -8,14 +8,24 @@
 
   - It takes approx 10 min to complete and displays the below message when completed
 
-  - sd
-  - sd
-  - s   
-- sd
-- s
-- ds
-- ds
-- ds
+  - To confirm the resources are properly deployed, run the command: gcloud container clusters list
+
+
+
+- **Build an Application**
+  - As part of this tutorial, a sample application from the Skaffold (a leading open-source CD toolset). GitHub repository is available from your Cloud Shell instance, in the web directory.
+  - The web directory contains **skaffold.yaml**, which contains instructions for skaffold to build a container image for your application. 
+  - Run the following command to run the container images
+        cd web && skaffold build \
+            --interactive=false \
+            --default-repo $(gcloud config \
+            get-value \
+            compute/region)-docker.pkg.dev/modular-citron-402808/web-app \
+            --file-output artifacts.json \
+            && cd ..  
+
+  - Once completed, it'll display
+
 - d
 - sd
 - sd
