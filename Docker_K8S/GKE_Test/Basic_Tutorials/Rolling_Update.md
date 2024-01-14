@@ -41,6 +41,7 @@
   - To roll back the deployment to your last working version, use the rollout undo subcommand: kubectl rollout undo deployments/my-gke-app
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/6796456e-12b6-443a-93ae-8480ff9b75b0)
 
-  - Run command: kubectl describe pods | less The deployment is again using the stable version **kubernetes-bootcamp:v1**
+  - Run command: kubectl describe pods | less
+    The deployment is again using the stable version **kubernetes-bootcamp:v1**
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/08b7de31-eae1-44eb-9f04-6fe06105c031)
   
