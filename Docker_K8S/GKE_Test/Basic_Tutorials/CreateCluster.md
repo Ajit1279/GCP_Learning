@@ -1,6 +1,9 @@
 https://kubernetes.io/docs/tutorials/hello-minikube/
 
-- Run: minikube start
+- Create a GKE cluster mycluster (I created manually)
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/50bcf5e0-e2cc-4073-8eb3-ea0cf606c2da)
+
+- Run: minikube start (otherwise kubectl commands will give an error)
   
 - Open the dashboard: minikube dashboard
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8e05a8ba-3647-4a2c-87b5-f8bbb17c9520)
