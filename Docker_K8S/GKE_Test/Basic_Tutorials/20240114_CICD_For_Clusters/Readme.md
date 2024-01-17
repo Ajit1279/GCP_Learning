@@ -135,4 +135,9 @@
     kubectl get pods -n web-app
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d00a9297-a946-4f1e-a351-c0400aceda7e)
-    
+
+- **approvals**
+  - Look at targets that require approvals before promotions can complete to protect production and sensitive targets
+  - Run the command to check requireApproval parameter:
+      gcloud deploy targets describe \
+      prod --delivery-pipeline web-app
