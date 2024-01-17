@@ -140,4 +140,47 @@
   - Look at targets that require approvals before promotions can complete to protect production and sensitive targets
   - Run the command to check requireApproval parameter:
       gcloud deploy targets describe \
-      prod --delivery-pipeline web-app
+      prod --delivery-pipeline web-app --region=us-central1
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b3e3df31-2cc7-4375-9b0a-e4c164274cda)
+
+  - Run the command to promote application to prod: gcloud deploy releases promote \
+    --delivery-pipeline web-app \
+    --release web-app-001
+    As shown below, it prompts user to confirm the deployment
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e277c06a-ee26-4f3f-8f8b-be5b71f09020)
+
+  - The rollout is pending approval
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e8c368bd-29e2-49b6-85d2-88e5a86d510d)
+
+  - Run the command: gcloud deploy rollouts describe --delivery-pipeline web-app --release web-app-001 web-app-001-to-prod-0001 --region=us-central1
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2404eaa6-eca3-468b-9885-16829db31d64)
+
+  - Create a user with the proper IAM roles that can approve this promotion to your prod target.
+    - Create a new service account: _gcloud iam service-accounts create pipeline-approver --display-name 'Web-App Pipeline Approver'_ 
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d88d5c9a-a070-4ac7-a75d-a5ffc83bd43a)
+
+    - Run the command to verify the service account is created and note down the email address, which is required in next step
+      gcloud iam service-accounts list
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/27108fca-0d8a-453d-8d8a-fbfbfb56b12e)
+
+    - email address is pipeline-approver@modular-citron-402808.iam.gserviceaccount.com
+    - Add approval permissions to service account:
+      gcloud projects \
+       add-iam-policy-binding \
+       modular-citron-402808 \
+       --member=serviceAccount:pipeline-approver@modular-citron-402808.iam.gserviceaccount.com \
+       --role=roles/clouddeploy.approver 
+
+  - To approve and promote to production run the command:
+    gcloud deploy rollouts approve \
+    web-app-001-to-prod-0001 \
+    --delivery-pipeline web-app \
+    --release web-app-001
+ ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4c55219c-9461-491b-af91-029d653599b9)
+
+  - Run the command to verify if promotion is complete: gcloud deploy rollouts describe --delivery-pipeline web-app --release web-app-001 web-app-001-to-prod-0001 --region=us-central1
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2c00f7db-eaaf-4497-a794-6fbc52b89b52)
+
+  - You can also run command: kubectx prod kubectl get pod -n web-app
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/35a66131-b28f-4b56-8f66-bbc8f2d80c19)
+ 
