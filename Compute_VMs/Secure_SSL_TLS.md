@@ -59,9 +59,17 @@
   - To generate SSL certificate run the command: sudo apt-get install certbot python3-certbot-apache
   
   - Run the following command to generate and install the SSL certificate for the Apache website on your VM instance: sudo certbot --apache
-- When prompted enter the email address
+  - When prompted enter the email address
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1e78a4e9-a1b8-4561-88e7-23b0618ddc32)
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a28a2f8a-694d-4ef3-962f-6f970f816f26)
 
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1da18e56-f1fa-48cc-abaf-3d7acb4fb2bd)
+  - Enter the name of the site we created : gcpajit80.com
+    **Congratulations! You have successfully enabled https://gcpajit80.com**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/30c3fb36-6ef9-437b-819c-5100817dc8f0)
+ 
+  - Restart the Apache web server: sudo service apache2 restart
+  
+  - https has been enabled, but the site is not reachable (this could possibly due to the zone being us-central1-c)
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/75203508-ab30-469c-a99e-bf34ed48fc3e)
+ 
