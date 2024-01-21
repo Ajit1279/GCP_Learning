@@ -1,4 +1,4 @@
-* Reference: https://github.com/terraform-google-modules/terraform-docs-samples/blob/main/compute/autoscaler_instance_group/main.tf
+/* Reference: https://github.com/terraform-google-modules/terraform-docs-samples/blob/main/compute/autoscaler_instance_group/main.tf
 /**
  * Copyright 2022 Google LLC
  *
