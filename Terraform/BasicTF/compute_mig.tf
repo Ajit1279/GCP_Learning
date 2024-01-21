@@ -1,4 +1,8 @@
 /* Reference: https://github.com/terraform-google-modules/terraform-docs-samples/blob/main/compute/autoscaler_instance_group/main.tf
+
+/* Please ensure to enable compute api prior to applying script.
+
+
 /**
  * Copyright 2022 Google LLC
  *
