@@ -45,7 +45,7 @@ resource "google_compute_autoscaler" "default" {
 # [END compute_autoscale_schedule]
 
 resource "google_compute_instance_template" "default" {
-  name           = "my-instance-template"
+  name = "my-instance-template"
   machine_type   = "e2-medium"
   can_ip_forward = false
 
