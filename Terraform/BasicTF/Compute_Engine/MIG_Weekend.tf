@@ -23,7 +23,7 @@
 # [START compute_autoscale_schedule]
 resource "google_compute_autoscaler" "default" {
   provider = google-beta
-  name     = "my-autoscaler"
+  name     = "my-autoscaler-wknd"
   zone     = "asia-south1-c"
   target   = google_compute_instance_group_manager.default.id
 
@@ -33,10 +33,10 @@ resource "google_compute_autoscaler" "default" {
     cooldown_period = 60
 
     scaling_schedules {
-      name                  = "every-weekday-morning"
-      description           = "Increase to 2 every weekday at 7AM for 12 hours."
-      min_required_replicas = 2
-      schedule              = "0 7 * * MON-FRI"
+      name                  = "every-weekend"
+      description           = "Increase to 2 every weekend at 7AM for 12 hours."
+      min_required_replicas = 3
+      schedule              = "0 7 * * SAT-SUN"
       time_zone             = "Asia/Kolkata"
       duration_sec          = 43200
     }
