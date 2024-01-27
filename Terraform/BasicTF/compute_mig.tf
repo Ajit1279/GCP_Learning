@@ -37,7 +37,7 @@ resource "google_compute_autoscaler" "default" {
       description           = "Increase to 2 every weekday at 7AM for 12 hours."
       min_required_replicas = 2
       schedule              = "0 7 * * MON-FRI"
-      time_zone             = "India/Mumbai"
+      time_zone             = "India/Kolkata"
       duration_sec          = 43200
     }
   }
