@@ -36,7 +36,7 @@ resource "google_compute_autoscaler" "default" {
       name                  = "every-weekend"
       description           = "Increase to 2 every weekend at 7AM for 12 hours."
       min_required_replicas = 3
-      schedule              = "0 7 * * SAT-SUN"
+      schedule              = "0 6 * * 6-7"
       time_zone             = "Asia/Kolkata"
       duration_sec          = 43200
     }
