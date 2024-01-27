@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+/** Identity and Access Management (IAM) API needs to be enabled prior to running it.
+
 # [START compute_service_account_for_instances_parent_tag]
 # [START iam_service_account_for_vm]
 resource "google_service_account" "default" {
