@@ -1,5 +1,5 @@
 # Reference: https://github.com/terraform-google-modules/terraform-docs-samples/blob/main/functions/basic/main.tf
-# 
+# Enable following APIs before procedding: gcloud services enable run.googleapis.com, cloudbuild.googleapis.com
 
 # [START functions_v2_basic]
 terraform {
