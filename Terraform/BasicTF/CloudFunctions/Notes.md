@@ -10,5 +10,6 @@
 
   - Click on the uri: https://function-v2-nhjx3v2mbq-uc.a.run.app/
   - It displays "Hello World"
+
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/481de983-98e9-4cb3-bbff-fee37613032c)
 
