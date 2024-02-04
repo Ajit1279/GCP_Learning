@@ -1,6 +1,0 @@
- - Reference: https://cloud.google.com/functions/docs/writing
- - The **basic directory structure for Node.js functions** is as follows:
-   - **index.js:** :
-     - By default, Cloud Functions attempts to load source code from a file named index.js at the root of your function directory.  
-   - **package.json**: 
- - 
