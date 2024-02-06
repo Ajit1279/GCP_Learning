@@ -44,6 +44,8 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/034ba715-0b6f-473a-89b6-0d8525e8545c)
 
      - sd
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fd1ebcd4-b31b-4fbd-9496-e7bba9e5f831)
+
      - sd
      - sd
      - sd
