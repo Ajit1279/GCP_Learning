@@ -23,7 +23,7 @@
     - Your Eventarc trigger's service account must have permission to invoke your function. By default, the Default compute service account is used.
     - Examples of specifying event filters for different types of google or third party events [here](https://cloud.google.com/eventarc/docs/targets#triggers).
       
-  - [Cloud Pub/Sub Events](https://cloud.google.com/functions/docs/calling/pubsub): [pub-sub-event-repo](https://github.com/Ajit1279/GCP_Learning/tree/main/20240204_CldFunctions/Nodejs/nodejs_eventdriven/20240210_pubsub)    
+  - [Cloud Pub/Sub Events](https://cloud.google.com/functions/docs/calling/pubsub): [my-pub-sub-event-repo](https://github.com/Ajit1279/GCP_Learning/tree/main/20240204_CldFunctions/Nodejs/nodejs_eventdriven/20240210_pubsub)    
 
   - [Cloud Storage Triggers](https://cloud.google.com/functions/docs/calling/storage)
 
