@@ -29,7 +29,8 @@
         --region=us-central1 \
         --source=. \
         --entry-point=helloGET \
-        --trigger-http
+        --trigger-http  \
+        --allow-unauthenticated
  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a2c9f8a6-a3f6-4622-85c3-c5ab4e53de80)
   
      - It failed with the below error:
@@ -43,14 +44,15 @@
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/034ba715-0b6f-473a-89b6-0d8525e8545c)
 
-     - sd
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fd1ebcd4-b31b-4fbd-9496-e7bba9e5f831)
 
-     - sd
-     - sd
-     - sd
-     - sd
-     - s
-     - ds
-     - ds      
-    - **Event Driven Functions:**  
+     - Again it was a silly mistake :( . I used incorrect function name. so corrected it to helloGET in index.js and it ran successfully
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/39d7f7b2-db21-425b-b0dd-0e0b06782d1d)
+
+     - clicked on the url: https://us-central1-myprojec21.cloudfunctions.net/nodejs-http-function
+     
+     - It displayed Hello World!!
+ ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/13840d3c-a199-4b05-ae47-336dfde14b89)
+
+
+   - **Event Driven Functions:**  
