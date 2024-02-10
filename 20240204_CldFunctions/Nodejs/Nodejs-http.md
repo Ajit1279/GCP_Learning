@@ -55,4 +55,3 @@
  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/13840d3c-a199-4b05-ae47-336dfde14b89)
 
 
-   - **Event Driven Functions:**  
