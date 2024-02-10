@@ -6,7 +6,7 @@
    - **package.json**: https://github.com/Ajit1279/GCP_Learning/blob/main/20240204_CldFunctions/Nodejs/package.json
 
    - Your source code must define an entry point for your function, which is the particular code that is executed when the Cloud Function is invoked.
-    - **HTTP Functions:** 
+   - **HTTP Functions:** 
      -  Reference: https://cloud.google.com/functions/docs/tutorials/http
      -  Before you begin, enable the Cloud Functions, Cloud Build, and Artifact Registry APIs.
      -  Set-up Node.js development environment: https://cloud.google.com/nodejs/docs/setup
