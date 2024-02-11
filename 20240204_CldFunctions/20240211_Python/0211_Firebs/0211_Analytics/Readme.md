@@ -6,6 +6,8 @@
   - "Name" field in array holds the conversion event name (such as in_app_purchase).
 
 - Create [main.py](https://github.com/Ajit1279/GCP_Learning/blob/main/20240204_CldFunctions/20240211_Python/0211_Firebs/0211_Analytics/main.py)
+- Create [requirements.txt](https://github.com/Ajit1279/GCP_Learning/blob/main/20240204_CldFunctions/20240211_Python/0211_Firebs/0211_Analytics/requirements.txt)
+- Create [firebase.json](https://github.com/Ajit1279/GCP_Learning/blob/main/20240204_CldFunctions/20240211_Python/0211_Firebs/0211_Analytics/firebase.json)
 
 - Deploying function:
   - Specify the event type and project in which you have Firebase Auth configured
@@ -70,32 +72,7 @@
   - It gave an error
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ab570f0c-6800-4e88-b9f8-64790700bf17)
 
-  - So changed the command as shown below (replaced GCP project name with Firebase project name). But, it gave the same error. 
-      gcloud functions deploy cf-hello_analytics-python \
-      --entry-point  hello_analytics \
-      --trigger-event providers/google.firebase.analytics/eventTypes/event.log \
-      --trigger-resource projects/myproject1/events/in_app_purchase \
-      --runtime python312
-  
-  - As per suggestion in [stackoverflow post](https://stackoverflow.com/questions/54451457/firebase-cloud-functions-http-error-code-403), tried using "firebase login", but it didn't work
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2e3630ea-7f85-4ff7-9312-d84f4fb000c1)
-
-  - Click on Build --> Functions and selected my function name
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/cc814805-34ec-4320-8404-35295a18ede1)
-
-  - Referring to the [Firebase CLI reference](https://firebase.google.com/docs/cli#mac-linux-npm), enter command: npm install -g firebase-tools
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/739247f8-ed43-4fdf-bc76-19965bf249df)
-
-  - Go to iAM ---> Service Account ---> manage permissions
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a9323283-6d52-4562-a48e-ba67b18f9de8)
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/749c81fb-cb6c-48c2-8c5e-72c2473485c5)
-
-  - Referring to one more [Stackoverflow post](https://stackoverflow.com/questions/57384609/gcloud-functions-deploy-permission-denied-when-deploying-function-with-specifi), [additional configurations](https://cloud.google.com/functions/docs/reference/iam/roles#additional-configuration) are required for deploying cloud functions. 
-
-  - Selected firebase service account and grated "Service Account User" access to it. It still failed.
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f2aafc7f-e2d9-47da-a108-f21afcbcfaac)
-
-  - So finally referring to the error message, enabled billing for the "firebase project"
+  - Referring to the error message, enabled billing for the "firebase project"
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/74d2e250-951b-4e7d-bc6e-b153f75fe32b)
  
   - And, it started deploying the function :D and finally deployment was successful!!! :)
@@ -104,6 +81,8 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/121cbb25-43bd-4cbd-b121-ebc9d598f7e7)
 
    
+--------------------------------------------
+---------------------------------------------
 - Now Let's check how to simulate "in-app-purchases" 
 - ds
 - dsd
