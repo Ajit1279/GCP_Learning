@@ -3,3 +3,4 @@ firebase-admin
 google-auth
 google-api-python-client
 google-cloud-tasks
+google-cloud-firestore==2.11.1
