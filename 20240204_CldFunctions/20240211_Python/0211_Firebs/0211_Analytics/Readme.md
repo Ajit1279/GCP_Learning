@@ -1,4 +1,5 @@
 - Reference: https://cloud.google.com/functions/docs/calling/google-analytics-firebase
+- Reference Git Repo: https://github.com/GoogleCloudPlatform/python-docs-samples/tree/555b9d630d21c08c2e9cb94b1a53780f602290f0/functions/firebase
 
 - Basics: 
   - User information such as application information or device information can be found in the userDim property.
