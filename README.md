@@ -10,4 +10,7 @@
     Go to Billing > Account Management, and click the "X" on the top banner to close this billing account. https://cloud.google.com/billing/docs/how-to/manage-            billing-account#close_a_billing_account
     In Billing > Payment Method, remove your credit card.
     Before, I was trying to do 3 before 2, but I kept getting an error requiring another credit card be added. I had to do step 2, then 3 worked.
-  
+
+- Google Cloud Documentation: https://cloud.google.com/docs
+- Tutorials: https://cloud.google.com/docs/tutorials
+-  
