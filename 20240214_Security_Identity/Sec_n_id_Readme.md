@@ -12,7 +12,7 @@
     - Cloud HSM
     - Cloud Key Management Service (KMS)
     - Risk Manager
-    - Secret Manager
+    - [Secret Manager](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager)
     - Security Command Center
     - VPC Service Controls
    
