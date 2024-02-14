@@ -1,2 +1,0 @@
-- References: https://cloud.google.com/security/products/secret-manager
-- Secret Quickstart: https://cloud.google.com/secret-manager/docs/create-secret-quickstart
