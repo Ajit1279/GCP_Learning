@@ -1,4 +1,4 @@
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2e53964c-5e0f-4322-8a3d-e02e7552d9ce)- References: https://cloud.google.com/security/products/secret-manager
+- References: https://cloud.google.com/security/products/secret-manager
 - Secret Quickstart: https://cloud.google.com/secret-manager/docs/create-secret-quickstart
 
 - **A secret** is a **project-global object** that **contains a collection of metadata and secret versions**.
@@ -79,6 +79,8 @@
     - The secret stores metadata such as labels and replication, but it does not contain the actual secret
     - Command to list secrets: gcloud secrets list
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/89fb9496-ac14-4b05-99a2-65ba398d30e1)
+  
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2e53964c-5e0f-4322-8a3d-e02e7552d9ce)
  
     - View secret details: gcloud secrets describe create-python-secret
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f1c79aad-c1fa-491d-bf8c-ad0cf4631e2f)
