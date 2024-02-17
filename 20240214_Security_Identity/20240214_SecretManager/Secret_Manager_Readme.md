@@ -45,6 +45,7 @@
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/992bb6f9-8c07-4e7c-aad9-fc82d1cfc069)
 
+ 
       - Use the client library in Python program. ([reference](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/HEAD/secretmanager/snippets/quickstart.py))
 
       - Refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_useclintlibry.py) for details
