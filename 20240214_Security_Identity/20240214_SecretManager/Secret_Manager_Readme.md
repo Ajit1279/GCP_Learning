@@ -25,12 +25,51 @@
     - gcloud secrets update my-first-secret --update-labels=mykey=myvalue
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/86430f67-6935-46ca-b3d0-203000057884)
 
-    -  
+  - **[Manage Access to secrets](https://cloud.google.com/secret-manager/docs/manage-access-to-secrets)**
+    - Requires the Secret **Manager Admin role (roles/secretmanager.admin)** on the secret, project, folder, or organization.
+    - Let's achieve it in a [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main.py)
+      - Open CLI and check the python version: pip3 --version (if python dev env is not set-up already, follow [these steps](https://cloud.google.com/python/docs/setup#linux))
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/38846b01-0790-49b7-a057-59229c512110)
+
+      - Set-up [Secret Manager client libraries](https://cloud.google.com/secret-manager/docs/reference/libraries#client-libraries-install-python)
+        - Although you can use Google Cloud APIs directly by making raw requests to the server, client libraries provide simplifications that significantly reduce the amount of code you need to write. 
+      - Run the command: pip install google-cloud-secret-manager
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e34bed21-d0ff-485a-8137-641cc0dadb19)
+
+      - Set-up Authentication: To authenticate calls to Google Cloud APIs, client libraries support [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/application-default-credentials); 
+      - With ADC, you can make credentials available to your application in local development or production, without needing to modify your application code.
+      - Create your credentials file: gcloud auth application-default login
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fb697bb9-2ba8-49eb-a009-ff879bbd7efe)
+
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/992bb6f9-8c07-4e7c-aad9-fc82d1cfc069)
+
+      - Use the client library in Python program. ([reference](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/HEAD/secretmanager/snippets/quickstart.py))
+      - Run python program using command: python main.py
+      - Encounterd error below:
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/34703640-7bab-4ef5-84c0-7563ef504d01)
+
+      - sd
+      - sd
+      - ss
+      - ds
+      - ds
+      - ds
+      - ds
+      - ds   
   - sd
+  - sd
+  - s
+  - ds
+  - ds
+  - ds
   - sd
   - sd
   - sd
   - s
   - ds
   - ds
-  - ds 
+  - d
+  - sd
+  - sd
+  - s
+  - ds
