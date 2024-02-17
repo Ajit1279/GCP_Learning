@@ -267,7 +267,7 @@ EOF
         --project "myprojec21" \
         --secret "my-ummr-secret"
 
-- **[Diable CMEK](https://cloud.google.com/secret-manager/docs/cmek#disable_cmek)**
+- **[Disable CMEK](https://cloud.google.com/secret-manager/docs/cmek#disable_cmek)**
       gcloud secrets replication update "my-ummr-secret" --remove-cmek \
       --project "myprojec21"
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4a0c35ba-78e3-43fc-b789-baeb0c964607)
