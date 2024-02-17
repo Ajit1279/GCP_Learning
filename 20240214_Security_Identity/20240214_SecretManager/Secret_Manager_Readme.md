@@ -257,13 +257,12 @@ EOF
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f0117701-f0c9-4b23-9a9c-8039d183f6f3)
 
-
-    - Add a new secret version. Notice that you don't specify the Cloud KMS key's resource name; it is read from the secret's metadata.
+   - Add a new secret version. Notice that you don't specify the Cloud KMS key's resource name; it is read from the secret's metadata.
       echo -n "SECRET_DATA" | gcloud secrets versions add "my-ummr-secret" \
-    --project "myprojec21" \
-    --data-file -
+      --project "myprojec21" \
+      --data-file -
       
-    - Access the secret version you just created.
+   - Access the secret version you just created.
         gcloud secrets versions access "latest" \
         --project "myprojec21" \
         --secret "my-ummr-secret"
