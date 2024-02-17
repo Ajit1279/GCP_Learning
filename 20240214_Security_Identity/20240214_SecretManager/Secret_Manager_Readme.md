@@ -46,28 +46,28 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/992bb6f9-8c07-4e7c-aad9-fc82d1cfc069)
 
  
-      - Use the client library in Python program. ([reference](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/HEAD/secretmanager/snippets/quickstart.py))
+  - Use the client library in Python program. ([reference](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/HEAD/secretmanager/snippets/quickstart.py))
 
-      - Refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_useclintlibry.py) for details
+  - Refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_useclintlibry.py) for details
       
-      - Run python program using command: python main.py
+  - Run python program using command: python main.py
       
-      - To grant access, refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_grantaccess.py)
+  - To grant access, refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_grantaccess.py)
       
-      - Encounterd error below:
+  - Encounterd error below:
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/34703640-7bab-4ef5-84c0-7563ef504d01)
 
-      - Added below code to resolve the error
+  - Added below code to resolve the error
         import argparse
         from google.iam.v1 import iam_policy_pb2  # type: ignore
       
-      - Then the code ran successfully without any error, but it didn't display message "Updated IAM policy on"
-      - So let's go to iAM and find out which principles have role roles/secretmanager.secretAccessor, but no changes appeared
-      - **This needs to be investigated further** 
+  - Then the code ran successfully without any error, but it didn't display message "Updated IAM policy on"
+  - So let's go to iAM and find out which principles have role roles/secretmanager.secretAccessor, but no changes appeared
+  - **This needs to be investigated further** 
     
-      - To revoke access, run the [python program](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python)
+  - To revoke access, run the [python program](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python)
       
-      - It ran successfully
+  - It ran successfully
 
   - sd
   - sd
