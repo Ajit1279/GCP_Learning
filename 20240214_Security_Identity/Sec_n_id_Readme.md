@@ -1,4 +1,4 @@
-- **This involves below Google Cloud Products:**
+- **This involves below Google Cloud Products:**: Please search Security and indentity in [GCP Docs](https://cloud.google.com/docs)
 
   - **1. Security:** 
     - Access Context Manager
