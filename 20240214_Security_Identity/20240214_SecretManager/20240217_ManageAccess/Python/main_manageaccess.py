@@ -1,3 +1,7 @@
+import argparse
+
+from google.iam.v1 import iam_policy_pb2  # type: ignore
+
 def iam_grant_access(
     project_id: str, secret_id: str, member: str
 ) -> iam_policy_pb2.SetIamPolicyRequest:
