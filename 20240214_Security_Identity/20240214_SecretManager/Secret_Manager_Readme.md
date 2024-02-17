@@ -102,9 +102,9 @@
 
   - Step by step instructions:
     - **create a service agent identity**.
-    - The service identity for Secret Manager, rather than the caller, is responsible for encrypting and decrypting secrets when reading or writing them.
-    - The service identity accesses the CMEK key and encrypts or decrypts the secret on your behalf.
-    - Run the command to **create a service agent identity**.
+      - The service identity for Secret Manager, rather than the caller, is responsible for encrypting and decrypting secrets when reading or writing them.
+      - The service identity accesses the CMEK key and encrypts or decrypts the secret on your behalf.
+      - Run the command to **create a service agent identity**.
       gcloud beta services identity create \
       --service "secretmanager.googleapis.com" \
       --project "myprojec21"
