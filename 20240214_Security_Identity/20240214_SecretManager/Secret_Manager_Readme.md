@@ -32,30 +32,42 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/38846b01-0790-49b7-a057-59229c512110)
 
       - Set-up [Secret Manager client libraries](https://cloud.google.com/secret-manager/docs/reference/libraries#client-libraries-install-python)
-        - Although you can use Google Cloud APIs directly by making raw requests to the server, client libraries provide simplifications that significantly reduce the amount of code you need to write. 
+      - Although you can use Google Cloud APIs directly by making raw requests to the server, client libraries provide simplifications that significantly reduce the amount of code you need to write. 
       - Run the command: pip install google-cloud-secret-manager
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e34bed21-d0ff-485a-8137-641cc0dadb19)
 
-      - Set-up Authentication: To authenticate calls to Google Cloud APIs, client libraries support [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/application-default-credentials); 
+      - Set-up Authentication: To authenticate calls to Google Cloud APIs, client libraries support [Application Default Credentials (ADC)](https://cloud.google.com/docs/authentication/application-default-credentials);
+      
       - With ADC, you can make credentials available to your application in local development or production, without needing to modify your application code.
+
       - Create your credentials file: gcloud auth application-default login
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fb697bb9-2ba8-49eb-a009-ff879bbd7efe)
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/992bb6f9-8c07-4e7c-aad9-fc82d1cfc069)
 
       - Use the client library in Python program. ([reference](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/HEAD/secretmanager/snippets/quickstart.py))
+
+      - Refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_useclintlibry.py) for details
+      
       - Run python program using command: python main.py
+      
+      - To grant access, refer the [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python/main_grantaccess.py)
+      
       - Encounterd error below:
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/34703640-7bab-4ef5-84c0-7563ef504d01)
 
-      - sd
-      - sd
-      - ss
-      - ds
-      - ds
-      - ds
-      - ds
-      - ds   
+      - Added below code to resolve the error
+        import argparse
+        from google.iam.v1 import iam_policy_pb2  # type: ignore
+      
+      - Then the code ran successfully without any error, but it didn't display message "Updated IAM policy on"
+      - So let's go to iAM and find out which principles have role roles/secretmanager.secretAccessor, but no changes appeared
+      - **This needs to be investigated further** 
+    
+      - To revoke access, run the [python program](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager/20240217_ManageAccess/Python)
+      
+      - It ran successfully
+
   - sd
   - sd
   - s
