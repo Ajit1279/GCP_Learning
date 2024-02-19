@@ -280,4 +280,5 @@ EOF
 ============================================
 **Let's use Secret Manager with other GCP products**
 ============================================
+ - References: https://cloud.google.com/secret-manager/docs/using-other-products?hl=en
  - [Cloud Functions](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager/20240219_CldFun)
