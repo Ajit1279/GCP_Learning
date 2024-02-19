@@ -277,7 +277,7 @@ EOF
     - Existing secret versions can't be accessed if the CMEK key that encrypted it is unavailable.
     - If a key is destroyed, the secret data is unrecoverable.
     
-==================================================
+============================================
 **Let's use Secret Manager with other GCP products**
-==================================================
+============================================
  - [Cloud Functions](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager/20240219_CldFun)
