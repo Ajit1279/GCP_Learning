@@ -33,6 +33,7 @@
   - **Let's access the secret as volume mounted (file).** Create a unused, non-system directory: e.g. /mount/secretdir and create a file cldfunsecret in it.
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7bf5f154-dc19-4c49-bede-9cd5d4a80def)
 
+  - **Create [Index.js](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240219_CldFun/volume_index.js) file**
   - **Make secret accessible to function:**
     deploy secretaccess-http-function \
     --gen2 \
@@ -53,9 +54,55 @@
   - When clicked on the [url](https://us-central1-myprojec21.cloudfunctions.net/secretaccess-http-function), it gave an error:
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/326a234a-2f05-4f54-a6e3-0678ff1e28c0)
 
-- df
-- df
-- df
+  - Deleted the cloud function and redeployed using the below command. This time secret file was uploaded to GCP Bucket (just for testing)
+    gcloud functions deploy secretaccess-http-function \
+    --gen2 \
+    --runtime=nodejs20 \
+    --region=us-central1 \
+    --source=. \
+    --entry-point=secretGET \
+    --trigger-http \
+    --allow-unauthenticated
+    --set-secrets 'https://storage.cloud.google.com/bucket-for-secret/testsecretfile.txt'
+    
+  - It was deployed successfully again, but internal server error continues when clicked on [url](https://us-central1-myprojec21.cloudfunctions.net/secretaccess-http-function)
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/90e2fe44-9f23-4544-94be-c5fc0d3f6feb)
+ 
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c924d3e1-814f-432e-be46-93ac514b9744)
+
+  - Looks like it's the set-secrets command.
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5bbae55b-8290-4c85-ac64-108f16643e8c)
+  
+  - Uploaded a file to Secret Manager and Retried. Copied the resource name from Secret Manager: projects/26438093431/secrets/my-cldfun-secret/versions/1
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2addbb5a-3851-4bff-8f7e-4af15e34b86c)
+gcloud functions deploy secretaccess-http-function \
+--gen2 \
+--runtime=nodejs20 \
+--region=us-central1 \
+--source=. \
+--entry-point=secretGET \
+--trigger-http \
+--allow-unauthenticated \ 
+--set-secrets='/secrets/my-cldfun-secret:latest'
+
+**but it's giving an error:**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c55973ec-14d2-4fbf-84dc-cf7976ceae87)
+
+====================
+Passing as an environment variable
+====================
+- Reference: https://cloud.google.com/functions/docs/configuring/secrets#environment_variables
+- Ran the command, but getting an error
+   gcloud functions deploy secretaccess-http-function-var \
+   --gen2 \
+   --runtime=nodejs20 \
+   --region=us-central1 \
+   --source=. \
+   --entry-point=secretGET \
+   --trigger-http \
+   --allow-unauthenticated \ 
+   --set-secrets 'var_secr_access=my-cldfun-secret:latest'
+
 - df
 - d
 - fd
