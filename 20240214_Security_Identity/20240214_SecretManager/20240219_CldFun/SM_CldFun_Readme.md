@@ -92,8 +92,8 @@ gcloud functions deploy secretaccess-http-function \
 Passing as an environment variable
 ====================
 - Reference: https://cloud.google.com/functions/docs/configuring/secrets#environment_variables
-- Ran the command, but getting an error
-   gcloud functions deploy secretaccess-http-function-var \
+- Ran the command, but getting an error:
+    gcloud functions deploy secretaccess-http-function-var \
    --gen2 \
    --runtime=nodejs20 \
    --region=us-central1 \
