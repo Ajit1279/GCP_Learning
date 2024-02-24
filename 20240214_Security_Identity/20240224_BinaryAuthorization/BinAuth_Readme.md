@@ -16,9 +16,13 @@
         --zone us-central1-a \
         test-cluster
 
-    - sd
-    - sd
-    - s
+    - It may take several minutes
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d9eef8cc-dbf3-4f01-a20f-592037d2827a)
+
+    - It's created!!
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bb6656b3-810f-4def-8d8d-2c24cad4f1be)
+
+    - **View the default policy
     - ds
     - ds
     - d
