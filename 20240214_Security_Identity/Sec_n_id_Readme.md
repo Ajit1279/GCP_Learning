@@ -3,7 +3,7 @@
   - **1. Security:** 
     - Access Context Manager
     - Access Transparency
-    - [Binary Authorization](https://cloud.google.com/binary-authorization/docs) : **Deploy only trusted containers on Google Kubernetes Engine.**
+    - [Binary Authorization](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240224_BinaryAuthorization) : **Deploy only trusted containers on Google Kubernetes Engine.**
     - Certificate Manager
     - Cloud Asset Inventory
     - Cloud Audit Logs
