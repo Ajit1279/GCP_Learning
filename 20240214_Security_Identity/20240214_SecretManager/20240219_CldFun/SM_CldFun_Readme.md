@@ -92,6 +92,8 @@ gcloud functions deploy secretaccess-http-function \
 Passing as an environment variable
 ====================
 - Reference: https://cloud.google.com/functions/docs/configuring/secrets#environment_variables
+- Create [index.js](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/20240219_CldFun/envvar_index.js) file
+
 - Ran the command, but getting an error:
     gcloud functions deploy secretaccess-http-function-var \
    --gen2 \
