@@ -3,7 +3,7 @@
   - **1. Security:** 
     - Access Context Manager
     - Access Transparency
-    - [Binary Authorization](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240224_BinaryAuthorization) : **Deploy only trusted containers on Google Kubernetes Engine.**
+    - [Binary Authorization](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240224_BinaryAuthorization) : **Service that provides policy-based deployment validation and control for images deployed to GKE, Anthos Service Mesh (ASM), Anthos Clusters, and Cloud Run.**
     - Certificate Manager
     - Cloud Asset Inventory
     - Cloud Audit Logs
