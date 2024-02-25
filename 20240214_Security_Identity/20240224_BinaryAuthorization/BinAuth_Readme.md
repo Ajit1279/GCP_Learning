@@ -40,26 +40,29 @@
    - Run the command: **kubectl get pods** to verify that **the deployment was allowed by Binary Authorization** - 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/137148e3-a486-4fa5-8add-67e4cab67f84)
 
-   - Before proceeding to next step, delete the deployment: **kubectl delete deployment hello-server**. It gave an error
+   - Before proceeding to next step, delete the deployment: **kubectl delete deployment hello-server**. It gave an error (because it's not a deployment)
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5f84afbc-a02a-4cff-a57e-ba2b2df23019)
 
-   - It gave an error:
-  
-   - sd 
-- ds
-- dsd
-- sd
-- sd
-- sd
-- sd
-- sd
-- sd
-- sd
-- sd
-- s
-- ds
-- ds
-- ds
-- d
+   - Instead run the command: **kubectl delete pods hello-server** 
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5b7c5765-88e2-4817-a0cf-44f451299a97)
 
+- **Configure the enforcement policy to disallow all images** 
+  - Export the policy YAML file: **gcloud container binauthz policy export  > /tmp/policy.yaml**
+  - Change to temp directory and edit the **evaluationMode** from ALWAYS_ALLOW **to ALWAYS_DENY in policy.yaml file**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/daf84540-a2dc-429d-8154-e86312533013)
 
+  - Now import this policy.yaml back into Binary Authorization: **gcloud container binauthz policy import /tmp/policy.yaml**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a482dc05-f886-4ac1-adff-ec2a09eba002)
+
+  - **Retest the policy**: **kubectl run hello-server --image gcr.io/google-samples/hello-app:1.0 --port 8080**
+  - It gives an error:
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/14841dd1-5d49-4a28-80ad-1b2e7aa8fc02)
+
+=================
+Cleanup
+================
+- gcloud container clusters delete \
+    --zone=us-central1-a \
+    test-cluster
+
+- Disable the Binary Auth API
