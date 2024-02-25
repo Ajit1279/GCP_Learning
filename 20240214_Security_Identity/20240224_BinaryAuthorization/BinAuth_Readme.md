@@ -20,7 +20,7 @@
 
     - It's created!!
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/de2c83ef-e505-4be8-a558-8e437eec54e5)
-
+ 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a746fb04-d28f-4548-9d7e-f12b43d54d63)
 
    - **View the default policy**: Export the policy YAML file as follows: gcloud container binauthz policy export 
@@ -28,24 +28,24 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/60933ad6-6823-47c2-b225-40c60a22a025)
 
    - **Test the enforcement policy** by trying to deploy a sample container image to the cluster. 
-    - **Update the local kubeconfig file:** which **provides the credentials and endpoint information** required **to access the cluster** in GKE.
+   - **Update the local kubeconfig file:** which **provides the credentials and endpoint information** required **to access the cluster** in GKE.
        gcloud container clusters get-credentials \
        --zone us-central1-a \
        test-cluster
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/6997d884-df50-4241-b079-1acc96b538c2)
 
-    - Deploy the sample container image located at the path gcr.io/google-samples/hello-app in Container Registry: kubectl run hello-server --image gcr.io/google-samples/hello-app:1.0 --port 8080
+   - Deploy the sample container image located at the path gcr.io/google-samples/hello-app in Container Registry: kubectl run hello-server --image gcr.io/google-samples/hello-app:1.0 --port 8080
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b9d009de-a237-43da-936f-6d3a6dc04eb7)
 
-    - Run the command: **kubectl get pods** to verify that **the deployment was allowed by Binary Authorization** - 
+   - Run the command: **kubectl get pods** to verify that **the deployment was allowed by Binary Authorization** - 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/137148e3-a486-4fa5-8add-67e4cab67f84)
 
-    - Before proceeding to next step, delete the deployment: **kubectl delete deployment hello-server**. It gave an error
+   - Before proceeding to next step, delete the deployment: **kubectl delete deployment hello-server**. It gave an error
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5f84afbc-a02a-4cff-a57e-ba2b2df23019)
 
-    - It gave an error:
+   - It gave an error:
   
-    - sd 
+   - sd 
 - ds
 - dsd
 - sd
