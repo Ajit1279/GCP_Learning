@@ -13,7 +13,7 @@
   - KMS perform cryptographic operations in a single centralized cloud service using:
     - **Cloud HSM**
     - **Cloud External Key Manager**
-    - **[Customer-Managed Encryption Keys (CMEK)]**(https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/Secret_Manager_Readme.md)  
+    - **[Customer-Managed Encryption Keys (CMEK)](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240214_SecretManager/Secret_Manager_Readme.md)**  
   - 
 - **Step-by-step instructions**
   - **Enable Cloud KMS API**: **gcloud services enable cloudkms.googleapis.com**
