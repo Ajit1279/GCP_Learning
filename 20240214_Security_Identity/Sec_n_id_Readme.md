@@ -1,7 +1,7 @@
 - **This involves below Google Cloud Products:**: Please search Security and indentity in [GCP Docs](https://cloud.google.com/docs)
 
   - **1. Security:** 
-    - Access Context Manager
+    - [Access Context Manager:](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240227_AccessContextManager) Allows administrators to define fine-grained, attribute based access control for projects and resources in Google Cloud. e.g. IP Address, device types, user identity etc. 
     - Access Transparency
     - [Binary Authorization](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240224_BinaryAuthorization) : **Service that provides policy-based deployment validation and control for images deployed to GKE, Anthos Service Mesh (ASM), Anthos Clusters, and Cloud Run.**
     - Certificate Manager
@@ -9,7 +9,7 @@
     - Cloud Audit Logs
     - Sensitive Data Protection
     - Cloud External Key Manager
-    - Cloud HSM
+    - [Cloud HSM](https://cloud.google.com/kms/docs/hsm): allows you to host encryption keys and perform cryptographic operations in a cluster of FIPS 140-2 Level 3 certified HSMs.
     - [Cloud Key Management Service (KMS)](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240225_KMS): **Service that allows you to create, import, and manage cryptographic keys and perform cryptographic operations in a single centralized cloud service.**
     - Risk Manager
     - [Secret Manager](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager) : **Provides tools for storing, managing, and accessing sensitive data in your applications.** 
