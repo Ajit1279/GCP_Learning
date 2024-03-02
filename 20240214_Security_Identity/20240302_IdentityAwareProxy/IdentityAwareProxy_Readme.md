@@ -11,11 +11,19 @@
     - **information** about the protected resource (project number, request URL, any IAP credentials in request headers or cookies) is **sent to the IAP authentication server**.
     - IAP **checks user's browser credentials**.
       - **If valid**, those are **used to get the user's identity (email address and user ID) to check the user's IAM role and check if the user is authorized to access the resource**. 
-    - **If none exist user is redirected to an OAuth 2.0 Google Account sign-in flow**
-    - **If using Compute Engine or Google Kubernetes Engine**, **users** who can access the **application-serving port** of the Virtual Machine (VM) **can bypass IAP authentication**. 
-    - 
-  -      
-- sd
+    - **If none exist user is redirected to an OAuth 2.0 Google Account sign-in flow**. It is created automatially when IAP is turned-on for resources.
+    - Post this **Authorization** checks if **IAP-secured Web App User role** is enabled.   
+
+
+- **Limitations:** 
+  - **If using Compute Engine or Google Kubernetes Engine**, **users** who can access the **application-serving port** of the Virtual Machine (VM) **can bypass IAP authentication**. To ensure security, you must take the following precautions:
+      - **Firewall and load balancer** to protect against traffic that **doesn't come through the serving infrastructure.**
+      - For **Cloud Run**, you can restrict access by using **ingress controls.**
+      - Use **signed headers** or the App Engine standard environment **Users API**.
+ 
+      
+- **[Enable IAP for Compute Engine](https://cloud.google.com/iap/docs/tutorial-gce)**
+  - Create   
 - sd
 - s
 - ds
