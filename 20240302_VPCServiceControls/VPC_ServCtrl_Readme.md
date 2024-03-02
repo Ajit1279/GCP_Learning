@@ -1,1 +1,46 @@
-- References: https://cloud.google.com/vpc-service-controls/docs
+- References:
+  - https://cloud.google.com/vpc-service-controls/docs
+  - https://cloud.google.com/vpc-service-controls/docs/overview
+   
+- **Basics purpose is:**
+  - **[Isolate Google Cloud resources and VPC networks](https://cloud.google.com/vpc-service-controls/docs/overview#isolate)**
+    - **Service perimeter creates a security boundary specifically with Google Cloud managed services** (**doesn't block** access to third-party APIs or services on the internet.)
+    - **Extend perimeters to on-premises networks using authorized VPN or Cloud Interconnect landing zone VPC networks.**
+  - **Protect your highly sensitive data** (content stored in Cloud Storage, BigQuery etc.) **NOT designed to enforce controls on metadata**
+  - **Protect against accidental or targeted action by external / insider entities**
+  - **Ensure resources can only be accessed from trusted networks**, thus **Prevent access from unauthorized networks using stolen credentials**
+  - **Minimize unwarranted data exfiltration risks (e.g. from Cloud Storage, BigQuery).** even if the data is exposed by misconfigured IAM policies.
+  - **Monitor resource access patterns** across your service perimeters **using [Cloud Audit Logs](https://cloud.google.com/vpc-service-controls/docs/audit-logging)**.
+  - Google Cloud also provides a restricted **virtual IP (VIP), which allows services access without exposing those requests to the internet**.
+  - **Provides [Dry run mode](https://cloud.google.com/vpc-service-controls/docs/dry-run-mode) to monitor / identify unexpected or malicious attempts to probe accessible services.**
+  - **Implements following controls**:
+    - Clients within a perimeter do not have access to unauthorized resources outside the perimeter.
+    - Cannot copy data to unauthorized resources outside the perimeter using _gsutil cp_ or _bq mk_.
+    - Data exchange secured by ingress and egress rules
+    - **Context-aware access** to resources based on identity type (service account or user), identity, device data, and network origin (IP address or VPC network).
+      - Clients outside the perimeter need to use Private Google Access to access resources within a perimeter.
+      - Internet access to resources within a perimeter is restricted to a range of IPv4 and IPv6 addresses.
+    - [**Domain restricted sharing**](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)
+    - **Uniform bucket-level access**
+    - **[Multi-factor authentication](https://cloud.google.com/identity/solutions/enforce-mfa)**
+    - **[Glossary](https://cloud.google.com/vpc-service-controls/docs/overview#glossary)**  
+  
+- **Steps**
+  - [Service perimeter configuration](https://cloud.google.com/vpc-service-controls/docs/service-perimeters#stages) 
+- ds
+- ds
+- d
+- sd
+- sd
+- sd
+- sd
+- s
+- ds
+- d
+- sd
+- sd
+- sd
+- sd
+- sd
+- s
+- d
