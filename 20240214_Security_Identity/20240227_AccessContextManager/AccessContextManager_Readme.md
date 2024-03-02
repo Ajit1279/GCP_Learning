@@ -15,5 +15,6 @@
   
 - **Step-by-step instructions**
   - Navigate to **Security --> Zero Trust --> Access Context Manager**
-  - It gave an error message 
+  - It gave an error message
+  
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c69765b8-1d84-4ced-a81a-4340e0452ba1)
