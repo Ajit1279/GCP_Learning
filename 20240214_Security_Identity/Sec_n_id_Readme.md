@@ -14,7 +14,7 @@
     - Risk Manager
     - [Secret Manager](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240214_SecretManager) : **Provides tools for storing, managing, and accessing sensitive data in your applications.** 
     - Security Command Center
-    - **[VPC Service Controls](https://github.com/Ajit1279/GCP_Learning/tree/main/20240302_VPCServiceControls)** - **Mitigates data exfiltration risks by isolating resources of multi-tenant Google Cloud services. Enforce adaptive access control based on IP range or device trust for accessing Google Cloud resources from outside privileged networks.**
+    - **[VPC Service Controls](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240302_VPCServiceControls)** - **Mitigates data exfiltration risks by isolating resources of multi-tenant Google Cloud services. Enforce adaptive access control based on IP range or device trust for accessing Google Cloud resources from outside privileged networks.**
    
   - **2. Identity and Access**
     - Assured Workloads
