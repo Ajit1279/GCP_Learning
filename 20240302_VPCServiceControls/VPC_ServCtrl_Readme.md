@@ -26,7 +26,22 @@
     - **[Glossary](https://cloud.google.com/vpc-service-controls/docs/overview#glossary)**  
   
 - **Steps**
-  - [Service perimeter configuration](https://cloud.google.com/vpc-service-controls/docs/service-perimeters#stages) 
+  - [Service perimeter configuration](https://cloud.google.com/vpc-service-controls/docs/service-perimeters#stages)
+    - You can include your project only in one service perimeter.  
+    - **Create an access policy**
+      - Collects service perimeters, access levels for your **organization**
+      - You can have **multiple scoped access policies** for the **folders and projects**.
+      - gcloud access-context-manager policies create --organization my-org --title my-access-policy
+      - It gives an error since Org is not created
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9c949cb0-1c5f-4f4f-91a9-f8074f610c95)
+
+    - **Secure Google-managed resources by [creating service perimeters](https://cloud.google.com/vpc-service-controls/docs/create-service-perimeters)**
+      -  
+
+    - **Set up [VPC accessible services](access from network endpoints inside your perimeter is limited to a set of services that you specify.)**: Access from network endpoints inside your perimeter is limited to a set of services that you specify.
+    - **Set up [private connectivity from a VPC network](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)**
+    - **Allow [context-aware access](https://cloud.google.com/vpc-service-controls/docs/context-aware-access) from outside a service perimeter using ingress rules**
+    - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**: To allow communication across the perimeter boundary 
 - ds
 - ds
 - d
