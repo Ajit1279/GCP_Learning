@@ -22,7 +22,7 @@
     - Certificate Authority Service
     - Cloud Identity
     - Identity and Access Management
-    - Identity-Aware Proxy
+    - **[Identity-Aware Proxy](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240302_IdentityAwareProxy)**
     - Identity Platform
     - Managed Service for Microsoft Active Directory
     - Resource Manager
