@@ -1,6 +1,6 @@
 - Reference: https://cloud.google.com/access-context-manager/docs/overview
 
-**- Basics:**
+- **Basics:**
   - **Integral part of the BeyondCorp effort at Google.**
   - **Grant access based on the context of the request, such as device type, user identity**
   - **Firewalls and the perimeter security model** work well if precise boundary, specific users and services **not if workforce is mobile, variety of devices, BYOD, cloud based services etc.**
