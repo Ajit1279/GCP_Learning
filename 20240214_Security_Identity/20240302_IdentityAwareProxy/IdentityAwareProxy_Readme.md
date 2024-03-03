@@ -24,11 +24,13 @@
       
 - **[Enable IAP for Compute Engine](https://cloud.google.com/iap/docs/tutorial-gce)**
   - Enable Compute Engine API
-  - Create compute engine template. Enter the [start-up](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240302_IdentityAwareProxy/startup.sh) commands in Management > Automation > Startup field.
+  - **Create compute engine template**. Enter the [start-up](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240302_IdentityAwareProxy/startup.sh) commands in Management > Automation > Startup field.
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8ffa437b-9dab-429e-837b-c96b82049a52)
   
-- sd
-- s
+  - **Create a Managed Instance Group**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/44bd169c-ee7e-45eb-8cbe-dfd6655c959c)
+
+  -  
 - ds
 - d
 - sd
