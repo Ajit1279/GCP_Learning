@@ -31,18 +31,32 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/44bd169c-ee7e-45eb-8cbe-dfd6655c959c)
 
   -  
-- ds
-- d
-- sd
-- sd
-- sd
-- sd
-- sd
-- d
-- sd
-- sd
-- sd
-- sd
+
+- **[Enable IAP for App Engine](https://cloud.google.com/iap/docs/authenticate-users-google-accounts)**
+  - To enable IAP for your own App Engine (standard / flexible) environment.
+  - It's possible to configure **different IAP permissions on the different services** to protect them and only **some of the services publicly-accessible**.
+    
+  - **Enable IAP:** gcloud iap web enable --resource-type=app-engine --versions=1
+  - It gave an error message:
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/71e32d3c-5d19-459a-bd19-889350535524)
+
+  - Trying it through Console. Go to Security ---> Identity Aware Proxy --> Connect New Application --> Connect via App Connector
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8cfbf9ac-2913-432f-930c-9ab986420d73)
+
+  - Enable Required APIs
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/114cf195-99c6-4200-8d43-233466e90e4f)
+
+  -  But Next button is not enabled because premium access is required.
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c9f0758d-42b1-48a4-8219-60b8e1581934)
+
+  
+  
+- **[IAP on External Load Balancer](https://cloud.google.com/iap/docs/load-balancer-howto?_gl=1*16zy30e*_ga*MjA2MzY0OTg2Ny4xNjQxNjM2Njk2*_ga_WH2QY8WWF5*MTcwOTU2ODE1OS4yMTYuMS4xNzA5NTY4MTkwLjAuMC4w&_ga=2.81504404.-2063649867.1641636696&_gac=1.249900594.1705846831.EAIaIQobChMIoc__zNbugwMVGQt7Bx1cfQh0EAAYASAAEgK7ZfD_BwE)**
+  -  Create [main.tf](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240302_IdentityAwareProxy/main.tf) for:
+    - Create an instance template
+    -   
+
+  -  
 - s
 - ds
 - ds
