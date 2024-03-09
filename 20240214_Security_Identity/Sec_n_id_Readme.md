@@ -1,4 +1,5 @@
 - **This involves below Google Cloud Products:**: Please search Security and indentity in [GCP Docs](https://cloud.google.com/docs)
+- [**Private Google Access**](https://cloud.google.com/vpc/docs/private-google-access#pga) is **not a product**, but an **important concept** regarding security.
 
   - **1. Security:** 
     - [Access Context Manager:](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240227_AccessContextManager) **Allows administrators to define fine-grained, attribute based access control for projects and resources in Google Cloud. e.g. IP Address, device types, user identity etc.** 
