@@ -44,7 +44,8 @@
         - [Ingress, egress rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#benefits-ingress-egress) 
         - [Supported method restrictions](https://cloud.google.com/vpc-service-controls/docs/supported-method-restrictions)    
 
-    - **Set up [VPC accessible services](https://cloud.google.com/vpc-service-controls/docs/vpc-accessible-services)**: Access from network endpoints inside your perimeter is limited to a set of services that you specify.
+    - **Set up [VPC accessible services](https://cloud.google.com/vpc-service-controls/docs/vpc-accessible-services)**:
+      - Access from network endpoints inside your perimeter is limited to a set of services that you specify.
       - Limits the set of services that are accessible from network endpoints inside your service perimeter.
       - **Applies only** to traffic from your **VPC network endpoints to Google APIs.**
       - **Does not apply** to the communication from **one Google API to another**
@@ -56,7 +57,21 @@
 
 
     - **Set up [private connectivity from a VPC network](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)**
+      - Offers private connectivity to hosts in VPC or an on-premises network
+      - Uses private IP addresses to access Google APIs and services.
+      - Requests to Google APIs must be sent through a [Cloud VPN](https://cloud.google.com/network-connectivity/docs/vpn) tunnel or a [Cloud Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect).
+      - Hosts in a VPC network must have a **private IP address only**
+      - Recommended to use **restricted.googleapis.com to access services that aren't supported by VPC Service Controls**
+      - Two IP address ranges associated with the restricted.googleapis.com domain
+        - **IPv4 range:** 199.36.153.4/30
+        - **IPv6 range:** 2600:2d00:0002:1000::/64
+      - For **on-premises networks:**
+        - Simply configure **static route in the on-premises router**
+        - **Announcing the restricted Google API address range** through **Border Gateway Protocol (BGP)**
+
+
     - **Allow [context-aware access](https://cloud.google.com/vpc-service-controls/docs/context-aware-access) from outside a service perimeter using ingress rules**
+
     - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**: To allow communication across the perimeter boundary 
 - ds
 - ds
