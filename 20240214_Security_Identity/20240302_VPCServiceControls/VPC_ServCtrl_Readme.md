@@ -36,9 +36,25 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9c949cb0-1c5f-4f4f-91a9-f8074f610c95)
 
 
-    - **Secure Google-managed resources by [creating service perimeters](https://cloud.google.com/vpc-service-controls/docs/create-service-perimeters)** 
+    - **Secure Google-managed resources by [creating service perimeters](https://cloud.google.com/vpc-service-controls/docs/create-service-perimeters)**
+      - After Service Peremeter is created, one can specify what services are accessible
+      - Optinally allow access to protected services from outside the perimeter
+      - After creation or changes, it takes **upto 30 mins** to take effect, with **error message: Error 403: Request is prohibited by organization's policy.**
+      - Refer these [commands](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240302_VPCServiceControls/Create_Serv_perimeter.sh) for details.
+        - [Ingress, egress rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#benefits-ingress-egress) 
+        - [Supported method restrictions](https://cloud.google.com/vpc-service-controls/docs/supported-method-restrictions)    
 
     - **Set up [VPC accessible services](https://cloud.google.com/vpc-service-controls/docs/vpc-accessible-services)**: Access from network endpoints inside your perimeter is limited to a set of services that you specify.
+      - Limits the set of services that are accessible from network endpoints inside your service perimeter.
+      - **Applies only** to traffic from your **VPC network endpoints to Google APIs.**
+      - **Does not apply** to the communication from **one Google API to another**
+      - To ensure limiting access to the expected services:
+        - **Specify individual services or include "RESTRICTED-SERVICES value" for perimeter to protect few services automatically** 
+        - **Configure perimeter to protect services to be accessible.**  
+        - **Configure VPCs in the perimeter to use the restricted VIP.**
+        - **Use layer3 firewalls**
+
+
     - **Set up [private connectivity from a VPC network](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)**
     - **Allow [context-aware access](https://cloud.google.com/vpc-service-controls/docs/context-aware-access) from outside a service perimeter using ingress rules**
     - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**: To allow communication across the perimeter boundary 
