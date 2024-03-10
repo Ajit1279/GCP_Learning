@@ -77,3 +77,11 @@
 
   - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**:
     - **To allow communication between clients and resources separated by service perimeters.**
+    - **[Examples:](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange#secure-data-exchange-use-cases)**
+      - Access a Google Cloud resource outside the perimeter
+      - Share data by using Pub/Sub between two organizations that use VPC Service Controls
+      - Share anonymized PHI (Protected Health Information) data with partner organization
+      - Grant access to a third-party Compute Engine disk image
+      - Read a BigQuery dataset by allowing private access from a VPC network outside the perimeter
+      - Load into a Cloud Storage bucket (write) by allowing private access from a VPC network outside the perimeter
+      - Share logs in a separate perimeter by allowing projects from multiple perimeters to share logs 
