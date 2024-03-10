@@ -25,74 +25,55 @@
     - **[Multi-factor authentication](https://cloud.google.com/identity/solutions/enforce-mfa)**
     - **[Glossary](https://cloud.google.com/vpc-service-controls/docs/overview#glossary)**  
   
-- **Steps**
-  - [Service perimeter configuration](https://cloud.google.com/vpc-service-controls/docs/service-perimeters#stages)
-    - You can include your project only in one service perimeter.  
-    - **Create an access policy**
-      - Collects service perimeters, access levels for your **organization**
-      - You can have **multiple scoped access policies** for the **folders and projects**.
-      - gcloud access-context-manager policies create --organization my-org --title my-access-policy
-      - It gives an error since Org is not created
+- **Steps for [Service perimeter configuration](https://cloud.google.com/vpc-service-controls/docs/service-perimeters#stages)**
+  - You can include your project only in one service perimeter.  
+  - **Create an access policy**
+    - Collects service perimeters, access levels for your **organization**
+    - You can have **multiple scoped access policies** for the **folders and projects**.
+    - gcloud access-context-manager policies create --organization my-org --title my-access-policy
+    - It gives an error since Org is not created
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9c949cb0-1c5f-4f4f-91a9-f8074f610c95)
 
 
-    - **Secure Google-managed resources by [creating service perimeters](https://cloud.google.com/vpc-service-controls/docs/create-service-perimeters)**
-      - After Service Peremeter is created, one can specify what services are accessible
-      - Optinally allow access to protected services from outside the perimeter
-      - After creation or changes, it takes **upto 30 mins** to take effect, with **error message: Error 403: Request is prohibited by organization's policy.**
-      - Refer these [commands](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240302_VPCServiceControls/Create_Serv_perimeter.sh) for details.
-        - [Ingress, egress rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#benefits-ingress-egress) 
-        - [Supported method restrictions](https://cloud.google.com/vpc-service-controls/docs/supported-method-restrictions)    
+  - **Secure Google-managed resources by [creating service perimeters](https://cloud.google.com/vpc-service-controls/docs/create-service-perimeters)**
+    - After Service Peremeter is created, one can specify what services are accessible
+    - Optinally allow access to protected services from outside the perimeter
+    - After creation or changes, it takes **upto 30 mins** to take effect, with **error message: Error 403: Request is prohibited by organization's policy.**
+    - Refer these [commands](https://github.com/Ajit1279/GCP_Learning/blob/main/20240214_Security_Identity/20240302_VPCServiceControls/Create_Serv_perimeter.sh) for details.
+      - [Ingress, egress rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules#benefits-ingress-egress) 
+      - [Supported method restrictions](https://cloud.google.com/vpc-service-controls/docs/supported-method-restrictions)    
 
-    - **Set up [VPC accessible services](https://cloud.google.com/vpc-service-controls/docs/vpc-accessible-services)**:
-      - Access from network endpoints inside your perimeter is limited to a set of services that you specify.
-      - Limits the set of services that are accessible from network endpoints inside your service perimeter.
-      - **Applies only** to traffic from your **VPC network endpoints to Google APIs.**
-      - **Does not apply** to the communication from **one Google API to another**
-      - To ensure limiting access to the expected services:
-        - **Specify individual services or include "RESTRICTED-SERVICES value" for perimeter to protect few services automatically** 
-        - **Configure perimeter to protect services to be accessible.**  
-        - **Configure VPCs in the perimeter to use the restricted VIP.**
-        - **Use layer3 firewalls**
+  - **Set up [VPC accessible services](https://cloud.google.com/vpc-service-controls/docs/vpc-accessible-services)**:
+    - Access from network endpoints inside your perimeter is limited to a set of services that you specify.
+    - Limits the set of services that are accessible from network endpoints inside your service perimeter.
+    - **Applies only** to traffic from your **VPC network endpoints to Google APIs.**
+    - **Does not apply** to the communication from **one Google API to another**
+    - To ensure limiting access to the expected services:
+      - **Specify individual services or include "RESTRICTED-SERVICES value" for perimeter to protect few services automatically** 
+      - **Configure perimeter to protect services to be accessible.**  
+      - **Configure VPCs in the perimeter to use the restricted VIP.**
+      - **Use layer3 firewalls**
 
-
-    - **Set up [private connectivity from a VPC network](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)**
-      - Offers private connectivity to hosts in VPC or an on-premises network
-      - Uses private IP addresses to access Google APIs and services.
-      - Requests to Google APIs must be sent through a [Cloud VPN](https://cloud.google.com/network-connectivity/docs/vpn) tunnel or a [Cloud Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect).
-      - Hosts in a VPC network must have a **private IP address only**
-      - Recommended to use **restricted.googleapis.com to access services that aren't supported by VPC Service Controls**
-      - Two IP address ranges associated with the restricted.googleapis.com domain
-        - **IPv4 range:** 199.36.153.4/30
-        - **IPv6 range:** 2600:2d00:0002:1000::/64
+  - **Set up [private connectivity from a VPC network](https://cloud.google.com/vpc-service-controls/docs/private-connectivity)**
+    - Offers private connectivity to hosts in VPC or an on-premises network
+    - Uses private IP addresses to access Google APIs and services.
+    - Requests to Google APIs must be sent through a [Cloud VPN](https://cloud.google.com/network-connectivity/docs/vpn) tunnel or a [Cloud Interconnect](https://cloud.google.com/network-connectivity/docs/interconnect).
+    - Hosts in a VPC network must have a **private IP address only**
+    - Recommended to use **restricted.googleapis.com to access services that aren't supported by VPC Service Controls**
+    - Two IP address ranges associated with the restricted.googleapis.com domain
+      - **IPv4 range:** 199.36.153.4/30
+      - **IPv6 range:** 2600:2d00:0002:1000::/64
       - For **on-premises networks:**
-        - Simply configure **static route in the on-premises router**
-        - **Announcing the restricted Google API address range** through **Border Gateway Protocol (BGP)**
+      - Simply configure **static route in the on-premises router**
+      - **Announcing the restricted Google API address range** through **Border Gateway Protocol (BGP)**
 
 
-    - **Allow [context-aware access](https://cloud.google.com/vpc-service-controls/docs/context-aware-access) from outside a service perimeter using ingress rules**
-      - Allow access to resources based on **network origin (IP address, VPC network), identity type (service account or user), identity, and device data**
-      - Access is enabled by **[configuring ingress and egress rule policies](https://cloud.google.com/vpc-service-controls/docs/configuring-ingress-egress-policies)**
-      - **Examples:**
-        - **[BigQuery access to human users or specific service accounts](https://cloud.google.com/vpc-service-controls/docs/context-aware-access#allow_human_users_to_access_bigquery_from_the_internet_and_only_specific_service_accounts_access_from_a_specified_ip_range)**
-        - **[Allow employees to query BigQuery from trusted device over the internet](https://cloud.google.com/vpc-service-controls/docs/context-aware-access#allow_employees_to_query_bigquery_from_trusted_devices_over_the_internet_and_a_specific_service_account_to_privately_load_data_to_a_cloud_storage_bucket_source_data)**  
+  - **Allow [context-aware access](https://cloud.google.com/vpc-service-controls/docs/context-aware-access) from outside a service perimeter using ingress rules**
+    - Allow access to resources based on **network origin (IP address, VPC network), identity type (service account or user), identity, and device data**
+    - Access is enabled by **[configuring ingress and egress rule policies](https://cloud.google.com/vpc-service-controls/docs/configuring-ingress-egress-policies)**
+    - **Examples:**
+      - **[BigQuery access to human users or specific service accounts](https://cloud.google.com/vpc-service-controls/docs/context-aware-access#allow_human_users_to_access_bigquery_from_the_internet_and_only_specific_service_accounts_access_from_a_specified_ip_range)**
+      - **[Allow employees to query BigQuery from trusted device over the internet](https://cloud.google.com/vpc-service-controls/docs/context-aware-access#allow_employees_to_query_bigquery_from_trusted_devices_over_the_internet_and_a_specific_service_account_to_privately_load_data_to_a_cloud_storage_bucket_source_data)**  
 
-    - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**:
-      - To allow communication across the perimeter boundary 
-- ds
-- ds
-- d
-- sd
-- sd
-- sd
-- sd
-- s
-- ds
-- d
-- sd
-- sd
-- sd
-- sd
-- sd
-- s
-- d
+  - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**:
+    - **To allow communication between clients and resources separated by service perimeters.**
