@@ -71,8 +71,14 @@
 
 
     - **Allow [context-aware access](https://cloud.google.com/vpc-service-controls/docs/context-aware-access) from outside a service perimeter using ingress rules**
+      - Allow access to resources based on **network origin (IP address, VPC network), identity type (service account or user), identity, and device data**
+      - Access is enabled by **[configuring ingress and egress rule policies](https://cloud.google.com/vpc-service-controls/docs/configuring-ingress-egress-policies)**
+      - **Examples:**
+        - **[BigQuery access to human users or specific service accounts](https://cloud.google.com/vpc-service-controls/docs/context-aware-access#allow_human_users_to_access_bigquery_from_the_internet_and_only_specific_service_accounts_access_from_a_specified_ip_range)**
+        - **[Allow employees to query BigQuery from trusted device over the internet](https://cloud.google.com/vpc-service-controls/docs/context-aware-access#allow_employees_to_query_bigquery_from_trusted_devices_over_the_internet_and_a_specific_service_account_to_privately_load_data_to_a_cloud_storage_bucket_source_data)**  
 
-    - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**: To allow communication across the perimeter boundary 
+    - **Configure [secure data exchange](https://cloud.google.com/vpc-service-controls/docs/secure-data-exchange) using ingress and egress rules**:
+      - To allow communication across the perimeter boundary 
 - ds
 - ds
 - d
