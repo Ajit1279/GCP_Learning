@@ -1,0 +1,23 @@
+- ingressFrom:
+    identities:
+    - serviceAccount:293144784807-compute@developer.gserviceaccount.com
+    sources:
+    - accessLevel: accessPolicies/security0203/accessLevels/CorpDatacenters
+  ingressTo:
+    operations:
+    - serviceName: bigquery.googleapis.com
+      methodSelectors:
+      - method: \"*\"
+    resources:
+    - \"*\"
+- ingressFrom:
+    identityType: ANY_USER_ACCOUNT
+    sources:
+    - accessLevel: \"*\"
+  ingressTo:
+    operations:
+    - serviceName: bigquery.googleapis.com
+      methodSelectors:
+      - method: \"*\"
+    resources:
+    - \"*\"
