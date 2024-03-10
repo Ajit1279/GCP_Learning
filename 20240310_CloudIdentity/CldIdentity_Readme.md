@@ -3,5 +3,5 @@
   - Sign in to your [Google Admin Console](https://support.google.com/a/answer/182076)
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/18529ae4-7167-4fd2-b183-29c9ec7e1a70)
 
-  - 
+  - Refer next steps here: https://support.google.com/a/answer/60216
   - 
