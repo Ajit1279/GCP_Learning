@@ -1,0 +1,2 @@
+- Docs Reference: https://cloud.google.com/docs/data
+- Architucture References: https://cloud.google.com/architecture/big-data-analytics  
