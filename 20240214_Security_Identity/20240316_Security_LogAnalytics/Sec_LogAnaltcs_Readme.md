@@ -1,0 +1,1 @@
+- Reference: https://cloud.google.com/architecture/security-log-analytics
