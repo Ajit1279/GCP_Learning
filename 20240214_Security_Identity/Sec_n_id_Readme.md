@@ -38,3 +38,8 @@
     - Phishing Protection
     - reCAPTCHA Enterprise
     - Web Risk 
+
+=========================
+Architectures
+=================
+- **[1. Security Log Analytics](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240316_Security_LogAnalytics)**
