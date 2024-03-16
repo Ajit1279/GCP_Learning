@@ -41,4 +41,5 @@
 
 ============ Architectures =============
 
-- **[1. Security Log Analytics](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240316_Security_LogAnalytics)**
+- [Security_Identity_Architecture_Patterns](https://cloud.google.com/architecture/security-iam)
+  - **[1. Security Log Analytics](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240316_Security_LogAnalytics)**
