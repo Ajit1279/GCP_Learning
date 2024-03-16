@@ -14,24 +14,4 @@
   - It indicates that Squarespace is the domain registrar for your domain
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/3c31b3a0-e166-4385-b9c8-797a8327d5e2)
 
-  -  
-
-
-- Go to the screen below to access Google Cloud
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c9761eff-d57f-44c8-ba39-1f86c03a0be1)
-
-- sd
-- sd
-- sd
-- sd
-- sd
-- s
-- ds
-- ds
-- ds
-- d
-- sd
-- sd
-- sd
-- sd
-- sdw
+- Giving-up this exercise now, as not able to proceed with free edition. Squarespace charges Rs 2000 per year for the domain.  
