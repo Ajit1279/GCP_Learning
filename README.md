@@ -13,4 +13,4 @@
 
 - Google Cloud Documentation: https://cloud.google.com/docs
 - Tutorials: https://cloud.google.com/docs/tutorials
--  
+- Architecture Center: https://cloud.google.com/architecture 
