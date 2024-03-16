@@ -21,7 +21,7 @@
     - Assured Workloads
     - BeyondCorp enterprise
     - Certificate Authority Service
-    - Cloud Identity
+    - [Cloud Identity](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240310_CloudIdentity)
     - Identity and Access Management
     - **[Identity-Aware Proxy](https://github.com/Ajit1279/GCP_Learning/tree/main/20240214_Security_Identity/20240302_IdentityAwareProxy)**: You can adopt an application-level access control model instead of using network-level firewalls. 
     - Identity Platform
