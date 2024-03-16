@@ -1,2 +1,3 @@
-- Docs Reference: https://cloud.google.com/docs/data
-- Architucture References: https://cloud.google.com/architecture/big-data-analytics  
+- **Reference Docs**: https://cloud.google.com/docs/data
+- **Architucture References:** https://cloud.google.com/architecture/big-data-analytics
+  - [CI/CD Pipeline for Data Processing](https://cloud.google.com/architecture/cicd-pipeline-for-data-processing)   
