@@ -1,3 +1,4 @@
 - **Reference Docs**: https://cloud.google.com/docs/data
 - **Architucture References:** https://cloud.google.com/architecture/big-data-analytics
-  - [CI/CD Pipeline for Data Processing](https://cloud.google.com/architecture/cicd-pipeline-for-data-processing)   
+  - [CI/CD Pipeline for Data Processing](https://cloud.google.com/architecture/cicd-pipeline-for-data-processing)
+  - [ETL from a relational database into BigQuery using Dataflow](https://cloud.google.com/architecture/performing-etl-from-relational-database-into-bigquery) 
