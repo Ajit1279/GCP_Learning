@@ -1,0 +1,2 @@
+- Reference: https://cloud.google.com/architecture/cicd-pipeline-for-data-processing
+- 
