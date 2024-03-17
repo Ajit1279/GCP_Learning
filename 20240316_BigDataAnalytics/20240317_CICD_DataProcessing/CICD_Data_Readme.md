@@ -29,4 +29,8 @@
     - e.g. four Tasks - A, B, C, and D - and dictates the order in which they have to run
     - It will also say how often to run the DAG - maybe “every 5 minutes starting tomorrow”, or “every day since January 1st, 2020”.
    
-  - [Deploy a CI/CD Pipeline](https://cloud.google.com/architecture/cicd-pipeline-for-data-processing/deployment) 
+  - [Deploy a CI/CD Pipeline](https://cloud.google.com/architecture/cicd-pipeline-for-data-processing/deployment)
+    - Configure the Cloud Composer environment.
+    - Create Cloud Storage buckets for your data.
+    - Create the build, test, and production pipelines.
+    - Configure the build trigger. 
