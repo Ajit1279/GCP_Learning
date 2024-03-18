@@ -1,0 +1,97 @@
+[
+    {
+        "mode": "REQUIRED", 
+        "name": "id", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "gid", 
+        "type": "STRING"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "name", 
+        "type": "STRING"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "sort_name", 
+        "type": "STRING"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "begin_date_year", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "begin_date_month", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "begin_date_day", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "end_date_year", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "end_date_month", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "end_date_day", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "type", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "area", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "gender", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "comment", 
+        "type": "STRING"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "edits_pending", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "last_updated", 
+        "type": "TIMESTAMP"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "ended", 
+        "type": "BOOLEAN"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "begin_area", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "NULLABLE", 
+        "name": "end_area", 
+        "type": "INTEGER"
+    }
+]
