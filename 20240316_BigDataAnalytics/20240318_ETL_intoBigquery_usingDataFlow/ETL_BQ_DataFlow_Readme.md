@@ -1,0 +1,2 @@
+- Reference: https://cloud.google.com/architecture/performing-etl-from-relational-database-into-bigquery
+- 
