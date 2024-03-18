@@ -1,0 +1,27 @@
+[
+    {
+        "mode": "REQUIRED", 
+        "name": "artist_credit", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "position", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "artist", 
+        "type": "INTEGER"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "name", 
+        "type": "STRING"
+    }, 
+    {
+        "mode": "REQUIRED", 
+        "name": "join_phrase", 
+        "type": "STRING"
+    }
+]
