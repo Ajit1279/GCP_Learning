@@ -56,9 +56,9 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1b89ede0-583d-4456-b72e-ad2e302bdc0f)
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8a0f1165-abf5-4659-b927-c03b4f40641c)
-
+  
  
-    - The result is shown in "Query Results" pane and a new table "recordings_by_artists_manual" is shown in left pane.
+  - The result is shown in "Query Results" pane and a new table "recordings_by_artists_manual" is shown in left pane.
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bae38b71-fd3f-40e1-b894-422e36613a7d)
 
   - [**Approach2 (ETL into BigQuery with Dataflow)**](https://cloud.google.com/architecture/performing-etl-from-relational-database-into-bigquery#approach_2_etl_into_bigquery_with_cloud_dataflow)
