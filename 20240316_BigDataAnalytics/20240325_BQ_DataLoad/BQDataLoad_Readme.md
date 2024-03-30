@@ -27,6 +27,52 @@
     - **Pub/sub:**: **To coordinate streaming analytics and data integration pipelines**  
 
   - Use **queries to generate new data** and append or **overwrite the results to a table**.
-  - Use a **third-party application** or service.
 
--  
+  - Use a **third-party application** or service. e.g. Informatica Data Loader, Fivetran Data Pipelines
+
+-  **[Choosing Data Ingestion Methods](https://cloud.google.com/bigquery/docs/loading-data#choosing_a_data_ingestion_method)**: Factors which determine it are:
+  - **Data Source** e.g.
+    - For **Spark or Hadoop**, consider using [BigQuery connectors](https://cloud.google.com/dataproc/docs/concepts/connectors/bigquery)
+    - For **third party sources**, transform the data into a format supported by batch loading
+    - Transfer the data **directly into BigQuery** if **BigQuery Data Transfer Service supports the data source**
+    - For **application data**, **stream the data** in real time
+  
+  - **Slow changing vs Fast changing data**
+    - **Consider streaming for analyze data in near real-time**
+    - **For frequently updated data, stream a change log and use a view**
+    - Use **Cloud SQL as** your online transaction processing **(OLTP) database** and use **federated queries to join the data** in BigQuery.
+    - For a **daily or hourly report, use load jobs**
+    - If **data arrives infrequently or in response to an event**, use **Dataflow** or use **Cloud Functions to call the streaming API** in response to a trigger.
+  
+  - **Reliability of the solution**
+    - With **loosely typed formats (e.g. JSON or CSV)**, bad data can make an entire load job fail. Consider **data cleansing step** before loading
+    - The **scheduling component (e.g. Cloud Composer, Cron)** could be a **failure point** in the solution.
+    - With **streaming**, you can **check the success of each record** and quickly report an error.
+    - **Streaming and load jobs** are subject **to quotas**. **Handle quota errors**
+    - **Third-party solutions might differ in configurability, reliability**
+  
+  - **Latency**: How much data you load and how soon you need the data to be available
+    - **Streaming offers the lowest latency**
+    - Periodic **load jobs have a higher latency**
+    - For **minimizing query latency load the data into BigQuery.**
+  
+  - **Data Ingesion Format**
+    - BigQuery creates the table **schema automatically** based on the source data for **Avro, ORC, Parquet, and Firestore exports**
+    - For **JSON and CSV data**, you can **provide an explicit schema, or you can use schema auto-detection**.
+    - **Nested and repeated fields** also reduce data duplication when loading the data.
+    - **BigQuery expects newline-delimited JSON files** to contain a single record per line.
+    - BigQuery supports **UTF-8 encoding for both nested / repeated and flat data**. BigQuery supports **ISO-8859-1 encoding for flat data only** for CSV files.
+    - 
+  
+  -     
+-  fdf
+-  dfdf
+-  dlf
+-  d'fldw
+-  fld
+-  fld
+-  'fld
+-  fldf
+-  'dlf
+-  dlf
+-  dfd
