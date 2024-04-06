@@ -1,0 +1,2 @@
+- Reference: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#python
+- 
