@@ -3,7 +3,7 @@
 - There are several ways to ingest data into BigQuery:
   - **Batch load** a set of data records. **Can be one time or recurring**
     - **Load Jobs**:
-      - Load data **from Cloud Storage** or **from a local file (in Avro, CSV, JSON, ORC, or Parquet format)** by creating a load job
+      - Load data **from Cloud Storage** or **from a local file (in Avro, [CSV](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/20240325_BQ_DataLoad/20240406_CSVLoad_Python), JSON, ORC, or Parquet format)** by creating a load job
       - Require **staging the data to intermediate storage** (e.g. Cloud Storage).
       - **Most suitable for file-based patterns** 
 
@@ -64,15 +64,3 @@
     - BigQuery supports **UTF-8 encoding for both nested / repeated and flat data**. BigQuery supports **ISO-8859-1 encoding for flat data only** for CSV files.
     - 
   
-  -     
--  fdf
--  dfdf
--  dlf
--  d'fldw
--  fld
--  fld
--  'fld
--  fldf
--  'dlf
--  dlf
--  dfd
