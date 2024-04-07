@@ -1,7 +1,7 @@
 - Reference: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#python
   
 - **Loading data from Cloud Storage to BigQuery:**
-  - i. **Newly load data** in new table ii. **Append data** to existing table iii. **Overwrite (Truncate)** data in existing table
+  - **i. Newly load data** in new table **ii. Append data** to existing table **iii. Overwrite (Truncate)** data in existing table
   - Data **once loaded** into BigQuery, it is **converted into** columnar format for **[Capacitor](https://cloud.google.com/blog/products/bigquery/inside-capacitor-bigquerys-next-generation-columnar-storage-format)** (columnar storage that supports semistructured data)
   - **Cloud Storage Limitations:**
     - The **dataset / table must be in the same regional or multi- regional location as the Cloud Storage bucket**   
@@ -12,12 +12,31 @@
     - Remove **Byte Order Mark (BOM)** characters (might cause unexpected issues).
     - Loading **compressed data is slower than loading uncompressed data** (BigQuery **cannot read** the data **in parallel** if you use **gzip compression**)
     - **Compressed and uncompressed** files **can not be included** in the **same load job**
-    - The file must meet the load job limits (**maximum size for a gzip file is 4 GB, max uncompressed file size 5 TB, max cell size 100MB, max Row size 100MB**)
-    - Using **schema autodetection does not automatically detect headers, flexible column names**
-    - 
-- sd
-- sd
-- sd
+    - The file **must meet load job limits (maximum size for a gzip file is 4 GB, max uncompressed file size 5 TB, max cell size 100MB, max Row size 100MB**)
+    - Using **schema auto-detection does not automatically detect headers, flexible column names**
+    - **Date, Timestamp** must be in specific format
+  
+- **Step-by-step instructions**
+  - **1. Grant required iAM roles:**
+    - **BigQuery**
+      - **Permissions: bigquery.tables.create, bigquery.tables.updateData, bigquery.tables.update, bigquery.jobs.create, bigquery.datasets.create**
+      - **Roles:**
+        - roles/bigquery.**dataEditor**
+        - roles/bigquery.**dataOwner**
+        - roles/**bigquery.admin** (includes the **bigquery.jobs.create** permission)
+        - bigquery.**user** (includes the **bigquery.jobs.create** permission)
+        - bigquery.**jobUser** (includes the **bigquery.jobs.create** permission) 
+    - **Cloud Storage**:
+      - **Permissions:** storage.buckets.get, storage.objects.get, storage.objects.list
+      - **Roles:** roles/storage.admin  
+
+  - **2. Create a BigQurry Dataset**: 
+  - sd
+  - sd
+  - sd
+  - sd
+  - sd
+  - sd  
 - sd
 - sd
 - sd
