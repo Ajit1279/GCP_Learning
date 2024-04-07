@@ -30,7 +30,12 @@
       - **Permissions:** storage.buckets.get, storage.objects.get, storage.objects.list
       - **Roles:** roles/storage.admin  
 
-  - **2. Create a BigQurry Dataset**: 
+  - **2. Create a [main.py](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/20240325_BQ_DataLoad/20240406_CSVLoad_Python/main.py) to create a bigquery dataset and load data into it**:
+
+  - **Run the below commands prior to executing:**
+    - **pip install --upgrade google-cloud**
+    - **pip install --upgrade google-cloud-bigquery**
+    - **pip install --upgrade google-cloud-storage** 
   - sd
   - sd
   - sd
