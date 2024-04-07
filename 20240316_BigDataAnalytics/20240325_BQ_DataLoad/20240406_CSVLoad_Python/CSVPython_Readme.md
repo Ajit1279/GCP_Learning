@@ -1,2 +1,45 @@
 - Reference: https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#python
-- 
+  
+- **Loading data from Cloud Storage to BigQuery:**
+  - i. **Newly load data** in new table ii. **Append data** to existing table iii. **Overwrite (Truncate)** data in existing table
+  - Data **once loaded** into BigQuery, it is **converted into** columnar format for **[Capacitor](https://cloud.google.com/blog/products/bigquery/inside-capacitor-bigquerys-next-generation-columnar-storage-format)** (columnar storage that supports semistructured data)
+  - **Cloud Storage Limitations:**
+    - The **dataset / table must be in the same regional or multi- regional location as the Cloud Storage bucket**   
+    - **Data consistency not guaranteed for external data sources** (Changes to the underlying data while a query is running can result in unexpected behavior)
+    - BigQuery **does not support** Cloud Storage object **versioning** (**Load job fails** if **generation number included** in cloud storage URI)
+  - **CSV Limitation**
+    - CSV **don't support nested or repeated data**.
+    - Remove **Byte Order Mark (BOM)** characters (might cause unexpected issues).
+    - Loading **compressed data is slower than loading uncompressed data** (BigQuery **cannot read** the data **in parallel** if you use **gzip compression**)
+    - **Compressed and uncompressed** files **can not be included** in the **same load job**
+    - The file must meet the load job limits (**maximum size for a gzip file is 4 GB, max uncompressed file size 5 TB, max cell size 100MB, max Row size 100MB**)
+    - Using **schema autodetection does not automatically detect headers, flexible column names**
+    - 
+- sd
+- sd
+- sd
+- sd
+- sd
+- sd
+- sd
+- s
+- ds
+- ds
+- d
+- sd
+- sd
+- s
+- ds
+- ds
+- d
+- sd
+- sd
+- s
+- ds
+- ds
+- ds
+- d
+- sd
+- sd
+- sd
+- sd  
