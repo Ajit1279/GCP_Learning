@@ -19,8 +19,7 @@
 
   - **Using venv to isolate dependencies**:
     - [venv](https://docs.python.org/3/library/venv.html) is a tool that creates isolated Python environments to isolate one project's dependencies from the other.
-    - Run the **venv command** to create a virtual copy of entire Python installation in a **folder named "env"**, but you can specify any name for the folder.
-        python3 -m venv env
+    - Run the **venv command** to create a virtual copy of entire Python installation in a **folder named "env"**, but you can specify any name for the folder: **python3 -m venv env**
     - Set your **shell to use the venv paths** for Python by activating the virtual environment: **source env/bin/activate**
     - Now you can **install packages without affecting other projects** or your global Python installation: **pip install google-cloud-storage**
     - If you want to **stop using the virtual environment** and go back to your global Python, you can deactivate it: **deactivate**   
