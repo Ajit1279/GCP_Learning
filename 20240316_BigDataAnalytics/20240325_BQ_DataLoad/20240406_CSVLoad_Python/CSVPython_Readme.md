@@ -32,15 +32,20 @@
 
   - **2. [Create a VM and set-up the Python environment.](https://github.com/Ajit1279/GCP_Learning/blob/main/Compute_VMs/20240407_Python/Python_Readme.md)**
     - **Run the below commands prior to executing:**
+      **python -m pip install --upgrade pip**
       **pip install --upgrade google-cloud**
       **pip install --upgrade google-cloud-bigquery**
       **pip install --upgrade google-cloud-storage**
 
   - **3. Create a [main.py](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/20240325_BQ_DataLoad/20240406_CSVLoad_Python/main.py) to create a bigquery dataset and load data into it**:
 
-   
-  - sd
-  - sd
+  - **4. Once created it displays a message**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ae8c1b23-1fcf-41d6-8276-27ce5a2b0213)
+
+  - **5. Verify in the table in Console: Bigquery >> BigQuery Studio >> bigdata0324 >> mybqdataset >> mybqtable1 >> preview**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ed4a69ff-c46c-4dc6-aa69-9eee7bcf9cd5)
+
+
   - sd
   - sd
   - sd
