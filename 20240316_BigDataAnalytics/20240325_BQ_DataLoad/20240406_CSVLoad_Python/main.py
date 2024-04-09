@@ -5,7 +5,7 @@ from google.cloud import bigquery
 client = bigquery.Client()
 
 # TODO(developer): Set dataset_id to the ID of the dataset to create.
-dataset_id = "{}.mybqdataset".format(client.project)"
+dataset_id = "{}.mybqdataset".format(client.project)
 
 # Construct a full Dataset object to send to the API.
 dataset = bigquery.Dataset(dataset_id)
@@ -23,9 +23,9 @@ print("Created dataset {}.{}".format(client.project, dataset.dataset_id))
 # https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-csv#loading_csv_data_into_a_table
 
 # TODO(developer): Set table_id to the ID of the table to create.
-project = client.project
-table_name = mybqtable
-table_id = "project.dataset.table_name"
+#project = bigdata
+#table_name = mybqtable
+table_id = "bigdata0324.mybqdataset.mybqtable1"
 
 job_config = bigquery.LoadJobConfig(
     schema=[
