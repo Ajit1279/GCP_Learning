@@ -16,7 +16,7 @@
     - Using **schema auto-detection does not automatically detect headers, flexible column names**
     - **Date, Timestamp** must be in specific format
   
-- **Step-by-step instructions**
+- **Step-by-step instructions to load data using Python program**
   - **1. Grant required iAM roles:**
     - **BigQuery**
       - **Permissions: bigquery.tables.create, bigquery.tables.updateData, bigquery.tables.update, bigquery.jobs.create, bigquery.datasets.create**
@@ -45,8 +45,11 @@
   - **5. Verify in the table in Console: Bigquery >> BigQuery Studio >> bigdata0324 >> mybqdataset >> mybqtable1 >> preview**
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ed4a69ff-c46c-4dc6-aa69-9eee7bcf9cd5)
 
+  - **6. Clean-up**
+    - Delete the bigquery dataset through console
+    - exit from SSH session and delete the VM: **gcloud compute instances delete my-python-machine --zone=us-central1-a**
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/6ab06ef0-e9df-4281-91b5-ef83333b1f11)
 
-  - sd
   - sd
   - sd
   - sd  
