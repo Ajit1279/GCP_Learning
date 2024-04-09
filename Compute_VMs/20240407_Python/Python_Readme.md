@@ -1,21 +1,21 @@
 - References: https://cloud.google.com/python/docs/getting-started/getting-started-on-compute-engine
-- Run command: **gcloud compute ssh <instance_name>** 
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7cc2259f-87d3-409e-b0f3-7dff38b2f1ec)
 
 - **[Set-up Python environment in VM](https://cloud.google.com/python/docs/setup#linux)**:
-  - Create a VM
+  - **Create a VM**
  
       MY_INSTANCE_NAME="my-python-machine"
       ZONE=us-central1-a
-    
+
       gcloud compute instances create $MY_INSTANCE_NAME \
         --image-family=debian-10 \
         --image-project=debian-cloud \
-        --machine-type=g1-small \
+        --machine-type=e2-medium \
         --scopes userinfo-email,cloud-platform \
-        --metadata-from-file startup-script=startup-script.sh \
         --zone $ZONE \
-        --tags http-server
+        --tags py-machine
+
+  - Run command: **gcloud compute ssh my-python-machine** 
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7cc2259f-87d3-409e-b0f3-7dff38b2f1ec)
 
   - Run the below commands:  
     **sudo apt update**
