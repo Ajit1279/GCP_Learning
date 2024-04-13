@@ -19,7 +19,7 @@
     - Transofrming & aggregating data
     - Writing results to destination 
 
-  - **[Runner]**(https://beam.apache.org/documentation/basics/#runner) speicifies _how_ the pipeline is executed i.e. run an Apache Beam pipeline on a specific platform e.g. **Dataflow runner**
+  - **[Runner](https://beam.apache.org/documentation/basics/#runner)** speicifies _how_ the pipeline is executed i.e. run an Apache Beam pipeline on a specific platform e.g. **Dataflow runner**
     - Uploads executable code and dependencies to cloud storage bucket
     - Create Dataflow job
     - Dataflow job allocates pool of VMs to execute pipeline
