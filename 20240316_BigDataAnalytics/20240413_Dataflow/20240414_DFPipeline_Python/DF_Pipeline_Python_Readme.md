@@ -15,12 +15,15 @@
     - Cloud Datastore API
     - Cloud Resource Manager API
 
-  - Once the APIs are enabled, assign below roles to the **Compute Engine Default service Account: Cloud Storage Admin, Dataflow Admin, DataFlow Worker** 
+  - Once the APIs are enabled, assign below roles to the **Compute Engine Default service Account: Cloud Storage Admin, Dataflow Admin, DataFlow Worker**
+  
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f9ec1676-4f5b-4aaa-b5f3-49cf4add7d5a)
 
   - Activate the cloud shell, **create a python virtual environment** and activate it by running below commands:
     **pip3 install virtualenv**
+    
     **python3 -m virtualenv env**
+
     **source env/bin/activate**
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/95ce8ac6-091c-4322-94c3-0be02d0b9fc4)
 
