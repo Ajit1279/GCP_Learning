@@ -1,10 +1,14 @@
 - [Step-by-step-instructions to Create Dataflow pipeline using Python](https://cloud.google.com/dataflow/docs/quickstarts/create-pipeline-python):
   - Learn how to use the Apache Beam SDK for Python to build a program that defines a pipeline.
   - Then, you run the pipeline by using a direct local runner or a cloud-based runner such as Dataflow.
-  - Create a new project (i.e. dataflowpoc) to ensure you have required permissions and easy clean-up
+  - Create a new project (i.e. dataflowpoc) to ensure you have required permissions and easy clean-up: **gcloud projects create dataflowpoc0424**
+
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/60a155e8-7080-48b7-bb89-1b3e249d2d4a)
 
-  - **Enable various APIs** listed below:
+  - Select the project that you just created: **gcloud config set project dataflowpoc0424**
+
+  - **Enable various APIs** listed below: 
+**gcloud services enable dataflow compute_component logging storage_component storage_api bigquery pubsub datastore.googleapis.com cloudresourcemanager.googleapis.com**
     - Dataflow API
     - Compute Engine API
     - Cloud Logging API
@@ -15,6 +19,8 @@
     - Cloud Datastore API
     - Cloud Resource Manager API
 
+  - Create local authentication credentials: **gcloud auth application-default login**
+  - 
   - Once the APIs are enabled, assign below roles to the **Compute Engine Default service Account: Cloud Storage Admin, Dataflow Admin, DataFlow Worker**
   
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f9ec1676-4f5b-4aaa-b5f3-49cf4add7d5a)
