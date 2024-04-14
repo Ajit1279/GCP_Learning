@@ -1,4 +1,6 @@
 - **Reference:** https://cloud.google.com/dataflow/docs/overview
+- **All Dataflow code samples:** https://cloud.google.com/dataflow/docs/samples
+- **Dataflow Machine Learning:** https://cloud.google.com/dataflow/docs/machine-learning
 
 - **Basics:**
   - Built on open source [Apache Beam](https://beam.apache.org/) project.
