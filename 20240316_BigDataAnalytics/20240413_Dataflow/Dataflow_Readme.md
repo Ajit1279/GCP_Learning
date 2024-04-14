@@ -50,13 +50,5 @@
   -  Applying ML in real time to streaming data.
   -  Processing sensor data or log data at scale.
 
-- [Step-by-step-instructions to Create Dataflow pipeline using Python](https://cloud.google.com/dataflow/docs/quickstarts/create-pipeline-python):
-  - Learn how to use the Apache Beam SDK for Python to build a program that defines a pipeline.
-  - Then, you run the pipeline by using a direct local runner or a cloud-based runner such as Dataflow. 
-- sd
-- s
-- ds
-- ds
-- ds
-- ds
- 
+- **POCs**
+  - [Create Dataflow pipeline using Python](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/20240413_Dataflow/20240414_DFPipeline_Python) 
