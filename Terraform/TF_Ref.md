@@ -1,2 +1,3 @@
 - Terraform Samples: https://cloud.google.com/docs/terraform/samples
-- Terraform Blueprints: https://cloud.google.com/docs/terraform/blueprints/terraform-blueprints 
+- Terraform Blueprints: https://cloud.google.com/docs/terraform/blueprints/terraform-blueprints
+- [Create secure CI/CD pipeline](https://github.com/GoogleCloudPlatform/terraform-google-secure-cicd)
