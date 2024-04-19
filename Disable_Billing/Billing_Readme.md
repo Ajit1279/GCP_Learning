@@ -1,3 +1,5 @@
+- Reference: https://cloud.google.com/billing/docs/how-to/notify#functions_billing_limit-python
+
 - [Demystify the real cost of Cloud Shell to Google Cloud](https://faun.pub/demystify-the-real-cost-of-cloud-shell-to-google-cloud-1946e54175ce)
   - Cloud Shell is a ready-to-go, online development, and operations environment.
   - How much does Cloud Shell cost? 
