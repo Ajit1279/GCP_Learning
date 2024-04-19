@@ -13,4 +13,5 @@
 
 - Google Cloud Documentation: https://cloud.google.com/docs
 - Tutorials: https://cloud.google.com/docs/tutorials
-- Architecture Center: https://cloud.google.com/architecture 
+- Architecture Center: https://cloud.google.com/architecture
+- Python Code Samples: https://github.com/GoogleCloudPlatform/python-docs-samples/tree/main
