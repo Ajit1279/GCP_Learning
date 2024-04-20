@@ -10,8 +10,8 @@
 
 
 - **Platforms:**
-  - **[Bigquery](https://cloud.google.com/bigquery/docs)**
-     - [Loading data into BigQuery](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/20240325_BQ_DataLoad)
+  - **[Bigquery](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery)**
+     - [Loading data into BigQuery](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240325_BQ_DataLoad)
   - **[BigLake in BigQuery](https://cloud.google.com/bigquery/docs/biglake-intro)**
   - **[BigQuery Storage](https://cloud.google.com/bigquery/docs/storage_overview)** 
 
