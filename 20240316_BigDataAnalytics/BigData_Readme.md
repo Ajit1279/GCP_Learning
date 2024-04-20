@@ -1,5 +1,5 @@
 - **Reference Docs**: https://cloud.google.com/docs/data
-- **Architucture References:** https://cloud.google.com/architecture/big-data-analytics
+- **Architecture References:** https://cloud.google.com/architecture/big-data-analytics
 
 - **Quickstarts:**
   - [Getting started with Python on Compute Engine](https://github.com/Ajit1279/GCP_Learning/tree/main/Compute_VMs/20240407_Python) 
