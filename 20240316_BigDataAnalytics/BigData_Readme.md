@@ -10,20 +10,25 @@
 
 
 - **Platforms:**
-  - **[Bigquery]([url](https://cloud.google.com/bigquery/docs))**
+  - **[Bigquery](https://cloud.google.com/bigquery/docs)**
      - [Loading data into BigQuery](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/20240325_BQ_DataLoad)
   - **[BigLake in BigQuery](https://cloud.google.com/bigquery/docs/biglake-intro)**
   - **[BigQuery Storage](https://cloud.google.com/bigquery/docs/storage_overview)** 
 
 - **Data Ingestion**
-  -  
+  - [BigQuery Data Transfer Service](https://cloud.google.com/bigquery/docs/dts-introduction)
+  - [Dataproc](https://cloud.google.com/dataproc/docs)
+    - [Dataproc Metastore](https://cloud.google.com/dataproc-metastore/docs)
+    - [Dataproc Serverless](https://cloud.google.com/dataproc-serverless/docs) 
+  - [DataStream](https://cloud.google.com/datastream/docs)
+  - [Data Fusion](https://cloud.google.com/data-fusion/docs) 
 
    
 - **Data Analysis**
-  - Analytics Hub
-  - BigQuery Analytics
-  - BigQuery ML
-  - Looker / Looker Studio
+  - [Analytics Hub](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
+  - [BigQuery Analytics](https://cloud.google.com/bigquery/docs/query-overview)
+  - [BigQuery ML](https://cloud.google.com/bigquery/docs/bqml-introduction)
+  - [Looker](https://cloud.google.com/looker/docs) / [Looker Studio](https://support.google.com/looker-studio#topic=6267740)
    
 - **Data Processing**
   - **[Dataflow](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/20240413_Dataflow)**
@@ -38,4 +43,3 @@
 - **Data Governance**
   - [Data Catlog](https://cloud.google.com/data-catalog/docs)
   - [Dataplex](https://cloud.google.com/dataplex/docs)    
-
