@@ -27,6 +27,7 @@
     - [Deletion](https://cloud.google.com/bigquery/docs/storage_overview#deletion): When you delete a table, the data persists for at least the duration of your time travel window.  
 
   - **[Analytics](https://cloud.google.com/bigquery/docs/query-overview)**
+    - 
     - Adhoc analysis using [GoogleSQL](https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql)
     - [Geospatial analysis](https://cloud.google.com/bigquery/docs/geospatial-intro): Analyze and visualize geospatial data.
     - Machine Learning: Create and Execute Machine Learning models using [BigQuery ML](https://cloud.google.com/bigquery/docs/bqml-introduction)
