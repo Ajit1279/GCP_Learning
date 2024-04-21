@@ -34,7 +34,7 @@
   - **[Dataflow](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240413_Dataflow)**
     - [Create Dataflow pipeline using Python](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240413_Dataflow/240414_DFPipeline_Python)  
 
-  - **[Dataproc](https://cloud.google.com/dataproc/docs)**
+  - **[Dataproc](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240421_Dataproc)**
   
 - **Data Orchestration**
   - **[Cloud Composer](https://cloud.google.com/composer/docs)**
