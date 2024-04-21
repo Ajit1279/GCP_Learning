@@ -41,9 +41,8 @@
     - [Query Optimization:](https://cloud.google.com/bigquery/docs/query-overview#query_optimization) The [query plan](https://cloud.google.com/bigquery/docs/query-insights) includes details about query stages and steps. These details can help you identify ways to improve [query performance](https://cloud.google.com/bigquery/docs/best-practices-performance-overview).
     - [Query Monitoring:](https://cloud.google.com/bigquery/docs/monitoring): BigQuery provides various metrics, logs, and metadata views to help you monitor your BigQuery usage
     - Query Pricing: Offers [On-demand pricing](https://cloud.google.com/bigquery/pricing#on_demand_pricing), [Capacity-based pricing](https://cloud.google.com/bigquery/pricing#capacity_compute_analysis_pricing)        
-
     - It lets you query data in various [data sources](https://cloud.google.com/bigquery/docs/query-overview#data_sources) like: BigQuery, External Data, Multi-cloud data, Public Datasets
-      -  
+    -  
 
   - Administration 
 
