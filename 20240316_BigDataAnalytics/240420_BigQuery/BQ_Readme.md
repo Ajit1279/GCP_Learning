@@ -1,12 +1,14 @@
 - References: https://cloud.google.com/bigquery/docs
 
 - Basics:
+  - 
   - Google Cloud's fully managed, petabyte-scale, and cost-effective analytics data warehouse
   - Lets you **run analytics** over **vast amounts of data** in **near real time**.
   - Key features of BigQuery's architecture is the **separation of storage and compute**, thus allowing them **to scale independently** 
 
 - How does BigQuery Work?
   - **[Storage](https://cloud.google.com/bigquery/docs/storage_overview)**
+    -  
     - Optimized for running analytic queries over large datasets.
     - Stores table data in **columnar format (each column separately)**.
     - Supports **high-throughput streaming ingestion and reads**
@@ -45,7 +47,8 @@
     - It lets you query data in various [data sources](https://cloud.google.com/bigquery/docs/query-overview#data_sources) like: BigQuery, External Data, Multi-cloud data, Public Datasets
     -  
 
-  - Administration 
+  - Administration
+    - 
 
   - When you run a query:
     - **Query Engine** distributes the work in parallel across multiple workers
