@@ -56,4 +56,4 @@
 
 
 - Hands-on:
-  - Create and use tables 
+  - [Query a public dataset with a bq tool](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240425_PublicDataset) 
