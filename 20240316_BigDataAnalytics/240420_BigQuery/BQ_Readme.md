@@ -1,14 +1,12 @@
 - References: https://cloud.google.com/bigquery/docs
 
 - Basics:
-  - 
   - Google Cloud's fully managed, petabyte-scale, and cost-effective analytics data warehouse
   - Lets you **run analytics** over **vast amounts of data** in **near real time**.
   - Key features of BigQuery's architecture is the **separation of storage and compute**, thus allowing them **to scale independently** 
 
 - How does BigQuery Work?
   - **[Storage](https://cloud.google.com/bigquery/docs/storage_overview)**
-    -  
     - Optimized for running analytic queries over large datasets.
     - Stores table data in **columnar format (each column separately)**.
     - Supports **high-throughput streaming ingestion and reads**
@@ -29,7 +27,6 @@
     - [Deletion](https://cloud.google.com/bigquery/docs/storage_overview#deletion): When you delete a table, the data persists for at least the duration of your time travel window.  
 
   - **[Analytics](https://cloud.google.com/bigquery/docs/query-overview)**
-    - 
     - Adhoc analysis using [GoogleSQL](https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql)
     - [Geospatial analysis](https://cloud.google.com/bigquery/docs/geospatial-intro): Analyze and visualize geospatial data.
     - Machine Learning: Create and Execute Machine Learning models using [BigQuery ML](https://cloud.google.com/bigquery/docs/bqml-introduction)
@@ -48,7 +45,9 @@
     -  
 
   - Administration
-    - 
+    - [Manage BigQuery Resources](https://cloud.google.com/bigquery/docs/resource-hierarchy) (organizations, folders, projects, datasets, and tables)
+    - Manage Datasets: Datasets are containers for tables. Create tables in a dataset, and then manage them as a group. For example, Configure a dataset's default table expiration time, which applies to all tables in the dataset.
+    -  
 
   - When you run a query:
     - **Query Engine** distributes the work in parallel across multiple workers
@@ -57,6 +56,4 @@
 
 
 - Hands-on:
-  -     
-
-- Create and use tables 
+  - Create and use tables 
