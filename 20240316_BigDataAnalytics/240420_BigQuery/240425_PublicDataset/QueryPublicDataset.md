@@ -22,7 +22,7 @@
  
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5dc02834-c2be-405f-9085-5e57fbac4e3b)
 
-    -  Many other similar queries can be run e.g. 
+  -  Many other similar queries can be run e.g. 
       SELECT
         geo_id,
         SUM(income_30000_34999) AS total
