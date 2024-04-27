@@ -13,6 +13,24 @@
 
     - Run a Query:
       bq query --use_legacy_sql=false \
-      SELECT * FROM 'bigdata0324:bigquery-public-data.census_bureau_acs'
+      'SELECT * FROM `bigquery-public-data.census_bureau_acs.blockgroup_2010_5yr` LIMIT 1000'
 
-    - 
+    - The data is not in readable format.Rather it's suggested to use Console to run the query 
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2eb49ebd-cead-4aa7-aceb-f2713b378f8a)
+
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/44f9f4c9-739a-41fb-a959-819629e7971a)
+ 
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5dc02834-c2be-405f-9085-5e57fbac4e3b)
+
+    -  Many other similar queries can be run e.g. 
+      SELECT
+        geo_id,
+        SUM(income_30000_34999) AS total
+      FROM
+        `bigquery-public-data.census_bureau_acs.cbsa_2011_1yr`
+      GROUP BY
+        geo_id
+      ORDER BY
+        total DESC
+      LIMIT
+        100;
