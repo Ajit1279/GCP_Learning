@@ -4,7 +4,7 @@ from google.cloud import bigquery
 client = bigquery.Client()
 
 # TODO(developer): Set dataset_id to the ID of the dataset to create.
-# dataset_id = "{}.mydataset".format(client.project)
+dataset_id = "{}.mydataset".format(client.project)
 
 # Construct a full Dataset object to send to the API.
 dataset = bigquery.Dataset(dataset_id)
