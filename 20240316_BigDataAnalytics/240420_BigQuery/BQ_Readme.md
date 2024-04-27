@@ -56,4 +56,5 @@
 
 
 - Hands-on:
-  - [Query a public dataset with a bq tool](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240425_PublicDataset) 
+  - [Query a public dataset with a bq tool](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240425_PublicDataset)
+  - [Create BigQuery Resources (Datasets, tables etc.)](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240427_CreateBQResources)
