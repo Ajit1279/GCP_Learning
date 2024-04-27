@@ -20,8 +20,6 @@
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/44f9f4c9-739a-41fb-a959-819629e7971a)
  
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5dc02834-c2be-405f-9085-5e57fbac4e3b)
-
   -  Many other similar queries can be run e.g. 
       SELECT
         geo_id,
@@ -34,3 +32,5 @@
         total DESC
       LIMIT
         100;
+
+![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5dc02834-c2be-405f-9085-5e57fbac4e3b)
