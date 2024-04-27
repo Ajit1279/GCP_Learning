@@ -35,10 +35,10 @@
  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5563d00f-f79f-429e-91b0-7af2ddee8aec)
      
       - You can also list the datasets using the command: bq ls
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9bc6104a-162f-439b-968e-f579392f87ea)
- 
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e3755acd-00e4-442c-98f3-130d96d75757)
- 
+ ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9bc6104a-162f-439b-968e-f579392f87ea)
+   
+ ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e3755acd-00e4-442c-98f3-130d96d75757)
+   
       - Go to Console >> Explorer. It displays the empty dataset
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bbd6daab-0604-45e3-a85c-3787078abe67)
 
