@@ -38,7 +38,7 @@
  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9bc6104a-162f-439b-968e-f579392f87ea)
    
  ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/e3755acd-00e4-442c-98f3-130d96d75757)
-   
+      
       - Go to Console >> Explorer. It displays the empty dataset
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/bbd6daab-0604-45e3-a85c-3787078abe67)
 
@@ -46,3 +46,4 @@
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9da57998-ec1b-44fc-836a-539415a50a1d)
 
       - Now let's create tables
+ 
