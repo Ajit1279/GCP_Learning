@@ -45,5 +45,28 @@
       - Update dataset properties: One can also update dataset properties like access controls, billing model, expiration time, description, labels etc.
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9da57998-ec1b-44fc-836a-539415a50a1d)
 
-      - Now let's create tables
- 
+    - Now let's [create tables](https://cloud.google.com/bigquery/docs/tables)
+      - One can create Partitioned Tables or the [Clustered Tables](https://cloud.google.com/bigquery/docs/clustered-tables)
+
+      - For this hands-on, let's create [Partitioned table](https://cloud.google.com/bigquery/docs/partitioned-tables)
+
+      - It displays the message:
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/81f359af-4595-49c7-b46d-c1cb59dd1f37)
+
+      - Verify in Console
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/aaaf5254-80f8-46a8-ab08-81399f5f73a9)
+
+    - One can [load data in table using various methods](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240325_BQ_DataLoad)
+
+    - You can also create views
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fe38d838-aefe-40b6-a8ea-cf5f54caf0e3)
+
+      - In Console
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4ac2fb09-f1ee-4f9b-9311-d1fbae326dbd)
+     
+    - [Authorised and Materialised Views](https://cloud.google.com/bigquery/docs/authorized-views) 
+      - **Share query results with particular users and groups without giving them access to the underlying source data**.
+
+    - [Create Routines](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240427_CreateRoutines)
+
+    - [Create Connections](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240427_Connections)  
