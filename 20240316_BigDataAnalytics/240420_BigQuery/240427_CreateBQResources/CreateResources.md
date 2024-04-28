@@ -18,7 +18,7 @@
       - [Using the Google Cloud console](https://cloud.google.com/bigquery/docs/datasets#console)
       - [Using a SQL query.](https://cloud.google.com/bigquery/docs/datasets#sql)
       - [Using the bq mk command in the bq command-line tool.](https://cloud.google.com/bigquery/docs/datasets#bq)
-      - [Terraform](https://cloud.google.com/bigquery/docs/datasets#terraform)
+      - [Terraform](https://github.com/Ajit1279/GCP_Learning/tree/main/Terraform/BasicTF/240428_BigQuery)
       - [Calling the datasets.insert API method.](https://cloud.google.com/bigquery/docs/datasets#api)
       - Using the client libraries e.g. [Python](https://cloud.google.com/bigquery/docs/datasets#python).
       - [Copying an existing dataset.](https://cloud.google.com/bigquery/docs/managing-datasets#copy-datasets)
