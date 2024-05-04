@@ -17,7 +17,11 @@
       - **Efficient:** Uses an efficient encoding format that is optimized for analytic workloads.
     - Majority of the data that you store in BigQuery is [table data](https://cloud.google.com/bigquery/docs/storage_overview#table_data):
       - [Standard tables](https://cloud.google.com/bigquery/docs/tables-intro#standard_tables):
+        - Contain structured data and are stored in BigQuery storage in a columnar format.  
       - [Table Clones](https://cloud.google.com/bigquery/docs/table-clones-intro)
+        - Lightweight, writable copy of another table (called the base table).
+        - Only charged for storage of data in the table clone
+        -   
       - [Table Snapshots](https://cloud.google.com/bigquery/docs/table-snapshots-intro)
       - [Materialized Views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
       - [Temporary tables/ cached query results](https://cloud.google.com/bigquery/docs/cached-results)
