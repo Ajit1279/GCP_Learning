@@ -19,11 +19,24 @@
       - [Standard tables](https://cloud.google.com/bigquery/docs/tables-intro#standard_tables):
         - Contain structured data and are stored in BigQuery storage in a columnar format.  
       - [Table Clones](https://cloud.google.com/bigquery/docs/table-clones-intro)
-        - Lightweight, writable copy of another table (called the base table).
-        - Only charged for storage of data in the table clone
-        -   
+        - **Lightweight, writable copy** of another table (called the base table).
+        - It is **independent of the base table** (Any changes made to the base table or table clone aren't reflected in the other.)
+        - Only **charged for storage of data** in the table clone
+        - Use Cases:
+          - Creating **copies** of production tables **for development and testing**
+          - Creating **sandboxes** for users for **own analytics and data manipulations**
+        - [Create Clone Table](https://cloud.google.com/bigquery/docs/table-clones-create#bq) 
       - [Table Snapshots](https://cloud.google.com/bigquery/docs/table-snapshots-intro)
+        - **Read-only copy of a table (base table)** at a particular time (upto past 7 days)
+        - **Requires less storage** (only stores bytes that are different from base table)
+        - [Create Table snapshots](https://cloud.google.com/bigquery/docs/table-snapshots-create)
       - [Materialized Views](https://cloud.google.com/bigquery/docs/materialized-views-intro)
+        - **Cache the results of a query for increased performance and efficiency**.
+        - **Use Cases:** Predictable and repeated queries e.g. pre-aggregated data, pre-filter data, pre-join data, Recluster data. 
+        - Advantages:
+          - **Zero maintenance** (Changes automatically added to the views)
+          - **Return Fresh data** (From view or from base table if view invalidated)
+          - **[Smart Tunning](https://cloud.google.com/bigquery/docs/materialized-views-use#smart_tuning)**: Route to view instead of base table for better efficiency. 
       - [Temporary tables/ cached query results](https://cloud.google.com/bigquery/docs/cached-results)
       - [External Tables](https://cloud.google.com/bigquery/docs/external-tables)
     - [Metadata](https://cloud.google.com/bigquery/docs/storage_overview#metadata): Holds metadata about your BigQuery resources, not chareable.
