@@ -36,7 +36,7 @@
         - Advantages:
           - **Zero maintenance** (Changes automatically added to the views)
           - **Return Fresh data** (From view or from base table if view invalidated)
-          - **[Smart Tunning](https://cloud.google.com/bigquery/docs/materialized-views-use#smart_tuning)**: Route to view instead of base table for better efficiency. 
+          - **[Smart Tuning](https://cloud.google.com/bigquery/docs/materialized-views-use#smart_tuning)**: Route to view instead of base table for better efficiency. 
       - [Temporary tables/ cached query results](https://cloud.google.com/bigquery/docs/cached-results)
       - [External Tables](https://cloud.google.com/bigquery/docs/external-tables)
     - [Metadata](https://cloud.google.com/bigquery/docs/storage_overview#metadata): Holds metadata about your BigQuery resources, not chareable.
