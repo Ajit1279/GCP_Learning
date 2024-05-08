@@ -16,6 +16,7 @@
       - **Encrypted**: automatically encrypts all data before it is written to disk (uing your or google managed encryption key).
       - **Efficient:** Uses an efficient encoding format that is optimized for analytic workloads.
     - Majority of the data that you store in BigQuery is [table data](https://cloud.google.com/bigquery/docs/storage_overview#table_data):
+      - BigQuery writes all query results to a table, either explicitly identified by user or temporary table. 
       - [Standard tables](https://cloud.google.com/bigquery/docs/tables-intro#standard_tables):
         - Contain structured data and are stored in BigQuery storage in a columnar format.  
       - [Table Clones](https://cloud.google.com/bigquery/docs/table-clones-intro)
@@ -38,7 +39,23 @@
           - **Return Fresh data** (From view or from base table if view invalidated)
           - **[Smart Tuning](https://cloud.google.com/bigquery/docs/materialized-views-use#smart_tuning)**: Route to view instead of base table for better efficiency. 
       - [Temporary tables/ cached query results](https://cloud.google.com/bigquery/docs/cached-results)
-      - [External Tables](https://cloud.google.com/bigquery/docs/external-tables)
+        - All query results, (interactive or batch) are cached in temporary tables for approximately 24 hours.
+        - except if:
+          - Destination table is specified
+          - Referenced tables or logical views have changed after results cached
+          - Referenced table received streaming inserts
+          - If the query uses non-deterministic functions; for example, date and time functions
+          - If the query runs against an external data source.
+        - If you run the exact same query again, BigQuery returns the results from the cached table, if it exists.
+        - Maintained per-user per-project
+        - No storage costs 
+      - [External Tables](https://cloud.google.com/bigquery/docs/external-data-sources#external_tables)
+        - Similar to standard BigQuery tables, however their data resides in an external source.
+        - Like standard bigquery table, you can view the table's properties, set access controls and so forth.
+        - Three kinds of external tables:
+          - [BigLake tables](https://cloud.google.com/bigquery/docs/biglake-intro):
+          - [Object tables](https://cloud.google.com/bigquery/docs/object-table-introduction): Read-only tables over unstructured data objects that reside in Cloud Storage.
+          - Non-BigLake external tables: Query structured data in external data stores  
     - [Metadata](https://cloud.google.com/bigquery/docs/storage_overview#metadata): Holds metadata about your BigQuery resources, not chareable.
     - [Read data from BigQuery storage using](https://cloud.google.com/bigquery/docs/storage_overview#reading_data): BigQuery API, BigQuery API Storage, Export, Copy
     - [Deletion](https://cloud.google.com/bigquery/docs/storage_overview#deletion): When you delete a table, the data persists for at least the duration of your time travel window.  
@@ -75,3 +92,5 @@
 - Hands-on:
   - [Query a public dataset with a bq tool](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240425_PublicDataset)
   - [Create BigQuery Resources (Datasets, tables etc.)](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240427_CreateBQResources)
+  - [BigLake: Qwik Start](https://www.cloudskillsboost.google/focuses/37985?parent=catalog)
+  - 
