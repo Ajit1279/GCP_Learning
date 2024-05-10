@@ -69,7 +69,7 @@
       - Actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
       - [Types of Queries:](https://cloud.google.com/bigquery/docs/query-overview#types_of_queries)
         - [Interactive Query Jobs:](https://cloud.google.com/bigquery/docs/running-queries#queries)
-        - [Batch Query Jobs:](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240510_BQ_BatchQuery)
+        - [Batch Query Jobs:](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240510_BQ_BatchQuery) Jobs that BigQuery waits to run until idle compute resources are available.
     - Several [processes](https://cloud.google.com/bigquery/docs/query-overview#query_processing) occur when bigQuery runs a query: Execution Tree, Shuffle Tier, Query Plan, Query Monitoring & Dynamic Planning, Query Results
     - [Query Concurrancy and performance](https://cloud.google.com/bigquery/docs/query-overview#query_concurrency_and_performance): BigQuery runs many queries in parallel. As queries start and finish, BigQuery redistributes resources fairly between new and running queries.
     - [Query Optimization:](https://cloud.google.com/bigquery/docs/query-overview#query_optimization) The [query plan](https://cloud.google.com/bigquery/docs/query-insights) includes details about query stages and steps. These details can help you identify ways to improve [query performance](https://cloud.google.com/bigquery/docs/best-practices-performance-overview).
