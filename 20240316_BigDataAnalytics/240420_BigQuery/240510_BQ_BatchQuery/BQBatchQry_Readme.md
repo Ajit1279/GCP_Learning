@@ -1,2 +1,0 @@
-- References: https://cloud.google.com/bigquery/docs/running-queries#batch
-- 
