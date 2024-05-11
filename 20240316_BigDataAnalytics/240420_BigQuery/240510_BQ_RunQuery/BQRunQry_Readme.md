@@ -101,6 +101,7 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4112c695-7e23-45df-b856-5bbae25a932e)
 
   - It displays the details:
+
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/227556c3-86b5-468d-9d3d-5aeb7aae47fb)
 
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1ebe0385-6037-4611-8252-994f18c5576b)
