@@ -75,3 +75,34 @@
   - It displays the results as shown below:
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4f7fc39d-a3d1-4d91-98af-3a8aaae2853b)
    
+- **Run a Batch query (bq)**
+  - Run the below query in cloud shell
+    bq query \
+    --batch \
+    --use_legacy_sql=false \
+    'SELECT name, gender, SUM(number) AS total FROM bigquery-public-data.usa_names.usa_1910_2013 GROUP BY name, gender ORDER BY total DESC LIMIT 10;'
+    
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/384dbf99-ff5b-48ad-a0fc-158578917df7)
+
+  - It displays:
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/842459d8-a867-44f1-92bf-76751f17c329)
+
+  - Go to BigQuery Studio >> Job History >> click on the job Id >> Temporary Table >> Preview
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b77cca57-f3b4-451f-aa06-c0c7a23a9e0a)
+
+
+- **Run a batch query (Python)**
+  - Create [main.py](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240510_BQ_RunQuery/Batch_main.py) and run using command python3 main.py
+  - It displays below message:
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/40af0444-42b5-414e-b759-de39b2ff7dc7)
+
+  -  Go to BigQuery Studio >> Job History and click on the job Id:
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4112c695-7e23-45df-b856-5bbae25a932e)
+
+  - It displays the details:
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/227556c3-86b5-468d-9d3d-5aeb7aae47fb)
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1ebe0385-6037-4611-8252-994f18c5576b)
+
+  - The results are displayed in Preview
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/45be4c4f-a096-4f8d-aa40-cc71f400122c)
