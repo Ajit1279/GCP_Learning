@@ -69,4 +69,9 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4880670a-c373-46d6-8ce1-449b9af8bea7)
     
 
-- **Run an interactive query (Python)** 
+- **Run an interactive query (Python)**
+  - Create [main.py](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240510_BQ_RunQuery/interactive_main.py) and run it using command python3 main.py
+
+  - It displays the results as shown below:
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4f7fc39d-a3d1-4d91-98af-3a8aaae2853b)
+   
