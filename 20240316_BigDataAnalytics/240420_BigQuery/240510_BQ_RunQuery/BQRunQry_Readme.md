@@ -88,7 +88,7 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/842459d8-a867-44f1-92bf-76751f17c329)
 
   - Go to BigQuery Studio >> Job History >> click on the job Id >> Temporary Table >> Preview
-    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b77cca57-f3b4-451f-aa06-c0c7a23a9e0a)
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/10b56aae-ba29-4cdb-a956-3a31dbc174d9)
 
 
 - **Run a batch query (Python)**
