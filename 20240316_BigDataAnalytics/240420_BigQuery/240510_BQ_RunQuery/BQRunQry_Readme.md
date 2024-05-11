@@ -36,7 +36,7 @@
   - Rerun by changing the location to US:
     bq query \
     --location=US \
-    --destination_table=mybqproj0427.testdata_01.query_result \
+    --destination_table=mybqproj0427.testdata.query_result \
     --use_legacy_sql=false \
     'SELECT name, gender, SUM(number) AS total 
      FROM       
@@ -47,9 +47,26 @@
        total DESC
      LIMIT 10;'
 
-  - It gave an error: Invalid dataset ID "mybqproj0427.testdata_01". Dataset IDs must be alphanumeric (plus underscores) and must be at most 1024 characters long. 
+  - It gave an error: Invalid dataset ID "mybqproj0427.testdata". Dataset IDs must be alphanumeric (plus underscores) and must be at most 1024 characters long. 
 
-  - dsd
+  - To resolve the error, create a dataset using bq command
+    bq --location=US mk \
+    --dataset \
+    mybqproj0427:testdata
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/71ec8c44-384a-4d4e-8a2e-4051e18130f9)
 
-  - sd  
+  - Then run the query
+    bq query \
+    --location=US \
+    --destination_table=mybqproj0427:testdata.qresult \
+    --use_legacy_sql=false \
+    'SELECT name, gender, SUM(number) AS total FROM bigquery-public-data.usa_names.usa_1910_2013 GROUP BY name, gender ORDER BY total DESC LIMIT 10;'
+    
+  - It runs successfully.
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b6bf28a9-3bc6-4e7c-af64-0d3e079debec)
+ 
+  - Also verify in the Console
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4880670a-c373-46d6-8ce1-449b9af8bea7)
+    
+
 - **Run an interactive query (Python)** 
