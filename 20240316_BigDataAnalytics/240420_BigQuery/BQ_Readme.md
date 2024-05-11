@@ -65,7 +65,7 @@
     - [Geospatial analysis](https://cloud.google.com/bigquery/docs/geospatial-intro): Analyze and visualize geospatial data.
     - Machine Learning: Create and Execute Machine Learning models using [BigQuery ML](https://cloud.google.com/bigquery/docs/bqml-introduction)
     - Business Intelligence: Build rich, interactive dashboards and reports using [BigQuery BI Engine](https://cloud.google.com/bigquery/docs/bi-engine-intro)
-    - [Query Jobs:](https://cloud.google.com/bigquery/docs/query-overview#query_jobs)
+    - [Query Jobs:](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240510_BQ_RunQuery)
       - Actions that BigQuery runs on your behalf to load data, export data, query data, or copy data.
       - [Types of Queries:](https://cloud.google.com/bigquery/docs/query-overview#types_of_queries)
         - [Interactive Query Jobs:](https://cloud.google.com/bigquery/docs/running-queries#queries)
