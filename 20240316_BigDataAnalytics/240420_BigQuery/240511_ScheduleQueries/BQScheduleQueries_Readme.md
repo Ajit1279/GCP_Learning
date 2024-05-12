@@ -25,10 +25,10 @@
 
   - Create a [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240511_ScheduleQueries/Python_ScheduleQuery.py) 
 
-- Run it using command python3 bqschedule.py. It gave an error:
+  - Run it using command python3 bqschedule.py. It gave an error:
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0995e856-8a76-41f9-b808-53a8d1ddef84)
 
-- So ran the command: python -m pip install --upgrade pip but the error still persists
+  - So ran the command: python -m pip install --upgrade pip but the error still persists
 - 
 - sd
 - sd
