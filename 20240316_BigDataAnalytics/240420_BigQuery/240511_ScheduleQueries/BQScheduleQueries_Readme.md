@@ -6,9 +6,12 @@
   - The **destination dataset can be specified separately**, but it must be in the **same project as the scheduled query**.
   - The scheduled time for the query is **converted** from your **local time to UTC** (Not affected by daylight saving time).
   - The **scheduled query fails if the table schema changes** between runs.
-  - The destination tables can be partitioned, non-partitioned, clustered. 
-  - 
-- sd
+  - The destination tables can be partitioned, non-partitioned, [clustered](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#creating_a_clustered_table_from_the_result_of_a_query) (new tables only).
+  - You can set-up [queries with service account](https://cloud.google.com/bigquery/docs/scheduling-queries#set_up_scheduled_queries_with_a_service_account). 
+  
+- [Set-up scheduled queries using Python](https://cloud.google.com/bigquery/docs/scheduling-queries#python)
+  - Create a Service Account
+  - Create a [Python program](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240511_ScheduleQueries/Python_ScheduleQuery.py) 
 - sd
 - sd
 - sd
