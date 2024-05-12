@@ -1,1 +1,17 @@
 - Reference: https://cloud.google.com/bigquery/docs/scheduling-queries
+- Basics:
+  - To run queries on recurring basis
+  - Queries must be written in [GoogleSQL](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax) and can include [DDL](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language) and [DML](https://cloud.google.com/bigquery/docs/data-manipulation-language) statements.
+  - Queries **can reference tables from different projects and different datasets**.
+  - The **destination dataset can be specified separately**, but it must be in the **same project as the scheduled query**.
+  - The scheduled time for the query is **converted** from your **local time to UTC** (Not affected by daylight saving time).
+  - The **scheduled query fails if the table schema changes** between runs.
+  - The destination tables can be partitioned, non-partitioned, clustered. 
+  - 
+- sd
+- sd
+- sd
+- sd
+- sd
+- sd
+- sd
