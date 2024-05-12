@@ -4,13 +4,13 @@ transfer_client = bigquery_datatransfer.DataTransferServiceClient()
 
 # The project where the query job runs is the same as the project
 # containing the destination dataset.
-project_id = "your-project-id"
-dataset_id = "your_dataset_id"
+project_id = "mybqproj0427"
+dataset_id = "testdata"
 
 # This service account will be used to execute the scheduled queries. Omit
 # this request parameter to run the query as the user with the credentials
 # associated with this client.
-service_account_name = "abcdef-test-sa@abcdef-test.iam.gserviceaccount.com"
+service_account_name = "bqsa-123@mybqproj0427.iam.gserviceaccount.com"
 
 # Use standard SQL syntax for the query.
 query_string = """
