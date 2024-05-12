@@ -45,3 +45,9 @@ transfer_config = transfer_client.create_transfer_config(
 )
 
 print("Created scheduled query '{}'".format(transfer_config.name))
+
+# View scheduled query status
+configs = transfer_client.list_transfer_configs(parent=parent)
+print("Got the following configs:")
+for config in configs:
+    print(f"\tID: {config.name}, Schedule: {config.schedule}")
