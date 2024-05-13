@@ -59,6 +59,8 @@
   - If you click on the link, it displays that access was denied on the table / table does not exist
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2b3caca1-1cfa-4c77-a68e-dc06f648630b)
 
+  - 
+
     
 - sd
 - sd
