@@ -59,8 +59,29 @@
   - If you click on the link, it displays that access was denied on the table / table does not exist
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2b3caca1-1cfa-4c77-a68e-dc06f648630b)
 
-  - 
+  - To resolve the issue copy the service account name: bqsa-123@mybqproj0427.iam.gserviceaccount.com
 
+  - Referring to [documentation](https://cloud.google.com/bigquery/docs/control-access-to-resources-iam), go to BigQuery Pane >> Project Name >> Right Click on Dataset Name >> Share >> Manage Permissions >> Add permissions
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7ce32b49-de2a-4a20-a2cf-ad0c470145fe)
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b786019e-b263-4985-99c1-6a6005b739aa)
+
+  - Add the service account name in the "Add prinicipals" field and then assign the role: BigQuery User
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/3b2e7621-d927-4f04-b262-7238a9663745)
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a7e939d2-b560-43f1-9c70-b97da603cf32)
+
+  - Now let's run the python program again to check if it works!
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/1fab60a6-b4ac-4841-a01b-e0e97bc2a331)
+
+  - This time it failed with error: User does not have bigquery.jobs.create permission
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/36e12210-d3bd-42af-aeb0-54d7f504b80b)
+
+  - bigquery.jobs.create is not available and referring to the [Bigquery documentation](https://cloud.google.com/bigquery/docs/access-control#bigquery.user), the bigquery.user role should have the required permission, but not working still.
+
+  - So applied BigQuery Admin Role (which is too broad permission and not correct), but it didn't work still. So this will need further investigation. 
+
+  - 
     
 - sd
 - sd
