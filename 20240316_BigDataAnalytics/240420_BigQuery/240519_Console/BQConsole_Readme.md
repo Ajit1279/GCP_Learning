@@ -1,7 +1,7 @@
 - Contains 3 sub groups: Analysis, Migration, Administration
 
 - Analysis:
-  - BigQuery Studio
+  - [BigQuery Studio](https://cloud.google.com/blog/products/data-analytics/announcing-bigquery-studio)
     - [Create and execute SQL Queries](https://cloud.google.com/bigquery/docs/running-queries)
     - [Create Python Notebook](https://cloud.google.com/bigquery/docs/create-notebooks)
     - Create [Data Canvas](https://cloud.google.com/bigquery/docs/data-canvas)
