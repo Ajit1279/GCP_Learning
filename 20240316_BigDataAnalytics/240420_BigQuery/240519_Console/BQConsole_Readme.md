@@ -18,12 +18,28 @@
   - [Partner Center](https://cloud.google.com/bigquery/docs/bigquery-ready-partners): Discover tools and services from partners and accelerate your workflow.  
 
 - Migration:
-  - Assessment
-  - SQL Translation 
+  - [Migration Assessment](https://cloud.google.com/bigquery/docs/migration-assessment)
+  - [SQL Translation](https://cloud.google.com/bigquery/docs/interactive-sql-translator#translate_a_query_into_standard_sql) 
 
 - Administration
-  - Monitoring
+  - [Monitoring](https://cloud.google.com/bigquery/docs/monitoring)
+    - [Resource Utilization](https://cloud.google.com/bigquery/docs/admin-resource-charts#view-resource-utilization)
+      - Monitor Analytics Hub Listings
+      - Monitor BI Engine
+      - Monitor data quality
+      - Monior Data Transfer Service
+      - Monitor Materialised views
+      - Monitor Reservations
+      - Dashboards, Charts, Alerts
+
+    - [Jobs Explorer](https://cloud.google.com/bigquery/docs/admin-resource-charts#view-jobs-explorer)
+ 
   - Capacity Management
+    - [Workload Management](https://cloud.google.com/bigquery/docs/reservations-intro#understand_workload_management)
+    - [Slot reservations](https://cloud.google.com/bigquery/docs/slots)
+    - [Slot commitments](https://cloud.google.com/bigquery/docs/reservations-commitments#purchase-slots)
+    - [Slot Estimator](https://cloud.google.com/bigquery/docs/slots#estimate-slots)
+   
   - BI Engine
   - Disaster Recovery
   - Policy Tags  
