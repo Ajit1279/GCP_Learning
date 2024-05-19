@@ -2,10 +2,10 @@
 
 - Analysis:
   - BigQuery Studio
-    - Create and execute SQL Queries
-    - Create Python Notebook
-    - Create Data Canvas
-    - Add your own data from Local File or Google Drive or Google Cloud Storage
+    - [Create and execute SQL Queries](https://cloud.google.com/bigquery/docs/running-queries)
+    - [Create Python Notebook](https://cloud.google.com/bigquery/docs/create-notebooks)
+    - Create [Data Canvas](https://cloud.google.com/bigquery/docs/data-canvas)
+    - Add your own data from [Local File](https://cloud.google.com/bigquery/docs/samples/bigquery-load-from-file) or [Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive) or Google Cloud Storage
     - View Job History
   
   - [Data Transfers](https://cloud.google.com/bigquery/docs/dts-introduction): Move data into BigQuery from a variety of sources. 
@@ -40,6 +40,9 @@
     - [Slot commitments](https://cloud.google.com/bigquery/docs/reservations-commitments#purchase-slots)
     - [Slot Estimator](https://cloud.google.com/bigquery/docs/slots#estimate-slots)
    
-  - BI Engine
-  - Disaster Recovery
-  - Policy Tags  
+  - [BI Engine](https://cloud.google.com/bigquery/docs/bi-engine-intro)
+    - [Create BI Engine Reservation](https://cloud.google.com/bigquery/docs/bi-engine-reserve-capacity#create_a_reservation) 
+
+  - [Disaster Recovery](https://cloud.google.com/bigquery/docs/managed-disaster-recovery#create-reservation)
+    
+  - [Policy Tags](https://cloud.google.com/bigquery/docs/managing-policy-tags-across-locations)  
