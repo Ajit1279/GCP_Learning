@@ -12,7 +12,7 @@
   - [Scheduled Queries:](https://cloud.google.com/bigquery/docs/scheduling-queries#console) 
   - [Analytics Hub](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
     - [Create Exchange](https://cloud.google.com/bigquery/docs/analytics-hub-manage-exchanges#create_a_data_exchange)
-    - Create Clean Room
+    - Create [Clean Room](https://cloud.google.com/blog/products/data-analytics/introducing-bigquery-data-clean-rooms)
     - [Search Listings](https://cloud.google.com/bigquery/docs/analytics-hub-view-subscribe-listings#view-listings) 
   - [Dataform](https://cloud.google.com/dataform/docs)
   - [Partner Center](https://cloud.google.com/bigquery/docs/bigquery-ready-partners): Discover tools and services from partners and accelerate your workflow.  
