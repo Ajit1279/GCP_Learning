@@ -6,7 +6,7 @@
     - [Create Python Notebook](https://cloud.google.com/bigquery/docs/create-notebooks)
     - Create [Data Canvas](https://cloud.google.com/bigquery/docs/data-canvas)
     - Add your own data from [Local File](https://cloud.google.com/bigquery/docs/samples/bigquery-load-from-file) or [Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive) or Google Cloud Storage
-    - View Job History
+    - [View Job History](https://cloud.google.com/bigquery/docs/managing-jobs#view_job_details_2)
   
   - [Data Transfers](https://cloud.google.com/bigquery/docs/dts-introduction): Move data into BigQuery from a variety of sources. 
   - [Scheduled Queries:](https://cloud.google.com/bigquery/docs/scheduling-queries#console) 
