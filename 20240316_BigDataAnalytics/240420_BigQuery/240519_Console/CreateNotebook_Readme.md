@@ -10,6 +10,7 @@
 
 - Steps
   - Set the default region for code assets. It can not be changed.
+   
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/144a173b-2df6-4b5a-b2ee-3f1f36363f21)
 
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b192c52d-5812-4c23-a602-cb6b4fa3776d)
