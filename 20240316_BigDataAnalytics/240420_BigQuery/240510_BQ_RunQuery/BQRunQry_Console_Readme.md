@@ -1,6 +1,7 @@
 - Refereces: https://cloud.google.com/bigquery/docs/running-queries#queries
 
 - Login to [BigQuery Studio](https://console.cloud.google.com/bigquery?project=mybqproj0427&ws=!1m0):
+  
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/979ff87f-69d2-4c17-a246-962d86b17f30)
 
 - Type the query in editor and click on "Run"
