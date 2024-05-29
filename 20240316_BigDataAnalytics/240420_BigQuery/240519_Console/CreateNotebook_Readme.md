@@ -32,4 +32,16 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c13c4d91-e433-44b7-8c9e-686e28ca2bd4)
 
     
-  -    
+  - Open OAuth Pop-up. Creating Run time may take few mins
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5352a93e-e60b-404e-ba72-c08c0913f234)
+
+  - Once connected it shows the message as shown below. The run time is active for 17 hours only.
+    
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/dbc70e74-2b3d-43c1-96f2-4ccc2ca8b190)
+    
+
+  - Now the commands in the cells can be executed successfully
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0c61bb55-0957-4ef1-add2-907b7a97e865)
+    
+  - Refer the [example notebook](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/Example_Notebook.ipynb) for more details. 
+  
