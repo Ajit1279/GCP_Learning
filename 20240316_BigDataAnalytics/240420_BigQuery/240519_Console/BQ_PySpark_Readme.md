@@ -11,6 +11,7 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f92c60cb-c798-4a21-b162-6f80698ee111)
 
   - Select Apache Spark in Connection Type
+  
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/40bc4756-007e-4695-9261-6be41f46e982)
 
   - Fill-up the remaining details and then click on "Create Connection"
