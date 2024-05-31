@@ -35,34 +35,11 @@
  
       ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/eee58f06-becd-4068-9465-3f9430cb26cf)
 
-    - Type the below code in the editor
+    - Type the [sample code](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQPySpark.py) provided in the **Google PySpark Documentation** in the editor
       
-      CREATE OR REPLACE PROCEDURE mybqproj0427.my_dataset.spark_proc()
-      WITH CONNECTION `projects/mybqproj0427/locations/us-central1/connections/Spark-BQ-Test-Connection`
-      OPTIONS(engine="SPARK", runtime_version="1.1")
-      LANGUAGE PYTHON AS R"""
-      from pyspark.sql import SparkSession
-
-      spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
-
-      # Load data from BigQuery.
-      words = spark.read.format("bigquery") \
-      .option("table", "bigquery-public-data:samples.shakespeare") \
-      .load()
-      words.createOrReplaceTempView("words")
-
-      # Perform word count.
-      word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
-      word_count.show()
-      word_count.printSchema()
-
-      # Saving the data to BigQuery
-      word_count.write.format("bigquery") \
-      .option("writeMethod", "direct") \
-      .save("wordcount_dataset.wordcount_output")
-      """
-
+  
     - There's a syntax error:
+      
       ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4c4a70c3-07bb-40de-85a6-b8005f6d1b86)
     
 
