@@ -1,7 +1,7 @@
-CREATE OR REPLACE PROCEDURE mybqproj0427.my_dataset.spark_proc()
-WITH CONNECTION `projects/mybqproj0427/locations/us-central1/connections/Spark-BQ-Test-Connection`
-OPTIONS(engine="SPARK", runtime_version="1.1")
-LANGUAGE PYTHON AS R"""
+CREATE OR REPLACE PROCEDURE
+	`_bqui_spark_mybqproj0427_us_central1.spark_proc`()
+WITH CONNECTION `mybqproj0427.us-central1.Spark-BQ-Test-Connection` OPTIONS (engine='SPARK', properties=[])
+	LANGUAGE PYTHON AS r"""
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
@@ -21,4 +21,4 @@ word_count.printSchema()
 word_count.write.format("bigquery") \
 .option("writeMethod", "direct") \
 .save("wordcount_dataset.wordcount_output")
-"""
+""";
