@@ -1,5 +1,5 @@
 CREATE OR REPLACE PROCEDURE
-	`_bqui_spark_mybqproj0427_us_central1.spark_proc`()
+	`mybqproj0427.testpyspark.spark_proc`()
 WITH CONNECTION `mybqproj0427.us-central1.Spark-BQ-Test-Connection` OPTIONS (engine='SPARK', properties=[])
 	LANGUAGE PYTHON AS r"""
 from pyspark.sql import SparkSession
