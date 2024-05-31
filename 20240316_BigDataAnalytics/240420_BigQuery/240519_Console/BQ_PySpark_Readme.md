@@ -41,16 +41,17 @@
     - There's a syntax error:
       
       ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4c4a70c3-07bb-40de-85a6-b8005f6d1b86)
-    
 
-- ds
-- ds
-- ds
-- ds
-- d
-- sd
-- sd
-- s
-- ds
-- ds
-- ds 
+
+    - Modified the query by referring to the Spark Documentation and then it ran successfully
+      
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/cca0b2f5-317c-4f5a-a24d-41309489f7da)
+
+
+    - You can open the procedure by expanding the dataset
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d4b8d4c8-b0da-4e86-be93-e355b6f64bea)
+
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2e1de03d-67c4-4abb-a111-209898734bb7)
+
+
+  
