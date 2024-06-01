@@ -59,23 +59,29 @@
 
 - [Steps to call a Spark Stored Procedure](https://cloud.google.com/bigquery/docs/spark-procedures#call-spark-procedure)
   - Go to BigQuery >> BigQuery Studio >> GCP Project (mybqproj0427) >> Dataset Name >> Routines >> Right Click on Procedure Name (spark_proc) >> Invoke
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4c66154f-41d4-47f1-bf8b-767d74782337)
 
   - In the next screen click on Run:
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d925edb2-59e7-4707-915e-41c589f6352d)
 
   - Query completed, but there was an error
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fa7071ca-792b-438c-9810-ed5f364659b8)
 
   - Go to "Execution Details" tab to display "Logs"
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/85729bc3-eb1e-402a-9560-5bca6a22bfe0)
 
 
   - Further deep dive in the logs shows User Bigquery Readsessions Permission Error
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fd772e52-2465-4f88-ab32-901b4cdace6d)
 
 
   - To assign the permission Go to IAM >> Select User >> Add a Role >> BigQuery >> BigQuery Read Session User
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9e1f7cdd-6331-4568-b204-ebe61aa6ad29)
 
   - It failed with the same error again. So assigned the permissions to the Service Account, but no luck!!
