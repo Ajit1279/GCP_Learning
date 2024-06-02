@@ -15,3 +15,12 @@
 - Tutorials: https://cloud.google.com/docs/tutorials
 - Architecture Center: https://cloud.google.com/architecture
 - Python Code Samples: https://github.com/GoogleCloudPlatform/python-docs-samples/tree/main
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
+$${\color{red}Welcome \space \color{lightblue}To \space \color{orange}Stackoverflow}$$
