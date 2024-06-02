@@ -88,7 +88,7 @@
      - It failed with the same error again. So assigned the permissions to the Service Account, but no luck!!
     ```
 
-  - 
+  - $${\color{red}It failed with the same error again. So assigned the permissions to the Service Account, but no luck!!}$$
     
 
 
