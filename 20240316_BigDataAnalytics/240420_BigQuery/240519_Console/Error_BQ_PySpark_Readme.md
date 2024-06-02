@@ -84,7 +84,9 @@
     
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9e1f7cdd-6331-4568-b204-ebe61aa6ad29)
 
-  - It failed with the same error again. So assigned the permissions to the Service Account, but no luck!!
+  - ```diff
+     - It failed with the same error again. So assigned the permissions to the Service Account, but no luck!!
+    ```
 
   - 
     
