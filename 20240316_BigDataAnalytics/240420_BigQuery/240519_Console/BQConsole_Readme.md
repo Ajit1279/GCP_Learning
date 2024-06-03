@@ -5,7 +5,7 @@
     - [Create and execute SQL Queries](https://github.com/Ajit1279/GCP_Learning/tree/main/20240316_BigDataAnalytics/240420_BigQuery/240510_BQ_RunQuery)
     - [Create Python Notebook](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/CreateNotebook_Readme.md)
     - [Create PySpark procedure](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_PySpark_Readme.md)
-    - Create [Data Canvas](https://cloud.google.com/bigquery/docs/data-canvas)
+    - Create [Data Canvas](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQDataCanvas_Readme.md)
     - Add your own data from [Local File](https://cloud.google.com/bigquery/docs/samples/bigquery-load-from-file) or [Google Drive](https://cloud.google.com/bigquery/docs/external-data-drive) or Google Cloud Storage
     - [View Job History](https://cloud.google.com/bigquery/docs/managing-jobs#view_job_details_2)
   
