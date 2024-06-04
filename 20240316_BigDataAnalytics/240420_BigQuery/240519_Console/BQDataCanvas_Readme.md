@@ -30,4 +30,18 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2b0b625d-4a3a-4c72-be6f-7634a9d98a43)
 
     
-  -     
+  - [Try example workflows](https://cloud.google.com/bigquery/docs/data-canvas#example-workflows)
+    - Enter "Chicago Taxi Trips" in the prompt
+      
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/f1680e6d-0a03-4b54-b775-288891bc1adf)
+
+
+    - It displays the result (although seem incorrect as it's related to usa names and Penguins
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/28d436c5-6066-4f32-b674-d393df14cb1e)
+
+
+    - One can view Schema, Preview and other details
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/03833b43-0e28-42cf-91aa-73e3b8ef78bb)
+
+      
+    - Not much to explore further      
