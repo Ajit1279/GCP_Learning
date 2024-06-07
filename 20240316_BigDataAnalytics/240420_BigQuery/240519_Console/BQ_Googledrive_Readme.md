@@ -11,6 +11,7 @@
 - So tried with uri https://drive.google.com/open?id=1ggRD8uCEnqZCtwzedLNnYTCpPGVPlrnR
 
 - It created the table successfully
+  
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/877164c4-818b-47f6-a50b-c2ada9c69baf)
 
 
