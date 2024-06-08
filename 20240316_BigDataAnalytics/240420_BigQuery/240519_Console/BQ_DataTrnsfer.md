@@ -6,7 +6,7 @@
   - Automates data movement into BigQuery on a scheduled, managed basis, without your team needing to write a single line of code.
   - Supports various cloud and non-cloud data sources
   - The data source data region and destination dataset region in BigQuery **are irrelevant** in most of the cases
-  - **[Colocation is required]**(https://cloud.google.com/bigquery/docs/dts-locations#colocation_required) in cases of **Cloud Storage** and **Data Warehouse migrations** from Teradata (as it requires Cloud Storage in the middle)
+  - [**Colocation is required**](https://cloud.google.com/bigquery/docs/dts-locations#colocation_required) in cases of **Cloud Storage** and **Data Warehouse migrations** from Teradata (as it requires Cloud Storage in the middle)
   - Authentication and Authorization is required to your account / Service Account to enable data transfers
     - It operates at two different stages:
       - [Control Plane](https://cloud.google.com/bigquery/docs/dts-authentication-authorization#control_plane):
