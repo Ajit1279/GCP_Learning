@@ -9,7 +9,7 @@
     - Add your own data from [Local File](https://cloud.google.com/bigquery/docs/samples/bigquery-load-from-file) or [Google Drive](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_Googledrive_Readme.md) or Google Cloud Storage
     - [View Job History](https://cloud.google.com/bigquery/docs/managing-jobs#view_job_details_2)
   
-  - [Data Transfers](https://cloud.google.com/bigquery/docs/dts-introduction): Move data into BigQuery from a variety of sources. 
+  - [Data Transfers](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_DataTrnsfer.md): Move data into BigQuery from a variety of sources. 
   - [Scheduled Queries:](https://cloud.google.com/bigquery/docs/scheduling-queries#console) 
   - [Analytics Hub](https://cloud.google.com/bigquery/docs/analytics-hub-introduction)
     - [Create Exchange](https://cloud.google.com/bigquery/docs/analytics-hub-manage-exchanges#create_a_data_exchange)
