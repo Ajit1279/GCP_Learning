@@ -1,6 +1,6 @@
 - Reference: https://cloud.google.com/bigquery/docs/dts-introduction
 
-- $${\color{red}You \space \color{red}will \space \color{red}need \space \color{red}Active \space \color{red}Google Ads \space \color{red}customer id \space }$$
+- $${\color{red}You \space \color{red}will \space \color{red}need \space \color{red}Active \space \color{red}Google Ads \space \color{red}customer id \space \color{red}it \space \color{red}won't \space \color{red}work \space \color{red}otherwise \space }$$
 
 - Basics:
   - Automates data movement into BigQuery on a scheduled, managed basis, without your team needing to write a single line of code.
