@@ -1,0 +1,1 @@
+- Reference: https://cloud.google.com/bigquery/docs/analytics-hub-manage-exchanges
