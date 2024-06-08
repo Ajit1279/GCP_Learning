@@ -12,7 +12,7 @@
   - [Data Transfers](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_DataTrnsfer.md): Move data into BigQuery from a variety of sources. 
   - [Scheduled Queries:](https://cloud.google.com/bigquery/docs/scheduling-queries#console) 
   - [Analytics Hub](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_AnalyticsHub.md)
-    - [Create Exchange](https://cloud.google.com/bigquery/docs/analytics-hub-manage-exchanges#create_a_data_exchange)
+    - [Create Exchange](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_CreateExchange.md)
     - Create [Clean Room](https://cloud.google.com/blog/products/data-analytics/introducing-bigquery-data-clean-rooms)
     - [Search Listings](https://cloud.google.com/bigquery/docs/analytics-hub-view-subscribe-listings#view-listings) 
   - [Dataform](https://cloud.google.com/dataform/docs)
