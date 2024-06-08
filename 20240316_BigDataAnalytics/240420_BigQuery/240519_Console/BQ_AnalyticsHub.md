@@ -23,6 +23,7 @@
     - **Administrators** can **grant access to subscribers** at the **exchange** and the **listing level** to **avoid granting access to datasets explicitly**.
     - Data Exchanges can be private or public
     - Admins can **create and manage multiple Data Exchanges in Analytics Hub**
+    - Refer steps to create [here](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_CreateExchange.md)
 
   - **[Listings](https://cloud.google.com/bigquery/docs/analytics-hub-manage-listings)**
     - **Reference to a shared dataset** that a publisher lists **in a data exchange**.
@@ -42,7 +43,3 @@
     - Taking **snapshots of linked dataset tables** is **not supported**.
     - Queries with **linked datasets and JOIN statements** that are **larger than 1 TB might fail**. 
 
-  
-- [Create Exchange](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_CreateExchange.md)
-- Create Clean Room
-- Search Listings
