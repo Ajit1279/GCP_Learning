@@ -29,6 +29,7 @@
     - **Reference to a shared dataset** that a publisher lists **in a data exchange**.
     - Specify the **dataset description**, **sample queries** to run on the dataset, links to any **relevant documentation**, and any additional **information for subscribers** to **use dataset**.
     - Like Data Exchanges it can be public or private
+    - Refer the steps [here](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_AnalyticsHubListing.md)
 
   - **[Linked Datasets](https://cloud.google.com/bigquery/docs/analytics-hub-view-subscribe-listings)**
     - **Subscribing to a listing creates a linked dataset in your project** and **not a copy** of the dataset
