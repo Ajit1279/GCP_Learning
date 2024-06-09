@@ -38,6 +38,33 @@
         ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4e421f59-4c62-40e5-9f4f-ea900f2570bb)
  
        
-      - 
+      - Grant secretmanager.secretAccessor role to your dataform service account (but not able to find the default service account created at the time of dataform creation: service-1046191342666@gcp-sa-dataform.iam.gserviceaccount.com). LEt's troubleshoot this later.
+     
+      - Now let's connect with the git repository
    
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/8ef56223-ee6a-460e-a600-c729ff10afce)
+ 
+
+      - Entered the details to link the repository
+   
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d8cf7879-2a7e-469b-9a44-09f3f8e1dfed)
+
+
+      - It gave an error message:
+   
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4c2ef3fc-749e-4882-bda1-d3d283919021)
+
+
+      - So created a new service account manually and updated the Dataform, but the error persists
+   
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9f859378-25e3-40fc-8b09-1ac5dd6cca09)
+
+
+      - Also verified that the secret token exists
+
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/249dcc5f-43b1-4748-9e2a-9eb5cf3c1b6a)
+
+
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fb4ab768-1b45-4a79-98e6-a76629ff5556)
+
       
