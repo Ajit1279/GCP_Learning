@@ -19,7 +19,7 @@
    
 
 - [Data Transformation process in Dataform](https://cloud.google.com/dataform/docs/overview#data-transformation)
-  - **Create Repositories to manage your code**: Uses [Dataform core](https://cloud.google.com/dataform/docs/dataform-core), an extension of SQL, to write SQLX files in which you define your workflow.
+  - [**Create Repositories to manage your code**](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_Dataform_Repository.md): Uses [Dataform core](https://cloud.google.com/dataform/docs/dataform-core), an extension of SQL, to write SQLX files in which you define your workflow.
   - **[Link it to third party git provider](https://cloud.google.com/dataform/docs/connect-repository)**: To Support version control   
   - **[Create Workspace for development](https://cloud.google.com/dataform/docs/create-workspace)**: Make changes to the workflows, compile, test, and push them to the main repository through Git.
   - **Develop SQL workflows in a development workspace**: Define and document tables, their dependencies, and transformation logic to build your SQL workflow.
