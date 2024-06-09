@@ -1,1 +1,0 @@
-- This repository is created to test integration between GitHub and GCP BigQuery Dataform
