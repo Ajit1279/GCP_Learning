@@ -68,3 +68,17 @@
         ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/fb4ab768-1b45-4a79-98e6-a76629ff5556)
 
       
+      - Click on secret name and then "Permissions" >> Grant Access
+
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/83cbfa2f-6cdd-40d9-9c70-9f64e7cf1e74)
+
+      - Add the default service account id and the "Secret Manager Secret Accessor" role.
+   
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7d4d71a3-89f5-4f65-93fa-9b9258af1550)
+
+      - "Delete" the connection by going to "Edit Git Connection" button in the Dataform and renter all the values. Woohh!! the connection established successfully
+
+        ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/41b2bbb9-c9ee-43eb-8715-6776c38ea90c)
+
+        
+        
