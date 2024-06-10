@@ -56,3 +56,5 @@
 
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0718ee92-e1cb-4e55-be7e-957c308c7695)
 
+
+- To avoid incurring charges delete the dataset and the workspace
