@@ -10,7 +10,7 @@
   - When you create new repository for the first time, Dataform prompts you to initialize the development workspace with a set of configuration files
   - It contains various directories and files: _definitions/_, _includes/_, _dataform.json_, _package.json_, _definitions/sample.sqlx_ 
   - Select the repository where you want to create the new development workspace.
-
+    
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/7d5f55bc-fc2a-41af-801f-b4a2eab334fb)
 
   - Provide the workspace id and click create
