@@ -86,7 +86,7 @@
         ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/af715b6f-d8c2-4127-b982-7b79a712af1d)
 
 
-      - Now you can proceed with [development workspace creation](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_Dataform_CreateWorkspace.md) 
+      - Now you can proceed with [development workspace creation](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_Dataform_Workspace.md) 
 
         
         
