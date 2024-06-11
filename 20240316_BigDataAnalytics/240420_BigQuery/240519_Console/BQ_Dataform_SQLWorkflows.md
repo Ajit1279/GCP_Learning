@@ -1,9 +1,25 @@
 - Reference: https://cloud.google.com/dataform/docs/sql-workflows
-  - Introduction:
-    - You can develop SQL workflows with Dataform core, using SQLX files or with JavaScript.
-    - It consists of:
-      - Data Source Declarations:
-      -   
+  
+- You can develop SQL workflows with Dataform core, using SQLX files or with JavaScript.
+- It consists of:
+  - [Data Source Declarations](https://cloud.google.com/dataform/docs/declare-source):
+    - Create dataset-declaration.sqlx file and declare a datasource
+
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/9cae8683-eca7-4f84-8834-f695dc1bd473)
+
+      ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ab2ebd2a-604a-4070-bbe0-6913a1d174f1)
+
+  - [Declare dependencies](https://cloud.google.com/dataform/docs/dependencies)
+    - The dependency declarations make up a dependency tree that determines the order in which Dataform executes SQL workflow objects.
+    -  
+
+  -    
+
+    
+
+
+
+  -    
 
 - Reference: https://cloud.google.com/dataform/docs/quickstart-create-workflow
 
