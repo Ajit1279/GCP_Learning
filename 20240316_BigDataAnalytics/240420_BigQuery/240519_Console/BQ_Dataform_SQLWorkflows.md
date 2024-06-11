@@ -1,3 +1,10 @@
+- Reference: https://cloud.google.com/dataform/docs/sql-workflows
+  - Introduction:
+    - You can develop SQL workflows with Dataform core, using SQLX files or with JavaScript.
+    - It consists of:
+      - Data Source Declarations:
+      -   
+
 - Reference: https://cloud.google.com/dataform/docs/quickstart-create-workflow
 
 - [Create a view](https://cloud.google.com/dataform/docs/quickstart-create-workflow#create-view) 
