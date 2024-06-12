@@ -11,15 +11,13 @@
 
   - [Declare dependencies](https://cloud.google.com/dataform/docs/dependencies)
     - The dependency declarations make up a dependency tree that determines the order in which Dataform executes SQL workflow objects.
-    -  
 
-  -    
+  - [Add custom SQL operations](https://cloud.google.com/dataform/docs/custom-sql)
 
+  - [Add execution tags](https://cloud.google.com/dataform/docs/tags)
+ 
+  - [Preview SQL queries](https://cloud.google.com/dataform/docs/preview-queries)
     
-
-
-
-  -    
 
 - Reference: https://cloud.google.com/dataform/docs/quickstart-create-workflow
 
