@@ -20,7 +20,7 @@
 
 - Migration:
   - [Migration Assessment](https://cloud.google.com/bigquery/docs/migration-assessment)
-  - [SQL Translation](https://cloud.google.com/bigquery/docs/interactive-sql-translator#translate_a_query_into_standard_sql) 
+  - [SQL Translation](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_Migration_SQLTranslation.md) 
 
 - Administration
   - [Monitoring](https://cloud.google.com/bigquery/docs/monitoring)
