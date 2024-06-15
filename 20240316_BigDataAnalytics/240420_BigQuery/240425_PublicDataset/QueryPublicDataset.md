@@ -35,3 +35,6 @@
         100;
 
 ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5dc02834-c2be-405f-9085-5e57fbac4e3b)
+
+
+- Please refer [Looker Studio Tutorial](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_BIEngine_LookerStudio.md) for steps to copy public dataset in your own project dataset
