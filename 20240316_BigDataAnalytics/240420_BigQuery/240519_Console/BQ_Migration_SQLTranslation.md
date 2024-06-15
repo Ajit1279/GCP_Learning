@@ -81,6 +81,8 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/5169bb70-b02d-44f1-836a-96723e64557b)
 
 
+- **Interactive Translation**
+
   - Click on "Open interactive Translation"
 
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0c37c480-daed-4b1e-b85e-7a7e2f91a623)
@@ -109,5 +111,3 @@
 
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/2ecfeda1-c297-4c10-a9c0-70489388b2c9)
 
-
-- 
