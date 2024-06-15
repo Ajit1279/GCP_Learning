@@ -42,7 +42,8 @@
     - [Slot Estimator](https://cloud.google.com/bigquery/docs/slots#estimate-slots)
    
   - [BI Engine](https://cloud.google.com/bigquery/docs/bi-engine-intro)
-    - [Create BI Engine Reservation](https://cloud.google.com/bigquery/docs/bi-engine-reserve-capacity#create_a_reservation) 
+    - [Create BI Engine Reservation](https://cloud.google.com/bigquery/docs/bi-engine-reserve-capacity#create_a_reservation)
+    - [Quickstart - Using Looker Studio](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/BQ_BIEngine_LookerStudio.md)
 
   - [Disaster Recovery](https://cloud.google.com/bigquery/docs/managed-disaster-recovery#create-reservation)
     
