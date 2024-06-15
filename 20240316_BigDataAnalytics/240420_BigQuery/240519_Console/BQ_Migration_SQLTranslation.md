@@ -19,7 +19,7 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/287eb078-d082-4f4b-815c-12b67c5005ee)
 
 
-  - Create a file Teradata.sql with sample query and upload it to the bucket:
+  - Create a file Teradata.sql with sample query and upload it to the source bucket:
 
     CREATE VOLATILE TABLE exampleTable (age INT, gender VARCHAR(10));
     
@@ -43,6 +43,26 @@
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/12130b05-4d0e-4b5f-b4d4-7c6ebad07ef3)
 
 
+  - Enter the Translation Configuration
+ 
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/3f398c7d-ed0a-4326-8cad-4f34ac97924b)
+
+
+  - In source details, enter the source bucket name
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/d826b089-f3c4-449d-83b4-846c332c28b5)
+
+  - In target, enter the destination bucket name
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/52cd8e3b-5d54-4558-9847-f92780b2f0d2)
+
+
+  - Click on "create". It's displayed
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/372d2595-5f1c-4802-b507-253413a907a4)
+
+
+  - 
     
 
     
