@@ -8,19 +8,31 @@
 - **Steps:**
   - Enable BigQuery Migration API (If not activated already)
 
-  - Create a bucket. We'll use this bucket to save SQL query, which needs to be translated
+  - Create two buckets - one each as source and target - otherwise there's an error message.
 
-    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/20a502fd-71da-42b4-bc00-a3d186fc7326)
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/4c92403c-96b3-4964-ab47-d0d57840db87)
 
-  - Create a file with sample query:
+
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/a1182956-0061-4742-89f0-0a396c883724)
+
+    
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/287eb078-d082-4f4b-815c-12b67c5005ee)
+
+
+  - Create a file Teradata.sql with sample query and upload it to the bucket:
 
     CREATE VOLATILE TABLE exampleTable (age INT, gender VARCHAR(10));
+    
     INS INTO exampleTable (10, 'F');
+
     INS INTO exampleTable (20, 'M');
 
     SEL *
+
     FROM exampleTable
+
     WHERE gender EQ 'F'
+
     AND age LT 15; 
 
 
@@ -30,9 +42,10 @@
 
     ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/12130b05-4d0e-4b5f-b4d4-7c6ebad07ef3)
 
-  - Enter details for "Translation Configuration"
 
-    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/0cbd1eb7-d86f-4b41-99b9-70b17e5171b5)
+    
+
+    
      
 
     
