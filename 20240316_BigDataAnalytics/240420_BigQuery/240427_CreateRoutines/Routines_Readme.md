@@ -20,4 +20,4 @@ WHERE customer_id = id;
     - You can create, drop, and manipulate tables, as well as invoke other stored procedures on the underlying table.
     - To call the procedure, use the CALL statement: CALL mydataset.create_customer(); 
     - To call system procedure qualify it with BQ e.g. CALL BQ.REFRESH_MATERIALIZED_VIEW;
-    - Please refer this [PySpark tutorial](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/Error_BQ_PySpark_Readme.md) for details.    
+    - Please refer this [PySpark tutorial](https://github.com/Ajit1279/GCP_Learning/blob/main/20240316_BigDataAnalytics/240420_BigQuery/240519_Console/Error_BQ_PySpark_Readme.md) for implementation details.    
