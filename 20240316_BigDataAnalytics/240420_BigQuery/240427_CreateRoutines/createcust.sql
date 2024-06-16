@@ -1,3 +1,4 @@
+/* Test Comments */
 CREATE OR REPLACE PROCEDURE mydataset.create_customer(name STRING)
 BEGIN
 DECLARE id STRING;
