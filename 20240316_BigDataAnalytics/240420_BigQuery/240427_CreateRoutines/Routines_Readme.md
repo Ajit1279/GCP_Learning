@@ -15,7 +15,7 @@
       - **Input parameter:** Allows input for a procedure, but does not allow output (e.g. name in the sample)
       - **Output parameter:** To create an output parameter, use the **OUT keyword** before the name of the parameter. you must use a variable to receive the output value: e.g. SELECT * FROM mydataset.customers
 WHERE customer_id = id;
-     - **Input / Output parameter:** Accepts input for the procedure and also returns a value from the procedure. Use INOUT keyword
+      - **Input / Output parameter:** Accepts input for the procedure and also returns a value from the procedure. Use INOUT keyword
     - You can authorize stored procedures as [Authorized routines](https://cloud.google.com/bigquery/docs/authorized-routines)
     - Lets you share query results with specific users or groups without giving them access to the underlying tables that generated the results.
     - You can create, drop, and manipulate tables, as well as invoke other stored procedures on the underlying table.
