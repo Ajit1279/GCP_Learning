@@ -30,7 +30,7 @@ WHERE customer_id = id;
   - Accepts columns of input, performs actions on the input, and returns the result of those actions as a value.
   - Steps:
     - To create use CREATE FUNCTION or CREATE TEMP FUNCTION statements
-    - Any reference to BQ objects (e.g. tables, views etc.), if UDF is to be called in other project. 
+    - Any reference to BQ objects (e.g. tables, views etc.) must include project id, if UDF is to be called in other project. 
     - **Error at call time** if the **type of the argument** passed is **incompatible** with **function definition**
     - Use the UDF within the SELECT statement
     - **Templated SQL UDF parameters** can be specified with type equal to **ANY TYPE**. It **cannot be used** for the **function output**  
