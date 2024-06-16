@@ -1,4 +1,6 @@
 - References: https://cloud.google.com/bigquery/docs
+- Bigquery utils Repository: https://github.com/GoogleCloudPlatform/bigquery-utils/tree/master
+ 
 
 - Basics:
   - Google Cloud's fully managed, petabyte-scale, and cost-effective analytics data warehouse
