@@ -1,7 +1,6 @@
-/* Test Comments */
-CREATE OR REPLACE PROCEDURE mydataset.create_customer(name STRING)
+/* Comments */
+CREATE OR REPLACE PROCEDURE mydataset.create_customer(name STRING, OUT id STRING)
 BEGIN
-DECLARE id STRING;
 SET id = GENERATE_UUID();
 INSERT INTO mydataset.customers (customer_id, name)
   VALUES(id, name);
