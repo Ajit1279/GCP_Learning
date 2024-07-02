@@ -1,0 +1,5 @@
+- Create a Batch Job
+  - YAML:
+    - https://cloud.google.com/sdk/gcloud/reference/dataflow/yaml
+    - https://beam.apache.org/documentation/sdks/yaml/
+    - https://github.com/apache/beam/tree/master/sdks/python/apache_beam/yaml/examples  
