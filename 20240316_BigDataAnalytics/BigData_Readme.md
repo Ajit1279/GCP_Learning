@@ -1,6 +1,16 @@
 - **Reference Docs**: https://cloud.google.com/docs/data
 - **Architecture References:** https://cloud.google.com/architecture/big-data-analytics
 
+- **Basics:**
+  - **Types of Cloud Storage**
+    - **BLOB (Binary Large OBjects):** For storing any type of files
+    - **Relational:** For storing relational databases e.g. Cloud Spanner, PosrgreSQL, 
+    - **NoSQL:** For storing structured, semi-structured or unstructured data e.g. BigTable, Firestore
+    - **Data Warehousing**: For data analysis and reporting e.g. BigQuery
+ 
+ - **SQL vs No-SQL**   
+
+
 - **Quickstarts:**
   - [Getting started with Python on Compute Engine](https://github.com/Ajit1279/GCP_Learning/tree/main/Compute_VMs/20240407_Python) 
 
