@@ -4,8 +4,7 @@
   - **c.** The scripts for Prod and SIT deployments are almost same except few comments
  
 - **2. There's one more git repo for storing the terraform scripts**. Please note, the **var.tf** files in this repo is used for the **declaration of variables, name, type etc.**
-  - **a. Test Image Folder** There's a folder within this repository which contains all the details required for the dev image family, dev variables (project name, region, zone etc.).
-   - This folder contain folder for terraform scripts for:
+  - **a. Test Image Folder** There's a folder within this repository which contains all the details required for the dev image family, dev variables (project name, region, zone etc.). This folder contain folder for terraform scripts for:
      - **i. DBProxy:** contains terraform files for variables (hardcodes values for service project name, region name, image names, tags etc.) backend (storage), data (project id), locals (subnetworks), output (VM name, IP, FQDN etc.). All these details are used by main.tf during execution
      - **ii. Application:** similar details as above for the application, which are used by main.tf for application image creation
    - **b. Prod image folder** - There's a similar folder for prod environment which contains the details for Prod
