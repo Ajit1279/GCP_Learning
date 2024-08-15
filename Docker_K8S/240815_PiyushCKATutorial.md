@@ -29,12 +29,11 @@
 
   - **Docker Architecture**
     - **Dockerfile** - Stored in repositories e.g. GitHub 
-    - **dockerd**
+    - **Docker Daemon (dockerd)**
       - **Docker build** command is issued to and executed in this daemon to create an **image**, which is stored locally on Docker Host
       - **Docker push** command pushes the image from dockerhost to the remote Registry (e.g. Docker Hub, Artifact Registry, Nexus Registry)
       - **Docker pull** command pulls image from registry to the respective environment i.e. Dev, Test, Prod etc.
       - **Docker run** command is issued to docker daemon, then to container run time to spin-up containers  
-    - f
    
       ![image](https://github.com/user-attachments/assets/1e6f7333-d468-4e1f-aa28-4de948e4a2dc)
   
