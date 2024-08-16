@@ -39,11 +39,9 @@
   
 
   
-- **Day2**
-  - https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240815_DockerOnVM.md
+- **Day2** : [Dockerise a project](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240815_DockerOnVM.md)
 
-  
-- sdsd
+- **Day3**: Multi Stage Docker build
 - sd
 - sd
 - sd
