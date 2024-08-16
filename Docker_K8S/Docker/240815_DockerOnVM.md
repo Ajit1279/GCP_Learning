@@ -174,7 +174,7 @@
     ![image](https://github.com/user-attachments/assets/13dcad83-5f61-4348-a023-7d4e2670045c)
 
 - **7 Log into Container**
-  - To troubleshoot any issues you can log into container using it's random name ("agitated_haibt" in this case, like SSH into VM): sudo docker exec -it agitated_haibt sh 
+  - To troubleshoot any issues you can log into container (like SSH into VM) using it's random name ("agitated_haibt" in this case): sudo docker exec -it agitated_haibt sh 
 
   - You are into container now:
 
