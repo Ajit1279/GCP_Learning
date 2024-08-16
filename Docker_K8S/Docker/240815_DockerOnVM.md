@@ -1,33 +1,171 @@
-- Create a Debian VM on GCP
+- 1. Create a Debian VM on GCP
 
   ![image](https://github.com/user-attachments/assets/9c56fac4-8b0a-4b77-8987-98ab18559d0e)
 
-- SSH into VM
+- 2. SSH into VM
 
-- [Install Docker](https://docs.docker.com/engine/install/debian/)
-  - Run the following command to uninstall all conflicting packages: for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+- 3. [Install Docker](https://docs.docker.com/engine/install/debian/)
+  - Run the following command to uninstall all conflicting packages: _for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done_
 
-  - Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker apt repository.
+  - Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker apt repository. Please follow the instructions on Docker portal
 
-  - Then install latest Docker packages: sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  - Then install latest Docker packages: _sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin_
 
     ![image](https://github.com/user-attachments/assets/e58f9d97-e9a8-48dc-8b7b-a0374d4fc56a)
 
 
-  - Verify that the installation is successful by running the hello-world image: sudo docker run hello-world
+  - Verify that the installation is successful by running the hello-world image: _sudo docker run hello-world_
 
     ![image](https://github.com/user-attachments/assets/1888981a-59a6-488b-ac4a-297f3aff694e)
 
-
-- Now let's build a docker image. For this, we'll need a small app first, which can be downloaded from git repository
-  - Create a new directory e.g. build
+    ![image](https://github.com/user-attachments/assets/29459ccc-4fd0-4a5e-9d72-a2a4354f1c17)
     
-  - Clone the [docker git repo](https://github.com/docker/getting-started-app) in it : git clone https://github.com/docker/getting-started-app
+
+- 4. Now let's build a docker image. For this, we'll need a small app first, which can be downloaded from git repository
+  - Create a new directory e.g. build : mkdir build && cd build
+    
+  - Clone the [docker git repo](https://github.com/docker/getting-started-app) in it : _git clone https://github.com/docker/getting-started-app_
 
     ![image](https://github.com/user-attachments/assets/f15089e4-0907-4ed2-95ef-fbd7a58fbda3)
 
-  - Change directory to getting-started-app and create Dockerfile
-    - We first need a base image. Go to https://hub.docker.com/search?image_filter=official
-    - Let's pull Python image:   
+  - **Create Dockerfile**
+    - Change directory to getting-started-app : _cd getting-started-app_
+      
+    - Create [Dockerfile](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/Dockerfile): _vi Dockerfile_ and press Esc, then i
 
-  -       
+      - We first need a base image for operating system. Although you may be using OSs like ubantu, centos etc., we need an OS with node installed on it, as it provides the required node images listed on [Docker Hub](https://hub.docker.com/search?image_filter=official) 
+
+      - Go to the above page and search for the desired image. Let's use node js image for this exercise: _**FROM node:3-alpine**_   
+
+      - Next provide the working directory within container where all the required work is supposed to be completed: _**/usr/src/app**_
+
+      - Copy the files from cloned repository on VM (current working directory) to the working directory of container: _**COPY . .**_
+
+      - Run using "yarn" as a package manager and environment (say production): _**RUN yarn install --production**_
+
+      - CMD will actually be executing the above commands on container. We'll instruct container to run **node** application using the dependency (index.js) in the current working directory: _**CMD ["node","./index.js"]**_              
+
+      - The application has to be exposed on a specific port to make it available to the end users: EXPOSE 3000
+     
+  - **Build Docker image**: _**sudo docker build -t testdocimage .**_
+
+     The above command creates a docker image named **testdockimage** using the file in **current directory** "(.)"
+    
+  - The image creation is complete:
+  
+    - The images are created in layers depending on configuration in Dockerfile. When you push the image, all those layers are dis-integrated, shipped to destination, and then integrate again in one package. This helps in faster processing, maintaing docker image etc.
+
+    - Referring to the screenshot, it says [1 / 4], [2 / 4] etc. so there are 4 layers    
+
+    ![image](https://github.com/user-attachments/assets/efd00158-4646-4c21-a948-50340b4d5882)
+    
+
+  - To see the images run the command: sudo docker images
+
+    ![image](https://github.com/user-attachments/assets/e253570d-4906-45ee-8f4b-0aee45d345da)
+
+- 5. **Push the image to your registry in the remote docker hub**
+
+  - Login to docker hub using: _**sudo docker login**_
+
+  - Enter your credentials:
+
+    ![image](https://github.com/user-attachments/assets/f15dbad0-7d60-479d-8dbf-1c223d7cdddd)
+
+  - Type the command:
+
+    gcloud artifacts repositories create quickstart-docker-hub-remote \
+    --project=test66666666 \
+    --repository-format=DOCKER  \
+    --location=us-central1 \
+    --description="Remote Docker repository" \
+    --mode=remote-repository \
+    --remote-repo-config-desc="Docker Hub" \
+    --remote-docker-repo=DOCKER-HUB \
+    --remote-username=ajit1279 \
+    --remote-password-secret-version=projects/PROJECT/secrets/mydockersecret/versions/1
+
+  - It gave an error:
+
+    ![image](https://github.com/user-attachments/assets/183e24d1-83e6-467d-a3c5-f80c02809238)
+
+
+  - Let's stop the VM, and edit it to grant permissions to access all APIs (Please note that this option is _not recommended_ in real world due to security reasons). Save and restart the VM. 
+
+    ![image](https://github.com/user-attachments/assets/436f382f-1722-46f3-9545-a8c874b711da)
+ 
+
+  - SSH into machine again, change the directory to build/getting-started-app, and run the above commands all over again from docker login
+ 
+  - There was an error still
+
+    ![image](https://github.com/user-attachments/assets/8f3d9acf-5b16-4ec7-bf2a-92b6c5ee0486)
+
+  - Enable the "Service Usage API" by going to the API in cloud Console
+
+    ![image](https://github.com/user-attachments/assets/b8bd9575-1201-47e9-99aa-8db3f53ed562)
+
+  - Run the command to grant Service Account the required access:
+    _**gcloud projects add-iam-policy-binding test66666666 --member='serviceAccount:service-1006430257477@gcp-sa-artifactregistry.iam.gserviceaccount.com' --role='roles/secretmanager.secretAccessor'**_
+
+  - There was an error still, so let's create repository manaully for now
+
+    - Go to Docker Hub and login using your credentials
+
+    - Create a repository named testdocker. Copy the command displayed while creating repository: _**docker tag local-image:tagname new-repo:tagname**_  
+
+      ![image](https://github.com/user-attachments/assets/5b9184d1-1b60-4d82-9602-012b1b785983)
+
+    - Modify the command copied above and run on VM: _**sudo docker tag testdockimage:latest ajit1279/testdocker:latest**_
+
+    - Run the command: _**sudo docker images**_ . It displays:
+ 
+      ![image](https://github.com/user-attachments/assets/90224a09-327f-4f29-8082-a910ff46d5f5)
+
+
+    - Please note that in the above screenshot, the **image id** is the **same**, but **repository names are different**
+
+    - Now let's push the docker image: _**sudo docker push ajit1279/testdocker:latest**_
+
+    - Once completed, it displays the message:
+
+      ![image](https://github.com/user-attachments/assets/1445290b-2e69-48bf-8519-d543eefbdf5a)
+      
+
+    - Go to the repository, and then to the image that you pushed just now. It displays the details:
+ 
+      ![image](https://github.com/user-attachments/assets/6522bcb5-9565-49e3-814c-5f0f775cfe04)
+ 
+    
+    - Also, if you compare the image size on local (219 MB) and docker hub (81.79 MB), you'll realize that docker has compressed the image size.   
+     
+    
+- **6. Run the container to create an environment**
+  - You can copy the command from the Repository itself: _**sudo docker pull ajit1279/testdocker:latest**_
+
+    ![image](https://github.com/user-attachments/assets/3bb910e9-09d6-4d26-8459-b2e9e593c0f1)
+
+    
+  - Because there were no changes after we uploaded, it displays the message as shown below:
+
+    ![image](https://github.com/user-attachments/assets/33f2f62f-1c26-4b9d-b308-9ddb52781bd0)
+
+
+  - Now run the command: _**sudo docker run -dp 3000:3000 ajit1279/testdocker:latest**_  In this command:
+    - d: indicates "detatch" i.e. run the command in the background mode
+    - p: to open the port
+    - 3000: the port on the local
+    - 3000: port on the remote machine
+
+  - It displays the container id:
+
+    ![image](https://github.com/user-attachments/assets/e342789f-deb5-457d-a5d9-57922783e20f)
+
+
+  - Now type the command: _**sudo docker ps**_ , but nothing was displayed
+
+    ![image](https://github.com/user-attachments/assets/fe029441-3575-434c-a8f3-5f17f92fc1eb)
+
+    
+  - So let's troubleshoot
+       
