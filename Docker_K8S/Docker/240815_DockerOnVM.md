@@ -167,5 +167,28 @@
     ![image](https://github.com/user-attachments/assets/fe029441-3575-434c-a8f3-5f17f92fc1eb)
 
     
-  - So let's troubleshoot
-       
+  - So let's troubleshoot. Tried running the command without -dp 3000:3000 included. It showed that index.js path in Dockerfile was incorrect.
+
+  - So ran the command after correcting file and it ran successfully:
+
+    ![image](https://github.com/user-attachments/assets/13dcad83-5f61-4348-a023-7d4e2670045c)
+
+- **7 Log into Container**
+  - To troubleshoot any issues you can log into container using it's random name ("agitated_haibt" in this case, like SSH into VM): sudo docker exec -it agitated_haibt sh 
+
+  - You are into container now:
+
+    ![image](https://github.com/user-attachments/assets/db394fe9-7f44-4e17-a74c-c90aa3accf2b)
+
+
+  - Type some command e.g. ls -lrt
+
+    ![image](https://github.com/user-attachments/assets/34bef80f-0ddb-4964-92a6-a7251e1c9c0e)
+
+
+  - Type exit to logoff from container
+
+- **8 Clean-up**
+  - Remove the directory from your VM: rm -r build
+  - Delete the repository from the Docker Hub
+  - Delete the VM and secret in GCP Console        
