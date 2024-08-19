@@ -1,3 +1,4 @@
+# MultiStage Docker file
 FROM node:18-alpine AS installer
 
 WORKDIR /app
@@ -11,6 +12,16 @@ RUN npm install
 #Copy the above content to layer (not to container)
 COPY . .
 
-# Now we have all the required files, so start build
+# Now we have all the required files, so start build. It'll generate a new directory with all build artifacts
 RUN npm run build
+
+# Create another layer using nginx. Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. 
+FROM nginx:latest AS deployer
+
+# Only copy the build artifacts created above, which are required to run a static web page. 
+COPY --from-installer /app/build /usr/share/nginx/html
+
+
+
+
 
