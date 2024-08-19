@@ -5,6 +5,9 @@
   - Reducing image size
   - Improve performance of Docker container
 
+
+- 1. Create a GCP vm instance, SSH into it. Create a directory (e.g. build) and go to that director
+  2.  
 - 1. Create a Dockerfile  
 
 
