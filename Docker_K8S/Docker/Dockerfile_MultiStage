@@ -1,0 +1,16 @@
+FROM node:18-alpine AS installer
+
+WORKDIR /app
+
+#Use Wildcard to copy all files having name starting with package and extension as json 
+COPY package*.json ./
+
+#Install npm. npm is the default package manager for the JavaScript runtime environment Node.js 
+RUN npm install
+
+#Copy the above content to layer (not to container)
+COPY . .
+
+# Now we have all the required files, so start build
+RUN npm run build
+
