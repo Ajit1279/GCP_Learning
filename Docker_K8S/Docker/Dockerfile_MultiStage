@@ -19,7 +19,7 @@ RUN npm run build
 FROM nginx:latest AS deployer
 
 # Only copy the build artifacts created above, which are required to run a static web page. 
-COPY --from-installer /app/build /usr/share/nginx/html
+COPY --from=installer /app/build /usr/share/nginx/html
 
 
 
