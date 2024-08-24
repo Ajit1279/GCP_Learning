@@ -1,8 +1,18 @@
 **Containerization** helps package software, enabling applications to be released and updated without downtime.
 
-**Kubernetes** is a production-ready, open source platform for container orchestration
-It helps you make sure those containerized applications run where and when you want, and helps them find the resources and tools they need to work.
-In prod env you need to ensure there's no downtime. That's how **Kubernetes come to the rescue!** For example, if a container goes down, another container starts.
+**Kubernetes**
+- Portable, extensible, open-source **platform** for **container orchestration**
+- facilitates **declarative configuration** and **automation**
+- It helps you make sure those containerized applications run where and when you want, and helps them find the resources and tools they need to work.
+- In prod env you need to ensure there's no downtime. That's how **Kubernetes come to the rescue!** For example, if a container goes down, another container starts.
+
+**Concepts**
+- **[Kubernetes Objects:](https://kubernetes.io/docs/concepts/overview/working-with-objects/#kubernetes-objects)** Persistent entities in Kubernetes system to represent state of the cluster e.g. what containerised applications are running and on which node
+- Almost every Kubernetes object includes [two nested object fields](https://kubernetes.io/docs/concepts/overview/working-with-objects/#object-spec-and-status) that govern the object's configuration: the **object spec** and the **object status**.
+- **Kubectl:** Kubernetes API
+- **Manifest:** Provide the information to kubectl in a file to create a cluster. By convention it's YAML or JSON
+-  
+- 
 
 **Kubernetes Cluster** consists of:
  - **Control Plane:** Responsible for managing the cluster (scheduling applications, maintaining applications' desired state, scaling applications, and rolling out new updates.)
