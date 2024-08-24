@@ -47,7 +47,15 @@
     ![image](https://github.com/user-attachments/assets/102a1af4-c096-4ca8-a939-74e900a5ee06)
 
     
-  - 
-    
+  - View additional details of the container: _**sudo docker inspect ab5758c2b680 | less**_
+
+    ![image](https://github.com/user-attachments/assets/f7ba1853-893d-4af1-801f-eb58f7a47a54)
+
+    ![image](https://github.com/user-attachments/assets/8e6f7005-515e-4e90-80a5-c30937553e37)
+
+
+  - Type q to quit
+
+  - Few other commands like **docker exec, docker logs** come handy in case you want to troubleshoot
 
   -    
