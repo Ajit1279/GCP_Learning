@@ -42,6 +42,11 @@
 - **Day2** : [Dockerise a project](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240815_DockerOnVM.md)
 
 - **Day3**: [Multi Stage Docker build](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240817_MultiStageDocker.md)
+
+- **Day4**: [Why Kubernetes is used](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md)
+
+- **Day5**: [Kubernetes Architecture](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md) 
+   
 - sd
 - sd
 - sd
