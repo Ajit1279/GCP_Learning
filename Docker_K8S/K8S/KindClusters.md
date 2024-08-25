@@ -18,7 +18,7 @@
 
     ![image](https://github.com/user-attachments/assets/8efc4e55-c369-47f3-9af0-f8579ec579f4)
 
-  - Create a directory and then config.yml
+  - Create a directory and then [config.yml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/config.yml)
 
   - Type the command: _**sudo kind create cluster --config=config.yml**_
 
