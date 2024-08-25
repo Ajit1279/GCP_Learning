@@ -43,11 +43,11 @@
 
 - **Day3**: [Multi Stage Docker build](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240817_MultiStageDocker.md)
 
-- **Day4**: [Why Kubernetes is used](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md)
+- **Day4**: [Why Kubernetes is used](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md) [Youtube Link](https://www.youtube.com/watch?v=lXs1VCWqIH4&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=5)
 
-- **Day5**: [Kubernetes Architecture](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md) 
+- **Day5**: [Kubernetes Architecture](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md)  [Youtube Link](https://www.youtube.com/watch?v=SGGkUCctL4I&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=6)
    
-- sd
+- **Day6**: [Kubernetes Multi Node Cluster Set-up](https://github.com/Ajit1279/GCP_Learning/tree/main/Docker_K8S/K8S/MultiNodeCluter) [Youtube Link](https://www.youtube.com/watch?v=RORhczcOrWs&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=7)
 - sd
 - sd
 - sd
