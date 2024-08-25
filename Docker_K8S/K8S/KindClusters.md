@@ -1,11 +1,17 @@
 - Reference: https://www.youtube.com/watch?v=RORhczcOrWs&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=7
 - Reference: https://medium.com/@binitabharati/setting-up-kind-cluster-9393aacbef43
+- Reference: https://github.com/kubernetes-sigs/kind
+- kubectl cheat sheet: https://kubernetes.io/docs/reference/kubectl/quick-reference/
 
 - We'll be installing Kubernetes cluster on local machine. There are multiple options like minikube, etcd, kind etc.
 
-- [**kind**](https://kind.sigs.k8s.io/): Tool for running local Kubernetes clusters using Docker container “nodes”.
+- [**kind**](https://kind.sigs.k8s.io/):
+  - Tool for running local Kubernetes clusters using Docker container “nodes”.
+  - Runs each Kubernetes node as a docker container within our host (physical machine/VM)
+  - Kind is **not designed** to support **production grade** Kubernetes cluster.
+  - 
 
-- **Set-up Multinode Clusters** 
+- **Set-up Multinode Clusters** (Please refer this for [multi-machine kind cluster](https://github.com/kubernetes-sigs/kind/issues/1928))
 
   - Run below command to install kind
 
@@ -23,6 +29,7 @@
   - Type the command: _**sudo kind create cluster --config=config.yml**_
 
     Once created it displays:
+    
     ![image](https://github.com/user-attachments/assets/730cd693-28d9-4340-81f0-cec9e60f6077)
     
   -  Type command: _**sudo kubectl cluster-info**_
@@ -48,4 +55,36 @@
 
     ![image](https://github.com/user-attachments/assets/9677dc18-80d6-4e36-bb0b-ade14a42007d)
 
-  -   
+  - Run the command: _**sudo kubectl get nodes**_ . As observed it's running 1 control plane and 3 workder nodes
+
+    ![image](https://github.com/user-attachments/assets/038ffc46-9117-409c-800c-06eece19537a)
+
+  - Now let's create one more cluster: _**sudo kind create cluster --image kindest/node:latest --name kind1**_   Failed
+
+    ![image](https://github.com/user-attachments/assets/5e388e65-c709-4f98-9091-2c2a4ad85986)
+
+    
+  - Let's use [pre-built images](https://github.com/kubernetes-sigs/kind/releases): _**sudo kind create cluster --image kindest/node:v1.28.13@sha256:45d319897776e11167e4698f6b14938eb4d52eb381d9e3d7a9086c16c69a8110 --name kind1**_
+
+  - The cluster "kind1" has been created
+
+    ![image](https://github.com/user-attachments/assets/915539af-494a-4ac6-a7ba-f90e34cc23a7)
+    
+  - Display it using the context "kind1"
+
+    ![image](https://github.com/user-attachments/assets/babf8e6e-5907-4a96-a1e5-991a10446a48)
+
+  - Run command: _**sudo kubectl get nodes**_ . You can observe that it creates only control plane by default.
+
+    ![image](https://github.com/user-attachments/assets/1dea81a7-460c-4c03-b79d-4b5a71719e10)
+
+  - To display all clusters, run command: _**sudo kubectl config get-contexts**_  The current cluster is **marked with "*"**. **!!!! This is important because otherwise you may perform operations in other cluster inadvertantly !!!** 
+
+    ![image](https://github.com/user-attachments/assets/d6a057c5-398a-4f77-98c0-fc7b24152ff3)
+
+
+  - **Clean-up (Use carefully as it deletes all clusters)**: _**sudo kind delete clusters --all**_
+
+      ![image](https://github.com/user-attachments/assets/56d1f6ae-ccd0-4b2f-9dd8-df183205c007)
+
+  - **Delete / suspend VM**
