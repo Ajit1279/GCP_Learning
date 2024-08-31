@@ -102,59 +102,45 @@
     - Enforce deployment policies
     - Naming: HostName/ProjectID/Image:tag e.g. gcr.io/projectname/helloworld:1 
 
-• Dockerfile:
-	○ Contains Instructions to create docker images 
-	○ 
-	○ Best Practices:
-		§ Use light weight images (Prefer Alpine images over Ubantu)
-		§ Do not copy anything unnecessary
-		§ Follow proper layering: Things that change less often (e.g. dependencies) on top and code changes (index.js) often.
+- Dockerfile:
+   - Contains Instructions to create docker images
+   - Best Practices:
+      - Use light weight images (Prefer Alpine images over Ubantu)
+      - Do not copy anything unnecessary
+      - Follow proper layering: Things that change less often (e.g. dependencies) on top and code changes (index.js) often.
 			
 	
-• Scenarios:
-	○ Cost Optimization: Preemptible VMs, appropriate region, committed user discount, Use E2 machine types, Use multiple node pools
-	○ Efficient Auto-scaling:  Configure HPA, Cluster autoscaler
-	○ Execute untrusted third-party code: New node pool with GKE sandbox and deploy untrusted code to it. 
-	○ Only internal communication between microservice deployments: Create service of type ClusterIP
-	○ Pod stays pending: Pod can not be scheduled onto a node (insufficient resources)
-	○ Pod stays waiting: Failure to pull the image
-	○ Pod becomes unhealthy which service will identify and replace the pod?: ReplicaSet   
+- Scenarios:
+  - Cost Optimization: Preemptible VMs, appropriate region, committed user discount, Use E2 machine types, Use multiple node pools
+  - Efficient Auto-scaling:  Configure HPA, Cluster autoscaler
+  - Execute untrusted third-party code: New node pool with GKE sandbox and deploy untrusted code to it.
+  - Only internal communication between microservice deployments: Create service of type ClusterIP
+  - Pod stays pending: Pod can not be scheduled onto a node (insufficient resources)
+  - Pod stays waiting: Failure to pull the image
+  - Pod becomes unhealthy which service will identify and replace the pod?: ReplicaSet   
 	
-• Deleting kubernetes resources (in given order):
-	○ Delete service: kubectl
-	○ Delete deployment:  kubectl
-	○ Delete cluster : gcloud
-	○ Delete project: gcloud 
-
-• 
-• C
+- Deleting kubernetes resources (in given order):
+   - Delete service: kubectl
+   - Delete deployment:  kubectl
+   - Delete cluster : gcloud
+   - Delete project: gcloud 
 
 ===============================================================================
 https://www.weave.works/blog/deploying-an-application-on-kubernetes-from-a-to-z
 
-How to deploy an app on GKE:
-
-Step 1: Dockerize The Application 
-
-Step 2: Creating a Deployment
-	The first step in moving to Kubernetes is to create a Pod that hosts the application container. But since pods are ephemeral by nature, we need to create a higher controller that takes care of our pod (restart if it crashes, move it around nodes, etc.). For that reason, we’ll use a Deployment. 
-
-Step 3: Exposing Our Application Using Service and Ingress
-	
-Step 4: Handling Application Configuration Using ConfigMaps
-	
-Step 5: Securing Confidential Data Using Secrets
-	
-Step 6: Deploying the Backend Storage (Redis) Using a StatefulSet
-	
-Step 7: Adding HTML Content to the Application
-	
-Step 8: Packaging Our Kubernetes Cluster Using Helm
+- **How to deploy an app on GKE:**
+  - **Step1:** **Dockerize** The Application
+  - **Step2:** Creating a **Deployment**: The first step in moving to Kubernetes is to create a Pod that hosts the application container. But since pods are ephemeral by nature, we need to create a higher controller that takes care of our pod (restart if it crashes, move it around nodes, etc.). For that reason, we’ll use a Deployment.
+  - **Step3:** **Exposing** Our Application Using **Service** and Ingress
+  - **Step4:** Handling Application Configuration Using **ConfigMaps**
+  - **Step5:** **Securing** Confidential Data Using **Secrets**
+  - **Step6:** Deploying the **Backend Storage** (Redis) Using a StatefulSet
+  - **Step7:** **Adding** HTML Content to the **Application**
+  - **Step8:** **Packaging** Our Kubernetes Cluster Using **Helm**
 
 ======================================================
 
-Promethius: 
-https://www.weave.works/blog/a-comprehensive-guide-to-prometheus-monitoring
+**Promethius:** https://www.weave.works/blog/a-comprehensive-guide-to-prometheus-monitoring
 
 ==========================================================
 
@@ -162,5 +148,4 @@ GitOps Deployments from VS Code with little to no Kubernetes Knowledge:
 https://www.weave.works/blog/gitops-deployments-from-vs-code
 
 ==========================================================
-
 
