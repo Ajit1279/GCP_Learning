@@ -1,1 +1,19 @@
+# Different datatypes
+#employee:
+#  name: ABC
+#  age: 40
+#  address: XYZ
+  
+# This is list
+#employee:
+# - name: DEF
+#   age: 35
+#   address:TBC
+# - name: GHI
+#   age: 44
+#   address: 
+#   - old: FVD
+#     new: HGF
+
+##--------------------------------------------------
 
