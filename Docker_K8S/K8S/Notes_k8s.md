@@ -152,10 +152,12 @@ Step 7: Adding HTML Content to the Application
 Step 8: Packaging Our Kubernetes Cluster Using Helm
 
 ======================================================
+
 Promethius: 
 https://www.weave.works/blog/a-comprehensive-guide-to-prometheus-monitoring
 
 ==========================================================
+
 GitOps Deployments from VS Code with little to no Kubernetes Knowledge:
 https://www.weave.works/blog/gitops-deployments-from-vs-code
 
