@@ -20,13 +20,13 @@
 kind: Pod
 apiVersion: v1
 metadata: 
-  name: nginx-pod
+  name: test-pod
   labels: 
     env: demo
     type: frontend
 spec:
   containers:
-  - name: nginx-container
-    image: nginx
-    ports: 
-    - containerport: 80
+  - name: test-container
+    image: hashicorp/http-echo:latest
+    args: 
+    - "-text=the test has been successful!"
