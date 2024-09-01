@@ -48,6 +48,9 @@
 - **Day5**: [Kubernetes Architecture](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/Notes_k8s.md)  [Youtube Link](https://www.youtube.com/watch?v=SGGkUCctL4I&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=6)
    
 - **Day6**: [Kubernetes Multi Node Cluster Set-up](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
+
+- **Day7**: [Pods in Kunernetes](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
+  
 - sd
 - sd
 - sd
