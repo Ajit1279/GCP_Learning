@@ -123,9 +123,35 @@
       - **spec:**
         - **containers:** name of the container (e.g. nginx-container)
         - **image**: which you would like to use for creating containers (say nginx)
-        - **ports**: we have specified container port as 80   
+        - **ports**: we have specified container port as 80
 
-    - Let's run command: _sudo kubectl create -f pod_create.yaml_
+    - **Create yaml using "Dry Run"**
+      - The YAML file may become very complex and difficult to type config lines one-by-one manually. e.g. type a command: _**sudo kubectl run nginx --image=nginx --dry-run=client**_
+
+      - It displays:
+   
+        ![image](https://github.com/user-attachments/assets/6bf82c45-e639-4d77-880c-ba7313453bbc)
+
+
+      - Now if you type _**sudo kubectl get pods**_ , it does not display the nginx pod
+ 
+        ![image](https://github.com/user-attachments/assets/83d49a5f-9995-4dbe-a510-6bb185d62e7f)
+ 
+      - You can redirect the output to a yaml file using command: _**sudo kubectl run nginx --image=nginx --dry-run=client -o yaml**_
+   
+        ![image](https://github.com/user-attachments/assets/0cc4df40-da39-4127-b316-b788e099f1ed)
+
+      - You can further redirect this to nginx_pod.yaml using command: _**sudo kubectl run nginx --image=nginx --dry-run=client -o yaml > nginx_pod.yaml**_
+   
+        ![image](https://github.com/user-attachments/assets/27946373-2aba-4b30-bdb1-c9a0b1d672bd)
+
+
+      - If you want the config file in json format simply replace yaml with json in the above command i.e. _**sudo kubectl run nginx --image=nginx --dry-run=client -o json > nginx_pod.json**_
+   
+        ![image](https://github.com/user-attachments/assets/a04c6c80-aab5-4cf6-8f12-928d9dd75955)
+       
+
+    - Let's run command to create a pod using this yaml file: _**sudo kubectl create -f pod_create.yaml**_
 
     - It returned an error:
  
@@ -172,5 +198,31 @@
 
 
   - **Now let's interact with pod**
-    - type: _sudo kubectl exec -it test-pod -- sh_   
+    - type: _sudo kubectl exec -it test-pod -- sh_
+
+    - **Describe the pod:** Type _**sudo kubectl describe pod test-pod | less**_ . It displays:
  
+      ![image](https://github.com/user-attachments/assets/a2116bb4-0eb4-41e3-8cf3-e970329020b2)
+ 
+      ![image](https://github.com/user-attachments/assets/65a29fc7-5ed9-41ac-9d96-a0e56986150a)
+
+
+    - **Labels** are used to group the pods together. Suppose you want to display how many pods are running for your various resources. Then type: _**sudo kubectl get pods test-pod --show-labels**_
+   
+      ![image](https://github.com/user-attachments/assets/ee111253-d1e3-4906-a1e8-2296c606ee64)
+
+    - **Find out on which nodes the pod is running** :  _**sudo kubectl get pods -o wide**_
+ 
+      ![image](https://github.com/user-attachments/assets/1ba1f4de-c77b-4c47-a3f6-5651ef3addde)
+
+
+    - The above command can be used for nodes as well:  _**sudo kubectl get nodes -o wide**_
+ 
+      ![image](https://github.com/user-attachments/assets/336675d8-d188-4856-a63e-9f41a7f731d7)
+
+
+-----------------------------------------------------------------------
+- Tasks:
+  - Create the YAML from the image nginx (as shown above), update the pod name and use that to create a new pod
+  - Fix the errors in yaml file [yaml_with_error.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/yaml_with_error.yaml)
+  
