@@ -1,4 +1,4 @@
-**kubeadm** - Tool to create and manage Kubernetes clusters. kubeadm doesn't install kubectl or minikube automatically. Appropriate version need to be installed 
+- **kubeadm** - Tool to create and manage Kubernetes clusters. kubeadm doesn't install kubectl or minikube automatically. Appropriate version need to be installed 
 to avoid buggy performance.
 
 **Kubectl** - Command line tool for communicating with a Kubernetes cluster's control plane, using the Kubernetes API
