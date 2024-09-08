@@ -51,7 +51,7 @@
 
 - **Day7**: [Pods in Kunernetes](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
   
-- **Day8**: [Kubernetes Deployment, Replication Controller and ReplicaSehttps://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/240908_Deployment_Replicaset_ReplicationController.mdt]()
+- **Day8**: [Kubernetes Deployment, Replication Controller and ReplicaSet](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/240908_Deployment_Replicaset_ReplicationController.md)
 - sd
 - sd
 - s
