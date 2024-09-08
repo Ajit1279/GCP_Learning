@@ -56,11 +56,14 @@ the creation and scaling of Pods.
         ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/eb59457b-789e-4542-97ae-8f9e9b442038)
 
       - If we stop the proxy using CTRL+C, you will not be able to access the app
+        
         - **Window2 screenshot**
+
           ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/956da003-9b7b-461f-b662-a81e08e1b79a)
 
        - **Window1 screenshot**
-          ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c77b1517-9777-46b2-a96c-a70e2456e05b)
+
+         ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/c77b1517-9777-46b2-a96c-a70e2456e05b)
 
     - **using pod name**
       - The API server will automatically **create an endpoint for each pod**, based on the pod name, that is also accessible through the proxy.
