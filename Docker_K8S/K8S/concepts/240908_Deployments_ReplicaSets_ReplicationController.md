@@ -26,15 +26,27 @@
 
     ![image](https://github.com/user-attachments/assets/6a2f84a1-3a63-4cc2-87c4-4deaa38e471a)
 
-  - Type command: _**sudo kubectl get replicationcontroller**_ where replicationcontroller is the name of the yaml file
+  - Type command: _**sudo kubectl get replicationcontroller**_ where replicationcontroller is the name of the replication controller
 
     ![image](https://github.com/user-attachments/assets/21846f93-8f0d-41eb-99a4-13a01a8eaedd)
 
 
 - **ReplicaSets:**
   - It's the recommended option to manage pods (replication of pods) 
-  - One can manage pods based on certain selection criteria (e.g. labels) even though the pods were not created using this config (yaml) file
-  - Let's create replicaset.yaml 
+
+  - One can manage pods based on certain selection criteria (e.g. labels) even though the pods were not created using the same config (yaml) file
+
+  - Let's create [replicaset.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/replicaset.yaml) . As you can observe, 
+    - kind: ReplicaSet
+    - add "selector" in spec
+    - matching criteria e.g. env:demo
+
+  - run command: _**sudo kubectl apply -f replicaset.yaml**_ . It gave an error: **error: resource mapping not found for name: "ngnix-rs" namespace: "" from "replicaset.yaml": no matches for kind "ReplicaSet" in version "v1"
+ensure CRDs are installed first**
+
+    ![image](https://github.com/user-attachments/assets/d4db60b5-c700-41ad-ba95-49ae5d97b6cb)
+
+  -  
   
     
 
