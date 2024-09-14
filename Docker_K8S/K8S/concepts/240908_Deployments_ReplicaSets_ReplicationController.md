@@ -30,6 +30,11 @@
 
     ![image](https://github.com/user-attachments/assets/21846f93-8f0d-41eb-99a4-13a01a8eaedd)
 
+  - Cleanup: _**sudo kubectl delete -f replicationcontroller.yaml**_
+
+    ![image](https://github.com/user-attachments/assets/b9fafa56-7e1a-4680-8f8b-25f37599b00f)
+
+------------------------------------------------
 
 - **ReplicaSets:**
   - It's the recommended option to manage pods (replication of pods) 
@@ -63,8 +68,12 @@ ensure CRDs are installed first**
     ![image](https://github.com/user-attachments/assets/a8340c8a-07a9-496e-8b99-f7e11ae9d92c)
 
     ![image](https://github.com/user-attachments/assets/19ac786b-8d78-4ada-bdbd-6fef8a5fea08)
-    
 
+  - Clean-up: _**sudo kubectl delete -f replicaset.yaml**_ (please note deleting individual pods doesn't help as it gets created automatically)
+
+    ![image](https://github.com/user-attachments/assets/c711b87d-c402-4c8c-8d38-851ec4d85133)
+
+----------------------------------------------------------------  
 - Deployments
   - Deployments manage ReplicaSets
 
