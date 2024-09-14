@@ -33,7 +33,7 @@
 
 - **ReplicaSets:**
   - It's the recommended option to manage pods (replication of pods) 
-  - One can manage pods based on certain selection criteria even though the pods were not created using this config (yaml) file e.g. labels
+  - One can manage pods based on certain selection criteria (e.g. labels) even though the pods were not created using this config (yaml) file
   - Let's create replicaset.yaml 
   
     
