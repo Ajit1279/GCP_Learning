@@ -221,6 +221,8 @@
       ![image](https://github.com/user-attachments/assets/336675d8-d188-4856-a63e-9f41a7f731d7)
 
 
+    - Cleanup: _**sudo kubectl delete -f pod_create.yaml**_
+
 -----------------------------------------------------------------------
 - Tasks:
   - Create the YAML from the image nginx (as shown above), update the pod name and use that to create a new pod
