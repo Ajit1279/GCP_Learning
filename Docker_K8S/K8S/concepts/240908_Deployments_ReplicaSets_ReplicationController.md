@@ -21,7 +21,7 @@
 
     ![image](https://github.com/user-attachments/assets/3587368c-04ae-4fd7-b1be-681be1f16d39)
 
-  - Now run command: _**sudo kubectl get pods**_ It shows 3 pods are created
+  - Now run command: _**sudo kubectl get pods**_ It shows 3 pods are created **because in specs we mentioned replicas: 3**
 
     ![image](https://github.com/user-attachments/assets/6a2f84a1-3a63-4cc2-87c4-4deaa38e471a)
 
