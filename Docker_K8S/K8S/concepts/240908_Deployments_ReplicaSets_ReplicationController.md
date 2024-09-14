@@ -9,6 +9,27 @@
 
       ![image](https://github.com/user-attachments/assets/e2c67aa0-e541-4de6-a7f5-7e2c0856d18f)
 
+  - Run command: _**sudo kubectl run nginx --image=nginx --dry-run=client -o yaml > nginx_pod.yaml**_
+
+  - It'll create [nginx_pod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/nginx_pod.yaml) on the cloudshell machine
+
+  - create [replicationcontroller.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/replicationcontroller.yaml) Please note that in spec--template-- we have copied details from nginx_pod.yaml, as we want to replicate the nginx pods.
+
+  - Run command _**sudo kubectl delete pods nginx**_
+
+  - Now run command: _**sudo kubectl apply -f replicationcontroller.yaml**_ It displays message:
+
+    ![image](https://github.com/user-attachments/assets/3587368c-04ae-4fd7-b1be-681be1f16d39)
+
+  - Now run command: _**sudo kubectl get pods**_ It shows 3 pods are created
+
+    ![image](https://github.com/user-attachments/assets/6a2f84a1-3a63-4cc2-87c4-4deaa38e471a)
+
+  - Type command: _**sudo kubectl get replicationcontroller**_ where replicationcontroller is the name of the yaml file
+
+    ![image](https://github.com/user-attachments/assets/21846f93-8f0d-41eb-99a4-13a01a8eaedd)
+
+
 - ReplicaSets:
   - Replicasets manage pods (replication of pods) 
   - One can manage pods not created using these replicasets
