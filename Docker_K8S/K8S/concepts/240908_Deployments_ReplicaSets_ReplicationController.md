@@ -2,7 +2,8 @@
 - Reference: https://kubernetes.io/docs/reference/kubectl/quick-reference/
 
 - **Replication Controller**:
-  - It's the legacy version of ReplicaSet 
+  - It's the legacy version of ReplicaSet
+  - It can only manage the resources created using it
   - Creates a new pod as soon as one of the pods crashes based on the **number of replicas mentioned**
   - **OR High Availability is required**
   - Imagine in case the node reaches a point where it can not accomodate any more pods, it **can span multiple nodes**
@@ -30,10 +31,11 @@
     ![image](https://github.com/user-attachments/assets/21846f93-8f0d-41eb-99a4-13a01a8eaedd)
 
 
-- ReplicaSets:
-  - Replicasets manage pods (replication of pods) 
-  - One can manage pods not created using these replicasets
-  - Labels can also be used to match the pod which need to be replicated
+- **ReplicaSets:**
+  - It's the recommended option to manage pods (replication of pods) 
+  - One can manage pods based on certain selection criteria even though the pods were not created using this config (yaml) file e.g. labels
+  - Let's create replicaset.yaml 
+  
     
 
 - Deployments
