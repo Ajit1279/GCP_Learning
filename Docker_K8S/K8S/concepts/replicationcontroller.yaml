@@ -15,4 +15,4 @@ spec:
       containers:
         - image: nginx
           name: nginx
-replicas: 3
+  replicas: 3
