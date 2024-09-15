@@ -75,9 +75,54 @@ ensure CRDs are installed first**
 
 ----------------------------------------------------------------  
 - Deployments
-  - Deployments manage ReplicaSets
+  - Deployments manage ReplicaSets, which in turn manages pods
 
     ![image](https://github.com/user-attachments/assets/4f28eaaf-7489-4f02-9c11-7020376e3f63)
 
-  - Creates pods in rolling update fashion without or with minimal downtime
+  - Creates pods in rolling update fashion without or with minimal downtime (A pod will be created with new version, then added to the load balancer, then next pod with new version and so on...). The changes can be rolled back as well without downtime
+
+  - Instructions:
+    - Create [deployment.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/deployment.yaml) by changing kind: deployment, metadata.name: nginx-deployment, replicas:3 
+
+    - run command: _**sudo kubectl apply -f deploy.yaml**_
  
+      ![image](https://github.com/user-attachments/assets/9e099be7-21b6-44f5-ae6d-e41e2f186512)
+
+    - Run command to **display all objects in your cluster**: _**sudo kubectl get all**_
+ 
+      ![image](https://github.com/user-attachments/assets/38e01e6f-750d-4c62-af6c-bbe184d7dc34)
+
+    - **Rollout**
+      - Command for **rollout**: _**sudo kubectl set image deployment/nginx-deployment nginx=nginx:1.11-alpine**_
+   
+        ![image](https://github.com/user-attachments/assets/eaeccd68-cdd6-4861-801f-21387e9b481a)
+
+      - Then type: _**sudo kubectl describe deployment/nginx-deployment | less**_
+     
+        ![image](https://github.com/user-attachments/assets/d3ea1683-d053-40e8-b312-463169e09034)
+
+        
+        ![image](https://github.com/user-attachments/assets/7e25bb2d-9637-48b3-8c86-fc0c5fe85752)
+   
+        
+      - Check the rollout hitory by typing: _**sudo kubectl rollout history deployment/nginx-deployment**_
+   
+        ![image](https://github.com/user-attachments/assets/75598434-e562-4143-a3e1-287d56212759)
+
+
+    - **Rollback**
+      - Command for **rollback**: **sudo kubectl rollout undo deployment/nginx-deployment**
+   
+        ![image](https://github.com/user-attachments/assets/8ebd2935-6488-4d5d-9b3c-5c91225ac53d)
+
+
+      - Check the rollout history: _**sudo kubectl rollout history deployment/nginx-deployment**_ . Please note, it has created the next version (3), not deleted the version2
+   
+        ![image](https://github.com/user-attachments/assets/de9e652e-f284-4b57-8c60-8752d911c0b8)
+
+      - Type: _**sudo kubectl describe deployment/nginx-deployment | less**_ . It has rolled back to version 1.12 alpine
+   
+        ![image](https://github.com/user-attachments/assets/c17647f5-0df0-4072-ac19-1c11420db6a7)
+
+
+      - Cleanup: _**sudo kubectl delete -f deploy.yaml**_          
