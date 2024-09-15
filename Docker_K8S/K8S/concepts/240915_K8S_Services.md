@@ -27,10 +27,38 @@
          - **metadata.name:** nodeport-service
          - **spec:** what **type** of service (NodePort in this case)
          - **ports:** the ports which we want to expose
-           - nodePort: 30001 since it has to be in the range 30000 to 31676
+           - nodePort: 30001 since it has to be in the range 30000 to 32767
            - port: 80
            - targetport: 80
-         - **selector** for criteria for matching service ( type _**sudo kubectl get pods --show-labels**_)  
+         - **selector** for criteria for matching service ( type _**sudo kubectl get pods --show-labels**_)
+         
+        - Run command: _**sudo kubectl apply -f service_nodeport.yaml**_
+     
+          ![image](https://github.com/user-attachments/assets/60106126-6544-4eb6-920a-2c78e1ca8922)
+
+        - Run command: _**sudo kubectl get all**_ You can notice that there's a new service: _service/nodeport-service_
+     
+          ![image](https://github.com/user-attachments/assets/03a2e12b-2471-448d-b91c-2f706f42e2e1)
+
+        - You can run: _**sudo kubectl get svc**_
+     
+          ![image](https://github.com/user-attachments/assets/bd0d3da2-afc5-4f91-af6f-8e2f447d35db)
+
+        - Now we'll see if we are able to access this service:
+          - Run: _**sudo kubectl describe pod nginx-deployment-99786fc58-422z2 | less**_ and note the IP of node
+       
+            ![image](https://github.com/user-attachments/assets/727a672e-3190-4379-a3a0-3dc12fb41f72)
+
+          - Enter the <IP>:30001 in browser. The service is not reachable
+       
+            ![image](https://github.com/user-attachments/assets/1b76d784-0847-4070-bb67-107cd66610a9)
+
+          - This requires [additional set-up](https://kind.sigs.k8s.io/docs/user/quick-start/#mapping-ports-to-the-host-machine) in the cluster and the existing cluster can not be amended, so we'll have to create a new cluster and follow the above steps
+            
+          - Delete the existing cluster: _**sudo kind delete cluster gkedemo**_
+
+          - Create a new [configuration](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/kind_for_service_config.yaml) file  and type command _**sudo kind create cluster --config kind_for_service_config.yaml --name servicedemo**_  
+          
 
  
     - **ClusterIP**
