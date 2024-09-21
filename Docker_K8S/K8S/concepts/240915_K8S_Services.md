@@ -133,4 +133,15 @@
           ![image](https://github.com/user-attachments/assets/788cf411-cd90-43fd-8721-974bb9afcd75)
 
            
-    - **External names**
+    - [**External names**](https://kubernetes.io/docs/concepts/services-networking/service/#externalname)
+      - Create [externalname.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/externalname.yaml)
+        - instead of labels, we map it to a DNS (my.database.example.com)
+
+      - Command: _**sudo kubectl apply -f externalname.yaml**_
+   
+        ![image](https://github.com/user-attachments/assets/268c6b76-d0d7-4920-80af-e1eda3168c2d)
+
+      - It created the service, but not accessible 
+   
+        
+      -  
