@@ -22,15 +22,15 @@
         - Create a [deployment](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240908_Deployments_ReplicaSets_ReplicationController.md)
 
         - Please note few points while creating [service_nodeport.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/service_nodeport.yaml)
-         - **apiVersion**: Run command: _**sudo kubectl explain service | less**_ to find out the apiVersion
-         - **kind:** Service
-         - **metadata.name:** nodeport-service
-         - **spec:** what **type** of service (NodePort in this case)
-         - **ports:** the ports which we want to expose
-           - nodePort: 30001 since it has to be in the range 30000 to 32767
-           - port: 80
-           - targetport: 80
-         - **selector** for criteria for matching service ( type _**sudo kubectl get pods --show-labels**_)
+          - **apiVersion**: Run command: _**sudo kubectl explain service | less**_ to find out the apiVersion
+          - **kind:** Service
+          - **metadata.name:** nodeport-service
+          - **spec:** what **type** of service (NodePort in this case)
+          - **ports:** the ports which we want to expose
+            - nodePort: 30001 since it has to be in the range 30000 to 32767
+            - port: 80
+            - targetport: 80
+          - **selector** for criteria for matching service ( type _**sudo kubectl get pods --show-labels**_)
          
         - Run command: _**sudo kubectl apply -f service_nodeport.yaml**_
      
