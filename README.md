@@ -24,3 +24,11 @@
 @@ text in purple (and bold)@@
 ```
 $${\color{red}Welcome \space \color{lightblue}To \space \color{orange}my \space \color{blue}github}$$
+
+- shortcuts in cloudshell
+ - go to home directory and type vi .bash_profile
+ - then enter alias 'k=sudo kubectl' . Close the vi editor
+ - then type _**sounrce .bash_profile**_ and enter _**k | less**_
+
+   ![image](https://github.com/user-attachments/assets/a4e8f379-3004-48b2-a34b-f97f99ddc1a6)
+
