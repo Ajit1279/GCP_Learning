@@ -57,10 +57,80 @@
             
           - Delete the existing cluster: _**sudo kind delete cluster gkedemo**_
 
-          - Create a new [configuration](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/kind_for_service_config.yaml) file  and type command _**sudo kind create cluster --config kind_for_service_config.yaml --name servicedemo**_  
-          
+          - Create a new [configuration](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/kind_for_service_config.yaml) file  and type command _**sudo kind create cluster --config kind_for_service_config.yaml --name servicedemo**_
+       
+             ![image](https://github.com/user-attachments/assets/538cd958-48d0-4616-8f44-e381d53710ee)
 
+          - Now let's follow steps above
+            - Run command: **sudo kubectl get all**
+         
+               ![image](https://github.com/user-attachments/assets/6aed054b-899d-4170-ad5b-692cbfad8bd5)
+
+            -  Run command: _**sudo kubectl describe pod/nginx-deployment-78467fc744-csdln | less**_ . Note the IP of the node: Node:servicedemo-worker2/172.18.0.3
+           
+                ![image](https://github.com/user-attachments/assets/2f9f95e3-277a-4009-92c5-7ccbee7527b5)
+
+            - Run command: _**curl 172.18.0.3:30001**_ or **curl localhost:30001** .The service is successfully created.
+         
+              ![image](https://github.com/user-attachments/assets/be9a6c16-c753-45b0-8cbf-40d740354a9c)
+
+            - **Command:** **sudo kubectl describe svc nodeport-service**
+         
+              ![image](https://github.com/user-attachments/assets/20b71f8f-2413-4527-a339-77e736384df7)
+
+         
  
     - **ClusterIP**
-    - **External names**
+      - The IPs of pods, nodes or any other backend components may not be static, Cluster IP comes handy in such cases
+ 
+        ![image](https://github.com/user-attachments/assets/8728b0ec-8a49-4406-874b-a18652107f15)
+ 
+      - **Demo**
+        - Create [clusterip.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/clusterip.yaml)
+          - metadata.name : clusterip-service
+          - spec.type: ClusterIP
+          - Remove Nodeport : 30001
+
+        - Run command: _**sudo kubectl apply -f clusterip.yaml**_ and then _**sudo kubectl get svc**_
+     
+          ![image](https://github.com/user-attachments/assets/64a52db5-3f57-416d-9b72-78ffeaf54082)
+
+        - Command _**sudo kubectl describe svc/clusterip-service**_ and then _**sudo kubectl get pods -o wide**_ . Please note that endpoints of service and the pod IPs are same i.e. clusterip is listening on these IPs and port 80 (which we specified in our clusterip.yaml)
+     
+          ![image](https://github.com/user-attachments/assets/810931d0-1be5-4717-a301-da581fcede40)
+
+        - Further let's type: _**sudo kubectl get ep**_
+     
+          ![image](https://github.com/user-attachments/assets/60d4cae0-c651-468a-afae-c627f39761e6)
+
+    
     - **Load balancer**
+      - Convenient way to expose application to users rather than individual IPs, as those may change and also those would be too many for large applications
+   
+         ![image](https://github.com/user-attachments/assets/a5e5e3ef-5ee8-4d83-aa8f-a5483ae1ff7b)
+
+      - Create [loadbalancer_svc.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/loadbalancer_svc.yaml)
+        - Type: LoadBalancer
+        - metadata.name: loadbalancer-service
+
+      - Command: _**sudo kubectl apply -f loadbalancer_svc.yaml**_ and then _**sudo kubectl get svc**_
+   
+         ![image](https://github.com/user-attachments/assets/c59c2a44-3d7a-40ba-9daf-512e32763ae5)
+
+      -  Please note that it does not have external IP because we have not provisioned external LB in this kind cluster. For more information to create a LoadBalancer in kind cluster refer the [documentation](https://kind.sigs.k8s.io/docs/user/loadbalancer/)
+        - Create [kindlb.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/kindlb.yaml)
+        
+        - Run Command: _**sudo kubectl apply -f kindlb.yaml**_
+   
+          ![image](https://github.com/user-attachments/assets/50055ea6-6097-4561-85af-b0166378d6d4)
+
+        - Run command: _**sudo kubectl get svc**_
+   
+          ![image](https://github.com/user-attachments/assets/018cd274-014e-4084-b699-58d6097a5b93)
+
+        - **It's not working still (Task for some other day!!** :) )
+ 
+          ![image](https://github.com/user-attachments/assets/788cf411-cd90-43fd-8721-974bb9afcd75)
+
+           
+    - **External names**
