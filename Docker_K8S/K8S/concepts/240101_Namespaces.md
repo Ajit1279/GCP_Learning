@@ -1,4 +1,5 @@
-Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+- Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+- Additional Reference: - Reference: https://www.youtube.com/watch?v=yVLXIydlU_0&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=11
 
 **1. Namespaces:**
 - Mechanism for **isolating groups of resources** within a single cluster (divide cluster resources between multiple users)
