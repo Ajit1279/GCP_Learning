@@ -29,29 +29,29 @@ Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 
         
 **4. Namespace-based scoping is applicable only for namespaced objects (e.g. Deployments, Services, etc) and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, etc).**
-- **i). Let's create a development and production namespace**
+- **Let's create a development and production namespace**
   kubectl create -f https://k8s.io/examples/admin/namespace-dev.json
   kubectl create -f https://k8s.io/examples/admin/namespace-prod.json
   
-- **ii) Create pods in each namespace:**
+- **Create pods in each namespace:**
   kubectl create deployment snowflake \
   --image=registry.k8s.io/serve_hostname \
   -n=development --replicas=2
   
-- **iii) Run the commands:** kubectl get deployment -n=development; kubectl get pods -l app=snowflake -n=development
+- **Run the commands:** kubectl get deployment -n=development; kubectl get pods -l app=snowflake -n=development
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/b4ffe091-d050-457c-88ee-14daeebc4249)
 
-- **iv) Let's create some cattle pods in production:**
-        kubectl create deployment cattle --image=registry.k8s.io/serve_hostname -n=production
+- **Let's create some cattle pods in production:**
+  - kubectl create deployment cattle --image=registry.k8s.io/serve_hostname -n=production
 
-        kubectl scale deployment cattle --replicas=5 -n=production
+  - kubectl scale deployment cattle --replicas=5 -n=production
 
-        kubectl get deployment -n=production
+  - kubectl get deployment -n=production
 
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ea6e9fee-cd20-4a69-bb37-e632e888b609)
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/ea6e9fee-cd20-4a69-bb37-e632e888b609)
+ 
+  - kubectl get pods -l app=cattle -n=production
 
-        kubectl get pods -l app=cattle -n=production
-![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/26b65e6a-108a-44f3-83d5-9250196d54fa)
+    ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/26b65e6a-108a-44f3-83d5-9250196d54fa)
 
-It's evident from the above screenshots that the resources users create in one namespace are hidden from the other namespace.
-
+- It's evident from the above screenshots that the resources users create in one namespace are hidden from the other namespace.
