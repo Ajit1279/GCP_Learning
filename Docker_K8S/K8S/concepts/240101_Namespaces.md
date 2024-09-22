@@ -21,11 +21,10 @@ Reference: https://kubernetes.io/docs/concepts/overview/working-with-objects/nam
 
 
 **3. Namespace operations:**
-- **1. Create a namespace:**:
-  
-        i). kubectl create namespace my-first-namespace
-       ii). Create a file named my-namespace.yaml (https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/my-namespace.yaml)
-           Run command: kubectl create -f ./my-namespace.yaml
+- **Create a namespace:**:
+  - kubectl create namespace my-first-namespace
+  - Create a file named [my-namespace.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/my-namespace.yaml) . Run command: _**kubectl create -f ./my-namespace.yaml**_
+    
   ![image](https://github.com/Ajit1279/GCP_Learning/assets/81754034/355b1a71-9242-45b8-81c1-5dc21e88ef42)
 
         
