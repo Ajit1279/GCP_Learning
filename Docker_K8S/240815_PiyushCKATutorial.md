@@ -16,7 +16,7 @@
 
 - **Day9**: [Kubernetes Services](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240915_K8S_Services.md)
   
-- **Day10**: [Kubernetes Namespaces](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240922_Namespaces.md)
+- **Day10**: [Kubernetes Namespaces](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240101_Namespaces.md)
   
 - ds
 - ds
