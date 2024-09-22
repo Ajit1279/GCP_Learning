@@ -9,6 +9,8 @@
   - Tool for running local Kubernetes clusters using Docker container “nodes”.
   - Runs each Kubernetes node as a docker container within our host (physical machine/VM)
   - Kind is **not designed** to support **production grade** Kubernetes cluster.
+
+- [Create Compute VM instance](https://github.com/Ajit1279/GCP_Learning/blob/main/Compute_VMs/createdockervm.sh) 
  
 - [Install Docker](https://docs.docker.com/engine/install/debian/) 
 
