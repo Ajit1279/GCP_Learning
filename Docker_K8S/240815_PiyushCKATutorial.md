@@ -18,7 +18,8 @@
   
 - **Day10**: [Kubernetes Namespaces](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240101_Namespaces.md)
   
-- ds
+- **Day11**: [Multicontainer Pods - Sidecars vs Init container](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240927_MulticontainerPods.md)
+  
 - ds
 - ds
 - d
