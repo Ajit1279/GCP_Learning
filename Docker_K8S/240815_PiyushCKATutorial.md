@@ -18,10 +18,10 @@
   
 - **Day10**: [Kubernetes Namespaces](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240101_Namespaces.md)
   
-- **Day11**: [Multicontainer Pods - Sidecars vs Init container](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240927_MulticontainerPods.md)
+- **Day11**: [Multicontainer Pods - Init container](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240927_MulticontainerPods.md)
   
-- ds
-- ds
+- **Day12**: [Daemonsets, Job and Cronjob](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240927_Daemonsets_Job_Cronjob.md)
+  
 - d
 - sd
 - sd
