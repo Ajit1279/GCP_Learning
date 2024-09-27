@@ -10,6 +10,9 @@
 
   - **Demo**
    - Create [multicontainer_pod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/multicontainer_pod.yaml)
+     - busybox is a general purpose docker image to create containers 
+     - spec.command : command to be run within the pod. sleep 3600 ensures that conatiner is not destoyed
+     - The arguments can also be passed separately using **spc.initContainer.args**. It continues to run nslookup command to look-up a "myservice" service after every 2 seconds (sleep 2)
      
    - Type command: **sudo kubectl create -f multicontainer_pod.yaml** . It returned an error because I mis-spelled "kind: pod" (P should be capital)
 
@@ -84,5 +87,22 @@
 
      ![image](https://github.com/user-attachments/assets/87fdf769-93fe-432f-b23a-e8c0860c5150)
 
-   - One can also create multiple init containers (20:37)               
+- One can also create multiple init containers (20:37)
+  - Create [multiple_initcontiner_pod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/multiple_initcontiner_pod.yaml)
+    - Replicate init-myservice section and create init-mydb section within the yaml  
+ 
+  - Before applying let's delete the pod created above (mymulticontapp): **sudo kubectl delete pod mymulticontapp**
+ 
+  - Type command: **sudo kubectl apply -f  multinitcont.yaml** . As you can notice one of the containers in mymulticontapp is in init status
 
+    ![image](https://github.com/user-attachments/assets/255bfa7b-90a0-4cc2-a6cc-046906466931)
+
+  - Let's create a service for db using redis image. **sudo kubectl create deploy mydb --image redis --port 80**
+
+    ![image](https://github.com/user-attachments/assets/3de12662-f7e6-4c0e-9f50-89bf8cd8f0d2)
+
+  - expose this deployment: **sudo kubectl expose deploy mydb --name mydb --port 80** followed by **sudo kubectl get pods -w**. Now the app is up
+
+    ![image](https://github.com/user-attachments/assets/ca101407-c92e-42e4-9b05-8f56c1384830)
+
+ - **So we have successfully created a pod with two init containers!** 
