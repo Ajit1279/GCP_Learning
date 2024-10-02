@@ -22,8 +22,8 @@
   
 - **Day12**: [Daemonsets, Job and Cronjob](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240927_Daemonsets_Job_Cronjob.md)
   
-- d
-- sd
+- **Day13**: [Static Pods, manual scheduling, lables, selectors](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241002_StaticPods_ManualScheduling_Labels_Selectors.md)
+
 - sd
 - sd
 - sd
