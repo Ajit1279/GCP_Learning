@@ -124,5 +124,51 @@ ensure CRDs are installed first**
    
         ![image](https://github.com/user-attachments/assets/c17647f5-0df0-4072-ac19-1c11420db6a7)
 
+      - Cleanup: _**sudo kubectl delete -f deploy.yaml**_ 
 
-      - Cleanup: _**sudo kubectl delete -f deploy.yaml**_          
+--------------------------------------------------------------- 
+- **Labels**
+  - **Tags attached to objects** so that you can group or filter kubernetes objects. 
+
+  - For example in [replicaset.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/replicaset.yaml), we hve mentioned, app: nginx in multiple locations
+    - metadata.labels is label for ReplicaSet
+    - spec.selector.matchLabels matches these labels so that replicas are created according to the pod (which is filtered using criteria app: nginx)  
+    - template.metadata.labels is a label for pod
+
+  - Let's create [labels.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/labels.yaml), we'll add a new label env: demo and tier: frontend in it
+
+  - Run command: **sudo kubectl apply -f labels.yaml** and **sudo kubectl get rs --show-labels**, you will see all the labels
+
+    ![image](https://github.com/user-attachments/assets/d6f08e76-5ac5-46ca-b1f3-079bda22fe46)
+    ![image](https://github.com/user-attachments/assets/ee1b5397-248a-44c8-868e-ef82785b55f7)
+
+-------------------------------------------------------------
+- **Selector**
+  - The selectors the **filters** which can filter kubernetes objects based on labels  
+
+  - Now let's create [selector.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/selector.yaml) by referring to [manualscheduledemopod1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod1.yaml) 
+
+  - Run command: **sudo kubectl apply -f selector.yaml** and **sudo kubectl get pods**
+
+    ![image](https://github.com/user-attachments/assets/5299bc8e-034d-4a5d-a4e8-3c18fd2c4163)
+
+  - If we have thousands of pods, those can be filtered based on this criteria e.g. type: **sudo kubectl get pods --show-labels**
+
+     ![image](https://github.com/user-attachments/assets/c62a941e-f4a1-409c-87a5-2bf57fda05bc)
+
+  - Then run: **sudo kubectl get pods --selector tier=backend**
+
+     ![image](https://github.com/user-attachments/assets/8500ffe9-8172-4279-950b-e777a2a380e9)
+
+  -  Or say **sudo kubectl get pods --selector run=nginx**
+
+      ![image](https://github.com/user-attachments/assets/17eb9163-06f8-4ce1-ac3b-fc921b5b0c63)
+ 
+-----------------------------------------------------------------
+             
+- **Annotations**
+  - Type: **sudo kubectl edit pods nginx**, you'll find annotations
+
+    ![image](https://github.com/user-attachments/assets/2ff210d9-5210-4e60-8c39-cfb710c4bb59)
+
+  - As you can observe it stores additional information related to the object e.g. **last applied configuration** 
