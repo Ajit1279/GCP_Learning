@@ -49,12 +49,12 @@
       ![image](https://github.com/user-attachments/assets/4212213b-a3cd-4169-aa35-1b61f23ccd98)
 
     - Now let's move the kube-scheduler.yaml from tmp directory to the etc/kubernetes/manifests directory:
-      sudo docker exec -it 041ad5bd43d5 sh
-      cd tmp
-      ls -lrt
-      mv kube-scheduler.yaml /etc/kubernetes/manifests
-      cd /etc/kubernetes/manifests
-      ls -lrt
+      - sudo docker exec -it 041ad5bd43d5 sh
+      - cd tmp
+      - ls -lrt
+      - mv kube-scheduler.yaml /etc/kubernetes/manifests
+      - cd /etc/kubernetes/manifests
+      - ls -lrt
 
       ![image](https://github.com/user-attachments/assets/371261aa-5a89-4656-bbe2-aa88f028063d)
 
