@@ -82,7 +82,7 @@
     ![image](https://github.com/user-attachments/assets/2e470b19-302f-4c03-bf41-1627689d1914)
 
   - Run the command: **sudo kubectl run nginx --image=nginx -o yaml > selectordemopod.yaml**. _**Please note the selectordemopod.yaml was corrected to manualscheduledemopod.yaml in github**_
-    The [manualscheduledemopod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod.yaml) has many details, so let's trim it and create [selectordemopod1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod1.yaml). 
+    The [manualscheduledemopod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod.yaml) has many details, so let's trim it and create [manualscheduledemopod1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod1.yaml). 
 
   - Let's bring the scheduler down again as we did above:
     - **sudo docker ps**
