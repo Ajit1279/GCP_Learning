@@ -24,7 +24,7 @@
   
 - **Day13**: [Static Pods, manual scheduling, lables, selectors](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241002_StaticPods_ManualScheduling.md)
 
-- sd
+- **Day14**: [Taints, Tolerations](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241007_Taints_Tolerations.md)
 - sd
 - sd
 - s
