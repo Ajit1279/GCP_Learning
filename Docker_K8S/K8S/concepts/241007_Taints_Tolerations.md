@@ -61,4 +61,5 @@
 
     ![image](https://github.com/user-attachments/assets/709bd6ef-1239-4f44-9f8e-3b27ad393e75)
 
-  -  
+---------------------------------------
+**Selector** is already covered [here](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/240908_Deployments_ReplicaSets_ReplicationController.md)
