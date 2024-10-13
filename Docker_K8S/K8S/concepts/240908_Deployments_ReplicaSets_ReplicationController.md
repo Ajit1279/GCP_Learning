@@ -144,7 +144,9 @@ ensure CRDs are installed first**
 
 -------------------------------------------------------------
 - **Selector**
-  - The selectors the **filters** which can filter kubernetes objects based on labels  
+  - The selectors the **filters** which can filter kubernetes objects based on labels
+
+  - The [taints & tolerations](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241007_Taints_Tolerations.md) prevents / restricts nodes from scheduling unwanted pods on it. On the other hand, **selectors leave decision making with pods on which node to schedule itself** using labels.  
 
   - Now let's create [selector.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/selector.yaml) by referring to [manualscheduledemopod1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod1.yaml) 
 
