@@ -146,31 +146,67 @@ ensure CRDs are installed first**
 - **Selector**
   - The selectors the **filters** which can filter kubernetes objects based on labels
 
-  - The [taints & tolerations](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241007_Taints_Tolerations.md) prevents / restricts nodes from scheduling unwanted pods on it. On the other hand, **selectors leave decision making with pods on which node to schedule itself** using labels.  
+  - The [taints & tolerations](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241007_Taints_Tolerations.md) prevents / **restricts nodes from scheduling unwanted pods** on it. On the other hand, **selectors leave decision making with pods on which node to schedule itself** using labels.
 
-  - Now let's create [selector.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/selector.yaml) by referring to [manualscheduledemopod1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod1.yaml) 
+  - **Selector Demo1**
 
-  - Run command: **sudo kubectl apply -f selector.yaml** and **sudo kubectl get pods**
+    - Now let's create [selector.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/selector.yaml) by referring to [manualscheduledemopod1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/manualscheduledemopod1.yaml) 
 
-    ![image](https://github.com/user-attachments/assets/5299bc8e-034d-4a5d-a4e8-3c18fd2c4163)
+    - Run command: **sudo kubectl apply -f selector.yaml** and **sudo kubectl get pods**
 
-  - If we have thousands of pods, those can be filtered based on this criteria e.g. type: **sudo kubectl get pods --show-labels**
+      ![image](https://github.com/user-attachments/assets/5299bc8e-034d-4a5d-a4e8-3c18fd2c4163)
 
-     ![image](https://github.com/user-attachments/assets/c62a941e-f4a1-409c-87a5-2bf57fda05bc)
+    - If we have thousands of pods, those can be filtered based on this criteria e.g. type: **sudo kubectl get pods --show-labels**
 
-  - Then run: **sudo kubectl get pods --selector tier=backend**
+       ![image](https://github.com/user-attachments/assets/c62a941e-f4a1-409c-87a5-2bf57fda05bc)
 
-     ![image](https://github.com/user-attachments/assets/8500ffe9-8172-4279-950b-e777a2a380e9)
+    - Then run: **sudo kubectl get pods --selector tier=backend**
 
-  -  Or say **sudo kubectl get pods --selector run=nginx**
+       ![image](https://github.com/user-attachments/assets/8500ffe9-8172-4279-950b-e777a2a380e9)
 
-      ![image](https://github.com/user-attachments/assets/17eb9163-06f8-4ce1-ac3b-fc921b5b0c63)
+    -  Or say **sudo kubectl get pods --selector run=nginx**
+
+        ![image](https://github.com/user-attachments/assets/17eb9163-06f8-4ce1-ac3b-fc921b5b0c63)
+
+  - **Selector Demo2**
+
+    - [Create a VM and cluster](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md).
+
+    - Run command: **sudo kubectl run nginx-new --image=nginx --dry-run=client -o yaml > selector1.yaml**
+
+    - Edit [selector1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/selector1.yaml) to include nodeSelector: gpu: "false" in it
+
+    - Run command: **sudo kubectl apply -f selector1.yaml**
  
+        ![image](https://github.com/user-attachments/assets/7dd6c1c6-bd05-4df1-b907-bc8873ad926a)
+      
+    - Run command: **sudo kubectl get pods**. The pod is still in pending status. 
+ 
+        ![image](https://github.com/user-attachments/assets/2c7f6339-d838-41ac-8a86-3de052b069cc)
+
+    -  Run command: **sudo kubectl describe pod nginx-new**
+     
+    - Now let's label the nodes: **sudo kubectl label node kind-worker gpu=false**
+
+       ![image](https://github.com/user-attachments/assets/b93ce4fb-75a3-40ed-8254-b5cc45bafe60)
+
+    - Run the command: **sudo kubectl get pods**. The pod is in running state now.
+
+       ![image](https://github.com/user-attachments/assets/fc1b044b-c10b-4481-84ef-a61b1ebea257)
+
+    - Run the command: **sudo kubectl describe pod nginx-new**. As you can observe it's scheduled on **kind-worker** node
+
+       ![image](https://github.com/user-attachments/assets/459de5ae-9763-47d4-af9c-638dbb1e141c)
+    
 -----------------------------------------------------------------
              
 - **Annotations**
   - Type: **sudo kubectl edit pods nginx**, you'll find annotations
 
-    ![image](https://github.com/user-attachments/assets/2ff210d9-5210-4e60-8c39-cfb710c4bb59)
+     ![image](https://github.com/user-attachments/assets/2ff210d9-5210-4e60-8c39-cfb710c4bb59)
 
-  - As you can observe it stores additional information related to the object e.g. **last applied configuration** 
+  - As you can observe it stores additional information related to the object e.g. **last applied configuration**
+
+     ![image](https://github.com/user-attachments/assets/d72fbcae-51e2-4280-bda9-fd2ec2b01c04)
+
+  -  
