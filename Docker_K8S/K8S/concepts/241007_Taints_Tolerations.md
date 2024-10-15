@@ -1,9 +1,11 @@
 - Reference: https://www.youtube.com/watch?v=nwoS2tK2s6Q&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=15
 
-- **Taint** means **contaminate or pollute** 
-- Suppose we want to run a specific type of workload (e.g. AI/ML models), then **node is tainted** with say **gpu=true**
-- So if the scheduler tries to schedule a pod on this node it'll be rejected by node
-- We'll need to **add toleration to the pod (gpu=true)** if we want the nodes to accept the pod.
+- **Taints**
+  - Means **contaminate or pollute**
+  - **Node is tainted** with certain label (say **gpu=true**) if we want it to accept **specific type of workload (e.g. AI/ML models)** on it. So if the scheduler tries to schedule any other kind of pod on this node it'll be rejected by node.
+
+- **Tolerations**:
+  - We'll need to **add toleration to the pod (gpu=true)** if we want the nodes to accept the pod.
 
     ![image](https://github.com/user-attachments/assets/88772742-9e0f-4d24-9593-269216694beb)
 
@@ -11,6 +13,8 @@
   - **NoSchedule:** Works on newer pods
   - **PreferNoschedule:** No guarantee
   - **NoExecute:** existing / newer pods
+ 
+- However, **please note that taints & tolerations only restricts node from accepting only certain types of pods, but the pod may get scheduled on any other node without taint**. 
 
 --------------------------------------------------------------------------
 - **Taint Demo**
@@ -40,6 +44,7 @@
     ![image](https://github.com/user-attachments/assets/286c9bcc-6dec-4df1-8116-246e87527acb) 
 
 -------------------------------------------------------
+  
 - **Tolerations Demo**
   - Toleration CAN NOT be added from command line, we have to use yaml for it.
 
