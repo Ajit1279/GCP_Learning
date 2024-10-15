@@ -2,7 +2,7 @@
 
 - **Taints**
   - Means **contaminate or pollute**
-  - **Node is tainted** with certain label (say **gpu=true**) if we want it to accept **specific type of workload (e.g. AI/ML models)** on it. So if the scheduler tries to schedule any other kind of pod on this node it'll be rejected by node.
+  - **Node is tainted** with certain labels / selectors (say **gpu=true**) if we want it to accept **specific type of workload (e.g. AI/ML models)** on it. So if the scheduler tries to schedule any other kind of pod on this node it'll be rejected by node.
 
 - **Tolerations**:
   - We'll need to **add toleration to the pod (gpu=true)** if we want the nodes to accept the pod.
@@ -14,7 +14,9 @@
   - **PreferNoschedule:** No guarantee
   - **NoExecute:** existing / newer pods
  
-- However, **please note that taints & tolerations only restricts node from accepting only certain types of pods, but the pod may get scheduled on any other node without taint**. 
+- **Cons:**
+  - **Taints & tolerations only restricts node from accepting only certain types of pods, but the pod may get scheduled on any other node without taint**.
+  - Multiple conditions / labels can not be provided while defining taints and tolerations 
 
 --------------------------------------------------------------------------
 - **Taint Demo**
