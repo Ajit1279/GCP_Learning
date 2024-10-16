@@ -1,8 +1,7 @@
 apiVersion: v1
 kind: Pod
-metadata: 
-  labels:
-    run: redis
+metadata:
+  name: nginx
 spec:
   affinity:
     nodeAffinity:
@@ -12,9 +11,8 @@ spec:
           - key: disktype
             operator: In
             values:
-            - ssd
+            - ssd            
   containers:
-  - name: redis
-    image: redis
+  - name: nginx
+    image: nginx
     imagePullPolicy: IfNotPresent
-status: {}
