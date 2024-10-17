@@ -9,4 +9,9 @@
 
       ![image](https://github.com/user-attachments/assets/d680cbe9-81e0-444b-a195-9be2de89b719)
 
-  -  
+  - Resources and Limits avoids above situation and pod crashes rather than entire node.
+
+    ![image](https://github.com/user-attachments/assets/741badc3-b5c7-481f-a70b-472445487c00)
+
+-------------------------------------------------
+- Demo
