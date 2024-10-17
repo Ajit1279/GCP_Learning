@@ -28,8 +28,8 @@
   
 - **Day15**: [Node Affinity](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241015_NodeAffinity.md)
   
-- sd
-- s
+- **Day16**: [Requests and Limits](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241017_Requests_Limits.md)
+  
 - ds
 - ds
 - d
