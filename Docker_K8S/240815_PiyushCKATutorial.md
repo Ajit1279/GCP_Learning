@@ -30,10 +30,10 @@
   
 - **Day16**: [Requests and Limits](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241017_Requests_Limits.md)
   
-- ds
-- ds
-- d
-- sd
+- **Day17**: [Autoscalling](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241017_Autoscaling.md)
+  
+- **Day18**: [Health Probes and Liveness](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_HealthProbes_Liveness.md)
+
 - sd
 - sd
 - sd
