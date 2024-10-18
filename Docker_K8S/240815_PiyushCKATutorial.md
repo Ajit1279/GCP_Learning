@@ -34,8 +34,10 @@
   
 - **Day18**: [Health Probes and Liveness](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_HealthProbes_Liveness.md)
 
-- sd
-- sd
+- **Day19:** [Configmap and secret](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_Configmap_Secret.md)
+  
+- **Day20, 21** [SSL, TLS and manage TLS Certificates in Kubernetes](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_TLSCerts_in_K8S.md)
+   
 - sd
 - s
 - ds
