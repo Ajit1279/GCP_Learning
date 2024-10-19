@@ -44,7 +44,7 @@
   
 - **Day25:** [Service Accounts](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_ServiceAccounts.md)
   
-- sd
+- **Day26:** [Network Policies](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_NetworkPolicies.md)
 - s
 - ds
 - ds
