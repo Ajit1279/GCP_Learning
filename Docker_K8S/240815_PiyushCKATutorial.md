@@ -42,8 +42,8 @@
   
 - **Day23, 24:** [K8S RBAC (Role Based Access Control)](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_K8S_RBAC.md)
   
-- 
-- d
+- **Day25:** [Service Accounts](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_ServiceAccounts.md)
+  
 - sd
 - s
 - ds
