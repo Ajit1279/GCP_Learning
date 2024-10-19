@@ -36,12 +36,13 @@
 
 - **Day19:** [Configmap and secret](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_Configmap_Secret.md)
   
-- **Day20, 21** [SSL, TLS and manage TLS Certificates in Kubernetes](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_TLSCerts_in_K8S.md)
+- **Day20, 21:** [SSL, TLS and manage TLS Certificates in Kubernetes](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241018_TLSCerts_in_K8S.md)
    
-- sd
-- s
-- ds
-- ds
+- **Day22:** [K8S Authentication and Authorization](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_Authentication_Authorization.md)
+  
+- **Day23, 24:** [K8S RBAC (Role Based Access Control)](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_K8S_RBAC.md)
+  
+- 
 - d
 - sd
 - s
