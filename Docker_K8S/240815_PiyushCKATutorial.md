@@ -45,9 +45,9 @@
 - **Day25:** [Service Accounts](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_ServiceAccounts.md)
   
 - **Day26:** [Network Policies](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_NetworkPolicies.md)
-- s
-- ds
-- ds
+  
+- **Day27:** [Multi Node Cluster Using Kubeadm](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md)
+  
 - d
 - sd
 - sd
