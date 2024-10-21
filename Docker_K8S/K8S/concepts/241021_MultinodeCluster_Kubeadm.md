@@ -1,4 +1,5 @@
 - Reference: https://www.youtube.com/watch?v=WcdMC3Lj4tU&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=28
+- Reference: https://kubernetes.io/docs/reference/networking/
 
 - Basics
  - We need to identify the purpose to set-up a K8S cluster. The diagram below shows few examples, but this is not an exhaustive list
@@ -19,3 +20,13 @@
 
 -----------------------------------------
 - Demo
+
+  ![image](https://github.com/user-attachments/assets/a6a89dfb-10b0-49d7-b31d-bbee48a58bdb)
+
+  
+  ![image](https://github.com/user-attachments/assets/c2e56142-b49c-4373-8cda-1f8831df7a52)
+
+
+- Steps:
+ - Create Firewall Rules one each for control plane and worker nodes
+ - Create VMs and run commands to set-up control plane and worker nodes on those  
