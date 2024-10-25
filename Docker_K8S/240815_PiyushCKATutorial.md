@@ -52,7 +52,8 @@
   
 - **Day29:** [K8S Volume](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_K8S_Volume.md)
   
-- sd
-- sd
+- **Day30,31:** [DNS, CoreDNS](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241025_DNS_CoreDNS.md)
+  
+- 
 - s
 - dsds
