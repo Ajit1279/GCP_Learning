@@ -56,5 +56,6 @@
   
 - **Day32:** [K8S Networking](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241026_K8S_Networking.md)
   
-- s
-- dsds
+- **Day33:** [K8S Ingress](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241026_Ingress_IngressController.md)
+  
+- **Day34:** Kubeadm Multinode K8S Cluster
