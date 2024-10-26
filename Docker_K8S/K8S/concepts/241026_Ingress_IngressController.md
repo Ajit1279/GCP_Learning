@@ -24,4 +24,8 @@
     - Create an Ingress, which will be monitored by Ingress Controller
     - Load Balancer is created according to the configuration (metadata.annotation and spec in YAML)
 
-  - Please note Ingress Controller is never a Load Balancer. 
+  - Please note Ingress Controller is never a Load Balancer.
+
+  - **IngressClassName** is important which is matching criteria for Ingress Controller to watch the Ingress
+
+---------------------------------------------- 
