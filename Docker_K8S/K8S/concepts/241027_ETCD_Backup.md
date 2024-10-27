@@ -1,0 +1,4 @@
+- Reference: https://www.youtube.com/watch?v=R2wuFCYgnm4&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=36
+- Basics:
+  - etcd can be accessed for self-managed clusters NOT for GKE, AKE etc.
+  -  
