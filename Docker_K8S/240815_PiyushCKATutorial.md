@@ -46,7 +46,7 @@
   
 - **Day26:** [Network Policies](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241019_NetworkPolicies.md)
   
-- **Day27:** [Multi Node Cluster Using Kubeadm](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md)
+- **Day27,34:** [Multi Node Cluster Using Kubeadm and step-by-step guide to upgrade](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md)
   
 - **Day28:** [Docker volume](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_DockerVolume.md)
   
