@@ -58,4 +58,6 @@
   
 - **Day33:** [K8S Ingress](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241026_Ingress_IngressController.md)
   
-- **Day34:** Kubeadm Multinode K8S Cluster
+- **Day35:** [etcd backup & restore](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241027_ETCD_Backup.md)
+
+- **Day36** 
