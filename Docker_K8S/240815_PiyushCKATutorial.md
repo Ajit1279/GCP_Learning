@@ -60,4 +60,6 @@
   
 - **Day35:** [etcd backup & restore](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241027_ETCD_Backup.md)
 
-- **Day36** 
+- **Day36:** [K8S Logging & Monitoring](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241028_Logging_Monitoring.md)
+
+- **Day37:** Application Failure Troubleshooting
