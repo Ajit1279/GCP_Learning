@@ -1,3 +1,5 @@
+- **Reference:** https://github.com/piyushsachdeva/CKA-2024
+  
 - **Day1:** [Docker Fundamentals](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240815_DockerFundamentals.md)
 
 - **Day2** : [Dockerise a project](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/240815_DockerOnVM.md)
@@ -70,4 +72,6 @@
 
 - **Day40:** [JSONPath](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241029_JSONPath.md)
 
-- **Day41** 
+- **Day41:** CKA Exam Tips
+
+- **Day42:** [Host your Private Docker Registry](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241029_PrivateDockerRegistry.md) 
