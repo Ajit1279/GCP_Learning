@@ -1,4 +1,5 @@
 - Reference: https://www.youtube.com/watch?v=z6XjbuRl6LE&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=39
+- https://kubernetes.io/docs/tasks/debug/debug-cluster/
 
 - Basics:
   - Objective of this demo is fix the cluster in broken state
