@@ -1,5 +1,6 @@
 - Reference: https://www.youtube.com/watch?v=Mil0HUtPg6I&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=39
 - Reference: https://github.com/piyushsachdeva/example-voting-app
+- Reference: https://kubernetes.io/docs/tasks/debug/debug-application/
 
 - Basics:
   - The git repo above has docker-compose which contains all the objects to be deployed on a cluster like services, pods, nodes, application etc.
