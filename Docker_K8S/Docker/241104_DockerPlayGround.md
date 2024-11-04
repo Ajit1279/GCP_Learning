@@ -55,5 +55,15 @@
    ![image](https://github.com/user-attachments/assets/363dda50-5d22-45b4-86d9-3e6f0f3b21fd)
 
  - To [create a Swarm cluster](https://www.youtube.com/watch?v=KLTT4FfiKHQ): 3:15
-   - Create 4 nodes by clicking on the "Add new instance" button on the left 
-   -  
+
+   - Create 5 nodes by clicking on the "Add new instance" button on the left. Max 5 nodes can be created at a time.
+
+     ![image](https://github.com/user-attachments/assets/2c5b8822-d60b-416f-9210-3f595d124f19)
+
+   - Initiaite Swarm on one of the nodes, which will then act as a Master Node. Type command: **docker swarm init --advertise-addr=192.168.0.9** (ip address of the node1)
+
+     ![image](https://github.com/user-attachments/assets/dc317841-f229-4970-9d1a-4fdb91274221)
+
+   - Now type: **docker swarm join --token SWMTKN-1-697d79u8i2nqclyxadakqjfot310aptmrfx06lojljcejhjt2u-5uos9w114jnfwlypcy0431crm 192.168.0.18:2337** in node2, node3, node4, node5   
+
+   -   
