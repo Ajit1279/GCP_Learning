@@ -58,12 +58,54 @@
 
    - Create 5 nodes by clicking on the "Add new instance" button on the left. Max 5 nodes can be created at a time.
 
-     ![image](https://github.com/user-attachments/assets/2c5b8822-d60b-416f-9210-3f595d124f19)
+     ![image](https://github.com/user-attachments/assets/d0c47414-bcf8-48e9-a22e-f2d5f5160219)
 
-   - Initiaite Swarm on one of the nodes, which will then act as a Master Node. Type command: **docker swarm init --advertise-addr=192.168.0.9** (ip address of the node1)
+   - Initiaite Swarm on one of the nodes, which will then act as a Master Node. Type command: **docker swarm init --advertise-addr=192.168.0.14** (ip address of the node1)
 
-     ![image](https://github.com/user-attachments/assets/dc317841-f229-4970-9d1a-4fdb91274221)
+     ![image](https://github.com/user-attachments/assets/4fe92bd5-2c61-419b-98fa-56c81a3f141a)
 
-   - Now type: **docker swarm join --token SWMTKN-1-697d79u8i2nqclyxadakqjfot310aptmrfx06lojljcejhjt2u-5uos9w114jnfwlypcy0431crm 192.168.0.18:2337** in node2, node3, node4, node5   
+   - Now we'll need to join node2, node3, node4, node5 with this master/leader node. Copy (CTRL+ insert) the following command from the master node:  **docker swarm join --token SWMTKN-1-5p202jwz8k6b51gbig9nrkh7lbrnmy2svd58zmr92xdsbnxg96-23rchrwzrppwlsg5elad1ufiv 192.168.0.14:2377**  
 
-   -   
+   - Paste (SHIFT + Insert) the above command in the remaining nodes one-by-one
+
+     ![image](https://github.com/user-attachments/assets/efd10ab3-5bf7-43df-b9cd-70b4197b8060)
+
+
+     ![image](https://github.com/user-attachments/assets/fa281e66-8b37-4f37-82ba-63c7dc5c889f)
+
+
+     ![image](https://github.com/user-attachments/assets/96ef0e8f-3925-4f60-ac36-25d7ba29736b)
+
+
+     ![image](https://github.com/user-attachments/assets/e9bef7ff-5112-4788-8bbf-a3de291d5899)
+
+
+   - Go to the master node and type: **docker node ls** . As seen in the below screenshot, all nodes are bundled together with node1 as leader
+
+     ![image](https://github.com/user-attachments/assets/7dd2c5be-3544-41a6-adb8-38efba5b83bc)
+
+   - Now let's delete one of the nodes (say node5) and run **docker node ls**. It shows **node5 is down**
+
+     ![image](https://github.com/user-attachments/assets/f94c6633-d180-4ba0-9ef2-4b0d3f967eef)
+
+     ![image](https://github.com/user-attachments/assets/3fce363c-65c1-4717-a5e9-ad4112b329ac)
+
+
+   - Let's recreate node5 by clicking on "Add new instance command" and run **docker node ls**. It still shows **node5 is down**
+
+     ![image](https://github.com/user-attachments/assets/4e391e56-b7cc-4de4-a5ef-78205ebf50d2)
+
+     ![image](https://github.com/user-attachments/assets/812760cb-ceac-4fed-bb53-b133c37feac8)
+
+     
+   - Now let's delete the master node itself
+
+     ![image](https://github.com/user-attachments/assets/99c739c5-4476-49ee-a1b6-aae2d73b4eff)
+
+   - If we run the command: **docker node ls** now on remaining nodes, it gives an error message: **_Error response from daemon: This node is not a swarm manager. Worker nodes can't be used to view or modify cluster state. Please run this command on a manager node or promote the current node to a manager._**
+
+     ![image](https://github.com/user-attachments/assets/d10409b7-6522-4f84-8169-94680d6cf12d)
+
+     ![image](https://github.com/user-attachments/assets/5c66a626-6b6b-4765-ab98-a911d40cffec)
+
+ ------------------------------------------------------------------
