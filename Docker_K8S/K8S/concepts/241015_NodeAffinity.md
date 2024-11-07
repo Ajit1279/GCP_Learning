@@ -63,8 +63,24 @@
  
        ![image](https://github.com/user-attachments/assets/48f4c4d4-4ecf-4b5c-b81a-689a07061e81)
 
+ 
   - **preferredDuringScheduling Demo**
     - The pod is scheduled even though the labels not matching
     - The pod will continue to run even if the label is removed
-    - There are multiple operators like In, Exists (the label should exist, may not be matching) 
+    - There are multiple operators like In, Exists (the label should exist, may not be matching)
+
+    - **Steps**
+      - Create [affinity1.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/affinity1.yaml) and replace "requiredDuringScheduling" with "preferredDuringScheduling" (Refer [documentation](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/))
+
+      - Run command: **sudo kubectl get nodes --show-labels**. As observed, there are no nodes with matching labels.
+   
+        ![image](https://github.com/user-attachments/assets/1c3f7d68-e35b-40a6-ad5b-878f4ee6605b)
+
+      - Run the command: **sudo kubectl apply -f afinity1.yaml**
+   
+        ![image](https://github.com/user-attachments/assets/d9e16ac7-9c38-4bfb-9f1b-af2fe5a6aa12)
+
+      - Run **sudo kubectl get pods**. Please note that pod is in running state even though there's no matching labels.
+   
+        ![image](https://github.com/user-attachments/assets/665fd0b4-d658-4e81-b0a1-22a777a33635)
 
