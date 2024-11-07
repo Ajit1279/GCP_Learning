@@ -6,12 +6,13 @@ spec:
   affinity:
     nodeAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
+      - weight: 1
+        preference:
+          matchExpressions:
           - key: disktype
             operator: In
             values:
-            - ssd            
+            - ssd          
   containers:
   - name: nginx
     image: nginx
