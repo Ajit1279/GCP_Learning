@@ -23,6 +23,18 @@
    
 --------------------------------------
 - **Demo**
-  - Pre-requisite is to set-up matrix server as shown in [Requests and Limits](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241017_Requests_Limits.md)
+  - Create a compute VM and install docker, kubectl and kind cluster on it
+     
+  - Pre-requisite is to set-up matrix server as shown in [Requests and Limits](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241017_Requests_Limits.md).
 
-  -  
+     ![image](https://github.com/user-attachments/assets/f4fa9883-0d7f-4a9e-8311-a947f6038cbb)
+
+  - Create [Deploy.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/Deploy.yaml) and run command: **sudo kubectl apply -f Deploy.yaml**
+
+      ![image](https://github.com/user-attachments/assets/3b621001-85df-4cd2-8f61-f641a74120e4)
+
+  - Type **sudo kubectl get pods**
+
+      ![image](https://github.com/user-attachments/assets/700195b3-5942-4996-8c69-278a9d302684)
+
+  -   
