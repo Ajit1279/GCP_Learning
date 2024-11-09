@@ -23,7 +23,7 @@
    
 --------------------------------------
 - **Demo**
-  - Create a compute VM and install docker, kubectl and kind cluster on it
+  - [Create a compute VM and install docker, kubectl and kind cluster on it](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
      
   - Pre-requisite is to set-up matrix server as shown in [Requests and Limits](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241017_Requests_Limits.md).
 
@@ -35,6 +35,50 @@
 
   - Type **sudo kubectl get pods**
 
-      ![image](https://github.com/user-attachments/assets/700195b3-5942-4996-8c69-278a9d302684)
+      ![image](https://github.com/user-attachments/assets/5110d2b4-eecd-4dfe-bf0a-f92eace6030f)
 
-  -   
+  - Type: **sudo kubectl get svc**
+
+     ![image](https://github.com/user-attachments/assets/60f85ffd-fc10-4981-aed3-1bc12d0b0b03)
+
+  -  Next we have to create HPA object: autoscale deploy <name of the deployment> --cpu-percent=<nn> --min=<min no. of replicas> --max=<max no. of replicas> . So in our case it is **sudo kubectl autoscale deploy php-apache --cpu-percent=80 --min=1 --max=5**
+ 
+     ![image](https://github.com/user-attachments/assets/0a4a2cf1-280f-49a6-94e3-ea5883428954)
+
+  - Type: **sudo kubectl get hpa**
+
+     ![image](https://github.com/user-attachments/assets/e19af0e3-4435-4035-8e58-4ec767c01bf1)
+
+  - To simulate a load on the application by referring [documentation](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/#increase-load)
+     - Open a new terminal and type: **sudo kubectl run -i --tty load-generator --rm --image=busybox:1.28 --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"**
+ 
+       ![image](https://github.com/user-attachments/assets/7eb9b241-bac5-4618-bd0a-720a45bf1d28)
+
+     - Now if you type **sudo kubectl get hpa** it shows cpu utlization as 117%
+ 
+       ![image](https://github.com/user-attachments/assets/8a05d1c6-12be-49f9-a22d-9162256fe786)
+
+     - type: **sudo kubectl get hpa --watch**
+ 
+       ![image](https://github.com/user-attachments/assets/3c72a436-2f91-4a8f-9dae-28c2c1ebacef)
+
+     - Type **sudo kubectl get pods**. It shows 5 pods running
+ 
+       ![image](https://github.com/user-attachments/assets/e565ce34-0528-4713-85e7-4e62a5a0e64e)
+
+     - Let's stop the load by entering **Control+ C** in the other window
+ 
+       ![image](https://github.com/user-attachments/assets/12225a1f-7a32-4486-a0b9-edf00216ba43)
+
+     - **sudo kubectl get pods** shows 5 pods stil as it takes some time
+ 
+       ![image](https://github.com/user-attachments/assets/16ea0b03-2bf0-44b7-a16c-a434f02afcec)
+
+     - **sudo kubectl get hpa**. CPU utlilization is 0 now.
+ 
+       ![image](https://github.com/user-attachments/assets/f7907a67-a878-455e-b5ff-332ee53e334b)
+
+     - Let's type  **sudo kubectl get pods** again and after few mins, there's only one pod is running
+
+       ![image](https://github.com/user-attachments/assets/6bdf78db-e692-4209-b478-af717521dfe9)
+
