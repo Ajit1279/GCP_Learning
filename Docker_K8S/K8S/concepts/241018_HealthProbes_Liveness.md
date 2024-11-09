@@ -9,8 +9,57 @@
 
       ![image](https://github.com/user-attachments/assets/94dae1a9-daa5-432d-b7f8-001c0f1b4374)
 
-  - The **probes are specified in the spec section of yaml**
-    - **initialDelaySeconds: time** specified until which **the probe will wait** for the **"initial healthcheck"**
-    - **periodSeconds:** Frequency of the subsequent healthchecks
+  
    
 ------------------------------------------------------- 
+- **Command-Probe Demo**
+  - These type of probes **run a command for the healthcheck and takes action based on it's response**
+      
+  - As usual set-up the [environment](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
+
+  - Create [liveness-c.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/liveness-c.yaml) and apply it **sudo kubectl apply -f liveness-c.yaml**
+    - This yaml creates an empty file healthy and then waits for 30 secs. Then it removes the file and waits for 10 mins.
+
+    - The **probes are specified in the spec.liveness section of yaml**
+      - **As a probe**, it tries to open (cat) the file /tmp/healthy 
+      - **initialDelaySeconds: time** specified until which **the probe will wait** for the **"initial healthcheck"**
+      - **periodSeconds:** Frequency of the subsequent healthchecks. The prob will be executed as per the frequency specified.
+
+      ![image](https://github.com/user-attachments/assets/97de0be3-ee7e-4cfc-b8f9-3d8f18621a80)
+
+  - Type **sudo kubectl get pods --watch**. As seen the prob has failed, so the pod has restarted multiple times
+
+      ![image](https://github.com/user-attachments/assets/428b52f6-a837-4b69-a79e-cee3a70a188c)
+
+  - Type **sudo kubectl describe pod liveness-exec**
+
+      ![image](https://github.com/user-attachments/assets/160d5942-719f-4af6-8e51-1cd8a907827f)
+
+  - Finally it shows:
+
+     ![image](https://github.com/user-attachments/assets/aaca68b6-095b-4e13-a3ca-1046c2e21ec5)
+
+
+------------------------------------------
+- **https-Probe command Demo**
+  
+  - Create [liveness-http.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/liveness-http.yaml)
+  
+    - In spec.LivenessProbe **httpsGet** is specified instead of exec against a **path /healthz** at **port 8080**
+
+    - If it doesn't get response back the probe fails.
+
+  - Run command: **sudo kubectl apply -f liveness-http.yaml**
+
+      ![image](https://github.com/user-attachments/assets/b0805f8e-abfe-4273-b20f-f782b424ae3e)
+
+  - Type: **sudo kubectl get pods --watch**. As you can notice kubelet has restarted pod 6 times by now
+
+      ![image](https://github.com/user-attachments/assets/61e1feaa-8bd5-4bc9-9471-a2f089bc44e0)
+
+  - Now let's create healthz file in the container: **sudo kubectl exec -it hello -- /bin/bash** is not working
+
+     ![image](https://github.com/user-attachments/assets/b0e93a70-7f0f-4e69-aabb-9b1eef6b97b6)
+
+
+  -    
