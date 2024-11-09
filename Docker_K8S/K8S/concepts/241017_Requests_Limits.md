@@ -15,6 +15,8 @@
 
 -------------------------------------------------
 - Demo
+  - [Create a compute VM and install docker, kind cluster and kubectl on it](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
+     
   - Create a [metrics-server](https://github.com/piyushsachdeva/CKA-2024/blob/main/Resources/Day16/metrics-server.yaml) yaml. It extracts matrix from nodes and utlise in other processes.
 
   - Type command: **sudo kubectl apply -f metrics-server.yaml**
