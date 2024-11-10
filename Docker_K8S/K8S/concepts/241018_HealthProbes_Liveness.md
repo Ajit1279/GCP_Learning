@@ -41,7 +41,7 @@
 
 
 ------------------------------------------
-- **https-Probe command Demo**
+- **http-Probe command Demo**
   
   - Create [liveness-http.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/liveness-http.yaml)
   
@@ -61,5 +61,33 @@
 
      ![image](https://github.com/user-attachments/assets/b0e93a70-7f0f-4e69-aabb-9b1eef6b97b6)
 
+  - Keep trying and finally healthz file is created.
 
-  -    
+     ![image](https://github.com/user-attachments/assets/bdd937c8-5bab-44f4-9109-c7b1f381fa12)
+
+  - The pod is still not ready, it's in CrashLoopBackOff status, as the port is not open
+
+     ![image](https://github.com/user-attachments/assets/d1b2bc7c-4226-4790-b3ee-c6e1ef76eafa)
+
+------------------------------------------
+- **tcp-probe command Demo**
+  - Create [liveness-tcp.yaml](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day18)
+
+  - The probe checks if the port 8080 is open. We are using a proxy image in this yaml.
+
+  - Let's apply this config: **sudo kubectl apply -f liveness-tcp.yaml**
+
+      ![image](https://github.com/user-attachments/assets/541f3d71-28f4-4b4b-bef3-bb1d45b8d61f)
+
+  - Then **sudo kubectl get pods --watch**. The pod gets ready and keep restarting intermittently 
+
+      ![image](https://github.com/user-attachments/assets/a290743a-7748-4199-a768-44383cc67950)
+
+  - Type **sudo kubectl describe pod tcp-pod**
+
+      ![image](https://github.com/user-attachments/assets/b2a51e3b-5419-46b0-bb52-14b3d73a33e6)
+
+  -  
+
+    
+  -  
