@@ -87,7 +87,10 @@
 
       ![image](https://github.com/user-attachments/assets/b2a51e3b-5419-46b0-bb52-14b3d73a33e6)
 
-  -  
+  - Type command: **sudo kubectl get pods/tcp-pod -o yaml | less**. You can see that **failureThreshold is 3**, which means if there's **no successful response even after 3 probes, it'll restart the pod**. successThreshold is 1, which means the application will be **marked as live if the first probe is successful**
 
-    
-  -  
+      ![image](https://github.com/user-attachments/assets/97d9a3f9-4aad-42f6-bb4c-c1d5111e96a0)
+
+  -  Please note that Kubernetes has also added the tolerations to the pod
+
+      ![image](https://github.com/user-attachments/assets/6116cdf6-311d-4662-a77c-a908fa172b9b)
