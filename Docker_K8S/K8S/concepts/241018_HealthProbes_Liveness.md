@@ -94,3 +94,21 @@
   -  Please note that Kubernetes has also added the tolerations to the pod
 
       ![image](https://github.com/user-attachments/assets/6116cdf6-311d-4662-a77c-a908fa172b9b)
+
+
+---------------------------------------------------------
+- **Readiness Probe**
+  - Create [readiness.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/readiness.yaml) by referring to the [documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe)
+
+  - Run command: **sudo kubectl apply -f readiness.yaml**
+
+      ![image](https://github.com/user-attachments/assets/d8953c22-b9af-494d-8b00-6231fa5aef8d)
+
+  - If you run command **sudo kubectl get pods --watch** you will observe that pod keeps restarting
+
+      ![image](https://github.com/user-attachments/assets/d7b1b4f6-1e91-4042-aeb3-2cb0c78231d4)
+
+  - Run command **sudo kubectl describe pod liverediness-pod**. It shows liveness and readiness probes failed with statuscode 500 because the path and the port specified in the probe are not available
+
+    ![image](https://github.com/user-attachments/assets/33fee6e8-e211-492f-aeb6-d7636a32b8cb)
+
