@@ -1,17 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: configmapdemo-pod
+  name: cmdemo1-pod
   labels:
-    app.kubernetes.io/name: CMDemoApp
+    app.kubernetes.io/name: CmdemoApp
 spec:
   containers:
   - name: cmdemoapp-container
     image: busybox:1.28
     env:
     - name: FIRSTNAME
-      valueFrom:
-        configMapKeyRef:
-          name: app-cm
-          key: firstname
+      value: "Ajit"
     command: ['sh', '-c', 'echo The app is running! && sleep 3600']
