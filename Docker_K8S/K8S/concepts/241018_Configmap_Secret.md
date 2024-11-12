@@ -31,6 +31,8 @@
 
   - Now let's create a configmap, which can be created using the imperative and declarative way.
 
+  - **Imperative** 
+
     - Type the below command and hit enter. 
       **sudo kubectl create cm cmdemo --from-literal=firstname=John \
       --from-literal=lastname=Doe**
@@ -51,3 +53,8 @@
  
         ![image](https://github.com/user-attachments/assets/e4cfceca-e0fd-4d5e-97f6-97e41c7e35ab)
 
+  - **Declarative**
+    
+    - Refer [documentation](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) for the declarative ways of creating configmaps
+
+  
