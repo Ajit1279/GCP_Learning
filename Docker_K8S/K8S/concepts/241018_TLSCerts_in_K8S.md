@@ -30,11 +30,11 @@
         - Users also have their own symmetric keys. **Users encrypt this symmetric key using public key**
         - This **"combined encrypted key"** will be sent to server and server will **decrypt it using it's private key**
      
-              ![image](https://github.com/user-attachments/assets/f5a44fcb-0576-432a-9288-ece5090c64b1)
+           ![image](https://github.com/user-attachments/assets/f5a44fcb-0576-432a-9288-ece5090c64b1)
 
         - Now let's say, **if hacker gets hold of this combined encrypted key**, they can only read the encrypted data.
      
-              ![image](https://github.com/user-attachments/assets/07b4dff2-dd91-4091-a466-7e990134ec15)
+           ![image](https://github.com/user-attachments/assets/07b4dff2-dd91-4091-a466-7e990134ec15)
  
         - There's still a possibility of security breach in the above case.
         - Hackers can create a **dummy website** or **phishing email to get "user symmetric key"** and then create GET request on your behalf.
