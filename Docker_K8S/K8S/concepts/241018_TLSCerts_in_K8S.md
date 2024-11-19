@@ -84,7 +84,8 @@
 
     ![image](https://github.com/user-attachments/assets/750edc2f-a469-4960-8859-42deb7788e44)
 
-  - Create a compute engine instance and type command:
+  - Create a compute engine instance and type command
+
         openssl genrsa -out newadmin.key 2048
 
      ![image](https://github.com/user-attachments/assets/bd7f06c6-cb3e-4ef4-8fec-2c5653751b84)
@@ -95,4 +96,15 @@
 
      ![image](https://github.com/user-attachments/assets/db0ca339-addc-4ab4-9cb7-adb9823c6741)
 
-  - Kubernetes has provided an API to create K8S certificates using this CSR file
+  - Kubernetes has provided an API to create K8S certificates using this CSR file. We have to create certsign.yaml by referring the [documentation](https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#create-certificatessigningrequest).
+
+  - The spec.request in the yaml needs to be populated using the base64 encoded CSR. Also the key has to be in single line in the yaml
+
+        cat newadmin.csr | base64 | tr -d "\n"
+
+  - Apply the certsign.yaml: **sudo kubectl apply -f certsign.yaml**
+
+     ![image](https://github.com/user-attachments/assets/0058c379-cf2a-4ea7-bcfb-845984f73c9b)
+ 
+
+  -   
