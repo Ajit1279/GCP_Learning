@@ -6,7 +6,7 @@
 - **SSL TLS Basics:**
   - If your data / credentials are not encrypted as shown below, it's highly likely that there's a security breach.
 
-        ![image](https://github.com/user-attachments/assets/36b7d1ec-b997-4906-82e3-ac1ac383d67f)
+    ![image](https://github.com/user-attachments/assets/36b7d1ec-b997-4906-82e3-ac1ac383d67f)
 
   - So encryption keys are used to encrypt the data.
     - **Symmetric Encryption:**
