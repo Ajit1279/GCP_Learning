@@ -1,6 +1,7 @@
 - References:
   - https://www.youtube.com/watch?v=njT5ECuwCTo&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=21
-  - https://www.youtube.com/watch?v=njT5ECuwCTo&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=22
+  - https://www.youtube.com/watch?v=LvPA-z8Xg4s&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=22
+  - https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#normal-user
 
 
 - **SSL TLS Basics:**
@@ -66,4 +67,32 @@
 
           ![image](https://github.com/user-attachments/assets/8932c37a-2ea5-422c-909e-dba73f436786)
 
+        - The Certificate Authority generates Root Certificate and client and server need to generate their own public and private certificate using those
+     
+          ![image](https://github.com/user-attachments/assets/9f27dba3-393d-45ab-9e41-551e92e5478c)
+
+        - Files having **.cert or .pem extensions are public** certificates. Files having **.key or -key.pem are private** certificates
+           
+          ![image](https://github.com/user-attachments/assets/c3315299-d38b-4528-8420-8ae9f59eabfa)
+
     
+------------------------------------------- 
+- Demo
+  - As shown in the logical diagram below, connections between users and K8S need to be secure. Likewise connections amongst various K8S components will also need to be secure (lock signs)
+
+    ![image](https://github.com/user-attachments/assets/2d243849-d3c9-4366-a6d5-10e11c821e2e)
+
+    ![image](https://github.com/user-attachments/assets/750edc2f-a469-4960-8859-42deb7788e44)
+
+  - Create a compute engine instance and type command:
+        openssl genrsa -out newadmin.key 2048
+
+     ![image](https://github.com/user-attachments/assets/bd7f06c6-cb3e-4ef4-8fec-2c5653751b84)
+ 
+  - Create a new Certificate Signing Request using this key
+
+        openssl req -new -key newadmin.key -out newadmin.csr -subj "/CN=newadmin"
+
+     ![image](https://github.com/user-attachments/assets/db0ca339-addc-4ab4-9cb7-adb9823c6741)
+
+  - Kubernetes has provided an API to create K8S certificates using this CSR file
