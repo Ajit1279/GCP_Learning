@@ -84,7 +84,7 @@
 
     ![image](https://github.com/user-attachments/assets/750edc2f-a469-4960-8859-42deb7788e44)
 
-  - Create a compute engine instance and type command
+  - Create a compute engine instance and the **new user requesting access have to type commands below until approval request is generated** 
 
         openssl genrsa -out newadmin.key 2048
 
@@ -102,9 +102,49 @@
 
         cat newadmin.csr | base64 | tr -d "\n"
 
-  - Apply the certsign.yaml: **sudo kubectl apply -f certsign.yaml**
+  - Apply the certsign.yaml:
 
-     ![image](https://github.com/user-attachments/assets/0058c379-cf2a-4ea7-bcfb-845984f73c9b)
+        sudo kubectl apply -f certsign.yaml
+
+
+      ![image](https://github.com/user-attachments/assets/0058c379-cf2a-4ea7-bcfb-845984f73c9b)
  
 
-  -   
+  - Type the below command to display CSRs. 
+
+          sudo kubectl get csr
+
+
+      ![image](https://github.com/user-attachments/assets/9943666f-babb-4023-a904-bbe17da8ea4a)
+
+  - The status of the CSR is pending because it's not approved yet. Type below command:
+
+          sudo kubectl describe csr newadmin
+
+
+      ![image](https://github.com/user-attachments/assets/58c04ee6-0cd0-4aac-b7b5-700e9435ecbe)
+
+
+  - In real world scenarios, admins with specific access will have to approve it. So type commands below and it shows that cert is approved:
+
+          sudo kubectl certificate approve newadmin
+          sudo kubectl get csr
+
+     
+      ![image](https://github.com/user-attachments/assets/3b3028d8-ee35-44c7-b16a-a5497a2efe44)
+
+          
+  - The cert has to be shared with the user by following below steps 
+
+          sudo kubectl get csr newadmin -o yaml > issuecert.yaml
+
+      ![image](https://github.com/user-attachments/assets/467f83fa-aab0-402f-8a4e-1baaa7cc90d3)
+
+
+  - The certificate generated above is highlighted in yellow. It's in base64 encoding, so it needs to be decoded first. Copy the certificate string and type
+
+          echo <cert string in double quotes> | base64 -d
+
+      ![image](https://github.com/user-attachments/assets/70abb2a5-1629-4f80-963d-c9d23ca752d4)
+
+  - This certificate needs to be imported in kubeconfig file and assign certain permissions to it so user can access K8S servers using this certificate  
