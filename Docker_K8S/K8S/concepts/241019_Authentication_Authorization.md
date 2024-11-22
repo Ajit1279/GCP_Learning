@@ -81,13 +81,17 @@
           sudo docker exec -it dev-control-plane bash
           cd /etc/kubernetes/manifests
           ls -lrt
-          cat kube-apiserver.yaml | grep auth
+          more kube-apiserver.yaml 
 
-      ![image](https://github.com/user-attachments/assets/10e26ce6-320d-4d70-b389-b5acee124c33)
+      ![image](https://github.com/user-attachments/assets/7d5b45ba-1acb-4592-8e72-6c2f62e2e2ec)
+
 
     As shown above it'll first check if the user has any Node based authorization, and if not found, it'll skip to the next one, which is RBAC.   
 
-    
-  -   d
-  -   sd
-  -   sd
+  - All the certificates are stored in /etc/kubernetes/pki folder
+
+          cd /etc/kubernetes/pki
+          ls -lrt
+
+      ![image](https://github.com/user-attachments/assets/98c35ed2-4d89-4436-a398-6660b2925001)
+
