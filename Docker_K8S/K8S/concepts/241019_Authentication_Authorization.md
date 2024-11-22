@@ -24,6 +24,13 @@
 
       ![image](https://github.com/user-attachments/assets/538e8f23-25a3-40c3-aa42-c069f3333d7d)
 
+  - Display the clusters:
+
+          sudo kubectl config get-clusters
+
+      ![image](https://github.com/user-attachments/assets/9e6aa9b6-a5ff-4595-8348-391835a59bd2)
+
+
   - Run the command:
 
           sudo kubectl config view | less
@@ -62,9 +69,25 @@
       ![image](https://github.com/user-attachments/assets/f7abc3c5-5d67-4bc5-b373-d33077c97b36)
 
 
-  -   
-  -   ds
-  -   ds
+  - Type command:
+
+          sudo docker ps | grep control-plane
+
+      ![image](https://github.com/user-attachments/assets/e6a549fb-112c-4b77-a1f0-26f33ac222d0)
+
+        
+  - Type below commands:
+
+          sudo docker exec -it dev-control-plane bash
+          cd /etc/kubernetes/manifests
+          ls -lrt
+          cat kube-apiserver.yaml | grep auth
+
+      ![image](https://github.com/user-attachments/assets/10e26ce6-320d-4d70-b389-b5acee124c33)
+
+    As shown above it'll first check if the user has any Node based authorization, and if not found, it'll skip to the next one, which is RBAC.   
+
+    
   -   d
   -   sd
   -   sd
