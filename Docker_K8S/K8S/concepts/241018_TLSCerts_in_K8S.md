@@ -96,7 +96,7 @@
 
      ![image](https://github.com/user-attachments/assets/db0ca339-addc-4ab4-9cb7-adb9823c6741)
 
-  - Kubernetes has provided an API to create K8S certificates using this CSR file. We have to create certsign.yaml by referring the [documentation](https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#create-certificatessigningrequest).
+  - Kubernetes has provided an API to create K8S certificates using this CSR file. We have to create [certsign.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/certsign.yaml) by referring the [documentation](https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#create-certificatessigningrequest).
 
   - The spec.request in the yaml needs to be populated using the base64 encoded CSR. Also the key has to be in single line in the yaml
 
