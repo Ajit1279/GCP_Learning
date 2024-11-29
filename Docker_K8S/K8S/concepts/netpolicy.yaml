@@ -12,6 +12,6 @@ spec:
   - from:
     - podSelector:
         matchLabels:
-          role: frontend
+          role: backend
     ports:
     - port: 3306
