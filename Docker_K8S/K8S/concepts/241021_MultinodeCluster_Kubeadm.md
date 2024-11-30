@@ -29,6 +29,11 @@
 
 - Steps:
  - Create Firewall Rules one each for control plane and worker nodes
+   - Custom TCP firewall rule to enable ports 10248 - 10260
+   - Custom TCP firewall rule to enable ports 2379 - 2380
+   - Custom TCP firewall rule to enable port 6443
+   - Custom SSH rule to enable port 22
+     
  - Create VMs and run commands to set-up control plane and worker nodes on those
    
 --------------------------------------------- 
