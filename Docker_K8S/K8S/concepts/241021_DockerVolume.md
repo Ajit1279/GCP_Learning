@@ -36,9 +36,13 @@
       ![image](https://github.com/user-attachments/assets/95014402-4adc-4ba1-ae65-ce5c9f46a014)
 
         
-  - The docker image is read-only, but there are cases wherein the data needs to be persistent across containers as mentioned above, so we create container layer
+  - The docker image is read-only, but there are cases wherein the data needs to be persistent across containers as mentioned above, so we create container layer. **Push the image to your registry in the remote docker hub** (Please note the website_on_gke should exist before pushing image to it)
 
         sudo docker images
+        sudo docker tag docvolimage:latest ajit1279/dockervolume:latest
+        sudo docker push ajit1279/dockervolume:latest
+
+      ![image](https://github.com/user-attachments/assets/9c5bf0a5-65ae-47bb-81ed-58a39c32bec6)
 
   - sd
   - sd
