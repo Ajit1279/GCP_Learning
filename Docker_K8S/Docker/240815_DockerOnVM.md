@@ -58,7 +58,8 @@
     - Referring to the screenshot, it says [1 / 4], [2 / 4] etc. so there are 4 layers    
 
     ![image](https://github.com/user-attachments/assets/efd00158-4646-4c21-a948-50340b4d5882)
-    
+
+    - The docker image is read-only. If we want to make any changes to the image, the **docker file needs to be changed** and **image needs to be built again**. Also, only the changed layers are updated
 
   - To see the images run the command: sudo docker images
 
