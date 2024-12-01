@@ -192,4 +192,66 @@
 - **8 Clean-up**
   - Remove the directory from your VM: rm -r build
   - Delete the repository from the Docker Hub
-  - Delete the VM and secret in GCP Console        
+  - Delete the VM and secret in GCP Console
+ 
+---------------------------------------
+References: https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling
+https://www.geeksforgeeks.org/push-docker-images-to-artifact-registry-in-gcp/
+https://www.googlecloudcommunity.com/gc/Developer-Tools/Permission-quot-artifactregistry-repositories-uploadArtifacts/m-p/541769
+
+- The steps below explain pushing docker image to the Google Artifact Registry
+  - [Create VM instance](https://github.com/Ajit1279/GCP_Learning/blob/main/Compute_VMs/createdockervm.sh)
+
+  - [Install Docker on it](https://docs.docker.com/engine/install/debian/)
+
+  - Now let's build a docker image. For this, we'll need a small app first, which can be downloaded from git repository
+
+        mkdir dockerbuild && cd dockerbuild
+        git clone https://github.com/docker/getting-started-app
+        cd getting-started-app
+    
+  - Create [Dockerfile](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/Dockerfile). As noted previously, the image consists of 4 layers: base image, creating work directory, copying the files, install yarn
+
+        vi Dockerfile
+        sudo docker build -t mydocimage .
+
+      ![image](https://github.com/user-attachments/assets/0471cd06-b5e2-4aba-9943-2597a43ca133)
+
+  - Push the image to your registry in the remote docker hub. Let's create a Artifact Registry   
+
+        gcloud artifacts repositories create my-gcp-dockerhub \
+            --repository-format=docker \
+            --location=us-central1 \
+            --description="My Dockerhub on GCP" \
+            --immutable-tags \
+            --async
+
+      ![image](https://github.com/user-attachments/assets/f6432c95-0b7e-405e-824e-a4cb170eeab7)
+
+      ![image](https://github.com/user-attachments/assets/4435d87a-d461-4eea-805c-205ecdc1d484)
+
+  - Tag the image with the tag
+
+        sudo docker tag mydocimage:latest us-central1-docker.pkg.dev/test66666666/my-gcp-dockerhub/mydocimage:latest
+        sudo docker images
+
+      ![image](https://github.com/user-attachments/assets/2bf27609-bed3-4044-bcfc-cb7375aba9ff)
+
+  - Configure authentication for Artifact Registry
+
+        sudo gcloud auth configure-docker us-central1-docker.pkg.dev
+        sudo usermod -aG docker $USER
+        gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
+
+      ![image](https://github.com/user-attachments/assets/0b1b5aa9-d77b-454c-9950-5b68a7431d71)
+
+  - [Assign Artifact Registry Reader and Artifact Registry Writer role](https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling) to the user / Service Account
+    
+  - Push the image to the Remote Docker Hub on GCP
+
+        sudo docker push us-central1-docker.pkg.dev/test66666666/my-gcp-dockerhub/mydocimage:latest
+
+      ![image](https://github.com/user-attachments/assets/45a85138-7027-4724-8d07-4bdacc759069)
+
+      ![image](https://github.com/user-attachments/assets/74f7251c-c399-4b1d-9aa7-c1f0bb1eadf3)
+
