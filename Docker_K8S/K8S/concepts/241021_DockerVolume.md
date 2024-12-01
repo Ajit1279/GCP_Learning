@@ -1,4 +1,6 @@
 - Reference: https://www.youtube.com/watch?v=ZAPX21TMkkQ&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=29
+- https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling
+- https://www.geeksforgeeks.org/push-docker-images-to-artifact-registry-in-gcp/
 
 - Basics:
   - At times, the data within the image should be persistent. e.g. to make the container stateful
@@ -44,7 +46,28 @@
 
       ![image](https://github.com/user-attachments/assets/9c5bf0a5-65ae-47bb-81ed-58a39c32bec6)
 
-  - sd
+  - Create a new artificat registry on GCP if it doesn't exist
+
+      ![image](https://github.com/user-attachments/assets/e1edcd70-04e7-4064-86a0-8c9244956ff4)
+
+  - Grant the required permissions to pull and push the images
+
+        gcloud auth configure-docker us-central1-docker.pkg.dev
+        gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
+ 
+    
+      ![image](https://github.com/user-attachments/assets/c9b020d6-2f98-4074-8e07-e11249ae4076)
+
+    
+  - Tag the image and push to the artifact registry
+
+        sudo docker tag docvolimage:latest us-cental1-docker.pkg.dev/test66666666/gcpdockerhb/docvolimage:latest
+        sudo docker tag docvolimage:latest us-central1-docker.pkg.dev/test66666666/gcpdockerhub/docvolimage:latest
+        sudo docker images
+        sudo docker push us-central1-docker.pkg.dev/test66666666/gcpdockerhub/docvolimage:latest
+                         
+        
+
   - sd
   - sd
   - sd
