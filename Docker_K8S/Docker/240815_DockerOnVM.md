@@ -196,7 +196,9 @@
  
 ---------------------------------------
 References: https://cloud.google.com/artifact-registry/docs/docker/pushing-and-pulling
+
 https://www.geeksforgeeks.org/push-docker-images-to-artifact-registry-in-gcp/
+
 https://www.googlecloudcommunity.com/gc/Developer-Tools/Permission-quot-artifactregistry-repositories-uploadArtifacts/m-p/541769
 
 - The steps below explain pushing docker image to the Google Artifact Registry
