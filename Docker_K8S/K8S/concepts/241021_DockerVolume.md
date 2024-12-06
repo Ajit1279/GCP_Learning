@@ -15,6 +15,9 @@
 
     ![image](https://github.com/user-attachments/assets/00e2442e-ca29-45fa-a9c9-ed0b4e52bfdb)
 
+    ![image](https://github.com/user-attachments/assets/5bffe3f4-88b8-4bff-b761-82dbecdb22bb)
+
+
 ---------------------------------------------------
 - Demo
   - This is a pre-requisite for the next topic i.e. [K8S volume](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_K8S_Volume.md)
@@ -87,27 +90,62 @@
 
   - Now let's mount this volume on container (data_volume is volume created and app is directory on a container, docvol is container name and mydocimage is image name)
 
-        sudo docker run -v data_volume:/app -dp 3000:3000 --name=docvol mydocimage
+        sudo docker run -v data_volume:/app -dp 3000:3000 --name=docvol1 mydocimage
         sudo docker ps
         
-
-      ![image](https://github.com/user-attachments/assets/0c362266-72f3-4f62-b6e0-0f56118c62b8)
-
-      ![image](https://github.com/user-attachments/assets/16f0447f-2554-4dd1-9134-3ce238263f19)
+      ![image](https://github.com/user-attachments/assets/ab76fc6c-1c1d-4742-8d21-b45c95b5520c)
 
 
   - Login into container
 
-        sudo docker exec -it e6b085da77ce sh
-        mkdir test_demo
+        sudo docker exec -it 3fb21e2a11ea sh
+        mkdir volume_demo
+        ls -lrt
         exit
 
-      ![image](https://github.com/user-attachments/assets/cabaf30c-0c01-4e73-9645-0b121d16487f)
+      ![image](https://github.com/user-attachments/assets/5654f281-8f3d-4ca6-b1fe-34938faac56d)
+
+
+  - Let's check the content of the volume we created. You can observe that "volume_demo" directory is available on volume as well
+
+        sudo ls -lrt /var/lib/docker/volumes/data_volume/_data
+
+      ![image](https://github.com/user-attachments/assets/2cc04e03-a210-4145-8ece-218584584c57)
+
+    
+  - Let's **check if the data is persistent even after the container is stopped** and check the content of the volume 
+
+        sudo docker stop 3fb21e2a11ea
+        sudo docker ps
+        sudo ls -lrt /var/lib/docker/volumes/data_volume/_data
+
+      ![image](https://github.com/user-attachments/assets/370d8482-b9e9-413a-bd94-947c2205b454)
+
+
+  - Let's restart the container and check if the data exists. It's there!!!
+
+        sudo docker start 3fb21e2a11ea
+        sudo docker exec -it 3fb21e2a11ea sh
+        ls -lrt
+      
+     ![image](https://github.com/user-attachments/assets/e2aa4ac7-0060-4c9e-a650-3c346bd567c9)
+
+   
+  - Let's remove the container completely and see if the data persists
+
+         sudo docker stop 3fb21e2a11ea
+         sudo docker rm 3fb21e2a11ea
+
+      ![image](https://github.com/user-attachments/assets/10bf4254-b735-4130-930b-ec7a33e4f978)
+
+         sudo docker run -v data_volume:/app -dp 3000:3002 --name=docvol2 mydocimage
+         sudo docker ps
  
-      ![image](https://github.com/user-attachments/assets/64ed612e-4271-4a57-b251-9ecb5ae345e7)
+      ![image](https://github.com/user-attachments/assets/7b6d18e2-6ccb-4ce0-9614-5134804604cd)
 
+         sudo docker exec -it 64bd1f7e831d sh
+         ls -lrt
 
+      ![image](https://github.com/user-attachments/assets/2b7eb10b-2b3d-4cff-a5a9-137fffbc8e01)
 
-      ![image](https://github.com/user-attachments/assets/34fe27fe-3fd2-469c-b459-c3bec6b39dc3)
-
-
+  - You can notice above that volume_demo exists in newly created container
