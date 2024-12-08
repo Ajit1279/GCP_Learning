@@ -50,7 +50,7 @@
   
 - **Day27,34:** [Multi Node Cluster Using Kubeadm and step-by-step guide to upgrade](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md)
   
-- **Day28:** [Docker volume](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_DockerVolume.md)
+- **Day28:** [Docker volume](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/Docker/241021_DockerVolume.md)
   
 - **Day29:** [K8S Volume](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_K8S_Volume.md)
   
