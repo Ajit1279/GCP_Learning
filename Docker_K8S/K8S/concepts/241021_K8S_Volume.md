@@ -31,12 +31,26 @@ Demo
 
     ![image](https://github.com/user-attachments/assets/df1b1a65-c1ec-4b15-bc44-fbcda35de7d4)
 
-- Display the pv
+- Display the pv and pvc
 
        sudo kubectl get pv
        sudo kubectl get pvc
 
      ![image](https://github.com/user-attachments/assets/b93035b0-504a-4ed2-b8c7-293b16d9a6ab)
 
--   
+- The pvc is in pending state. let's debug
+
+      sudo kubectl describe pvc/task-pv-claim
+
+    ![image](https://github.com/user-attachments/assets/2b0974e1-1331-427c-9d38-b05f510ec80c)
+
+- Confirmed that accessModes in pv and pvc is the same. Let's delete the pvc before modifying pvc yaml
+
+      sudo kubectl patch pvc task-pv-claim -p '{"metadata":{"finalizers": []}}' --type=merge
+      sudo kubectl delete pvc/task-pv-claim
+
+    ![image](https://github.com/user-attachments/assets/49bb2b07-4659-454a-ad20-a220b3b152de)
+  
+-  
+-    
 
