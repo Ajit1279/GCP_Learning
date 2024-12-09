@@ -22,6 +22,17 @@
 Demo
 - [Create compute instance VM, install Docker, Kubectl and kind cluster on it](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
 
+- Let's create pods and login to it
+
+    sudo kubectl run nginx --image=nginx
+    sudo kubectl run redis --image=redis
+
+  ![image](https://github.com/user-attachments/assets/e0cf2ad3-34d3-4718-8af3-119141a8f7fb)
+
+    
+    sudo kubectl exec -it nginx -- sh
+    apt-get update && apt-get install vim curl -y
+
 - Create [pv.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/pv.yaml) and [pvc.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/pvc.yaml) and apply using kubectl command
 
        vi pv.yaml
