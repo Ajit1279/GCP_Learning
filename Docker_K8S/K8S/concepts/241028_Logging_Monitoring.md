@@ -53,7 +53,7 @@
      ![image](https://github.com/user-attachments/assets/205d8041-5a25-4b9a-a153-b25034dffe04)
 
  
- - Let's edit the deployment metrics-server, go to the container section and add an argument mentioned in github readme configuration section so that it does not validate certificate
+ - Let's edit the deployment metrics-server, go to the container section and add an argument mentioned in [github](https://github.com/kubernetes-sigs/metrics-server) readme configuration section so that it does not validate certificate
 
      ![image](https://github.com/user-attachments/assets/e86c141e-6d9e-4d8b-9ec0-8fc7a0fe750e)
 
