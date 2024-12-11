@@ -3,17 +3,28 @@
 - Basics:
   - The concepts to be covered are:
     - Persistent Volume (PV) i.e. total storage
+
     - Persistent Volume Claim (PVC) is the storage we want to request out of the total storage
-      - Retain: PV will remain in ,
+   
     - Storage Class (SC) 
-  - Inside container we add volume mount to save the data in it, the path for it
-  - We also need to specify storage, (e.g. empty directory, which is temporary storage persistent until the lifecycle of the pod)
-  - Hence there's Persistent Volume and binding will be created with pod as long as capacity is available and other specifications like access mode (read-write once etc.) are matching
-  - **Reclaim Policy**: Indicates what will happen to the PV (storage) when the PVC is deleted
-  - Storage Class: Physical storage type where the data is stored
-  - Static Provisioning: we have to specify the volume details.
-  - Dynamic Provisioning: We don't have to specify persistent volume
-  - Multiple PVCs can be attached  with a single PV till storage is available. We can not allocate multiple PVCs to a single PV.
+   
+    - Inside container we add volume mount to save the data in it, the path for it
+   
+    - We also need to specify storage, (e.g. empty directory, which is temporary storage persistent until the lifecycle of the pod)
+   
+    - Hence there's Persistent Volume and binding will be created with pod as long as capacity is available and other specifications like access mode (read-write once etc.) are matching
+
+    - **Multiple PVCs** can be attached **with a single PV** till storage is available. We can **not allocate single PVCs to a multiple PVs**. 
+
+   - **Reclaim Policy**: Indicates what will happen to the PV (storage) when the PVC is deleted
+      - **Retain:** PV will remain in released status and no other PV can request data from it
+      - **Delete:** The PV will be deleted as soon as PVC is deleted
+      - **Recycle:** The PV will become available to other PVCs as soon as the PVC is deleted
+
+   - **Storage Class:** If the physical storage type is not a local then storage class is created as a reference to the storage provisioned on cloud, data center etc. as shown below
+     - **Static Provisioning:** We have to specify the volume details.
+     - **Dynamic Provisioning:** We don't have to specify persistent volume. It'll automatically create PV and PVC for you.
+     
 
     ![image](https://github.com/user-attachments/assets/4611a1e4-995f-481d-8471-65bf2d8df564)
 
