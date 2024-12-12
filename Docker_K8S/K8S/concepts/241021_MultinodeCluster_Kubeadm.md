@@ -59,10 +59,36 @@
         
      
  - Create VMs and run commands to set-up control plane and worker nodes on those
+  
+   - Create Master Node
 
-       
+        gcloud compute instances create master-node --project=test66666666 --zone=us-central1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=1006430257477-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=control-plane,http-server,https-server,lb-health-check --create-disk=auto-delete=yes,boot=yes,device-name=master-node,image=projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20241115,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
 
+   -  Create two worker nodes
+  
+       gcloud compute instances create worker01 --project=test66666666 --zone=us-central1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=1006430257477-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=worker,http-server,https-server,lb-health-check --create-disk=auto-delete=yes,boot=yes,device-name=worker01,image=projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20241115,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+
+
+       gcloud compute instances create worker02 --project=test66666666 --zone=us-central1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=1006430257477-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=worker,http-server,https-server,lb-health-check --create-disk=auto-delete=yes,boot=yes,device-name=worker02,image=projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20241115,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+
+      
+   ![image](https://github.com/user-attachments/assets/358ff1ae-86ef-4bc0-a5a6-daf819c8d3ee)
+
+
+ - Now let's set-up control-plane node i.e. master node
+
+    - SSH into master node
     
+    - [Run the commands](https://github.com/piyushsachdeva/CKA-2024/tree/main/Resources/Day27#run-the-below-steps-on-the-master-vm) to set-up the master-VM. Ensure all the values below are 1.
+
+       ![image](https://github.com/user-attachments/assets/28ab702d-71e6-4926-8fa9-5b32a3757183)
+
+
+    - Followed all the commands as is, but encountering the error
+
+       ![image](https://github.com/user-attachments/assets/2ad3af75-e2e0-4736-ad34-415f95a14841)
+ 
+   
    
 --------------------------------------------- 
 - **Step-by-step guide to upgrade Multi Node Kubernetes Cluster With Kubeadm**
