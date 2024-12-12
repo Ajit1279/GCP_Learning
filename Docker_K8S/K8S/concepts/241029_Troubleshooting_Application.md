@@ -2,6 +2,7 @@
 - Reference: https://www.youtube.com/watch?v=Mil0HUtPg6I&list=PLl4APkPHzsUUOkOv3i62UidrLmSB8DcGC&index=39
 - Reference: https://github.com/piyushsachdeva/example-voting-app
 - Reference: https://kubernetes.io/docs/tasks/debug/debug-application/
+- https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl
 
 - Basics:
   - Docker was the default container run time in earlier versions. Now we have crictl 
