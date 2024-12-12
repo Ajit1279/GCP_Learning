@@ -29,12 +29,40 @@
 
 - Steps:
  - Create Firewall Rules one each for control plane and worker nodes
-   - Custom TCP firewall rule to enable ports 10248 - 10260
+   - Go to default VPC for your project (in this case us-central1) and find out the IP range (10.128.0.0/20)
+
+      ![image](https://github.com/user-attachments/assets/32bb7692-10d5-4768-a317-e4666c227ed3)
+
+   - Also create a small VM and note down it's IP to allow SSH into K8S. This is required while creating firewall rule to allow SSH on port 22. Only admin should have access to SSH
+
+        gcloud compute instances create myvm --project=test66666666 --zone=us-central1-c --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=955233175770-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=myvm,image=projects/debian-cloud/global/images/debian-12-bookworm-v20240617,mode=rw,size=10,type=projects/aiml21/zones/us-central1-c/diskTypes/pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+ 
+   - Custom TCP firewall rule to enable ports 10248 - 10260. Run the below command in Cloud Shell
+
+        gcloud compute --project=test66666666 firewall-rules create cpfw1 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:10248-10260 --source-ranges=10.128.0.0/20
+
+       ![image](https://github.com/user-attachments/assets/1a1701ce-0080-4c95-ac6d-306ea02c98e5)
+
    - Custom TCP firewall rule to enable ports 2379 - 2380
+
+        gcloud compute --project=test66666666 firewall-rules create cpfw2 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:2379-2380 --source-ranges=10.128.0.0/20
+     
    - Custom TCP firewall rule to enable port 6443
+
+       gcloud compute --project=test66666666 firewall-rules create cpfw3 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:6443 --source-ranges=10.128.0.0/20
+        
    - Custom SSH rule to enable port 22
+
+
+      ![image](https://github.com/user-attachments/assets/29f6fc53-57db-40b4-9aa0-23da9193a7e0)
+
+        
      
  - Create VMs and run commands to set-up control plane and worker nodes on those
+
+       
+
+    
    
 --------------------------------------------- 
 - **Step-by-step guide to upgrade Multi Node Kubernetes Cluster With Kubeadm**
