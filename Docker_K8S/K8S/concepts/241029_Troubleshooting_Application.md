@@ -5,7 +5,7 @@
 - https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl
 
 - Basics:
-  - Docker was the default container run time in earlier versions. Now we have crictl 
+  - Docker was the default container run time in earlier versions. Now we have crictl (It's not available by default) 
 
   - The git repo above has docker-compose which contains all the objects to be deployed on a cluster like services, pods, nodes, application etc.
   
@@ -19,28 +19,25 @@
 
 ---------------------------------------
 Troubleshooting Demo
-- crictl is not available on the GCP VM, so let's install it for demo purposes from [github](https://github.com/kubernetes-sigs/cri-tools/blob/master/docs/crictl.md)
+- The code in the [git repostory](https://github.com/piyushsachdeva/example-voting-app) has error deliberately introduced in it so that we can troubleshoot
 
-     VERSION="v1.30.0" # check latest version in /releases page
-     curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-${VERSION}-linux-amd64.tar.gz --output crictl-${VERSION}-linux-amd64.tar.gz
-     sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /usr/local/bin
-     rm -f crictl-$VERSION-linux-amd64.tar.gz
+- Create a [VM, install docker, kind, kubectl](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md) on it.
 
-    ![image](https://github.com/user-attachments/assets/72087781-93d0-47c3-b78c-e25e341c44ee)
+    ![image](https://github.com/user-attachments/assets/1a06e8a3-3720-48be-946a-e2b107d0dde0)
 
-- Provide permission to the below file
+- To login to the control plane enter the commands
 
-      sudo chmod 777 /run/containerd/containerd.sock
+          sudo docker exec -it kuberlearn-control-plane sh
+  
+    ![image](https://github.com/user-attachments/assets/5eb53c04-f80f-428a-a4aa-a44821821edd)
 
-    ![image](https://github.com/user-attachments/assets/ddbba4af-1551-41b9-b4d8-fa858f26459d)
+- Check all running containers
 
-- Setting-up [multinode cluster using kubeadm](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md) is pre-requisite for it
+      crictl ps
 
-- However since it's time consuming let's set-up the cluster on GCP directly using these [steps](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/GKE_Test/Readme.md)
+    ![image](https://github.com/user-attachments/assets/5b605e3c-d133-4029-8a10-a7baadd457aa)
 
-       
-- Connect to the cluster
-
-          gcloud container clusters get-credentials my-cluster --zone us-central1-a --project test66666666
-     
--   
+- 
+        
+          
+-  
