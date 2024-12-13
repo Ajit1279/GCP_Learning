@@ -34,5 +34,4 @@ Troubleshooting Demo
 
     ![image](https://github.com/user-attachments/assets/ddbba4af-1551-41b9-b4d8-fa858f26459d)
 
-
-- 
+- Setting-up [multinode cluster using kubeadm](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md) is pre-requisite for it 
