@@ -34,4 +34,13 @@ Troubleshooting Demo
 
     ![image](https://github.com/user-attachments/assets/ddbba4af-1551-41b9-b4d8-fa858f26459d)
 
-- Setting-up [multinode cluster using kubeadm](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md) is pre-requisite for it 
+- Setting-up [multinode cluster using kubeadm](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/241021_MultinodeCluster_Kubeadm.md) is pre-requisite for it
+
+- However since it's time consuming let's set-up the cluster on GCP directly using these [steps](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/GKE_Test/Readme.md)
+
+       
+- Connect to the cluster
+
+          gcloud container clusters get-credentials my-cluster --zone us-central1-a --project test66666666
+     
+-   
