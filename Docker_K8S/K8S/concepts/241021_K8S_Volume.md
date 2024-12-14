@@ -44,60 +44,101 @@ Demo
         sudo kubectl apply -f redis.yaml
         sudo kubectl get pods
 
-      ![image](https://github.com/user-attachments/assets/fa8aec1d-bcd9-4faf-bb07-9cc9e44a2dc9)
+   ![image](https://github.com/user-attachments/assets/fa8aec1d-bcd9-4faf-bb07-9cc9e44a2dc9)
 
-- Login to the pod
+- Let's describe the pod
+
+        sudo kubectl describe pod/redis-pod
+
+    ![image](https://github.com/user-attachments/assets/3433165c-eb64-4926-8170-a7541acdeb1c)
+
+  
+- Login to the pod. You can observe that directory with name /data/redis has been created, but there's no data in it. So let's create a file called voldemo.txt
 
         sudo kubectl exec -it redis-pod -- sh
         cd /data/redis
-        
-      sudo kubectl
-- Login to the control plane
+        ls -lrt
+        echo "K8S volume demo" > voldemo.txt
+        cat voldemo.txt
 
-          sudo docker exec -it kuberlearn-control-plane sh
+    ![image](https://github.com/user-attachments/assets/def65fa6-db8c-4d2f-9f56-3aba0dbdacfb)
 
+- Let's install ps process
+
+          apt-get update && apt-get install procps -y
+          ps -aux
  
+     ![image](https://github.com/user-attachments/assets/e8506432-b78b-477d-98fb-acf9ea9ad855)
+   
 
-- Let's create pods and login to it
+- Kill the pod and let's check after the pod is restarted
 
-    sudo kubectl run nginx --image=nginx
-    sudo kubectl run redis --image=redis
+          ps -9 1
+          ps -aux
 
-  ![image](https://github.com/user-attachments/assets/e0cf2ad3-34d3-4718-8af3-119141a8f7fb)
+    ![image](https://github.com/user-attachments/assets/f5a02382-d62c-4ebd-b4de-0b330af58052)
 
-    
-    sudo kubectl exec -it nginx -- sh
-    apt-get update && apt-get install vim curl -y
+- You can observe that the data exists because the "container" was restarted. The data is maintained on a volume mounted on a pod outside the container. 
 
-- Create [pv.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/pv.yaml) and [pvc.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/pvc.yaml) and apply using kubectl command
+- Now let's exit the pod and delete it
 
-       vi pv.yaml
-       vi pvc.yaml
-       sudo kubectl apply -f pv.yaml
-       sudo kubectl apply -f pvc.yaml
+        exit
+        sudo kubectl delete pod redis-pod
 
-    ![image](https://github.com/user-attachments/assets/df1b1a65-c1ec-4b15-bc44-fbcda35de7d4)
+    ![image](https://github.com/user-attachments/assets/3027a72b-0a8f-4bac-a62d-454aa54384bf)
 
-- Display the pv and pvc
+- Apply the yaml to create the pod, login to the pod and check the result. **The file does not exist**
 
-       sudo kubectl get pv
-       sudo kubectl get pvc
+        sudo kubectl apply -f redis.yaml
+        sudo kubectl exec -it redis-pod -- sh
+        cd /data/redis
+        ls -lrt
 
-     ![image](https://github.com/user-attachments/assets/b93035b0-504a-4ed2-b8c7-293b16d9a6ab)
+    ![image](https://github.com/user-attachments/assets/890357f4-3a01-408e-bdca-85cfb9a3d97b)
 
-- The pvc is in pending state. let's debug
+- This necessiates Persistent Volume and Persistent Volume Claim if the data should be available across the workloads
 
-      sudo kubectl describe pvc/task-pv-claim
+- Login to the control-plane
 
-    ![image](https://github.com/user-attachments/assets/2b0974e1-1331-427c-9d38-b05f510ec80c)
+        sudo docker exec -it kuberlearn-control-plane sh
 
-- Confirmed that accessModes in pv and pvc is the same. Let's delete the pvc before modifying pvc yaml
+- Create [pv.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/pv.yaml) and [pvc.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/pvc.yaml) . Referring to the answer of meijsermans on the [post](https://stackoverflow.com/questions/30853247/how-do-i-edit-a-file-after-i-shell-to-a-docker-container) 
 
-      sudo kubectl patch pvc task-pv-claim -p '{"metadata":{"finalizers": []}}' --type=merge
-      sudo kubectl delete pvc/task-pv-claim
+        cat > pv.yaml (copy content of yaml from gitrepo and control-d)
+        cat > pvc.yaml ((copy content of yaml from gitrepo and control-d)
+        
+- Apply using kubectl command
 
-    ![image](https://github.com/user-attachments/assets/49bb2b07-4659-454a-ad20-a220b3b152de)
+        kubectl apply -f pv.yaml
+        kubectl get pv
+
+   ![image](https://github.com/user-attachments/assets/b1b78cea-6e29-4689-98b0-c4e9d66d0153)
+
+         kubectl apply -f pvc.yaml
+         kubectl get pvc
+
+   ![image](https://github.com/user-attachments/assets/9702683d-09b9-4d91-a2f0-a7e534d87dfb)
+
+- The pvc is in "pending" state. So we'll need to troubleshoot this. It's showing error (waiting for first consumer to be created before binding)
+
+         kubectl describe pvc
+
+   ![image](https://github.com/user-attachments/assets/0890712f-12bf-45e7-b595-47e3b2587678)
+
   
--  
--    
+- Let's create pods using [voldemopod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/voldemopod.yaml)
+
+          cat > voldemopod.yaml (copy content and control-d)
+          kubectl apply -f voldemopod.yaml
+
+   ![image](https://github.com/user-attachments/assets/665f6354-f819-40ae-809e-510d4524104b)
+
+      
+- The status is shown as "bound" now
+
+    kubectl get pvc
+
+    ![image](https://github.com/user-attachments/assets/968a4235-8d13-44ff-9f0a-9c131d37f7c3)
+
+    ![image](https://github.com/user-attachments/assets/7ad0c2c7-2f60-4df4-b342-4829182c7850)
 
