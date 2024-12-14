@@ -33,6 +33,31 @@
 Demo
 - [Create compute instance VM, install Docker, Kubectl and kind cluster on it](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/KindClusters.md)
 
+    ![image](https://github.com/user-attachments/assets/b3b934f7-f94a-4fef-b2dc-4b8224668103)
+
+- Create redis pod using [redis.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/redis.yaml)
+  - volumeMounts: It's added because we want to store data in this container
+  - mountPath: The data has to be stored somewhere in the pod
+  - volume name should be same as volumeMounts
+  - empty directory: because this is not persistent data, the data will be available till the lifetime of a pod only
+
+        sudo kubectl apply -f redis.yaml
+        sudo kubectl get pods
+
+      ![image](https://github.com/user-attachments/assets/fa8aec1d-bcd9-4faf-bb07-9cc9e44a2dc9)
+
+- Login to the pod
+
+        sudo kubectl exec -it redis-pod -- sh
+        cd /data/redis
+        
+      sudo kubectl
+- Login to the control plane
+
+          sudo docker exec -it kuberlearn-control-plane sh
+
+ 
+
 - Let's create pods and login to it
 
     sudo kubectl run nginx --image=nginx
