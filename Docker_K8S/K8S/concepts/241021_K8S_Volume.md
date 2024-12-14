@@ -134,7 +134,7 @@ Demo
    ![image](https://github.com/user-attachments/assets/665f6354-f819-40ae-809e-510d4524104b)
 
       
-- The status is shown as "bound" now
+- The status of the pvc is shown as "bound" now
 
     kubectl get pvc
 
@@ -142,3 +142,13 @@ Demo
 
     ![image](https://github.com/user-attachments/assets/7ad0c2c7-2f60-4df4-b342-4829182c7850)
 
+- Let's login to the newly created task-pv-pod pod and go to the directory specified in the [voldemopod.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/voldemopod.yaml) (/usr/share/nginx/html)
+
+         sudo kubectl exec -it task-pv-pod -- bash
+         cd /usr/share/nginx/html/
+         ls -lrt
+         curl localhost
+
+  ![image](https://github.com/user-attachments/assets/94a706a6-7a82-4857-91c0-1cab856bcac6)
+
+- The /usr/share/nginx/html/ does not exist hence there are no files returned. also curl command on localhost returned default nginx display, but it needs to be tried by mounting some other path. it's not clear how Day29 folder on local was mapped to the /usr/share/nginx/html/ by Piyush
