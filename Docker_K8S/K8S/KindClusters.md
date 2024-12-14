@@ -79,7 +79,7 @@
 
     ![image](https://github.com/user-attachments/assets/babf8e6e-5907-4a96-a1e5-991a10446a48)
 
-  - Run command: _**sudo kubectl get nodes**_ . You can observe that it creates only control plane by default.
+  - Run command: _**sudo kubectl get nodes**_ . You can observe that it creates only control plane by default. (Optionally to login to the control plane use command: **sudo docker exec -it kind-control-plane sh**)
 
     ![image](https://github.com/user-attachments/assets/1dea81a7-460c-4c03-b79d-4b5a71719e10)
 
