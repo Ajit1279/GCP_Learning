@@ -151,4 +151,4 @@ Demo
 
   ![image](https://github.com/user-attachments/assets/94a706a6-7a82-4857-91c0-1cab856bcac6)
 
-- The /usr/share/nginx/html/ does not exist hence there are no files returned. also curl command on localhost returned default nginx display, but it needs to be tried by mounting some other path. it's not clear how Day29 folder on local was mapped to the /usr/share/nginx/html/ by Piyush
+- The /usr/share/nginx/html/ does not exist hence there are no files returned. also curl command on localhost did not return default nginx display. It needs to be tried by mounting some other path. it's not clear how Day29 folder on local was mapped to the /usr/share/nginx/html/ by Piyush
