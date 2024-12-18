@@ -68,7 +68,7 @@ Troubleshooting Demo
     ![image](https://github.com/user-attachments/assets/a9e4de8e-17de-447e-9838-5411739d72cd)
 
 
-- Let's troubleshoot, As observed in below images network policy yaml checks for redis pod with label as "frontend" is created
+- Let's troubleshoot, As observed in below images network policy yaml does not contain apiversion also it is looking for redis pod with label as "frontend" 
   
         cat networkpolicy.yaml
         kubectl get pods
@@ -82,7 +82,7 @@ Troubleshooting Demo
     ![image](https://github.com/user-attachments/assets/3dfde75d-71f8-4f65-a208-4318a61cd608)
 
 
-- Let's check the deployments. All the deployments pods and services are healthy
+- Let's check if any other errors. All the deployments, pods and services are healthy
 
         kubectl get deploy
         kubectl get pods
@@ -92,16 +92,47 @@ Troubleshooting Demo
 
 - Let's check the network policy. It gave an error as expected
 
-       kubectl get netpol
+         kubectl get netpol
 
     ![image](https://github.com/user-attachments/assets/20a1f81b-3851-460a-aa20-053aa9e6058e)
 
-- sd
-- sd
-- sd
-- sd
-- s
-- ds
+- Let's create the [networkpolicy.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/Docker_K8S/K8S/concepts/nwpold37.yaml) again by copying and then control-d and apply again
+
+        rm networkpolicy.yaml
+
+        cat > networkpolicy.yaml
+        apiVersion: v1
+        kind: NetworkPolicy
+        metadata:
+          name: access-redis
+        spec:
+          podSelector:
+            matchLabels:
+              app: redis
+          ingress:
+          - from:
+          - podSelector:
+              matchLabels:
+              app: "redis"
+
+        kubectl apply -f networkpolicy.yaml
+  
+- It gave an error again "error: resource mapping not found for name: "access-redis" namespace: "" from "networkpolicy.yaml": no matches for kind "NetworkPolicy" in version "v1""
+
+    ![image](https://github.com/user-attachments/assets/918170c0-9b58-4126-826c-610f990cd91e)
+
+    
+- Referring to the [kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource), the apiVersion should be networking.k8s.io/v1 . It worked successfully!!
+
+    ![image](https://github.com/user-attachments/assets/a59d5dd0-2b32-4a3e-aab4-12b3c7abc910)
+
+
+        kubectl get netpol
+
+    ![image](https://github.com/user-attachments/assets/037c22e6-3188-443b-8deb-82b9247cd490)
+
+      
+- So our application set-up is complete. Let's try to access it
 - ds
 - ds
 - ds
