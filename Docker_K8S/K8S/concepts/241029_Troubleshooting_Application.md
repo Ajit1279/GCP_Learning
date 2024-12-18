@@ -160,13 +160,38 @@ Troubleshooting Demo
      ![image](https://github.com/user-attachments/assets/956e7752-8a9b-4ed0-bf80-f9fb1b650d73)
 
 
-- So let's open the vote-service.yaml. As seen in the yaml, the ports seem to be correct. There should be a pod with "app" as key for label and "vote" as the value for the key
+- So let's open the vote-service.yaml. As seen in the yaml, the ports seem to be correct. There should be a pod with "app" as key for label and "vote" as the value for the key app
 
     ![image](https://github.com/user-attachments/assets/9b22d98e-2c56-44fb-812a-e59d5b5d953b)
 
-- Let's check the pods now
+- Let's check the pods now. As seen below, the pod has label as app=vote and the vote-service is also using the selector as app=vote
 
         kubectl get pods --show-labels
 
     ![image](https://github.com/user-attachments/assets/7e2671cb-5f86-4c61-846b-29ac4042b2b3)
 
+- Describe the vote-service. The lables are matching
+
+        kubectl get svc vote -o=yaml | less
+
+    ![image](https://github.com/user-attachments/assets/23fb733f-48f2-46aa-badb-6e60f9c42cb0)
+
+
+- Let's check the endpoints again
+
+       kubectl get ep
+
+    ![image](https://github.com/user-attachments/assets/2e5e1bdd-cf77-414c-9da3-b08fe04bdae6)
+
+
+- Tried accessing the service from Google Cloud Shell, but didn't work. so NEEDS FURTHER TROUBLESHOOTING
+
+        curl 10.244.1.5:8080
+
+    ![image](https://github.com/user-attachments/assets/21b3f1e7-9134-40c9-b412-76ccf8cc664b)
+
+- Let's check the result service. It doesn't have endpoint as shown above, but the labels, ports are matching, so this requires troubleshooting as well.
+
+       kubectl get svc result -o=yaml | less
+
+    ![image](https://github.com/user-attachments/assets/a76d4cdb-4e38-4275-b4ff-7a7071be7557)
