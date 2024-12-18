@@ -101,7 +101,7 @@ Troubleshooting Demo
         rm networkpolicy.yaml
 
         cat > networkpolicy.yaml
-        apiVersion: v1
+        apiVersion: networking.k8s.io/v1
         kind: NetworkPolicy
         metadata:
           name: access-redis
