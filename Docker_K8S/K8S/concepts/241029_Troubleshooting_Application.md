@@ -132,9 +132,41 @@ Troubleshooting Demo
     ![image](https://github.com/user-attachments/assets/037c22e6-3188-443b-8deb-82b9247cd490)
 
       
-- So our application set-up is complete. Let's try to access it
-- ds
-- ds
-- ds
-- d
-- sd
+- So our application set-up is complete. Before accessing let's check where the voting application is deployed (as shown in below diagram it's on Worker2). Let's find the public IP of the VM from the GCP console
+
+        kubectl get pods -o wide
+
+    ![image](https://github.com/user-attachments/assets/e41b33d1-d056-45b3-b311-d2b69669e5d3)
+
+    ![image](https://github.com/user-attachments/assets/eac59706-8797-441c-8c9a-d482ac5c414e)
+
+- Let's try to access the application on port 31000. It gave an error
+
+    ![image](https://github.com/user-attachments/assets/9a9cd5a1-0ba9-4a18-9d5e-02e1a1fd5e3a)
+
+- So let's check if anything is wrong with the service, as the application is exposed via service
+
+          kubectl get svc
+          kubectl describe svc/vote
+
+    ![image](https://github.com/user-attachments/assets/0773d799-a5a2-4698-b8a2-604511f8de00)
+
+- In the tutorial, the endpoint was missing, but was created for me, but the application is not accessible still
+
+     ![image](https://github.com/user-attachments/assets/40b84313-8f3f-4ad0-bdaa-4689647aeffe)
+
+     ![image](https://github.com/user-attachments/assets/0e40703c-a021-40df-94bd-fdb0b3238980)
+
+     ![image](https://github.com/user-attachments/assets/956e7752-8a9b-4ed0-bf80-f9fb1b650d73)
+
+
+- So let's open the vote-service.yaml. As seen in the yaml, the ports seem to be correct. There should be a pod with "app" as key for label and "vote" as the value for the key
+
+    ![image](https://github.com/user-attachments/assets/9b22d98e-2c56-44fb-812a-e59d5b5d953b)
+
+- Let's check the pods now
+
+        kubectl get pods --show-labels
+
+    ![image](https://github.com/user-attachments/assets/7e2671cb-5f86-4c61-846b-29ac4042b2b3)
+
