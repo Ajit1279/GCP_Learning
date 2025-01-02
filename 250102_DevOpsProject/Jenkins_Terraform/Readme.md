@@ -44,7 +44,7 @@
     ![image](https://github.com/user-attachments/assets/8a60083a-1344-4fc6-b650-abeba1b49d0b)
 
 - Now integrate Github repository. My repository is public, but private repository can also be integrated as shown in the demo
-  - Create main.tf in the repo you want to integrate 
+  - Create simple [main.tf](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/Jenkins_Terraform/main.tf) in the repo you want to integrate 
 -   
 - 
 
