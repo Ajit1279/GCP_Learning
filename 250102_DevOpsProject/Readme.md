@@ -18,23 +18,23 @@
 
   - Add Jenkins repo key to your system
     
-        wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+                wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
 
   - Add Jenkins to your system's sources
 
-       sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+               sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 
   - Update package list
 
-       sudo apt-get update
+               sudo apt-get update
 
   - Install Jenkins
 
-       sudo apt-get install -y jenkins
+               sudo apt-get install -y jenkins
 
   - Start Jenkins service
 
-       sudo systemctl start jenkins
+               sudo systemctl start jenkins
 
   - The above steps returned error
 
@@ -42,7 +42,7 @@
 
   -  Follow the steps provided by "Faisal Nurr" in the [Stackoverflow thread](https://stackoverflow.com/questions/72412100/error-with-jenkins-installation-on-ubuntu-20-04). Verify the Jenkins status
 
-        sudo systemctl status jenkins
+                sudo systemctl status jenkins
 
     ![image](https://github.com/user-attachments/assets/bb8b5c97-cf72-45e8-bdcf-ee12aff2e4e0)
 
@@ -51,23 +51,23 @@
   - Install Docker
     - Update package list
 
-         sudo apt-get update
+                 sudo apt-get update
 
     - Install Docker
 
-         sudo apt-get install -y docker.io
+                 sudo apt-get install -y docker.io
 
     - Add Jenkins user to Docker group
 
-         sudo usermod -aG docker jenkins
+                 sudo usermod -aG docker jenkins
 
     - Restart Jenkins to apply group changes
 
-         sudo systemctl restart jenkins 
+                 sudo systemctl restart jenkins 
           
   - Set-up & launch Nexus on Docker: 
 
-         docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+                 docker run -d -p 8081:8081 --name nexus sonatype/nexus3
  
       dc0968eecc4d081d9acaa989c6e357e60d6e0555ccf6a15174102db8111262ae
 
@@ -80,11 +80,11 @@
         
   - Install Trivy
 
-        sudo apt-get install wget apt-transport-https gnupg lsb-release -y
-        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-        echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-        sudo apt-get update
-        sudo apt-get install trivy
+                sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+                wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+                echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+                sudo apt-get update
+                sudo apt-get install trivy
 
   - 
   - 
