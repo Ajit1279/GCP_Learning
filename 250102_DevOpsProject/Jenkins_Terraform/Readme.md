@@ -44,9 +44,54 @@
     ![image](https://github.com/user-attachments/assets/8a60083a-1344-4fc6-b650-abeba1b49d0b)
 
 - Now integrate Github repository. My repository is public, but private repository can also be integrated as shown in the demo
-  - Create simple [main.tf](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/Jenkins_Terraform/main.tf) in the repo you want to integrate 
--   
-- 
+  - Create simple [main.tf](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/Jenkins_Terraform/main.tf) in the repo you want to integrate
+
+  - Create [Jenkinsfile](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/Jenkins_Terraform/Jenkinsfile)
+
+  - We'll also need provide the Service Account access to our github repository. Go to Console >> iAM & Admin >> Service Account
+
+  - Manage Permission of the SA jenkins-sa@devops-446607.iam.gserviceaccount.com. Since we are only creating Storage Bucket, we'll assign related permissions only (i.e. Storage Admin to keep this demo simple)
+
+  - Also create a key for the service account Click on Service Account >> Keys tab >> Add Key >> Create new Key >> Select Key Type as "JSON" >> Click on "Create". A file will be downloaded to your local machine.
+
+     ![image](https://github.com/user-attachments/assets/1920c306-44e7-4c01-a966-631e73f45888)
+
+  - Now go to Jenkins >>  Manage Jenkins >> Credentials in Security section >> Click on global under domains >> Add Credentials
+
+     ![image](https://github.com/user-attachments/assets/70668106-fc6a-47d3-8f7c-45f2824b1c89)
+
+  - In the kind, select "Secret File", Select Scope as Global (Jenkins, nodes, items....). Upload the file. Mention id as "gcp-key" which we have used in Jenkinsfile as well. Click on Create
+
+     ![image](https://github.com/user-attachments/assets/d67462b0-694f-4da6-90a9-f2442858ae85)
+
+     ![image](https://github.com/user-attachments/assets/ad6f99b9-d3af-4d7e-b4f1-95389466d298)
+
+  - Now we'll have to create github credentials. Click on your "github profile" in top right hand corner >> setting >> Developer Setting >> personal access tokens >> Classic Tokens >> Generate New Token (classic)
+
+     ![image](https://github.com/user-attachments/assets/6d280e13-a817-4892-bd6f-39991f60d031)
+
+     ![image](https://github.com/user-attachments/assets/19106209-8399-4c38-8267-c3b255097aba)
+
+     ![image](https://github.com/user-attachments/assets/4e0447bd-ff50-4b9d-81a4-b39f2ee516b3)
+
+  - Provide Expiration as 7 days (as this is just demo). Check on "Repo" to grant repo level permissions only. Click on "Generate Token". Remeber to copy it immediately.
+
+     ![image](https://github.com/user-attachments/assets/82ce67e7-f642-4df5-b1ac-881afc4919ee)
+
+     ![image](https://github.com/user-attachments/assets/2b2e0ec4-62f4-4513-952c-294abb1f5c75)
+
+  - Go back to Jenkins again to create one more secret. Click on "Add Credential". Select "Secret Text" , paste the git token generated in above step and mention id as "git-token" (which we have mentioned in Jenkinsfile) and click on Create
+
+     ![image](https://github.com/user-attachments/assets/321c7b8e-9295-49a3-9536-c6db98f610db)
+
+     ![image](https://github.com/user-attachments/assets/3ec73010-a7e2-449e-9a93-410aa78b00f5)
+
+- Now create a Jenkins pipeline. Go to Dashboard >> Click on New Item. Specify "gcp-jenkins-tf-demo" and select "pipeline" and click OK
+      
+- In the next screen, scroll down to "Pipeline" section. As we are using github as our source, select "Pipeline script from SCM", SCM as Git, In the repository url mention the repository path (not the folder path) i.e. https://github.com/Ajit1279/GCP_Learning.git. Check if the filename in 
+
+    
+
 
      
 - 
