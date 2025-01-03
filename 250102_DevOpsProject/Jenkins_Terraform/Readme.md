@@ -88,7 +88,44 @@
 
 - Now create a Jenkins pipeline. Go to Dashboard >> Click on New Item. Specify "gcp-jenkins-tf-demo" and select "pipeline" and click OK
       
-- In the next screen, scroll down to "Pipeline" section. As we are using github as our source, select "Pipeline script from SCM", SCM as Git, In the repository url mention the repository path (not the folder path) i.e. https://github.com/Ajit1279/GCP_Learning.git. Check if the filename in 
+- In the next screen, scroll down to "Pipeline" section. As we are using github as our source, select "Pipeline script from SCM", SCM as Git, In the repository url mention the repository path (not the folder path) i.e. https://github.com/Ajit1279/GCP_Learning.git. Check if the filename in "Script Path" field
+
+- To test click on "build now". However the Jenkins build job failed.
+
+   ![image](https://github.com/user-attachments/assets/f3e90422-d202-4cce-b0a2-76e9f08f2588)
+
+- This is most likely due to the error while configuring the git repo, which also contains the folders
+
+   ![image](https://github.com/user-attachments/assets/36f82b6e-b962-4fbe-84e2-6dddaa609d91)
+
+- Let's try by changing the branches to main instead of master, as master branch does not exist in git.
+
+   ![image](https://github.com/user-attachments/assets/5f871b9e-8c3b-4454-a750-f117084b04b9)
+
+- Now it failed with different error. It's not able to locate the Jenkins file.
+
+   ![image](https://github.com/user-attachments/assets/d13ff64a-c7d7-4357-a1c1-5d68e5517ca6)
+
+- Let's try changing the path of Jenkins file in the pipeline configuration as shown below
+
+   ![image](https://github.com/user-attachments/assets/abcd7d48-706f-446d-ab24-cf8cf872bc17)
+
+- It returned the similar error
+
+   ![image](https://github.com/user-attachments/assets/816c06b4-f0bb-4f08-b2a0-188c8ba3d4d8)
+
+- Let's try to "move" the files in the parent git repo and change the script path as shown below
+
+   ![image](https://github.com/user-attachments/assets/7f7efa2e-dbe1-4051-ad27-5695f4f22bb9)
+
+- The errors encountered previously were resolved this time and build progressed a bit until it hit timeout error
+
+   ![image](https://github.com/user-attachments/assets/0bdf21e5-2749-4899-a931-8cbf6d0dd785)
+
+- Let's create a new git repository and retry. 
+- 
+-   
+- 
 
     
 
