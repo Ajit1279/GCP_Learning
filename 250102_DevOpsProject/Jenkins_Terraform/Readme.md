@@ -122,14 +122,4 @@
 
    ![image](https://github.com/user-attachments/assets/0bdf21e5-2749-4899-a931-8cbf6d0dd785)
 
-- Let's create a new git repository and retry. 
-- 
--   
-- 
-
-    
-
-
-     
-- 
--  
+- Let's create a new git repository and retry. The result was same. So we'll try some other option
