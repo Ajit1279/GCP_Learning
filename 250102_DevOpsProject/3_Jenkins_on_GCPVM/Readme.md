@@ -11,27 +11,45 @@
   
   - Now create a compute vm named "jenkins-server"
 
-          gcloud compute instances create jenkins-server --project=devops1279 --zone=us-central1-c --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --metadata=startup-script=\ \ sudo\ apt\ update$'\n'\ \ sudo\ apt\ install\ openjdk-11-jre\ -y$'\n'\ \ curl\ -fsSL\ https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key\ \|\ sudo\ tee\ \\$'\n'\ \ \ \ /usr/share/keyrings/jenkins-keyring.asc\ \>\ /dev/null$'\n'\ \ echo\ deb\ \[signed-by=/usr/share/keyrings/jenkins-keyring.asc\]\ \\$'\n'\ \ \ \ https://pkg.jenkins.io/debian-stable\ binary/\ \|\ sudo\ tee\ \\$'\n'\ \ \ \ /etc/apt/sources.list.d/jenkins.list\ \>\ /dev/null$'\n'\ \ sudo\ apt-get\ update$'\n'\ \ sudo\ apt-get\ install\ jenkins\ -y --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=873091254667-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append --tags=jenkins,http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=jenkins-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20241210,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+          gcloud compute instances create jenkins-server --project=devops1279 --zone=us-central1-c --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=873091254667-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=jenkins,http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=jenkins-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20241210,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
 
       
-  - The VM is created successfully, let's try to access it using external IP.
+  - Let's SSH into the VM and [install Jenkins](https://blog.kubekode.org/setup-and-install-jenkins-on-gcp-vm) on it
 
-      ![image](https://github.com/user-attachments/assets/8e8e767c-3493-46ec-83c1-12df5c664d26)
+            sudo apt update
+            sudo apt install openjdk-11-jre -y
+            curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+               /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+            echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+               https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+               /etc/apt/sources.list.d/jenkins.list > /dev/null
+            sudo apt-get update
+            sudo apt-get install jenkins -y
 
+  - It gave an error: Could not execute systemctl:  at /usr/bin/deb-systemd-invoke line 145.
 
-  - The VM was not accessible on port 8080 or 80
+      ![image](https://github.com/user-attachments/assets/cf59a0f2-471c-42b5-ac89-52acffd98c0a)
 
-      ![image](https://github.com/user-attachments/assets/0a66a75d-a07c-447b-b744-f4b26e66b259)
+  -  Let's troubleshoot. Find out Debian version first
 
-  - ds
-  - ds
-  - d
-  - sd
-  - sd
-  - sd
-  - s
-  - ds
-  - ds
-  - d
-  - sd
-  - sd  
+         lsb_release -a
+
+       ![image](https://github.com/user-attachments/assets/7dbbeb85-2077-46f5-9a58-b675f4b039c3)
+
+  - Referring to Gemini
+
+          sudo apt install openjdk-17-jdk
+          sudo apt update
+          sudo apt upgrade -y
+          sudo apt install openjdk-17-jdk -y
+          sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+          wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+          sudo apt update
+          sudo apt install jenkins -y
+          sudo systemctl start jenkins
+          sudo systemctl status jenkins
+          sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+  - Open a web browser and go to: http://<your-vm-external-ip>:8080
+
+  - Complete Initial Setup: 1. Enter the administrator password. 2. Choose to install suggested plugins or select specific plugins. 3. Create an admin user.         
