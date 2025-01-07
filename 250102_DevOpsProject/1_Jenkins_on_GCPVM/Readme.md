@@ -50,6 +50,34 @@
           sudo systemctl status jenkins
           sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-  - Open a web browser and go to: http://<your-vm-external-ip>:8080
+  - Open a web browser and go to: http://34.135.175.0:8080
 
-  - Complete Initial Setup: 1. Enter the administrator password. 2. Choose to install suggested plugins or select specific plugins. 3. Create an admin user.         
+    ![image](https://github.com/user-attachments/assets/a2510618-0794-4388-be75-37e88524ad36)
+
+  - Complete Initial Setup:
+    - Find the administrator password from the below file and enter in the browser
+ 
+           sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+ 
+      ![image](https://github.com/user-attachments/assets/797e9179-206d-4d7d-a970-f02b0a3a554f)
+  
+    - Choose to install suggested plugins or select specific plugins
+ 
+      ![image](https://github.com/user-attachments/assets/9d5f6452-0616-4c18-96a7-ffbad822130f)
+
+
+      ![image](https://github.com/user-attachments/assets/2a454e67-1bc1-46ea-851c-011975e47ec8)
+
+
+    - Create an admin user.         
+
+       ![image](https://github.com/user-attachments/assets/ed7df86f-e655-47db-8a60-7932c905bbb9)
+
+
+       ![image](https://github.com/user-attachments/assets/0432d09d-49ce-45ba-9ae1-90034eecbcc8)
+
+
+       ![image](https://github.com/user-attachments/assets/a9a8f68f-0166-4fe6-884a-045a3c55d7e6)
+
+
+       ![image](https://github.com/user-attachments/assets/16bb619e-9764-443d-8fca-ce1ec41ac797)
