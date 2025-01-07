@@ -49,7 +49,7 @@
           sudo systemctl start jenkins
           sudo systemctl status jenkins
 
-  - Open a web browser and go to: http://34.135.175.0:8080
+  - Open a web browser and go to: http://34.135.175.0:8080 (external IP Address of the VM on which Jenkins is installed)
 
     ![image](https://github.com/user-attachments/assets/a2510618-0794-4388-be75-37e88524ad36)
 
