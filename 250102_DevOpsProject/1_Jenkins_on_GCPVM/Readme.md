@@ -48,7 +48,6 @@
           sudo apt install jenkins -y
           sudo systemctl start jenkins
           sudo systemctl status jenkins
-          sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
   - Open a web browser and go to: http://34.135.175.0:8080
 
