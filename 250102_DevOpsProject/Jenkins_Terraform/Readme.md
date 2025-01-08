@@ -131,7 +131,6 @@
 
 - Create one more GCP VM which will act like your local machine 
 
-- Install Terraform on the GCP VM
 
         gcloud compute instances create myworkstation --project=devops1279 --zone=us-central1-c --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --scopes=https://www.googleapis.com/auth/cloud-platform --tags=myworkstation --create-disk=auto-delete=yes,boot=yes,device-name=myworkstation,image=projects/debian-cloud/global/images/debian-12-bookworm-v20241210,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
 
@@ -139,7 +138,7 @@
 
 - SSH into the machine and [install terraform](https://developer.hashicorp.com/terraform/install#linux) on it. Type the below command to check if terraform is installed correctly
 
-     terraform version
+       terraform version
 
    ![image](https://github.com/user-attachments/assets/cea56c81-357b-464b-a0b2-0664c5fcbb70)
 
@@ -158,9 +157,27 @@
 
  - Also create a key for the service account Click on Service Account >> Keys tab >> Add Key >> Create new Key >> Select Key Type as "JSON" >> Click on "Create". A file will be downloaded to your local machine.
 
-- sd
-- s
-- ds
+    ![image](https://github.com/user-attachments/assets/df1439ba-b871-464d-8597-aaa7888c2167)
+
+
+- Now go to Jenkins >> Manage Jenkins >> Credentials in Security section >> Click on global under domains >> Add Credentials
+
+   ![image](https://github.com/user-attachments/assets/b3d58429-a70a-4a93-ae44-068f345d8ee8)
+
+   ![image](https://github.com/user-attachments/assets/392cf94d-09f4-4d6c-b0a2-031ea9c67a0c)
+
+
+- Now we'll have to create github credentials. Click on your "github profile" in top right hand corner >> setting >> Developer Setting >> personal access tokens >> Classic Tokens >> Generate New Token (classic)
+
+    ![image](https://github.com/user-attachments/assets/1c855b3e-e74b-42f5-81af-5c8f11bfca23)
+
+
+- Now create a Jenkins pipeline. Go to Dashboard >> Click on New Item. Specify "gcp-jenkins-tf-demo" and select "pipeline" and click OK. Follow the steps mentioned above to add git repo name (https://github.com/Ajit1279/gcp-jenkins-terraform.git). It gave an error
+
+   ![image](https://github.com/user-attachments/assets/c28affbe-29e1-4dc0-a5d4-951b77a7c699)
+
+
+- Verified if the required plugins are installed and those seem to be correct
 - ds
 - ds
 - d
