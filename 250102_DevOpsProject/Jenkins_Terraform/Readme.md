@@ -123,3 +123,50 @@
    ![image](https://github.com/user-attachments/assets/0bdf21e5-2749-4899-a931-8cbf6d0dd785)
 
 - Let's create a new git repository and retry. The result was same. So we'll try some other option
+--------------------------------------------------------------------
+
+## Successful steps
+
+- Follow the [steps to install Jenkins](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/1_Jenkins_on_GCPVM) on GCP VM for free!!
+
+- Create one more GCP VM which will act like your local machine 
+
+- Install Terraform on the GCP VM
+
+        gcloud compute instances create myworkstation --project=devops1279 --zone=us-central1-c --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --scopes=https://www.googleapis.com/auth/cloud-platform --tags=myworkstation --create-disk=auto-delete=yes,boot=yes,device-name=myworkstation,image=projects/debian-cloud/global/images/debian-12-bookworm-v20241210,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+
+   ![image](https://github.com/user-attachments/assets/a647d69c-2b48-40fc-bebd-3c9b1aaecd1c)
+
+- SSH into the machine and [install terraform](https://developer.hashicorp.com/terraform/install#linux) on it. Type the below command to check if terraform is installed correctly
+
+     terraform version
+
+   ![image](https://github.com/user-attachments/assets/cea56c81-357b-464b-a0b2-0664c5fcbb70)
+
+ 
+- Now integrate Github repository. My repository is public, but private repository can also be integrated as shown in the demo
+ 
+ - Create simple [main.tf](https://github.com/Ajit1279/gcp-jenkins-terraform/blob/main/main.tf) in the repo you want to integrate
+ 
+ - Create [Jenkinsfile](https://github.com/Ajit1279/gcp-jenkins-terraform/blob/main/Jenkinsfile)
+
+ - Create a new service account Console >> iAM & Admin >> Service Accounts >> Create Service Accounts. Mention name as "jenkins-sa". Grant the "Cloud Storage Admin" access to it (jenkins-sa@devops1279.iam.gserviceaccount.com)
+
+     ![image](https://github.com/user-attachments/assets/a9175ac2-c8e6-42f7-af26-1a769d8def43)
+
+     ![image](https://github.com/user-attachments/assets/9814f6dd-2064-4db6-95db-c8b0b74d7d60)
+
+ - Also create a key for the service account Click on Service Account >> Keys tab >> Add Key >> Create new Key >> Select Key Type as "JSON" >> Click on "Create". A file will be downloaded to your local machine.
+
+- sd
+- s
+- ds
+- ds
+- ds
+- d
+- sd
+- sd
+- sd
+- sd
+- sd
+- s
