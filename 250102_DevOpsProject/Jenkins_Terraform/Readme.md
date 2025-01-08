@@ -132,7 +132,8 @@
 - Create one more GCP VM which will act like your local machine 
 
 
-        gcloud compute instances create myworkstation --project=devops1279 --zone=us-central1-c --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --scopes=https://www.googleapis.com/auth/cloud-platform --tags=myworkstation --create-disk=auto-delete=yes,boot=yes,device-name=myworkstation,image=projects/debian-cloud/global/images/debian-12-bookworm-v20241210,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+        gcloud compute instances create mymachine --project=DevOps --zone=us-central1-c --machine-type=n2-standard-8 --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=mymachine,image=projects/debian-cloud/global/images/debian-12-bookworm-v20241210,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --no-shielded-vtpm --no-shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+
 
    ![image](https://github.com/user-attachments/assets/a647d69c-2b48-40fc-bebd-3c9b1aaecd1c)
 
