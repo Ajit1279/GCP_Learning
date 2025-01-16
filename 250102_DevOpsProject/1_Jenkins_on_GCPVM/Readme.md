@@ -80,3 +80,28 @@
 
 
        ![image](https://github.com/user-attachments/assets/16bb619e-9764-443d-8fca-ce1ec41ac797)
+
+
+  - Now let's follow the steps to [configure github repository](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/Jenkins_Terraform) in the Jenkins, but it failed with the error "Failed to connect to Repository: Command git ls-remote -h ....." as shown below.     
+
+      ![image](https://github.com/user-attachments/assets/ded5fa79-88c9-4cde-bc43-c7b205d8964a)
+
+  - Refer [this video](https://youtu.be/F5QKON50xP8) to resolve the error, followed the steps suggested [here](https://www.linuxbuzz.com/how-to-install-git-on-debian/) to install git on the jenkins-server
+
+      ![image](https://github.com/user-attachments/assets/9b24de50-b19c-4367-9b4f-edaf885ae4b3)
+
+  - The job started successfully, but ran into different error now: "ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job."
+
+      ![image](https://github.com/user-attachments/assets/faac6af4-620e-40f0-9f58-d0161894176d)
+
+  - sd
+  - sd
+  - sd
+  - sd
+  - sd
+  - sd
+  - sd
+  - s
+  - ds
+  - ds
+  - d 
