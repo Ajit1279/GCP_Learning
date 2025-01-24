@@ -178,13 +178,7 @@
    ![image](https://github.com/user-attachments/assets/c28affbe-29e1-4dc0-a5d4-951b77a7c699)
 
 
-- Verified if the required plugins are installed and those seem to be correct
-- ds
-- ds
-- d
-- sd
-- sd
-- sd
-- sd
-- sd
-- s
+- Verified if the required plugins are installed and those seem to be correct.
+  
+- The issue was finally resolved after following [these steps](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/1_Jenkins_on_GCPVM).
+  
