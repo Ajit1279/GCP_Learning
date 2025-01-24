@@ -94,14 +94,39 @@
 
       ![image](https://github.com/user-attachments/assets/faac6af4-620e-40f0-9f58-d0161894176d)
 
-  - sd
-  - sd
-  - sd
-  - sd
-  - sd
-  - sd
-  - sd
-  - s
-  - ds
-  - ds
-  - d 
+  - The error was resolved referring to the answer by MarkEWaite on [Jenkins community](https://community.jenkins.io/t/error-couldnt-find-any-revision-to-build/14430)
+
+      ![image](https://github.com/user-attachments/assets/b6993841-18d9-4f3b-b0b4-0b13f5148499)
+
+  - However, because terraform is not installed on new VM, it resulted in the below error
+
+      ![image](https://github.com/user-attachments/assets/784d6134-d6be-4430-a5ac-71ae39e3ec4e)
+      
+  - Installed it by [following the instructions](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/Jenkins_Terraform)
+
+     ![image](https://github.com/user-attachments/assets/e5690a90-9f4e-4332-afbf-e228a88978aa)
+
+
+  - Now let's re run the pipeline and when prompted, click on "proceed"
+
+      ![image](https://github.com/user-attachments/assets/6f5696f2-ccf9-46c8-aa98-b38b83c2b0f1)
+
+      ![image](https://github.com/user-attachments/assets/d2005d68-3ec0-40bd-8740-2258af217dc3)
+
+
+  - The build failed with error: 400
+
+      ![image](https://github.com/user-attachments/assets/f0b2d18a-fe76-41e8-844f-db44cf2b083c)
+
+  - Let's try changing the location from asia-south1-c to us-central1-a in main.tf. It failed with the same error.
+    
+  - Referring to the [bucket locations](https://cloud.google.com/storage/docs/locations), it should be ASIA-SOUTH1 or US-CENTRAL1. Let's updated main.tf and re-run the job
+
+      ![image](https://github.com/user-attachments/assets/74545858-fc65-40bd-9bad-07ed829f4824)
+
+    
+  - Go to Console >> Buckets and verify the bucket is created
+
+      ![image](https://github.com/user-attachments/assets/2309452c-7aad-4ca0-bf0a-04aa6bbf13de)
+
+  
