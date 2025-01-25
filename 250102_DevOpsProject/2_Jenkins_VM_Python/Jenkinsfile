@@ -9,7 +9,7 @@ pipeline {
         stage('Git Checkout') {
             steps {
 	       git branch: 'main',    
-                   url: "https://${GIT_TOKEN}@github.com/Ajit1279/gcp-jenkins-terraform.git"
+                   url: "https://${GIT_TOKEN}@github.com/Ajit1279/GCP_Learning.git"
             }
         }
         
