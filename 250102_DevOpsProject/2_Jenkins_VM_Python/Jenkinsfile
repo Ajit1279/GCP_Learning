@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-	       git branch: '250102_DevOpsProject/2_Jenkins_VM_Python/main',    
+	       git branch: 'main',    
                    url: "https://${GIT_TOKEN}@github.com/Ajit1279/gcp-jenkins-terraform.git"
             }
         }
