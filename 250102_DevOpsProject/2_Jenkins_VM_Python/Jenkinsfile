@@ -1,19 +1,56 @@
+
 pipeline {
     agent any
-	
+    
     environment {
-	GIT_TOKEN = credentials('git-token')
+        GIT_REPO = "https://${GIT_TOKEN}@github.com/Ajit1279/GCP_Learning.git"
+        GIT_CREDENTIALS = credentials('git-token')
+        DIRECTORY = "/250102_DevOpsProject/2_Jenkins_VM_Python/"
+        BRANCH = 'main'
     }
-	
+    
     stages {
-        stage('Git Checkout') {
+        stage("Clone Repository") {
             steps {
-	       git branch: 'main',    
-                   url: "https://${GIT_TOKEN}@github.com/Ajit1279/GCP_Learning.git"
+                script {
+                    echo "Clone ${DIRECTORY} repository..."
+                    checkout([$class: 'GitSCM', branches: [[name: "${BRANCH}"]],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: env.DIRECTORY]]]],
+                        submoduleCfg: [],
+                        userRemoteConfigs: [[credentialsId: "${GIT_CREDENTIALS}", url: "${GIT_REPO}"]]])
+                }
             }
         }
         
-        stage('Terraform Init') {
+        stage("Check Changes") {
+            steps {
+                script {
+                    echo "Check changes ${DIRECTORY}..."
+                    def changes = checkForChanges(env.DIRECTORY)
+                    if (changes) {
+                        echo "Changes detected in ${DIRECTORY}."
+                        env.BUILD_IMAGE_CHANGED = "true"
+                    } else {
+                        currentBuild.result = 'NOT_BUILT'
+                        echo "No changes detected in ${DIRECTORY}. Skipping build."
+                        env.BUILD_IMAGE_CHANGED = "false"
+                    }
+                }
+            }
+        }
+        
+        stage("Build Image") {
+            when {
+                expression { return env.BUILD_IMAGE_CHANGED == "true" }
+            }
+            steps {
+                script {
+                    echo "Building ${DIRECTORY} image..."
+                    sh 'docker build -t $IMAGE -f ${DIRECTORY}/Dockerfile .'
+                }
+                
+                stage('Terraform Init') {
             steps {
                 script {
                     sh 'terraform init'
@@ -44,3 +81,8 @@ pipeline {
         }
     }
 }
+
+def checkForChanges(dir) {
+    def diff = sh(script: "git diff HEAD HEAD~ --name-only | grep ${dir}", returnStatus: true)
+    return diff == 0
+ }
