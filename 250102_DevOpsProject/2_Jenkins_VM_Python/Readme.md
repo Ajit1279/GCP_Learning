@@ -25,9 +25,38 @@
    
 - In the meantime created a [new repository](https://github.com/Ajit1279/jenkins-pythonvm) and ran the Jenkins job but it's failing with authentication error.
 
-  
+- Generate a github classic token and use it instead of password. This [DevOps4Solutions video](https://www.youtube.com/watch?v=Z9vLen1w8DU) was helpful
 
-- sd
+- Ensure to install git and terraform on the jenkins-server
+
+          sudo apt update
+          sudo apt upgrade -y
+          sudo apt install git
+
+   ![image](https://github.com/user-attachments/assets/a416ca61-911f-4149-91e7-c538205dcf9a)
+
+          wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+          sudo apt update && sudo apt install terraform
+
+    ![image](https://github.com/user-attachments/assets/21697364-e90f-4f9b-a4aa-5a253bc541b0)
+
+
+- So let's configure user id and token correctly
+  - Click on dashboard >> new item >> enter the git repository
+
+     ![image](https://github.com/user-attachments/assets/446936cd-0f38-47a3-a741-889510b7fd08)
+
+  - The error message appears because we haven't configured the credentials yet. Click in Add >> Select Jenkins
+
+     ![image](https://github.com/user-attachments/assets/cfd760f7-4598-48f6-a0fe-5a0d99d8f455)
+
+  - Configure the newly created token in the password field.
+
+     ![image](https://github.com/user-attachments/assets/22c2fffc-6997-42f2-a459-3c9ecb3b9fde)
+
+  -  
+  -  
 - sd
 - sd
 - sd
