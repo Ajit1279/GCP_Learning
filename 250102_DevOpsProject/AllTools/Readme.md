@@ -8,7 +8,7 @@
   
   - Ensure to configure firewall rules to allow SSH, HTTP and port 8080 enabled
 
-          gcloud compute --project=devops-446607 firewall-rules create http-8080 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8080 --source-ranges=0.0.0.0/0
+          gcloud compute --project=devops2502 firewall-rules create http-8080 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8080 --source-ranges=0.0.0.0/0
 
     ![image](https://github.com/user-attachments/assets/52fbb45e-bbe4-4c2c-abb7-a61e39da24b0)
 
@@ -48,42 +48,58 @@
 
     ![image](https://github.com/user-attachments/assets/77d8e1dc-3a11-4402-be8d-2e4fee94c5ae)
 
-  - Enter the external IP address and port 80 after it to access Jenkins thru Browser  http://34.16.5.25:8080. It gave an error
+  - Enter the external IP address and port 8080 after it to access Jenkins thru Browser  http://34.16.5.25:8080. Enter initial password and proceed with the set-up
 
-     ![image](https://github.com/user-attachments/assets/99ae2d8d-fe75-4b5f-9fc4-7b52312ff67c)
+     ![image](https://github.com/user-attachments/assets/57194f64-136e-4473-b757-047fc4fc4dad)
 
-  - 
+  - SSH into jenkins-server and [intall git and terraform](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/1_Jenkins_on_GCPVM)
 
-  -  
+            sudo apt update
+            sudo apt upgrade -y
+            sudo apt install git
 
-        
-- Install Nexus
+            wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+            sudo apt update && sudo apt install terraform
+
+  - Enter 'y' to continue with the set-up 
+
   - Install Docker
     - Update package list
 
-                 sudo apt-get update
+           sudo apt-get update
 
     - Install Docker
 
-                 sudo apt-get install -y docker.io
+            sudo apt-get install -y docker.io
 
     - Add Jenkins user to Docker group
 
-                 sudo usermod -aG docker jenkins
+             sudo usermod -aG docker jenkins
 
     - Restart Jenkins to apply group changes
 
                  sudo systemctl restart jenkins 
-          
-  - Set-up & launch Nexus on Docker: 
 
-                 docker run -d -p 8081:8081 --name nexus sonatype/nexus3
- 
-      dc0968eecc4d081d9acaa989c6e357e60d6e0555ccf6a15174102db8111262ae
+   
+--------------------------------------------------------        
+- Install Nexus
+  - Create a GCP VM
 
-     ![image](https://github.com/user-attachments/assets/89dddfac-5c05-4b04-8588-d5caab8a0143)
+           gcloud compute instances create nexus-server --project=devops2502 --zone=us-central1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=nexus-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
 
-  - Set-up and launch SonarQube
+ - Ensure to open port 8081 through firewall
+
+       gcloud compute --project=devops2502 firewall-rules create nexus --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8081 --source-ranges=0.0.0.0/0
+
+ - Access the Nexus server using the external IP address of the VM and port 8081 http://34.69.192.22:8081/
+
+     ![image](https://github.com/user-attachments/assets/ca2ae6ad-9f3b-4c82-8df8-216fe3144ad4)
+
+ - Use the default user id: admin and password in admin.password file 
+
+----------------------------------------------------------
+- Set-up and launch SonarQube
 
      ![image](https://github.com/user-attachments/assets/ef442132-705a-4ef8-aad5-9c17b06186c5)
 
