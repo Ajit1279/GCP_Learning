@@ -3,7 +3,7 @@
 - Install Jenkins
   - Create VM instance on GCP
 
-         gcloud compute instances create ijenkins-server --project=devops2502 --zone=us-central1-f --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=ijenkins-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+         gcloud compute instances create jenkins-server --project=devops2502 --zone=us-central1-f --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=ijenkins-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
 
   
   - Ensure to configure firewall rules to allow SSH, HTTP and port 8080 enabled
@@ -48,7 +48,7 @@
 
     ![image](https://github.com/user-attachments/assets/77d8e1dc-3a11-4402-be8d-2e4fee94c5ae)
 
-  - Enter the external IP address and port 8080 after it to access Jenkins thru Browser  http://34.16.5.25:8080. Enter initial password and proceed with the set-up
+  - Enter the external IP address and port 8080 after it to access Jenkins thru Browser  35.202.103.175:8080. Enter initial password and proceed with the set-up
 
      ![image](https://github.com/user-attachments/assets/57194f64-136e-4473-b757-047fc4fc4dad)
 
@@ -92,7 +92,16 @@
 
        gcloud compute --project=devops2502 firewall-rules create nexus --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8081 --source-ranges=0.0.0.0/0
 
- - Access the Nexus server using the external IP address of the VM and port 8081 http://34.69.192.22:8081/
+ - Install Docker
+
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+         
+ - Install Nexus
+
+         docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+   
+ - Access the Nexus server using the external IP address of the VM and port 8081 34.121.135.49:8081/
 
      ![image](https://github.com/user-attachments/assets/ca2ae6ad-9f3b-4c82-8df8-216fe3144ad4)
 
