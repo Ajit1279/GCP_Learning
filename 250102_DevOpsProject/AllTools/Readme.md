@@ -3,7 +3,9 @@
 - Install Jenkins
   - Create VM instance on GCP
 
-         gcloud compute instances create jenkins-server --project=devops2502 --zone=us-central1-f --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=ijenkins-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+   ```
+    gcloud compute instances create jenkins-server --project=devops2502 --zone=us-central1-f --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=ijenkins-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+   ```
 
   
   - Ensure to configure firewall rules to allow SSH, HTTP and port 8080 enabled
@@ -17,35 +19,45 @@
 
   - SSH into Jenkins-server and **[install Jenkins](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/2_Jenkins_VM_Python)** on it
 
-            sudo apt install openjdk-17-jdk
-            sudo apt update
-            sudo apt upgrade -y
-            sudo apt install openjdk-17-jdk -y
-            sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-            wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
-            sudo apt update
-            sudo apt install jenkins -y
-            sudo systemctl start jenkins
-            sudo systemctl status jenkins
+    ```
+    sudo apt install openjdk-17-jdk
+    sudo apt update
+    sudo apt upgrade -y
+    sudo apt install openjdk-17-jdk -y
+    sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+    wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+    sudo apt update
+    sudo apt install jenkins -y
+    sudo systemctl start jenkins
+    sudo systemctl status jenkins
+    ```
 
   - It gave an error. Run commands below to resolve
 
     ![image](https://github.com/user-attachments/assets/112a92b6-c471-4086-bd21-07c7902d8d03)
 
-              sudo apt update
-              sudo apt install openjdk-17-jre
-              java -version
 
-             curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
-                   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-             echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-             https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-             /etc/apt/sources.list.d/jenkins.list > /dev/null
+    ```
+    sudo apt update
+    sudo apt install openjdk-17-jre
+    java -version
+    ```
 
-             sudo apt-get update
-             sudo apt-get install jenkins
-             sudo systemctl start jenkins.service
-             sudo systemctl status jenkins
+    ```
+    curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+         /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+    echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+    ```
+
+    ```
+    sudo apt-get update
+    sudo apt-get install jenkins
+    sudo systemctl start jenkins.service
+    sudo systemctl status jenkins
+    ```
+    
 
   - Jenkins server is up now
 
@@ -57,43 +69,59 @@
 
   - SSH into jenkins-server and [intall git and terraform](https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/1_Jenkins_on_GCPVM)
 
-            sudo apt update
-            sudo apt upgrade -y
-            sudo apt install git
+    ```
+    sudo apt update
+    sudo apt upgrade -y
+    sudo apt install git
+    ```
 
-            wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-            sudo apt update && sudo apt install terraform
+    ```
+    wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update && sudo apt install terraform
+    ```
 
   - Enter 'y' to continue with the set-up 
 
   - Install Docker
     - Update package list
 
-           sudo apt-get update
+      ```
+      sudo apt-get update
+      ```
 
     - Install Docker
 
-            sudo apt-get install -y docker.io
+       ```
+       sudo apt-get install -y docker.io
+       ``` 
 
     - Add Jenkins user to Docker group
-
-             sudo usermod -aG docker jenkins
-
+      
+       ```
+       sudo usermod -aG docker jenkins
+       ```
+       
     - Restart Jenkins to apply group changes
 
-                 sudo systemctl restart jenkins 
-
+       ```
+       sudo systemctl restart jenkins 
+       ```
+       
    
 --------------------------------------------------------        
 - Install Nexus
   - Create a GCP VM
 
-           gcloud compute instances create nexus-server --project=devops2502 --zone=us-central1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=nexus-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+    ```
+    gcloud compute instances create nexus-server --project=devops2502 --zone=us-central1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=nexus-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+    ```
 
  - Ensure to open port 8081 through firewall
 
-       gcloud compute --project=devops2502 firewall-rules create nexus --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8081 --source-ranges=0.0.0.0/0
+   ```
+   gcloud compute --project=devops2502 firewall-rules create nexus --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8081 --source-ranges=0.0.0.0/0
+   ```
 
  - Install Docker
 
@@ -108,7 +136,33 @@
 
      ![image](https://github.com/user-attachments/assets/ca2ae6ad-9f3b-4c82-8df8-216fe3144ad4)
 
- - Use the default user id: admin and password in admin.password file 
+ - To get the default user id: admin and password in admin.password file type
+   - Get the container Id of the Nexus container
+      
+      ```
+      sudo docker ps
+      ```
+
+       ![image](https://github.com/user-attachments/assets/8797f50a-068c-488d-ac0e-10fae243c3ca)
+
+
+   - Run the below command to read the admin password file
+
+     ```
+     docker exec -it 080f841f3c19 cat /nexus-data/admin.password
+     ```
+
+      ![image](https://github.com/user-attachments/assets/9c708847-4f12-47fa-b661-e4842043acb6)
+
+   - Enter the encrypted password in the password field. The login was successful!!
+
+       ![image](https://github.com/user-attachments/assets/1405c81f-21ca-4000-9d76-87b9f329de8b)
+
+   - Change the default password, enable / disable Anonymous access, it's ready to use now
+
+       ![image](https://github.com/user-attachments/assets/5008eb3c-f696-4b90-9cc3-a8be24dbd18d)
+     
+ 
 
 ----------------------------------------------------------
 - Set-up and launch SonarQube
