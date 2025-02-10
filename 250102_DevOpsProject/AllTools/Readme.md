@@ -8,7 +8,10 @@
   
   - Ensure to configure firewall rules to allow SSH, HTTP and port 8080 enabled
 
-          gcloud compute --project=devops2502 firewall-rules create http-8080 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8080 --source-ranges=0.0.0.0/0
+   ```
+   gcloud compute --project=devops2502 firewall-rules create http-8080 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:8080 --source-ranges=0.0.0.0/0
+   ```
+    
 
     ![image](https://github.com/user-attachments/assets/52fbb45e-bbe4-4c2c-abb7-a61e39da24b0)
 
