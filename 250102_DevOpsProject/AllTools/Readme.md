@@ -166,18 +166,58 @@
 
 ----------------------------------------------------------
 - Set-up and launch SonarQube
+  - Create GCP VM
 
-     ![image](https://github.com/user-attachments/assets/ef442132-705a-4ef8-aad5-9c17b06186c5)
+    ```
+    gcloud compute instances create sonarqube-server --project=devops2502 --zone=us-central1-f --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=sonarqube-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+    ```
 
-        
+  - SSH into server and install docker
+
+    ```
+    sudo apt-get update
+    sudo apt-get install -y docker.io
+    ```
+
+  - Ensure to configure firewall rules to allow SSH, HTTP and port 9000 enabled. Run the below command in **Cloudshell**
+
+   ```
+   gcloud compute --project=devops2502 firewall-rules create http-9000 --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:9000 --source-ranges=0.0.0.0/0
+   ```  
+
+  - Launch SonarQube on Docker
+
+    ```
+    sudo docker run -d -p 9000:9000 --name sonarqube sonarqube
+    ```
+
+    ![image](https://github.com/user-attachments/assets/a97cb2de-9d05-497d-a155-56a175c20611)
+
+
+  - Access Sonarqube using the external IP address and default password admin/admin
+
+      ![image](https://github.com/user-attachments/assets/c0ed2658-ab52-49b6-a5b9-111bdcce99de)
+
+
+  - Go through the [documentation](https://docs.sonarsource.com/sonarqube-community-build/) if needed
+
+  -----------------------------------------------------------------------
+
   - Install Trivy
-
-                sudo apt-get install wget apt-transport-https gnupg lsb-release -y
-                wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
-                echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
-                sudo apt-get update
-                sudo apt-get install trivy
-
+   - Create GCP VM
+     ```
+     gcloud compute instances create trivy-server --project=devops2502 --zone=us-central1-f --machine-type=e2-medium --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default --no-restart-on-failure --maintenance-policy=TERMINATE --provisioning-model=SPOT --instance-termination-action=STOP --service-account=488011902725-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=trivy-server,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250113,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ec-src=vm_add-gcloud --reservation-affinity=any
+     ``` 
+   
+   - Run commands to install Trivy
+     ```
+     sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+     wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+     echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+     sudo apt-get update
+     sudo apt-get install trivy
+    ```
+---------------------------------------------------------------
   - 
   - 
 - ds
