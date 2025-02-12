@@ -1,4 +1,5 @@
 - Reference: https://dev.to/prodevopsguytech/devops-project-production-level-cicd-pipeline-project-1iek
+- Reference: https://github.com/hashicorp/terraform-provider-google
 
 - Install Jenkins
   - Create VM instance on GCP
@@ -108,7 +109,16 @@
        sudo systemctl restart jenkins 
        ```
        
-   
+  - To **create Jenkins Service Account** go to Console >> iAM >> Service Accounts >> Create Service Account (jenkins-sa@devops2502.iam.gserviceaccount.co) and assign "Kubernetes Engine Cluster Admin" and "Artifact Registry Admin" roles
+
+    ![image](https://github.com/user-attachments/assets/b06682dd-7604-4b8d-b23d-83423c6b96f2)
+
+    
+
+  -  
+  - 
+  - 
+  - 
 --------------------------------------------------------        
 - Install Nexus
   - Create a GCP VM
@@ -125,12 +135,16 @@
 
  - Install Docker
 
-          sudo apt-get update
-          sudo apt-get install -y docker.io
+   ```
+   sudo apt-get update
+   sudo apt-get install -y docker.io
+   ```
          
  - Install Nexus
 
-         docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+   ```
+   docker run -d -p 8081:8081 --name nexus sonatype/nexus3
+   ```
    
  - Access the Nexus server using the external IP address of the VM and port 8081 34.121.135.49:8081/
 
@@ -149,7 +163,7 @@
    - Run the below command to read the admin password file
 
      ```
-     docker exec -it 080f841f3c19 cat /nexus-data/admin.password
+     sudo docker exec -it 080f841f3c19 cat /nexus-data/admin.password
      ```
 
       ![image](https://github.com/user-attachments/assets/9c708847-4f12-47fa-b661-e4842043acb6)
@@ -218,14 +232,12 @@
      sudo apt-get install trivy
     ```
 ---------------------------------------------------------------
-  - 
-  - 
-- ds
-- ds
-- d
-- sd
-- sd
-- sd
-- sd
-- sd
-- s
+- Terraform
+  - Create [main.tf](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/AllTools/main.tf)
+
+  - Create [deployment.yaml](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/AllTools/deployment.yaml)
+
+  - To set-up Jenkins pipeline, go to Jenkins Dashboard >> New Item >> Pipeline >> select "Pipeline script from SCM" and input the [Jenkinsfile](https://github.com/Ajit1279/GCP_Learning/blob/main/250102_DevOpsProject/AllTools/Jenkinsfile) in Script Path 
+    
+
+-------------------------------------------------------------------------
