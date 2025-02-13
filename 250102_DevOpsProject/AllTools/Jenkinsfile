@@ -1,0 +1,49 @@
+
+pipeline {
+  agent any
+  environment {
+    GCP_DEFAULT_REGION = 'us-central1'
+    GAR_REPO_NAME = 'my-gar-repo'
+    IMAGE_TAG = "my-gar-repo:${env.BUILD_ID}"
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', url: 'https://github.com/your-repo.git'
+      }
+    }
+    stage('Build Docker Image') {
+      steps {
+        script {
+          dockerImage = docker.build("${env.GAR_REPO_NAME}:${env.BUILD_ID}")
+        }
+      }
+    }
+    stage('Scan with Trivy') {
+      steps {
+        script {
+          sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL ${dockerImage.id}'
+        }
+      }
+    }
+    stage('Push Docker Image') {
+      steps {
+        script {
+          docker.withRegistry("https://${env.GCP_ACCOUNT_ID}.dkr.gar.${env.GCP_DEFAULT_REGION}.amazongcp.com", 'gar:gcp-credentials') {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Deploy to GKE') {
+      steps {
+        script {
+          sh '''
+          gcp gke --region $GCP_DEFAULT_REGION update-kubeconfig --name $CLUSTER_NAME
+          kubectl apply -f k8s/deployment.yaml
+          '''
+        }
+      }
+    }
+  }
+}
