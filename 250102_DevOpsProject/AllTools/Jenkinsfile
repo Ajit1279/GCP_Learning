@@ -16,6 +16,26 @@ pipeline {
                 }
             }
         }
+        
+        stage('Scan with Trivy') {
+            steps {
+                script {
+                   def scanResults = sh(script: "trivy image --exit-code 1 ${NEXUS_URL}/my-app:${IMAGE_TAG}", returnStatus: true)
+                   if (scanResults != 0) {
+                          error("Trivy found vulnerabilities in the image.")
+                    }
+                 }
+             }
+        }
+        
+        stage('Push to Nexus') {
+            steps {
+                script {
+                    dockerImage.push("${NEXUS_URL}/my-app:${IMAGE_TAG}")
+                }
+            }
+        }
+
         stage('Deploy to GKE') {
             steps {
                 script {
