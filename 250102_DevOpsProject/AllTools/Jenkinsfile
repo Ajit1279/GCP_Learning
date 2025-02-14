@@ -8,6 +8,12 @@ pipeline {
         ARTIFACT_REGISTRY_URL = "${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/my-docker-repo"
     }
     stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/AllTools.git'
+            }
+        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
