@@ -1,49 +1,28 @@
-
 pipeline {
-  agent any
-  environment {
-    GCP_DEFAULT_REGION = 'us-central1'
-    GAR_REPO_NAME = 'my-gar-repo'
-    IMAGE_TAG = "my-gar-repo:${env.BUILD_ID}"
-  }
-  stages {
-    stage('Checkout') {
-      steps {
-        git branch: 'main', url: 'https://github.com/your-repo.git'
-      }
+    agent any
+    environment {
+        GCP_PROJECT_ID = 'devops2502'
+        GCP_REGION     = 'us-central1'
+        IMAGE_NAME     = 'my-app'
+        IMAGE_TAG      = "${env.BUILD_ID}"
+        ARTIFACT_REGISTRY_URL = "${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/my-docker-repo"
     }
-    stage('Build Docker Image') {
-      steps {
-        script {
-          dockerImage = docker.build("${env.GAR_REPO_NAME}:${env.BUILD_ID}")
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build("${IMAGE_NAME}")
+                    dockerImage.push("${ARTIFACT_REGISTRY_URL}/${IMAGE_NAME}:${IMAGE_TAG}")
+                }
+            }
         }
-      }
-    }
-    stage('Scan with Trivy') {
-      steps {
-        script {
-          sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL ${dockerImage.id}'
+        stage('Deploy to GKE') {
+            steps {
+                script {
+                    sh "gcloud container clusters get-credentials my-gke-cluster --region ${GCP_REGION} --project ${GCP_PROJECT_ID}"
+                    sh "kubectl apply -f k8s/deployment.yaml"
+                }
+            }
         }
-      }
     }
-    stage('Push Docker Image') {
-      steps {
-        script {
-          docker.withRegistry("https://${env.GCP_ACCOUNT_ID}.dkr.gar.${env.GCP_DEFAULT_REGION}.amazongcp.com", 'gar:gcp-credentials') {
-            dockerImage.push()
-          }
-        }
-      }
-    }
-    stage('Deploy to GKE') {
-      steps {
-        script {
-          sh '''
-          gcp gke --region $GCP_DEFAULT_REGION update-kubeconfig --name $CLUSTER_NAME
-          kubectl apply -f k8s/deployment.yaml
-          '''
-        }
-      }
-    }
-  }
 }
