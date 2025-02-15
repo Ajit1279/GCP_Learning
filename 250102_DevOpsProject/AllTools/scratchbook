@@ -1,0 +1,129 @@
+https://shubzz.hashnode.dev/building-a-production-ready-cicd-pipeline-a-comprehensive-guide-to-devops
+
+SonarQube set-up: https://dev.to/kelvinskell/advanced-end-to-end-devops-project-deploying-a-microservices-app-to-aws-eks-using-terraform-helm-jenkins-and-argocd-part-i-3a53
+
+1. Create main.tf
+2. Ensure to enable Compute Engine APIs and container APIS
+3. Enable Ports
+4. Terraform init, plan, apply
+5. If you face the error: insufficient regional quota to satisfy request: resource "SSD_TOTAL_GB": request requires '600.0' and is short '350.0'. project has a quota of '250.0' with '250.0' available. View and manage quotas at https://console.cloud.google.com/iam-admin/quotas?usage=USED&project=  then change the location to zone
+
+Reduce the Disk Size in Your GKE Cluster:
+
+If a quota increase is not immediately possible, you can reduce the size of the persistent disks requested by your GKE nodes.
+How to reduce disk size:
+Review your Terraform configuration for the google_container_node_pool or google_container_cluster resources.
+Locate the disk_size_gb parameter within the node_config block.
+Reduce the value of disk_size_gb to a number that, when multiplied by the number of nodes in your cluster, results in a total SSD storage requirement below your current quota.
+Example: If you have 3 nodes, you would need to reduce the disk size to less than 83 GB per node to stay within the 250 GB limit. (3 * 83 = 249)
+After changing the terraform code, run terraform apply again.
+
+it was still giving an error, so created it manually
+
+
+
+
+POST https://container.googleapis.com/v1/projects/devops2502/locations/us-central1/clusters
+{
+  "cluster": {
+    "name": "my-gke-cluster",
+    "network": "projects/devops2502/global/networks/default",
+    "subnetwork": "projects/devops2502/regions/us-central1/subnetworks/default",
+    "networkPolicy": {},
+    "ipAllocationPolicy": {
+      "useIpAliases": true,
+      "clusterIpv4CidrBlock": "/17",
+      "stackType": "IPV4"
+    },
+    "binaryAuthorization": {
+      "evaluationMode": "DISABLED"
+    },
+    "autoscaling": {
+      "enableNodeAutoprovisioning": true,
+      "autoprovisioningNodePoolDefaults": {
+        "oauthScopes": [
+          "https://www.googleapis.com/auth/cloud-platform"
+        ]
+      }
+    },
+    "networkConfig": {
+      "enableIntraNodeVisibility": true,
+      "datapathProvider": "ADVANCED_DATAPATH",
+      "defaultEnablePrivateNodes": false
+    },
+    "authenticatorGroupsConfig": {},
+    "databaseEncryption": {
+      "state": "DECRYPTED"
+    },
+    "verticalPodAutoscaling": {
+      "enabled": true
+    },
+    "releaseChannel": {
+      "channel": "REGULAR"
+    },
+    "notificationConfig": {
+      "pubsub": {}
+    },
+    "initialClusterVersion": "1.31.4-gke.1372000",
+    "location": "us-central1",
+    "autopilot": {
+      "enabled": true
+    },
+    "loggingConfig": {
+      "componentConfig": {
+        "enableComponents": [
+          "SYSTEM_COMPONENTS",
+          "WORKLOADS"
+        ]
+      }
+    },
+    "monitoringConfig": {
+      "componentConfig": {
+        "enableComponents": [
+          "SYSTEM_COMPONENTS",
+          "STORAGE",
+          "POD",
+          "DEPLOYMENT",
+          "STATEFULSET",
+          "DAEMONSET",
+          "HPA",
+          "CADVISOR",
+          "KUBELET"
+        ]
+      },
+      "managedPrometheusConfig": {
+        "enabled": true,
+        "autoMonitoringConfig": {
+          "scope": "NONE"
+        }
+      }
+    },
+    "nodePoolAutoConfig": {
+      "resourceManagerTags": {}
+    },
+    "securityPostureConfig": {
+      "mode": "BASIC",
+      "vulnerabilityMode": "VULNERABILITY_DISABLED"
+    },
+    "controlPlaneEndpointsConfig": {
+      "dnsEndpointConfig": {
+        "allowExternalTraffic": false
+      },
+      "ipEndpointsConfig": {
+        "enabled": true,
+        "enablePublicEndpoint": true,
+        "globalAccess": false,
+        "authorizedNetworksConfig": {}
+      }
+    },
+    "enterpriseConfig": {
+      "desiredTier": "STANDARD"
+    },
+    "secretManagerConfig": {
+      "enabled": false
+    }
+  }
+}
+
+The scripts in the main.tf were not installing Jenkins, Nexus and SonarQube, so ran those manually
+SonarQube Plugin and set-up was required
