@@ -5,12 +5,12 @@ pipeline {
         GCP_REGION     = 'us-central1'
         IMAGE_NAME     = 'my-app'
         IMAGE_TAG      = "${env.BUILD_ID}"
-        ARTIFACT_REGISTRY_URL = "${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT_ID}/my-docker-repo"
+        NEXUS_URL = "<nuxus url:port>"
     }
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Ajit1279/GCP_Learning/tree/main/250102_DevOpsProject/AllTools.git'
+                git 'https://github.com/Ajit1279/GCPStaging.git'
             }
         }
         
@@ -18,7 +18,6 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build("${IMAGE_NAME}")
-                    dockerImage.push("${ARTIFACT_REGISTRY_URL}/${IMAGE_NAME}:${IMAGE_TAG}")
                 }
             }
         }
@@ -34,6 +33,25 @@ pipeline {
              }
         }
         
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'SonarQubeScanner'
+                    withSonarQubeEnv('SonarQube') { 
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
+            }
+        }
+
+        stage('Login to Nexus') {
+            steps {
+                script {
+                    sh 'docker login ${NEXUS_URL} -u <username> -p <password>'
+                }
+            }
+        }
+            
         stage('Push to Nexus') {
             steps {
                 script {
@@ -42,11 +60,19 @@ pipeline {
             }
         }
 
+        stage('Pull Latest Image from Nexus') {
+            steps {
+                script {
+                    sh 'docker pull ${NEXUS_URL}/my-app:${IMAGE_TAG}'
+                }
+            }
+        }
+        
         stage('Deploy to GKE') {
             steps {
                 script {
                     sh "gcloud container clusters get-credentials my-gke-cluster --region ${GCP_REGION} --project ${GCP_PROJECT_ID}"
-                    sh "kubectl apply -f k8s/deployment.yaml"
+                    sh "kubectl apply -f deployment.yaml"
                 }
             }
         }
