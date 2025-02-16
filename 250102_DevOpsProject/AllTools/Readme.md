@@ -115,41 +115,50 @@
     sudo apt update && sudo apt install terraform
     ```
 
-  - Enter 'y' to continue with the set-up 
+  - Enter 'y' to continue with the set-up
 
-  - Install Docker
-    - Update package list
+  - Ensure Docker is installed on the machine where your CI/CD pipeline runs. This is required to integrate other CI/CD tools
+    ```
+    sudo apt-get update
+    sudo apt-get install -y docker.io
+    sudo usermod -aG docker jenkins
+    sudo systemctl restart jenkins 
+    ``` 
 
-      ```
-      sudo apt-get update
-      ```
-
-    - Install Docker
-
-       ```
-       sudo apt-get install -y docker.io
-       ``` 
-
-    - Add Jenkins user to Docker group
-      
-       ```
-       sudo usermod -aG docker jenkins
-       ```
-       
-    - Restart Jenkins to apply group changes
-
-       ```
-       sudo systemctl restart jenkins 
-       ```
-       
   - To **create Jenkins Service Account** go to Console >> iAM >> Service Accounts >> Create Service Account (jenkins-sa@devops2502.iam.gserviceaccount.co) and assign "Kubernetes Engine Cluster Admin" and "Artifact Registry Admin" roles
 
     ![image](https://github.com/user-attachments/assets/b06682dd-7604-4b8d-b23d-83423c6b96f2)
 
-    
+  - Install Nexus Plugins:
 
-  -  
+     ![image](https://github.com/user-attachments/assets/fddf7ce0-d49a-4074-8ed2-0eaf7e8401d3)
+
+  -  Install SonarQube Plugin
+
+      ![image](https://github.com/user-attachments/assets/b1e426fc-697c-4147-bddc-a2cd29280c10)
+
+  - Go to Jenkins UI >> New Item >> Pipeline to create a new job (devops-test-pipeline)
+
+      ![Uploading image.png…]()
+
+  - s
+  - dsd
+  - s
+  - ds
+  - ds
+  - d
+  - sd
+  - sd
+  - sd
+  - sd
+  - s
+  - ds
+  - ds
   - 
+  - 
+  - 
+
+      
   - 
   - 
 --------------------------------------------------------        
@@ -209,7 +218,20 @@
 
        ![image](https://github.com/user-attachments/assets/5008eb3c-f696-4b90-9cc3-a8be24dbd18d)
      
- 
+  - In the UI go to Browse in the left hand panel >> copy the url of maven-releases (http://34.72.81.55:8081/repository/maven-releases/)
+
+      ![image](https://github.com/user-attachments/assets/ce45330a-fd58-4a85-8793-11968612d0d3)
+
+   - Go to Jenkins UI >> Manage Jenkins >> Credentials >> Add Nexus Credentials
+
+      ![image](https://github.com/user-attachments/assets/db52fa82-dbce-4f0d-8c22-a6365648e1fc)
+     
+
+   - Go to Jenkins UI >> Manage Jenkins" -> System Configuration >> System >> Scroll down to the "Nexus task runner" section and input the values as shown below
+
+       
+   - 
+   -   
 
 ----------------------------------------------------------
 - Set-up and launch SonarQube
