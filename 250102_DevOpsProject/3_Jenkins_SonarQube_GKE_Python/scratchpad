@@ -519,12 +519,12 @@ Corrected the settings.xml as shown below
     <server>
       <id>nexus-releases</id>
       <username>admin</username>
-      <password>NexusRepo@25</password>
+      <password>****</password>
     </server>
     <server>
       <id>nexus-snapshots</id> <!-- Corrected closing tag -->
       <username>admin</username>
-      <password>NexusRepo@25</password>
+      <password>****</password>
     </server>
   </servers>
 
