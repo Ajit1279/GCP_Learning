@@ -1,0 +1,6 @@
+*.jar
+*.class
+pom.xml
+target/
+.git/  # Ignore the .git directory
+__pycache__/ # Ignore Python cache files

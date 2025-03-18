@@ -1,0 +1,284 @@
+pipeline {
+    agent any
+    environment {
+        PROJECT_ID = 'devops2502'
+        GKE_CLUSTER_NAME = 'my-gke-cluster'
+        GKE_REGION = 'us-central1'
+        GAR_LOCATION = 'us-central1' 
+        GAR_REPOSITORY = 'my-docker-repo'
+        GIT_TOKEN = credentials('git-token')
+        APP_NAME = "hello-world"
+        IMAGE_TAG = "${env.BUILD_ID}"
+        //IMAGE_TAG = 'latest'
+        GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${dockerImage}"
+        GOOGLE_APPLICATION_CREDENTIALS = credentials('GOOGLE_APPLICATION_CREDENTIALS')
+        PATH = "${env.HOME}/.local/bin:${env.PATH}"
+        SONARQUBE_URL = "http://34.58.238.62:9000"
+        SONAR_TOKEN = credentials('sonarqube-token') 
+        SONARQUBE_PROJECT_NAME = 'sonarqubescan'
+        SONARQUBE_SERVER_NAME = 'sonarqubescan'
+    }
+
+    stages {
+        stage('clean workspace') {
+            steps{
+                cleanWs()
+            }
+        }
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',    
+                    url: "https://${GIT_TOKEN}@github.com/Ajit1279/GCPStaging.git"
+            }
+        }
+        
+    // stage('Build Docker Image') {
+    //         steps {
+    //             script {
+    //                 dir("app") { // Or wherever your Dockerfile is.
+    //                     echo "Building from directory: ${pwd()}"
+
+    //                     def imageName = "${APP_NAME}:${IMAGE_TAG}" // Local image name
+    //                     dockerImage = docker.build(imageName) // Build and tag locally
+    //                     GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${imageName}" // Construct GAR_IMAGE AFTER build
+
+    //                     echo "Pushing image: ${GAR_IMAGE}" // Verify correct image name
+    //                     sh "docker tag ${imageName} ${GAR_IMAGE}" // Tag the image with the full GAR path
+    //                     sh "docker push ${GAR_IMAGE}" // Now push using the correct GAR path
+    //                 }
+    //             }
+    //         }
+    //     }
+
+//     stage('Build Docker Image') {
+//     steps {
+//         script {
+//             dir("app") {
+//                 echo "Building from directory: ${pwd()}"
+
+//                 def imageName = "${APP_NAME}:${IMAGE_TAG}"
+//                 dockerImage = docker.build(imageName)
+//                 GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${imageName}"
+
+//                 echo "Pushing image: ${GAR_IMAGE}"
+
+//                 withCredentials([string(credentialsId: 'GOOGLE_APPLICATION_CREDENTIALS', variable: 'GCP_CREDENTIALS')]) {
+//                     sh "gcloud auth activate-service-account --key-file=\$(echo \"${GCP_CREDENTIALS}\" | tr -d '\\r')"
+//                     sh "gcloud auth configure-docker ${GAR_LOCATION}-docker.pkg.dev" // Essential: Authenticate Docker with GAR
+//                     sh "docker tag ${imageName} ${GAR_IMAGE}"
+//                     sh "docker push ${GAR_IMAGE}"
+//                 }
+//             }
+//         }
+//     }
+// }
+
+stage('Build Docker Image') {
+    steps {
+        script {
+            dir("app") {
+                echo "Building from directory: ${pwd()}"
+                echo "Image tag: ${env.BUILD_ID}"
+
+                def imageName = "${APP_NAME}:${IMAGE_TAG}"
+                def GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${imageName}"
+
+                echo "Building Docker image: ${imageName}"
+
+                // Build Docker image
+                def dockerImage = docker.build(imageName)
+
+                echo "Tagging image: ${GAR_IMAGE}"
+                
+                // Tag the Docker image for Google Artifact Registry
+                sh "docker tag ${imageName} ${GAR_IMAGE}"
+
+                // Verify the image is created
+                sh "docker images | grep ${APP_NAME}"
+
+                withCredentials([file(credentialsId: 'GOOGLE_APPLICATION_CREDENTIALS', variable: 'GCP_CREDENTIALS')]) {
+                    script {
+                        echo "Authenticating with Google Cloud"
+                        
+                        // Authenticate gcloud
+                        sh "gcloud auth activate-service-account --key-file=${GCP_CREDENTIALS}"
+
+                        // Configure Docker authentication for Google Artifact Registry
+                        sh "gcloud auth configure-docker ${GAR_LOCATION}-docker.pkg.dev"
+
+                        echo "Pushing Docker image: ${GAR_IMAGE}"
+                        
+                        // Push the image to Google Artifact Registry
+                        sh "docker push ${GAR_IMAGE}"
+                    }
+                }
+
+                echo "Docker image pushed successfully: ${GAR_IMAGE}"
+            }
+        }
+    }
+}
+
+
+
+    // stage('Scan with Trivy') {
+    //     steps {
+    //         script {
+    //             def imageName = "${APP_NAME}:${IMAGE_TAG}" // Get the full image name
+    //             sh "trivy image --exit-code 1 --severity HIGH,CRITICAL ${imageName}" // Use imageName
+    //         }
+    //     }
+    // }
+        
+        stage('Clean up old gcloud') {
+            steps {
+                sh '''
+                rm -rf /var/lib/jenkins/google-cloud-sdk
+                '''
+            }
+        }
+        stage('Verify gcloud') {
+            steps {
+                sh '''
+                    echo $PROJECT_ID
+
+                    gcloud --version
+                    echo $PATH
+                    which gcloud
+                '''
+            }
+        }
+        stage('Check Docker Config Permissions') {
+            steps {
+                sh 'ls -l /var/lib/jenkins/.docker'
+            }
+        }
+        
+        stage('Authenticate gcloud') {
+            steps {
+                withCredentials([file(credentialsId: 'GOOGLE_APPLICATION_CREDENTIALS', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    sh '''
+                        export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS
+                        export HOME=/var/lib/jenkins
+                        export DOCKER_CONFIG=$HOME/.docker
+                        echo "GOOGLE_APPLICATION_CREDENTIALS: $GOOGLE_APPLICATION_CREDENTIALS"
+                        echo "HOME: $HOME"
+                        echo "DOCKER_CONFIG: $DOCKER_CONFIG"
+                        gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                        gcloud config set project ${PROJECT_ID}
+                        echo "Project ID: ${PROJECT_ID}"
+                        gcloud auth configure-docker ${GAR_LOCATION}-docker.pkg.dev
+                        echo "gcloud auth configure-docker completed"
+                    '''
+                }
+            }
+        }
+
+        stage('Install kubectl') {
+            steps {
+                sh 'mkdir -p ${HOME}/.local/bin'
+                sh '''
+                    curl -s "https://storage.googleapis.com/kubernetes-release/release/stable.txt" | tr -d '\n' | xargs -I VERSION curl -LO "https://storage.googleapis.com/kubernetes-release/release/VERSION/bin/linux/amd64/kubectl"
+                '''
+                sh 'chmod u+x ./kubectl'
+                sh 'mv ./kubectl ${HOME}/.local/bin/kubectl'
+
+                withEnv(["PATH+=${HOME}/.local/bin"]) {
+                    sh 'kubectl version --client'
+                }
+            }
+        }
+        
+        // stage('Push Docker Image to GAR') {
+        //     steps {
+        //         script {
+        //             def GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${APP_NAME}:${IMAGE_TAG}"
+        //             sh "docker push ${GAR_IMAGE}"
+        //         }
+        //     }
+        // }
+
+        stage('Push Docker Image to GAR') {
+            steps {
+                script {
+                    def GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${APP_NAME}:${IMAGE_TAG}"
+                    sh "docker push ${GAR_IMAGE}" // Use GAR_IMAGE directly
+                }
+            }
+        }
+    
+
+    stage('SonarQube Analysis') {
+    steps {
+        withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {  
+            withSonarQubeEnv('sonarqubescan') {  
+                script {
+                    def scannerHome = tool 'sonarqubescan'
+                    echo "Scanner Home: ${scannerHome}"
+
+                    sh "cat /etc/hosts"
+                    sh "ping -c 3 my-sonarqube.local"
+                    sh "curl -I http://10.128.0.60:9000"
+
+                    sh """
+                        export SONAR_TOKEN=${SONAR_TOKEN}  # Explicitly set token
+                        echo "Using SONAR_TOKEN: ${SONAR_TOKEN}"  # Debug token length
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=${SONARQUBE_PROJECT_NAME} \
+                        -Dsonar.host.url=http://10.128.0.60:9000 \
+                        -Dsonar.token=$SONAR_TOKEN \
+                        -Dsonar.sources=app
+                    """  
+                }
+            }
+        }
+    }
+}
+   
+        
+    // stage('Deploy to GKE') {
+    //     steps {
+    //         script {
+    //             def GAR_IMAGE = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${APP_NAME}:${IMAGE_TAG}"
+    //             sh 'gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --region ${GKE_REGION} --project ${PROJECT_ID}'
+    //             sh "kubectl set image deployment/${APP_NAME}-deployment ${APP_NAME}=${GAR_IMAGE}"
+    //         }
+    //     }
+    // }
+        // stage('Deploy to GKE') {
+        //     steps {
+        //         script {
+        //             def imageName = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${APP_NAME}:${IMAGE_TAG}"
+        //             sh 'gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --region ${GKE_REGION} --project ${PROJECT_ID}'
+        //             sh "kubectl set image deployment/hello-world-deployment ${APP_NAME}=${imageName}" // Correct syntax with "="
+        //         }
+        //     }
+        // }
+
+    stage('Deploy to GKE') {
+    steps {
+        script {
+            sh '''
+                gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+                gcloud config set project ${PROJECT_ID}
+                gcloud auth configure-docker ${GAR_LOCATION}-docker.pkg.dev
+                gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --region ${GKE_REGION} --project ${PROJECT_ID}
+            '''
+
+            // Apply the deployment BEFORE setting the image
+            sh "kubectl apply -f deployment.yaml"
+            //sh "kubectl apply -f service.yaml"
+
+            // Update the image in the running deployment
+            def imageName = "${GAR_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${GAR_REPOSITORY}/${APP_NAME}:${IMAGE_TAG}"
+            sh "kubectl set image deployment/hello-world-deployment ${APP_NAME}=${imageName}"
+
+            // Debugging commands
+            sh 'kubectl get deployments -A'
+            sh 'kubectl get pods -A'
+            sh 'kubectl get svc -A'
+                }
+            }
+        }
+    }
+}

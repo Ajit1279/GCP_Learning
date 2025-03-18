@@ -1,0 +1,987 @@
+================= Copied from README for future reference ==================================
+- GCPStaging
+  - Repository for testing the changes prior to moving to the respective repository. This is to ensure some of the required source files (e.g. Jenkins) are on repository root
+  - Please ensure to copy the code from this repo to the correct repo after the successful testing 
+
+
+  SonarQube 
+  Install Sonarqube on server
+Change the initial password
+Create a local project - sonarqubescan, branch name: main Use the global settings
+Create project
+
+The Sonarscan will happen after image is pushed to GAR and before deploying to GKE
+We'll select Jenkins as CI
+DevOps Platform as GitHub
+
+No need to create webhook
+
+Click on the Id in the top right hand corner
+Then secutiry >> Generate Token
+name: sonarqube-token Type: user expiry time:
+
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonarqube-scanner
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [SONARQUBE_TOKEN]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ sonar-scanner -Dsonar.projectKey=sonarqubescan -Dsonar.host.url=http://34.60.25.94:9000/ -Dsonar.login=****** -Dsonar.sources=us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:118  
+/var/lib/jenkins/workspace/pipeline_250222@tmp/durable-1d89072c/script.sh.copy: 2: sonar-scanner: not found
+[Pipeline] }
+WARN: Unable to locate 'report-task.txt' in the workspace. Did the SonarScanner succeed?
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+
+Configure SonarQube Server in Jenkins: Go to "Manage Jenkins" -> "Configure System." Scroll down to the "SonarQube servers" section. Add your SonarQube server details (name, URL, token). The "Name" you give here is the one you'll use in the withSonarQubeEnv step in your Jenkinsfile.
+Ensure Sonarqube project name, withSonarQubeEnv('sonarqubescan') in Jenkinsfile and in Jenkins >> Systems >> SonarQube server are matching
+Ensure "SonarQube Scanner for Jenkins" plugin is installed on Jenkins
+===============================
+No such DSL method '$' found among steps  
+The error you're encountering, java.lang.NoSuchMethodError: No such DSL method '$' found among steps ..., is a classic Groovy/Jenkins pipeline issue. It often arises when you try to use Groovy string interpolation (${...}) within double quotes ("...") in a way that Groovy doesn't expect in the context of a Jenkins pipeline.
+
+The problem lies specifically with this line:
+withCredentials([string(credentialsId: ${SONARQUBE_TOKEN}, variable: 'SONARQUBE_TOKEN
+==============================
+[Pipeline] stage
+[Pipeline] { (SonarQube Analysis)
+[Pipeline] withCredentials
+Masking supported pattern matches of $SONARQUBE_TOKEN
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: sonarqubescan
+[Pipeline] {
+[Pipeline] sh
+Warning: A secret was passed to "sh" using Groovy String interpolation, which is insecure.
+		 Affected argument(s) used the following variable(s): [SONARQUBE_TOKEN]
+		 See https://jenkins.io/redirect/groovy-string-interpolation for details.
++ sonar-scanner -Dsonar.projectKey=sonarqubescan -Dsonar.host.url=http://34.60.25.94:9000/ -Dsonar.login=****** -Dsonar.sources=app  // Or . if your code is at the root of the workspace
+/var/lib/jenkins/workspace/pipeline_250222@tmp/durable-c6541fe2/script.sh.copy: 2: sonar-scanner: not found
+[Pipeline] }
+WARN: Unable to locate 'report-task.txt' in the workspace. Did the SonarScanner succeed?
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+ERROR: script returned exit code 127
+Finished: FAILURE
+
+It seems the SonarQube server was stopped:
+sudo docker run -d -p 9000:9000 --name sonarqube sonarqube
+docker: Error response from daemon: Conflict. The container name "/sonarqube" is already in use by container "35fc6c0bc89aa2e1a174a01645d3c9d740e275173b5f495409820b40c7e9fffb". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+
+1. To start existing container: sudo docker start sonarqube
+2. Stop and Remove the Existing Container:
+  i) First, you need to stop and remove the existing container before you can start a new one with the same name.
+  sudo docker stop sonarqube       # Stop the container
+  sudo docker rm sonarqube         # Remove the container
+
+  ii) Start the New Container:
+     After removing the old container, you can start a new one with the same name:
+    sudo docker run -d -p 9000:9000 --name sonarqube sonarqube
+
+3. Check Container Status after step 1 Or 2 is complete:
+   sudo docker ps
+
+==========================
+/var/lib/jenkins/workspace/pipeline_250222@tmp/durable-c6541fe2/script.sh.copy: 2: sonar-scanner: not found
+
+Go to Jenkins >> Manage Jenkins >> Tools >> SonarQube Scanner installations
+Ensure that the name specified there matches with the one in Jenkinsfile
+=============================
+It continued to result in error. So referred https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/ci-integration/jenkins-integration/global-setup/
+
+================================================================
+The error was resolved after adding below steps in Jenkinsfile
+def scannerHome = tool 'sonar-scanner'
+sh "${scannerHome}/bin/sonar-scanner"
+
+=======================================
+Next error:
+Also:   org.jenkinsci.plugins.workflow.actions.ErrorAction$ErrorId: fab1fb97-8021-4720-a122-66c0ce6f5933
+groovy.lang.MissingPropertyException: No such property: scannerHome for class: groovy.lang.Binding
+	at groovy.lang.Binding.getVariable(Binding.java:63)
+	at PluginClassLoader for script-security//org.jenkinsci.plugins.scriptsecurity.sandbox.groovy.SandboxInterceptor.onGetProperty(SandboxInterceptor.java:285)
+	at PluginClassLoader for script-security//org.kohsuke.groovy.sandbox.impl.Checker$7.call(Checker.java:375)
+	at PluginClassLoader for script-security//org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.java:379)
+	at PluginClassLoader for script-security//org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.java:355)
+	at PluginClassLoader for script-security//org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.java:355)
+	at PluginClassLoader for script-security//org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.java:355)
+	at PluginClassLoader for script-security//org.kohsuke.groovy.sandbox.impl.Checker.checkedGetProperty(Checker.java:355)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.sandbox.SandboxInvoker.getProperty(SandboxInvoker.java:29)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.LoggingInvoker.getProperty(LoggingInvoker.java:133)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.impl.PropertyAccessBlock.rawGet(PropertyAccessBlock.java:20)
+	at WorkflowScript.run(WorkflowScript:145)
+	at ___cps.transform___(Native Method)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.get(PropertyishBlock.java:73)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.LValueBlock$GetAdapter.receive(LValueBlock.java:30)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.impl.PropertyishBlock$ContinuationImpl.fixName(PropertyishBlock.java:65)
+	at jdk.internal.reflect.GeneratedMethodAccessor245.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.impl.ConstantBlock.eval(ConstantBlock.java:21)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.Next.step(Next.java:83)
+	at PluginClassLoader for workflow-cps//com.cloudbees.groovy.cps.Continuable.run0(Continuable.java:147)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.SandboxContinuable.access$001(SandboxContinuable.java:17)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.SandboxContinuable.run0(SandboxContinuable.java:49)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.java:180)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.java:422)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:330)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:294)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService.lambda$wrap$4(CpsVmExecutorService.java:140)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at hudson.remoting.SingleLaneExecutorService$1.run(SingleLaneExecutorService.java:139)
+	at jenkins.util.ContextResettingExecutorService$1.run(ContextResettingExecutorService.java:28)
+	at jenkins.security.ImpersonatingExecutorService$1.run(ImpersonatingExecutorService.java:68)
+	at jenkins.util.ErrorLoggingExecutorService.lambda$wrap$0(ErrorLoggingExecutorService.java:51)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$1.call(CpsVmExecutorService.java:53)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$1.call(CpsVmExecutorService.java:50)
+	at org.codehaus.groovy.runtime.GroovyCategorySupport$ThreadCategoryInfo.use(GroovyCategorySupport.java:136)
+	at org.codehaus.groovy.runtime.GroovyCategorySupport.use(GroovyCategorySupport.java:275)
+	at PluginClassLoader for workflow-cps//org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService.lambda$categoryThreadFactory$0(CpsVmExecutorService.java:50)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Finished: FAILURE
+
+==========================
+Error resolved after referring this: https://community.sonarsource.com/t/sonar-scanner-command-not-found-jenkins/35658/3
+
+Installed latest version from Maven in Jenkins  
+
+Google Deployment ManagerVersion 0.1
+
+You can verify the images created using "docker images" command in /var/lib/jenkins 
+
+curl -u ${SONAR_TOKEN}: http://104.197.207.37:9000/api/system/status
+
+
+export SONAR_TOKEN="sonarqube-token"
+
+# Run scanner with token set
+/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqubescan/bin/sonar-scanner \
+  -Dsonar.projectKey=sonarqubescan \
+  -Dsonar.host.url=http://104.197.207.37:9000 \
+  -Dsonar.login=$SONAR_TOKEN \
+  -Dsonar.sources=app
+
+
+/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqubescan/bin/sonar-scanner \
+  -Dsonar.projectKey=sonarqubescan \
+  -Dsonar.host.url=http://34.58.238.62:9000 \
+  -Dsonar.login='sonarqube-token' \
+  -Dsonar.sources=app
+
+
+curl -I http://34.58.238.62:9000
+
+nc -zv (http://34.58.238.62) 9000
+
+telnet http://34.58.238.62 9000
+
+curl -u "sonarqube-token:" http://34.58.238.62:9000/api/server/version
+
+Run the below commands on Jenkins server:
+curl -I http://localhost:9000
+curl -I http://127.0.0.1:9000
+curl -I http://10.128.0.60:9000
+
+
+============================= Copied from README for future reference ======================================
+removed from Jenkinsfile: 19:02
+
+stage('Static Code Analysis') {
+	 steps {
+  def scannerHome = tool 'SonarScanner';
+		withSonarQubeEnv('SonarQube') {
+      sh "${scannerHome}/bin/sonar-scanner"
+  }
+     }
+ }
+
+
+
+Removed at 19:11 
+    tools {
+ jdk 'jdk17'
+ maven 'maven2'
+    }
+
+
+The Jenkins job failed with error
++ mvn clean install
+/var/lib/jenkins/workspace/devops-troubleshooting@tmp/durable-87f22ea1/script.sh.copy: 1: mvn: not found
+[Pipeline] }
+[Pipeline] // stage
+
+so install maven on the GCP VM
+
+The job progressed but failed with error
+
++ mvn clean install
+[1;34mINFO] Scanning for projects...
+1m------------------------------------------------------------------------
+BUILD FAILURE
+1m------------------------------------------------------------------------
+[1;34mINFO] Total time:  0.103 s
+[1;34mINFO] Finished at: 2025-02-18T16:53:12Z
+1m------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/var/lib/jenkins/workspace/devops-troubleshooting). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
+[0m[0m
+
+Created pom.xml and added in the github repository
+
+Now it's failing with error
+ERROR: SonarQube installation defined in this job (sonarqube-scanner) does not match any configured installation. Number of installations that can be configured: 1.
+
+If you want to reassign jobs to a different SonarQube installation, check the documentation under https://redirect.sonarsource.com/plugins/jenkins.html
+
+Finished: FAILURE
+
+So corrected the scanner name as "sonarqube-scanner" which is mentioned in Jenkinsfile
+Tick the checkbox: Install automatically
+
+It's still giving an error
+
+my SonarQube Installation name sonarqube-scanner is matching in Jenkins and Jenkinsfile. However I can see an error "SonarScanner/bin/sonar-scanner is not a directory on the Jenkins controller (but perhaps it exists on some agents)" for SONAR_RUNNER_HOME field. Would it be an issue?
+The error resolved after remving values from SONAR_RUNNER_HOME (Jenkins >> Manage Jenkins >> System >> System set-up)
+
+Now the next error is java.lang.IllegalStateException: Unable to find credential with id 'sonarqube-token'
+So deleted sonarqube credentials and added from the Manage Jenkins > System 
+
+Verified that the Jenkins credentials scope is set to "Global (unrestricted)." Credential type is user id password. 
+The error was resolved after removing credentialsId: ${SONARQUBE_TOKEN} from the withSonarQubeEnv()
+
+Next Error: 
+Failed to execute goal org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar(default-cli) on project my-app Not authorized. 
+Please check the user token in the property 'sonar.token' or 'sonar.login' (deprecated).
+
+credential type is "User ID with password." However, for SonarQube authentication with the Maven plugin, you should use a SonarQube token,
+ which is a "Secret text" credential.
+ Login to SonarQube >> click on the account in top right hand side, then My Account >> Security Tab >> Generate token
+ Select type as User Token and ensure the ids are matching in Jenkinsfile, in SonarQube and while adding it in "system" 
+
+ Next Error:
+ BUILD FAILURE
+------------------------------------------------------------------------
+[INFO] Total time:  3.800 s
+[INFO] Finished at: 2025-02-19T11:43:02Z
+------------------------------------------------------------------------
+[ERROR] Failed to execute goal morg.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar (default-cli) on project my-app: Validation of project failed:
+[ERROR]   o To use the property "sonar.branch.name" and analyze branches, Developer Edition or above is required. See https://docs.sonarsource.com/sonarqube-community-build/analyzing-source-code/analysis-parameters/#multibranch for more information.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+
+So let's remove branch name from the Jenkinsfile and rerun
+
+Next error
+Deployment Failed!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Also:   org.jenkinsci.plugins.workflow.actions.ErrorAction$ErrorId: 4fa4267f-e067-42ee-b7f4-54a6ae19048a
+java.lang.IllegalArgumentException: One or more variables have some issues with their values: VERSION
+
+VERSION = "${BUILD_NUMBER}.${BRANCH_NAME.replaceAll('[^a-zA-Z0-9]', '_')}"
+We removed branch name earlier. So let's add this fix
+
+withSonarQubeEnv(installationName: 'sonarqube-scanner') { //Replace with your SonarQube token credential ID
+      def branchName = env.BRANCH_NAME ?: env.GIT_BRANCH ?: "unknown"
+      def sanitizedBranchName = branchName.replaceAll('[^a-zA-Z0-9]', '_')
+      env.VERSION = "${BUILD_NUMBER}.${sanitizedBranchName}"
+      echo "Version: ${VERSION}"
+      
+
+Removed version entirely, still there's an error
+
+org.jenkinsci.plugins.workflow.actions.ErrorAction$ErrorId: 3a202fe3-b1f9-4a21-ae94-698f32112dac
+
+java.lang.IllegalArgumentException: One or more variables have some issues with their values: VERSION
+
+at org.jenkinsci.plugins.pipeline.modeldefinition.ModelInterpreter.withEnvBlock(ModelInterpreter.groovy:440)
+
+Checked Jenkins Global Environment Variables: Go to "Manage Jenkins" -> "Configure System" and look for "Global properties (environment variables)". VERSION is not defined there. 
+
+Check Build-Specific Environment Variables: If you're using any plugins that set environment variables (e.g., the EnvInject plugin), check their configurations for VERSION. - 
+Installed Environment InjectorVersion 2.926.v69c9b_3896a_96 and EnvInject APIVersion 1.235.va_14c74f8f487
+
+Unchecked SonarQube servers >> Environment variables
+If checked, job administrators will be able to inject a SonarQube server configuration as environment variables in the build.
+ALso removed  VERSION = "${BUILD_NUMBER}.${BRANCH_NAME.replaceAll('[^a-zA-Z0-9]', '_')}" from Jankinsfile
+
+Let's run the job again
+The version error was resolved with a warning
+06:27:47.075 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+
+ANALYSIS SUCCESSFUL, you can find the results at: http://35.192.61.226:9000/dashboard?id=devops
+with message that Quality Gate passed
+
+![alt text](image.png)
+
+06:27:57.747 Analysis total time: 8.011 s
+-----------------------------------------------------------------------
+BUILD SUCCESS
+------------------------------------------------------------------------
+Total time:  11.556 s
+Finished at: 2025-02-21T06:27:57Z
+-----------------------------------------------------------------------
+
+Next Error was with the Nexus Repository
+ Using alternate deployment repository deploymentRepo::http://34.72.81.55:8081/repository/maven-releases//repository/maven-releases
+1m------------------------------------------------------------------------
+BUILD FAILURE
+1m------------------------------------------------------------------------
+ Total time:  2.912 s
+ Finished at: 2025-02-21T06:28:03Z
+1m------------------------------------------------------------------------
+[ERROR] Failed to execute goal32morg.apache.maven.plugins:maven-deploy-plugin:2.7:deploy1m(default-deploy) on project36mmy-app:Invalid syntax for repository.: Invalid syntax for repository. 
+[ERROR] Invalid syntax for alternative repository. Use "id::layout::url".
+[ERROR] ->1m[Help 1]
+
+
+It's evident that repo name http://34.72.81.55:8081/repository/maven-releases//repository/maven-releases is incorrect.
+Let's troubleshoot this
+
+Corrected NEXUS_URL  = "http://34.72.81.55:8081/repository/maven-releases/" in Jenkinsfile to 
+NEXUS_URL  = "http://34.72.81.55:8081"
+
+It failed with an error
+ --- maven-deploy-plugin:2.7:deploy (default-deploy) @ my-app ---
+ Using alternate deployment repository deploymentRepo::http://34.72.81.55:8081/repository/maven-releases
+ ------------------------------------------------------------------------
+ BUILD FAILURE
+ ------------------------------------------------------------------------
+ Total time:  2.402 s
+ Finished at: 2025-02-21T06:49:48Z
+ ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project my-app: Invalid syntax for repository.: Invalid syntax for repository. 
+[ERROR] Invalid syntax for alternative repository. Use "id::layout::url".
+[ERROR] -> [Help 1]
+
+The error "Invalid syntax for alternative repository. Use "id::layout::url"" indicates that Maven is having trouble parsing the URL you're providing for your Nexus repository.  The problem is almost certainly the way you're defining the repository in your pom.xml
+
+It's recommended to use settings.xml instead of pom.xml
+So let's remove (renamed) pom.xml from git repo and create settings.xml
+
+
+It gave an error
++ mvn clean install
+Scanning for projects...
+------------------------------------------------------------------------
+BUILD FAILURE
+------------------------------------------------------------------------
+Total time:  0.133 s
+Finished at: 2025-02-21T07:12:25Z
+------------------------------------------------------------------------
+ The goal you specified requires a project to execute but there is no POM in this directory (/var/lib/jenkins/workspace/devops-troubleshooting). Please verify you invoked Maven from the correct directory. -> [Help 1]
+ 
+ To see the full stack trace of the errors, re-run Maven with the -e switch.
+ Re-run Maven using the -X switch to enable full debug logging.
+ 
+ For more information about the errors and possible solutions, please read the following articles:
+ [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
+
+
+pom.xml (Project Object Model): This is absolutely essential for any Maven project. It defines the project's structure, dependencies, build process, and other critical information.  Maven cannot function without it.  It must be in your project and therefore in your Git repository.  There is no way around this.  
+
+settings.xml: This file is for user-specific Maven settings.
+
+So let's restore the pom.xml and re-run the job
+
+Now I am back to the same error again
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project my-app: Invalid syntax for repository.: Invalid syntax for repository. 
+[ERROR] Invalid syntax for alternative repository. Use "id::layout::url".
+[ERROR] -> [Help 1]
+
+
+After troubleshooting the below steps were followed
+1. Missing <distributionManagement> in pom.xml:
+
+You are defining the repository in settings.xml (which is good), but you also need to tell Maven where to deploy the artifacts in your pom.xml. This is done using the <distributionManagement> section.  Add this to your pom.xml:
+
+<distributionManagement>
+    <repository>
+      <id>nexus-releases</id>  <name>Nexus Releases</name>  <url>http://34.72.81.55:8081/repository/maven-releases</url>
+    </repository>
+  </distributionManagement>
+
+
+The <id> in <distributionManagement> must match the <id> of the <server> in your settings.xml. In your case, both should be nexus-releases.
+
+Your profile id in settings.xml is admin, but you're activating the profile admin in <activeProfiles>. While this is technically correct, it's a bit unusual.  It's more common to have the profile id match the repository id (e.g., nexus-releases).
+
+To securely pass credentials for maven installation in settings.xml, let's create settings-security.xml in ~/.m2 directory on Jenkins server. If the directory itself doesn't exist you can create it 
+create settings-security.xml first before running command mvn --encrypt-password <your password>
+
+It's taking time so I'll revert to previous unsecure version for now
+
+The error continues, now let's check if
+1. there are no firewall rules blocking the connection from the Jenkins agent to the Nexus repository.
+2. Confirm that the maven-releases repository is properly configured in Nexus. Check its deployment policy. It should allow deployments.
+3. Make sure the settings.xml is in the correct location and is being picked up by Maven. By default, Maven looks for it in ${user.home}/.m2/settings.xml. If it's in a different location, ensure that the -s parameter in the Maven command points to the correct path. - Tried creating .m2 directory manually, didn't work
+Let's add below code to Jenkinsfile
+stage('Deploy to Nexus') {
+    steps {
+ sh '''
+ mvn clean deploy -P nexus-releases -s settings.xml -X
+ '''
+    }
+}
+
+removed
+mvn deploy -DaltDeploymentRepository=deploymentRepo::${NEXUS_URL}/repository/${NEXUS_REPO} \\
+    -DrepositoryId=deploymentRepo \\
+    -DnexusUsername=${NEXUS_USERNAME} \\
+    -DnexusPassword=${NEXUS_PASSWORD}
+
+===============================================
+It worked. Now Next error:
+Caused by org.apache.maven.wagon.TransferFailedException: transfer failed for http://34.72.81.55:8081/repository/maven-releases/com/example/my-app/1.0-SNAPSHOT/my-app-1.0-20250221.095340-1.jar, status: 400 Repository version policy: RELEASE does not allow version: 1.0-20250221.095340-1
+
+To resolve this issue, you have several options:
+
+1. Use the Correct Repository for Snapshots
+Ensure that your settings.xml and pom.xml correctly specify separate repositories for snapshots and releases. You should deploy snapshot versions to a snapshot repository and release versions to a release repository.
+
+add below section to pom.xml
+<distributionManagement>
+    <repository>
+ <id>nexus-releases</id>
+ <name>Nexus Releases</name>
+ <url>http://34.72.81.55:8081/repository/maven-releases</url>
+    </repository>
+    <snapshotRepository>
+ <id>nexus-snapshots</id>
+ <name>Nexus Snapshots</name>
+ <url>http://34.72.81.55:8081/repository/maven-snapshots</url>
+    </snapshotRepository>
+</distributionManagement>
+
+Create Separate Repositories in Nexus
+If you haven't already done so, create separate repositories in Nexus:
+A release repository that only allows release versions.
+A snapshot repository that allows snapshot versions.
+===============================================================
+
+Now getting an error:
+Caused by: org.apache.maven.artifact.deployer.ArtifactDeploymentException: Failed to retrieve remote metadata com.example:my-app:1.0-SNAPSHOT/maven-metadata.xml: Could not transfer metadata com.example:my-app:1.0-SNAPSHOT/maven-metadata.xml from/to nexus-snapshots (http://34.72.81.55:8081/repository/maven-snapshots): authentication failed for http://34.72.81.55:8081/repository/maven-snapshots/com/example/my-app/1.0-SNAPSHOT/maven-metadata.xml, status: 401 Unauthorized
+
+ERROR Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project my-app: Failed to retrieve remote metadata com.example:my-app:1.0-SNAPSHOT/maven-metadata.xml: Could not transfer metadata com.example:my-app:1.0-SNAPSHOT/maven-metadata.xml from/to nexus-snapshots (http://34.72.81.55:8081/repository/maven-snapshots): authentication failed for http://34.72.81.55:8081/repository/maven-snapshots/com/example/my-app/1.0-SNAPSHOT/maven-metadata.xml, status: 401 Unauthorized -> [Help 1]
+
+The path http://34.72.81.55:8081/repository/maven-snapshots/com/example/my-app/1.0-SNAPSHOT/ does not exist.
+Further debugging indicates that this is specified in pom.xml as shown below
+    <groupId>com.example</groupId>
+    <artifactId>my-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>My Java Application</name>
+
+Let's try by removing this part
+==========================================
+
+Now getting an error
+[ERROR] Some problems were encountered while processing the POMs:
+[FATAL] 'groupId' is missing. @ line 3, column 109
+[FATAL] 'artifactId' is missing. @ line 3, column 109
+[FATAL] 'version' is missing. @ line 3, column 109
+ @ 
+The build could not read 1 project -> 
+   
+   The project [unknown-group-id]:[unknown-artifact-id]:[unknown-version] (/var/lib/jenkins/workspace/devops-troubleshooting/pom.xml) has 3 errors
+     'groupId' is missing. @ line 3, column 109
+     'artifactId' is missing. @ line 3, column 109
+     'version' is missing. @ line 3, column 109
+
+Corrected the settings.xml as shown below
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  
+  <servers>
+    <server>
+      <id>nexus-releases</id>
+      <username>admin</username>
+      <password>NexusRepo@25</password>
+    </server>
+    <server>
+      <id>nexus-snapshots</id> <!-- Corrected closing tag -->
+      <username>admin</username>
+      <password>NexusRepo@25</password>
+    </server>
+  </servers>
+
+  <profiles>
+    <profile>
+      <id>nexus-releases</id>
+      <repositories>
+ <repository>
+   <id>nexus-releases</id>
+   <url>http://34.72.81.55:8081/repository/maven-releases</url>
+   <releases>
+     <enabled>true</enabled>
+   </releases>
+   <snapshots>
+     <enabled>false</enabled>
+   </snapshots>
+ </repository>
+      </repositories>
+    </profile>
+
+    <profile>
+      <id>nexus-snapshots</id>
+      <repositories>
+ <repository>
+   <id>nexus-snapshots</id>
+   <url>http://34.72.81.55:8081/repository/maven-snapshots</url>
+   <releases>
+     <enabled>false</enabled>
+   </releases>
+   <snapshots>
+     <enabled>true</enabled>
+   </snapshots>
+ </repository>
+      </repositories>
+    </profile>
+
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>nexus-releases</activeProfile> <!-- Ensure this matches the profile ID -->
+    <activeProfile>nexus-snapshots</activeProfile> <!-- Ensure this matches the profile ID -->
+  </activeProfiles>
+
+</settings>
+
+
+===========================================================================
+Next error
++ docker build -t gcr.io/devops2502/my-app:33 .
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /var/lib/jenkins/workspace/devops-troubleshooting/Dockerfile: no such file or directory
+
+Created an Artifact Registry in GCP with the name my-app in us-central1 zone and modified the Jenkinsfile accordingly
+Let's re-run
+==========================================
+Next error:
+WorkflowScript: 71: Expected a step @ line 71, column 17.
+     dockerImage = docker.build("${env.GAR_REPO_NAME}:${env.BUILD_ID}")
+
+Changed the code entirely
+Created a repository in Artifact Registry: Create a repository in Artifact Registry: 
+
+gcloud artifacts repositories create my-docker-repo --repository-format=docker --location=us-central1
+
+Removed the Dockerfile
+FROM openjdk:17-jre-slim
+COPY target/my-app-*.jar /app.jar  # Adjusted JAR file name
+EXPOSE 8080
+CMD ["java", "-jar", "/app.jar"]
+
+ Let's re-run
+=======================================================
+The same issue persists. 
+So added below steps
+
+sh 'which docker'
+sh 'docker --version'
+sh 'id -nG'
+
+stage('Build Docker Image') {
+    steps {
+ script {
+     try {
+  def image = docker.build("${IMAGE_NAME}")
+  echo "Image built successfully: ${image.id}"
+  
+  // Pushing image with full URL for clarity (adjust as needed)
+  def registryUrl = "${ARTIFACT_REGISTRY_URL}/${IMAGE_NAME}:${IMAGE_TAG}"
+  echo "Pushing image to: ${registryUrl}"
+  
+  // Use shell command for push if Groovy method fails silently
+  sh "docker tag ${image.id} ${registryUrl}"
+  sh "docker push ${registryUrl}"
+     } catch (Exception e) {
+  echo "An error occurred during build/push process: ${e.getMessage()}"
+     }
+ }
+    }
+}
+====================================================
+New error
++ which docker
+/usr/bin/docker
+[Pipeline] sh
++ docker --version
+Docker version 20.10.24+dfsg1, build 297e128
+[Pipeline] sh
++ id -nG
+jenkins docker
+[Pipeline] echo
+An error occurred during build/push process: No such property: docker for class: groovy.lang.Binding
+
+Steps to Resolve
+Install Docker Pipeline Plugin:
+Ensure that the Docker Pipeline plugin is installed in your Jenkins environment. You can do this by following these steps:
+
+Go to Manage Jenkins > Manage Plugins.
+
+Search for "Docker Pipeline" and install it if it's not already installed.
+
+You might need to restart Jenkins after installation.
+=================================================================
+Next Error
++ docker build -t my-app .
+unable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat /var/lib/jenkins/workspace/devops-troubleshooting/Dockerfile: no such file or directory
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] echo
+An error occurred during build/push process: script returned exit code 1
+
+Checking workaround
+stage('Build Docker Image') {
+     steps {
+  sh 'docker build -t my-image .'
+  sh 'docker tag my-image ${ARTIFACT_REGISTRY_URL}/my-image:${IMAGE_TAG}'
+  sh 'docker push ${ARTIFACT_REGISTRY_URL}/my-image:${IMAGE_TAG}'
+     }
+ }
+
+The same error persists
+
+Created Dockerfile again
+FROM openjdk:17-jre-slim
+COPY target/my-app-*.jar /app.jar  # Adjusted JAR file name
+EXPOSE 8080
+CMD ["java", "-jar", "/app.jar"]
+==============================================
+'gcloud error was resolved after entering the code
+stage('Authenticate gcloud') {
+      steps {
+ sh '''#!/bin/bash
+     gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+     gcloud config set project ${PROJECT_ID}
+     gcloud auth list
+     gcloud auth configure-docker us-central1-docker.pkg.dev
+ '''
+      }
+    }
+
+Next error
+message: Cloud Resource Manager API has not been used in project 488011902725 before
+    or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=488011902725
+
+gcloud projects get-iam-policy devops2502 --flatten="bindings[].members" --format='table(bindings.role)' --filter="bindings.members:jenkins-sa@devops2502.iam.gserviceaccount.com"
+
+gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
+
+ERROR: (gcloud.projects.get-iam-policy) [<service-account>@<project-id>.iam.gserviceaccount.com] does not have permission to 
+access projects instance [devops2502:getIamPolicy] (or it may not exist): The caller does not have permission. 
+This command is authenticated as <service-account>@<project-id>.iam.gserviceaccount.com which is the active account specified by 
+the [core/account] property
+
+cat $GOOGLE_APPLICATION_CREDENTIALS | docker login -u _json_key --password-stdin https://us-central1-docker.pkg.dev
+
+
+docker pull us-central1-docker.pkg.dev/devops2502/<my-docker-repo/test-image:latest
+There are no images, so this command failed
+
+gcloud projects add-iam-policy-binding <PROJECT_ID> \
+  --member="serviceAccount:<service-account>@<project-id>.iam.gserviceaccount.com" \
+  --role="roles/iam.viewer"
+
+gcloud projects add-iam-policy-binding devops2502 \
+  --member="serviceAccount:jenkins-sa@devops2502.iam.gserviceaccount.com" \
+  --role="roles/iam.viewer"
+
+ERROR: (gcloud.projects.add-iam-policy-binding) INVALID_ARGUMENT: Role roles/iam.viewer is not supported for this resource.
+<user>@cloudshell:~ (devops2502)$
+
+cat ~/.docker/config.json | jq .
+{
+  "credHelpers": {
+    "us-central1-docker.pkg.dev": "gcloud"
+  }
+}
+
+gcloud auth list
+docker login -u _json_key --password-stdin https://us-central1-docker.pkg.dev < "$GOOGLE_APPLICATION_CREDENTIALS"
+docker push us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:latest
+============================================
+install kubectl on Jenkins
+'sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure 
+an askpass helper sudo: a password is required'
+
+Install the kubectl plugin
+stage('Install kubectl') {
+     steps {
+  sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
+  sh 'chmod +x ./kubectl'
+  sh 'sudo mv ./kubectl /usr/local/bin/kubectl'
+  sh 'kubectl version --client'
+     }
+ }
+
+the kubectl installation step should be within the same stage as deploy to gke
+stage('Deploy to GKE') {
+    steps {
+ sh 'mkdir -p ${HOME}/.local/bin'
+ sh '''
+     curl -s "https://storage.googleapis.com/kubernetes-release/release/stable.txt" | tr -d '\n' | xargs -I VERSION curl -LO "https://storage.googleapis.com/kubernetes-release/release/VERSION/bin/linux/amd64/kubectl"
+ '''
+ sh 'chmod u+x ./kubectl'
+ sh 'mv ./kubectl ${HOME}/.local/bin/kubectl'
+
+ withEnv(["PATH+=${HOME}/.local/bin"]) {  // Use withEnv here as well
+     sh 'gcloud container clusters get-credentials my-gke-cluster --region ${GKE_REGION} --project ${PROJECT_ID}'
+     sh 'sed -i "s|${GAR_IMAGE}|new_image|g" deployment.yaml'
+     sh 'kubectl apply -f deployment.yaml'
+      }
+    }
+  }
+
+===============================================
+'Next error
++ gcloud container clusters get-credentials my-gke-cluster --region us-central1 --project devops2502
+Fetching cluster endpoint and auth data.
+kubeconfig entry generated for my-gke-cluster.
+[Pipeline] sh
++ sed -i s|us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:62|new_image|g deployment.yaml
+[Pipeline] sh
++ kubectl apply -f deployment.yaml
+Error from server (Forbidden): error when retrieving current configuration of:
+Resource: "apps/v1, Resource=deployments", GroupVersionKind: "apps/v1, Kind=Deployment"
+Name: "hello-world-deployment", Namespace: "default"
+from server for: "deployment.yaml": deployments.apps "hello-world-deployment" is forbidden: User "jenkins-sa@devops2502.iam.gserviceaccount.com" cannot get resource "deployments" in API group "apps" in the namespace "default": requires one of ["container.deployments.get"] permission(s).
+Error from server (Forbidden): error when retrieving current configuration of:
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
+Name: "hello-world-service", Namespace: "default"
+from server for: "deployment.yaml": services "hello-world-service" is forbidden: User "jenkins-sa@devops2502.iam.gserviceaccount.com" cannot get resource "services" in API group "" in the namespace "default": requires one of ["container.services.get"] permission(s).
+
+it worked after Kubernetes Engine Service Agent role was enabled
+
+=========================================
+Next error: Pod in pending status due to error
+default image tag "${GAR_IMAGE}": couldn't parse image name "${GAR_IMAGE}": invalid reference format: repository name (library/${GAR_IMAGE}) must be lowercase
+
+'Lets correct deployment yaml again by mentioning exact path of Artifact Repository
+======================================
+ImagePullBackOff error
+added us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:latest in the deployment.yaml
+================================
+ErrImagePull error
+Added:  IMAGE_TAG = 'latest' in the Jenkinsfile
+===================================
+
+Type  Reason      Age From   Message
+
+ ----  ------      --------   -------
+
+ Warning FailedScheduling 68s gke.io/optimize-utilization-scheduler 0/2 nodes are available: 2 Insufficient cpu, 2 Insufficient memory. preemption: 0/2 nodes are available: 2 No preemption victims found for incoming pod.
+
+ Normal Scheduled    66s gke.io/optimize-utilization-scheduler Successfully assigned default/hello-world-deployment-8455c9d86b-qxglg to gk3-my-gke-cluster-pool-2-134c88cd-jrss
+
+ Normal TriggeredScaleUp 65s cluster-autoscaler   pod triggered scale-up: [{https://www.googleapis.com/compute/v1/projects/devops2502/zones/us-central1-c/instanceGroups/gk3-my-gke-cluster-pool-2-698d0c12-grp 0->1 (max: 1000)}]
+
+ Normal Pulled      28s (x4 over 65s) kubelet  Container image "us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:latest" already present on machine
+
+ Normal Created     28s (x4 over 65s) kubelet  Created container hello-world
+
+ Normal Started     28s (x4 over 65s) kubelet  Started container hello-world
+
+ Warning FailedScaleUp  19s cluster-autoscaler   Node scale up in zones us-central1-c associated with this pod failed: GCE quota exceeded. Pod is at risk of not being scheduled.
+
+ Warning BackOff     4s (x6 over 63s) kubelet  Back-off restarting failed container hello-world in pod hello-world-deployment-8455c9d86b-qxglg_default(1758b361-48d2-4863-8049-7bc08b8e7fa5)
+
+
+============================================================
+
+  Type     Reason     Age  FromMessage
+  ----     ------     ---- -----------
+  Normal   Scheduled  50s  gke.io/optimize-utilization-scheduler  Successfully assigned def
+ault/hello-world-deployment-7c76dd4dfc-k4w4s to gk3-my-gke-cluster-pool-2-134c88cd-jrss
+  Warning  BackOff    15s (x5 over 46s)  kubelet    Back-off restarting faile
+d container hello-world in pod hello-world-deployment-7c76dd4dfc-k4w4s_default(5e2d18d3-936c-4e70-b84a-03
+e71bd42203)
+  Normal   Pulled     1s (x4 over 48s)   kubelet    Container image "us-centr
+al1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:latest" already present on machine
+  Normal   Created    1s (x4 over 48s)   kubelet    Created container hello-w
+orld
+  Normal   Started    1s (x4 over 48s)   kubelet    Started container hello-w
+orld
+(END)
+
+kubectl logs hello-world-deployment-7c76dd4dfc-k4w4s  
+Error: Could not find or load main class HelloWorld
+Caused by: java.lang.ClassNotFoundException: HelloWorld
+
+docker exec -it a74cf93a23fa7b8b0a40c8b060755b6c8277ded990c191a5c4908
+8d30e179cef bash
+Error response from daemon: No such container: a74cf93a23fa7b8b0a40c8b060755b6c8277ded990c191a5c49088d30e179cef
+
+jar tf hello-world-jar-with-dependencies.jar
+java.nio.file.NoSuchFileException: hello-world-jar-with-dependencies.jar
+        at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+        at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+        at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+        at java.base/sun.nio.fs.UnixFileAttributeViews$Basic.readAttributes(UnixFileAttributeViews.java:55)
+        at java.base/sun.nio.fs.UnixFileSystemProvider.readAttributes(UnixFileSystemProvider.java:148)
+        at java.base/sun.nio.fs.LinuxFileSystemProvider.readAttributes(LinuxFileSystemProvider.java:99)
+        at java.base/java.nio.file.Files.readAttributes(Files.java:1851)
+        at java.base/java.util.zip.ZipFile$Source.get(ZipFile.java:1432)
+        at java.base/java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:717)
+        at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:251)
+        at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:180)
+        at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:151)
+        at jdk.jartool/sun.tools.jar.Main.list(Main.java:1521)
+        at jdk.jartool/sun.tools.jar.Main.run(Main.java:368)
+        at jdk.jartool/sun.tools.jar.Main.main(Main.java:1702)
+
+Corrected main class in pom.xml as shown below
+<archive>
+                        <manifest>
+                            <mainClass>HelloWorld</mainClass>
+                        </manifest>
+                    </archive>
+
+
+It should match in Dockerfile, pom.xml and HelloWorld.java
+
+======================
+New error: 
+
+COPY failed: file not found in build context or excluded by .dockerignore: stat target/HelloWorld-jar-with-dependencies.jar: file does not exist
+
+Change the below in Dockerfile
+COPY target/hello-world-jar-with-dependencies.jar $APP_HOME/app.jar 
+COPY target/HelloWorld-jar-with-dependencies.jar $APP_HOME/app.jar
+
+==========================
+Corrected COPY COPY target/hello-world-jar-with-dependencies.jar $APP_HOME/app.jar in Dockerfile
+================================
+
+
+
+Events:
+  Type     Reason   Age                    From     Message
+  ----     ------   ----                   ----     -------
+  Normal   Pulled   9m (x177 over 14h)     kubelet  Container image "us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:latest" already present on machine
+  Warning  BackOff  4m6s (x4051 over 14h)  kubelet  Back-off restarting failed container hello-world in pod hello-world-deployment-7c76dd4dfc-k4w4s_default(5e2d18d3-936c-4e70-b84a-03e71bd42203)
+
+ ==================================================
+kubectl logs hello-world-deployment-7c76dd4dfc-k4w4s
+Error: Could not find or load main class HelloWorld
+Caused by: java.lang.ClassNotFoundException: HelloWorld
+
+kubectl logs hello-world-deployment-7c76dd4dfc-k4w4s --previous
+Error: Could not find or load main class HelloWorld
+Caused by: java.lang.ClassNotFoundException: HelloWorld
+
+kubectl logs -l app=hello-world
+Error: Could not find or load main class HelloWorld
+Caused by: java.lang.ClassNotFoundException: HelloWorld
+
+Run "mvn compile"
+cd /var/lib/jenkins/workspace/pipeline_250222
+[INFO] No sources to compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.958 s
+[INFO] Finished at: 2025-03-01T07:55:41Z
+[INFO] ------------------------------------------------------------------------
+
+
+<user>@jenkins-server:/var/lib/jenkins/workspace/pipeline_250222$ cd target
+<user>@jenkins-server:/var/lib/jenkins/workspace/pipeline_250222/target$ ls -lrt
+total 16
+drwxr-xr-x 2 jenkins jenkins 4096 Mar  1 07:34 maven-archiver
+-rw-r--r-- 1 jenkins jenkins 1724 Mar  1 07:34 hello-world.jar
+drwxr-xr-x 2 jenkins jenkins 4096 Mar  1 07:34 archive-tmp
+-rw-r--r-- 1 jenkins jenkins 1716 Mar  1 07:34 hello-world-jar-with-dependencies.jar
+
+pom.xml modified to include
+<includes>  <include>*.class</include>  </includes>
+
+
+kubectl describe pod/hello-world-deployment-7c76dd4dfc-k4w4s
+Events:
+  Type     Reason   Age                   From     Message
+  ----     ------   ----                  ----     -------
+  Normal   Pulled   36m (x177 over 15h)   kubelet  Container image "us-central1-docker.pkg.dev/devops2502/my-docker-repo/hello-world:latest" already present on machine
+  Warning  BackOff  80s (x4187 over 15h)  kubelet  Back-off restarting failed container hello-world in pod hello-world-deployment-7c76dd4dfc-k4w4s_default(5e2d18d3-936c-4e70-b84a-03e71bd42203)
+
+
+Maven, by convention, expects Java source code to be in a specific directory: src/main/java.  If your HelloWorld.java file is not in that directory, Maven will not
+compile it, and the resulting .class file will not be included in the JAR.  This is why you're getting the ClassNotFoundException.
+
+'so created a directory src/main/java in the git repo and moved HelloWorld.java in it.
+================================================
+Gave up debugging Java and creating a simple Python App now
+
+//   stage('Push Docker Image to GAR') {
+//     steps {
+//         sh '''
+//             docker build -t ${GAR_IMAGE} .
+//             docker push ${GAR_IMAGE}
+//         '''
+//     }
+//   }
+  // stage('Push Docker Image to GAR') {
+  //   steps {
+  //       sh '''
+  //           docker build -t ${dockerImage}
+  //           docker push ${dockerImage}
+  //       '''
+  //   }
+  // }
+
+  nvalid Character: Docker image names can only contain lowercase alphanumeric characters, periods (.), underscores (_), double underscores (__), hyphens (-), or plus signs (+). 
+  The hyphen after hello-world in hello-world-python is causing this validation error.
+
+FROM python:3.9-slim
+
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+
+[Pipeline] stage
+[Pipeline] { (Test GCP Credentials)
+[Pipeline] withCredentials
+Masking supported pattern matches of $GCP_CREDENTIALS
+[Pipeline] {
+[Pipeline] sh
++ echo ✅ GCP Credentials found at: ****
+✅ GCP Credentials found at: ****
+[Pipeline] sh
++ ls -l ****
+-r-------- 1 jenkins jenkins 2344 Mar 14 05:20 ****
+[Pipeline] sh
++ head -n 5 ****
+{
+  "type": "service_account",
+  "project_id": "devops2502",
+  "private_key_id": "******",
+  "private_key": "-----BEGIN PRIVATE KEY-----\n=\n-----END PRIVATE KEY-----\n",
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] //
