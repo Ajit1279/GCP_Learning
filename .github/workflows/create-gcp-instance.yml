@@ -1,0 +1,46 @@
+name: Create GCP Compute Engine Instance
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write   # Required for Workload Identity Federation
+  contents: read    # Needed for reading repo contents
+
+jobs:
+  create-instance:
+    name: Create Compute Engine Instance
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Authentication
+      - id: auth
+        uses: google-github-actions/auth@v2.0.0
+        with:
+          project_id: 'gitaction-1234'
+          workload_identity_provider: 'projects/337168148611/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'gitaction-sa@gitaction-1234.iam.gserviceaccount.com'
+
+      # # Step 2: Setup Google Cloud CLI
+      # - name: Setup gcloud CLI
+      #   uses: google-github-actions/setup-gcloud@v1
+      #   with:
+      #     project_id: ${{ secrets.GCP_PROJECT_ID }}
+      #     service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      # Step 3: Create Compute Engine Instance
+      - name: Create Instance
+        run: |
+          gcloud compute instances create my-instance \
+            --zone=us-central1-a \
+            --machine-type=e2-medium \
+            --image-family=debian-11 \
+            --image-project=debian-cloud \
+            --tags=http-server,https-server \
+            --metadata=startup-script='#!/bin/bash echo Hello World > /var/www/html/index.html'
