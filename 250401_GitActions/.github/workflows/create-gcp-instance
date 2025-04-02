@@ -23,9 +23,9 @@ jobs:
       - id: auth
         uses: google-github-actions/auth@v2.0.0
         with:
-          project_id: 'gitactions'
-          workload_identity_provider: 'projects/148547527536/locations/global/workloadIdentityPools/my-pool/providers/my-repo'
-          service_account: 'git-sa@gitops-455207.iam.gserviceaccount.com'
+          project_id: 'gitaction-1234'
+          workload_identity_provider: 'projects/337168148611/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'gitaction-sa@gitaction-1234.iam.gserviceaccount.com'
 
       # # Step 2: Setup Google Cloud CLI
       # - name: Setup gcloud CLI
