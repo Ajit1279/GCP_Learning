@@ -1,3 +1,0 @@
-- What is GKE? At a very high level, what problem does GKE (or Kubernetes in general) aim to solve for developers and operations teams?
-- Why would someone choose to use GKE instead of just running their application directly on virtual machines? What's a key benefit?
-- Imagine you have an application. How would you typically package and run it if you were going to deploy it on GKE? What's the fundamental unit of deployment? 
